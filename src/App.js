@@ -1,5 +1,9 @@
+import LandingPage from "./screens/LangingPage";
+
 function App() {
-  return <div className="App">Hello World ok</div>;
+  return (
+    <LandingPage />
+  )
 }
 
 export default App;
