@@ -2,7 +2,7 @@ import React from 'react'
 import Layout from '../components/Layout'
 
 const rootStyle = {
-  padding: "0 4rem", textAlign: "center"
+  textAlign: "center"
 }
 const insuranceDiv = {
   display: "inline-grid", width: "20%",
