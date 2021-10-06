@@ -1,5 +1,5 @@
-import React from 'react'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import React from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 // screens
 import LandingPage from "./screens/LangingPage";
@@ -23,6 +23,6 @@ function App() {
         </Switch>
       </BrowserRouter>
     </React.Fragment>
-  )
+  );
 }
 export default App;
