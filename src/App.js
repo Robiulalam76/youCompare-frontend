@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 
 // screens
 import LandingPage from "./screens/LangingPage";
@@ -11,13 +11,14 @@ function App() {
     <React.Fragment>
       <BrowserRouter>
         <Switch>
-          <Route exact path="/">
+          <Route path="/home">
             <LandingPage />
           </Route>
-          <Route path="/login">
+          <Redirect exact from="/" to="/home" />
+          <Route exact path="/login">
             <Login />
           </Route>
-          <Route path="/signup">
+          <Route exact path="/signup">
             <Signup />
           </Route>
         </Switch>
