@@ -38,7 +38,7 @@ export default function Signup() {
       dispatch(register(name, email, password));
     }
     if (!error) {
-      // history.push("/");
+      history.push("/");
     }
   };
   return (

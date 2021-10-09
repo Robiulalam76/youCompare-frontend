@@ -31,7 +31,7 @@ export default function Login({ location }) {
     e.preventDefault();
     console.log("email password", email, password);
     dispatch(login(email, password));
-    // history.push("/");
+    history.push("/");
   };
 
   return (
