@@ -1,6 +1,7 @@
 import React, { Suspense, useState } from "react";
 import { BrowserRouter, Link } from "react-router-dom";
 import Auto from "../components/Auto";
+
 import {
   BrowserRouter as Router,
   useRouteMatch,
@@ -28,7 +29,7 @@ const insuranceDiv = {
 const insurances = [
   {
     title: "Auto Insurance",
-    name: "Auto",
+    url: "auto",
     image:
       "https://images.unsplash.com/photo-1502067294280-729dc7fea201?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80",
     description:
@@ -36,7 +37,7 @@ const insurances = [
   },
   {
     title: "Life Insurance",
-    name: "Life",
+    url: "life",
     image:
       "https://images.unsplash.com/photo-1475503572774-15a45e5d60b9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=870&q=80",
     description:
@@ -44,7 +45,7 @@ const insurances = [
   },
   {
     title: "Travel Insurance",
-    name: "Travel",
+    url: "travel",
     image:
       "https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=735&q=80",
     description:
@@ -52,7 +53,7 @@ const insurances = [
   },
   {
     title: "Health Isurance",
-    name: "Health",
+    url: "health",
     image:
       "https://images.unsplash.com/photo-1517120026326-d87759a7b63b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
     description:
@@ -66,20 +67,13 @@ export default function LandingPage({}) {
     <div>
       <div>
         {insurances.map((insurance, i) => (
-          <Link to={`${url}/main`}>
+          <Link to={`${url}/${insurance.url}`}>
             <div style={insuranceDiv} key={i}>
               <h3>{insurance.title}</h3>
               <p>{insurance.description}</p>
             </div>
           </Link>
         ))}
-      </div>
-    </div>
-  );
-  const Main = () => (
-    <div>
-      <div>
-        <h1>oh ok</h1>
       </div>
     </div>
   );
@@ -93,7 +87,7 @@ export default function LandingPage({}) {
           <div className="tabs">
             <Switch>
               <Route path={`${path}`} exact component={Card} />
-              <Route path={`${path}/main`} component={Auto} />
+              <Route path={`${path}/auto`} component={Auto} />
             </Switch>
           </div>
           {/* {insurance !== "" ? <SingleInsurance insurance={insurance} /> : ""} */}
