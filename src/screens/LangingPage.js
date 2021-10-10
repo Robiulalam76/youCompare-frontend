@@ -63,6 +63,7 @@ const insurances = [
 
 export default function LandingPage({}) {
   const { path, url } = useRouteMatch();
+
   const Card = () => (
     <div>
       <div>

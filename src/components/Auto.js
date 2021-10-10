@@ -6,7 +6,7 @@ import {
   Switch,
   Link,
 } from "react-router-dom";
-import InsanceStepper from "./StepperInsurance";
+import InsuranceStepper from "./StepperInsurance";
 
 const insuranceDiv = {
   display: "inline-grid",
@@ -57,9 +57,9 @@ function Auto() {
 
   // custome component
   const SubCard = ({ insurance, i }) => (
-    <div>
+    <div style={insuranceDiv}>
       <div>
-        <div style={insuranceDiv} key={i}>
+        <div key={i}>
           <h3>{insurance.title}</h3>
           <p>{insurance.description}</p>
         </div>
@@ -85,7 +85,7 @@ function Auto() {
     <div>
       <div>
         <h2>Commercial</h2>
-        <InsanceStepper />
+        <InsuranceStepper />
       </div>
     </div>
   );

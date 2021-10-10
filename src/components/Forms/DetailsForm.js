@@ -1,7 +1,39 @@
 import React from "react";
-import { Grid, Button } from "@mui/material";
+import { Grid, Button, TextField } from "@mui/material";
+import { useSelector, useDispatch } from 'react-redux'
+import { FIELD_CHANGE } from "../../constants/autoCompare.constant";
 
 function DetailsForm() {
+  const dispatch = useDispatch()
+  const autoQuery = useSelector(state => state.autoQuery)
+  const {
+    brand, model, year, typeofUse, typeofInsurance,
+    value, fullName, email, phone
+  } = autoQuery
+
+  // Default selection during initial rendering
+  React.useEffect(() => {
+    dispatch({
+      type: FIELD_CHANGE,
+      payload: { field: "typeofInsurance", value: "comprehensive" }
+    })
+    dispatch({
+      type: FIELD_CHANGE,
+      payload: { field: "typeofUse", value: "private" }
+    })
+  }, [])
+
+  // form field change (controlled input)
+  const handleChange = (e) => {
+    dispatch({
+      type: FIELD_CHANGE,
+      payload: {
+        field: e.target.name,
+        value: e.target.value
+      }
+    })
+  }
+
   return (
     <div>
       <p>DetailsForm DetailsForm</p>
@@ -18,7 +50,7 @@ function DetailsForm() {
             border: "1px solid salmon",
           }}
         >
-          BMW
+          {brand}
         </div>
         <div
           style={{
@@ -28,8 +60,8 @@ function DetailsForm() {
           }}
         >
           {" "}
-          <span>Model</span>
-          120
+          <span>Model </span>
+          {model}
         </div>
         <div
           style={{
@@ -38,43 +70,87 @@ function DetailsForm() {
             border: "1px solid salmon",
           }}
         >
-          <span>Y ear</span>
-          2016
+          <span>Year </span>
+          {year}
         </div>
       </div>
 
-      <Grid container>
+      <Grid container sx={{ mb: 3, alignItems: "flex-end"}}>
         <Grid lg={4}>
           <p>Type of use</p>
-          <Button variant="contained">Private</Button>
-          <Button variant="outlined">Commercial</Button>
+          <Button
+            variant={typeofUse === "private" ? "contained" : "outlined"}
+            value="private"
+            name="typeofUse"
+            onClick={handleChange}>Private</Button>
+          <Button
+            variant={typeofUse === "commercial" ? "contained" : "outlined"}
+            value="commercial"
+            name="typeofUse"
+            onClick={handleChange}>Commercial</Button>
         </Grid>
         <Grid lg={4}>
           <p>Type of Insurance</p>
-          <Button variant="outlined">Third party</Button>
-          <Button variant="contained">Compremsive</Button>
+          <Button
+            variant={typeofInsurance === "thirdparty" ? "contained" : "outlined"}
+            value="thirdparty"
+            name="typeofInsurance"
+            onClick={handleChange}>
+            Third party
+          </Button>
+          <Button
+            variant={typeofInsurance === "comprehensive" ? "contained" : "outlined"}
+            value="comprehensive"
+            name="typeofInsurance"
+            onClick={handleChange}>
+            Compremsive
+          </Button>
         </Grid>
         <Grid lg={4}>
-          <p>Value</p>
-          <input type="text" placeholder="EG: 500" />
+          <Input
+            value={value}
+            label="Value"
+            onChange={handleChange}
+            name="value"
+          />
         </Grid>
       </Grid>
+
+
       <Grid container>
         <Grid lg={4}>
-          <p>Full Name</p>
-          <input type="text" placeholder="EG: john Borker" />
+        <Input
+            value={fullName}
+            label="Full Name"
+            onChange={handleChange}
+            name="fullName"
+          />
         </Grid>
         <Grid lg={4}>
-          <p>Email ID</p>
-          <input type="text" placeholder="EG: name@gmail.com" />
+          <Input
+            value={email}
+            label="Email Address"
+            onChange={handleChange}
+            name="Email"
+          />
         </Grid>
         <Grid lg={4}>
-          <p>Mobile</p>
-          <input type="text" placeholder="EG: 500" />
+          <Input
+            value={phone}
+            label="Phone No"
+            onChange={handleChange}
+            name="phone"
+          />
         </Grid>
       </Grid>
     </div>
   );
 }
+
+const Input = (props) =>
+  <TextField
+    {...props}
+    size="small"
+  />
 
 export default DetailsForm;
