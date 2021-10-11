@@ -72,6 +72,7 @@ export default function Signup() {
             />
             <Link to="/login">
               <button
+                className="mainBtn"
                 onClick={(e) => submitHandler(e)}
                 style={{ width: "100%" }}
                 type="submit"

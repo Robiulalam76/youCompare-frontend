@@ -2,10 +2,12 @@
  * Styles for Login and Signup form
  */
 export const formDiv = {
-  maxWidth: "300px",
-  margin: "3rem auto",
-  padding: "0 1rem",
-  border: "1px solid lightgray",
+  maxWidth: "400px",
+  margin: "10rem auto",
+  padding: "2rem",
+  border: "1px solid #fff",
+  borderRadius: "10px",
+  boxShadow: "0px 0px 23px -2px rgba(230,230,230,0.75)",
 };
 
 export const form = {
@@ -16,13 +18,15 @@ export const form = {
 
 export const input = {
   width: "100%",
-  padding: ".25rem .5rem",
+  padding: ".6rem .5rem",
   marginBottom: "1rem",
+  marginTop: ".2rem",
   fontSize: "14px",
 };
 
 export const button = {
-  padding: ".25rem 0",
+  padding: ".75rem 0",
   marginBottom: "1rem",
   width: "100%",
+  border: "1px solid transparent",
 };

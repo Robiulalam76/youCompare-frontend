@@ -12,7 +12,10 @@ import BrandForm from "./Forms/BrandForm";
 
 const steps = ["Select Brans", "Model And Year", "Details", "Compare"];
 
-export default function InsanceStepper() {
+export default function InsuranceStepper() {
+
+
+
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
 

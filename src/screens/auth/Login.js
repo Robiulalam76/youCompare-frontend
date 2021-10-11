@@ -9,6 +9,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../actions/userActions";
 import { useHistory } from "react-router-dom";
 
+import "./auth.css";
+
 export default function Login({ location }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -52,17 +54,27 @@ export default function Login({ location }) {
               placeholder="Type password"
             />
             <button
+              className="mainBtn"
               onClick={(e) => submitHandler(e)}
               // type="submit"
               style={button}
             >
               Login
             </button>
-            <Link to="/signup">
-              <button type="submit" style={button}>
-                Signup
-              </button>
-            </Link>
+            <div style={{ width: "100%", textAlign: "center" }}>
+              {" "}
+              <small>
+                New User?
+                <Link className="Link" to="/signup">
+                  {" "}
+                  <span className="linkPera">Create an account</span>{" "}
+                </Link>
+              </small>
+            </div>
+
+            {/* <button type="submit" style={button}>
+              Signup
+            </button> */}
           </form>
         </div>
       </Container>

@@ -1,0 +1,38 @@
+/* pera */
+.pera {
+  font-size: 18px;
+  color: rgb(117, 117, 117);
+}
+
+.insuranceDiv {
+  display: inline-grid;
+  width: 20%;
+  border: 1px solid rgb(255, 255, 255);
+  color: rgb(63, 63, 63);
+  border-radius: 5px;
+  margin: 1rem 1%;
+  padding: 0 1%;
+  /* min-height: 300px; */
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.insuranceDiv:hover {
+  transform: scale(1.07);
+}
+
+/* step */
+.step {
+  border: 1px solid rgb(235, 235, 235);
+  border-radius: 4px;
+}
+.step:hover {
+  border: 1px solid grey;
+}
+
+/* play store */
+.store {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}

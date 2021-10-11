@@ -1,0 +1,15 @@
+label {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgb(160, 160, 160);
+}
+Input {
+  border: 1px solid rgb(233, 233, 233);
+  border-radius: 4px;
+}
+Input:focus {
+  outline: none;
+}
+.linkPera {
+  color: #1482d2;
+}

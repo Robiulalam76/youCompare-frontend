@@ -1,6 +1,7 @@
 import { getFormControlUnstyledUtilityClasses } from "@mui/core";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import logo from "../accets/logo.png";
 
 const navStyle = {
   display: "flex",
@@ -8,7 +9,7 @@ const navStyle = {
   alignItems: "center",
 };
 const ulStyle = { listStyleType: "none", display: "flex" };
-const liStyle = { padding: "0 1rem", cursor: "pointer" };
+const liStyle = { padding: ".5rem 1.5rem", cursor: "pointer" };
 
 export default function Navbar() {
   // if(localStorage.getItem("userInfo"))
@@ -22,7 +23,13 @@ export default function Navbar() {
   useEffect(() => {}, [localStorageData]);
   return (
     <div style={navStyle}>
-      <h3>You Compare Logo</h3>
+      <Link className="Link" to="/">
+        {" "}
+        <div>
+          <img src={logo} alt="" />
+        </div>
+      </Link>
+
       <ul style={ulStyle}>
         <li style={liStyle}>Products</li>
         <li style={liStyle}>Get a Quote</li>
@@ -31,8 +38,10 @@ export default function Navbar() {
             Logout
           </li>
         ) : (
-          <Link to="/login">
-            <li style={liStyle}>Login</li>
+          <Link className="Link" to="/login">
+            <li className="mainBtn" style={liStyle}>
+              Login
+            </li>
           </Link>
         )}
       </ul>

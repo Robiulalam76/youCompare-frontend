@@ -1,10 +1,12 @@
 import React from "react";
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 
-// screens
+//screens
 import LandingPage from "./screens/LangingPage";
 import Login from "./screens/auth/Login";
 import Signup from "./screens/auth/Signup";
+
+import "./App.css";
 
 function App() {
   return (
