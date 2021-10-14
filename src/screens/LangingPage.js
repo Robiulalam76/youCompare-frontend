@@ -14,6 +14,10 @@ import SingleInsurance from "../components/SingleInsurance";
 import Spinner from "../components/Spinner";
 import car from "../accets/car-image.svg";
 import Login from "./auth/Login";
+import Life from "../components/Life/Life";
+import Travel from "../components/Travel/Travel";
+import Health from "../components/Health/Health";
+import { Button, Grid } from "@mui/material";
 
 const rootStyle = {
   textAlign: "center",
@@ -75,23 +79,30 @@ export default function LandingPage({}) {
           five minutes!
         </p>
       </div>
-      <div>
+      <Grid container>
         {insurances.map((insurance, i) => (
-          <Link className="Link" to={`${url}/${insurance.url}`}>
-            <div
-              // style={{ backgroundColor: insurance.color }}
-              style={{ backgroundColor: insurance.color }}
-              className="insuranceDiv"
-              key={i}
-            >
-              {/* <img src={insurance.image} alt="" /> */}
-              <car />
-              <h1 className="insurance">{insurance.title}</h1>
-              <p>{insurance.description}</p>
-            </div>
-          </Link>
+          <Grid lg={3}>
+            <Link className="Link" to={`${url}/${insurance.url}`}>
+              <Button
+                style={{ backgroundColor: insurance.color, margin: "1%" }}
+                variant="text"
+              >
+                <div
+                  // style={{ backgroundColor: insurance.color }}
+
+                  className="insuranceDiv"
+                  key={i}
+                >
+                  {/* <img src={insurance.image} alt="" /> */}
+                  <car />
+                  <h1 className="insurance">{insurance.title}</h1>
+                  <p>{insurance.description}</p>
+                </div>
+              </Button>
+            </Link>{" "}
+          </Grid>
         ))}
-      </div>
+      </Grid>
     </div>
   );
 
@@ -103,6 +114,15 @@ export default function LandingPage({}) {
             <Switch>
               <Route path={`${path}`} exact component={Card} />
               <Route path={`${path}/auto`} component={Auto} />
+              <Route path={`${path}/life`}>
+                <Life />
+              </Route>
+              <Route path={`${path}/health`}>
+                <Health />
+              </Route>
+              <Route path={`${path}/travel`}>
+                <Travel />
+              </Route>
             </Switch>
           </div>
           {/* {insurance !== "" ? <SingleInsurance insurance={insurance} /> : ""} */}

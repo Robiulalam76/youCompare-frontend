@@ -13,27 +13,21 @@ import BrandForm from "./Forms/BrandForm";
 const steps = ["Select Brans", "Model And Year", "Details", "Compare"];
 
 export default function InsuranceStepper() {
-
-
-
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
 
   const isStepOptional = (step) => {
     return step === 1;
   };
-
   const isStepSkipped = (step) => {
     return skipped.has(step);
   };
-
   const handleNext = () => {
     let newSkipped = skipped;
     if (isStepSkipped(activeStep)) {
       newSkipped = new Set(newSkipped.values());
       newSkipped.delete(activeStep);
     }
-
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
     setSkipped(newSkipped);
   };
@@ -41,7 +35,6 @@ export default function InsuranceStepper() {
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
-
   const handleSkip = () => {
     if (!isStepOptional(activeStep)) {
       // You probably want to guard against something like this,
@@ -62,7 +55,7 @@ export default function InsuranceStepper() {
   };
 
   return (
-    <Box sx={{ width: "100%" }}>
+    <Box sx={{ width: "100%" }} className="SteeperDiv">
       <Stepper activeStep={activeStep}>
         {steps.map((label, index) => {
           const stepProps = {};

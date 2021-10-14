@@ -1,4 +1,5 @@
 import { getFormControlUnstyledUtilityClasses } from "@mui/core";
+import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../accets/logo.png";
@@ -39,9 +40,10 @@ export default function Navbar() {
           </li>
         ) : (
           <Link className="Link" to="/login">
-            <li className="mainBtn" style={liStyle}>
-              Login
-            </li>
+            {" "}
+            <Button variant="contained">
+              <li>Login</li>
+            </Button>
           </Link>
         )}
       </ul>
