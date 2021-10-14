@@ -10,6 +10,7 @@ import { login } from "../../actions/userActions";
 import { useHistory } from "react-router-dom";
 
 import "./auth.css";
+import { Button } from "@mui/material";
 
 export default function Login({ location }) {
   const [email, setEmail] = useState("");
@@ -53,14 +54,15 @@ export default function Login({ location }) {
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Type password"
             />
-            <button
+            <Button
+              variant="contained"
               className="mainBtn"
               onClick={(e) => submitHandler(e)}
               // type="submit"
               style={button}
             >
               Login
-            </button>
+            </Button>
             <div style={{ width: "100%", textAlign: "center" }}>
               {" "}
               <small>

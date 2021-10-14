@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { register } from "../../actions/userActions";
+import { Button } from "@mui/material";
 
 export default function Signup() {
   const [email, setEmail] = useState("");
@@ -70,8 +71,9 @@ export default function Signup() {
               onChange={(e) => setConfirmPassword(e.target.value)}
               placeholder="Retype password"
             />
-            <Link to="/login">
-              <button
+            <Link className="Link" to="/login">
+              <Button
+                variant="contained"
                 className="mainBtn"
                 onClick={(e) => submitHandler(e)}
                 style={{ width: "100%" }}
@@ -79,7 +81,7 @@ export default function Signup() {
                 style={button}
               >
                 Create Account
-              </button>
+              </Button>
             </Link>
           </form>
         </div>
