@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 
 import {
   BrowserRouter as Router,
@@ -37,13 +37,15 @@ function AutoCard({
         <Grid container>
           {subInsuranceArray.map((insurance, i) => (
             <Grid lg={rowNumber} className="SubcardDiv">
-              <Link className="Link" to={`${url}/${insurance.url}`}>
-                <SubCard insurance={insurance} i={i} />
-                {/* <div key={i}>
+              <Button variant="text">
+                <Link className="Link" to={`${url}/${insurance.url}`}>
+                  <SubCard insurance={insurance} i={i} />
+                  {/* <div key={i}>
               <h3>{insurance.title}</h3>
               <p>text</p>
             </div> */}
-              </Link>
+                </Link>
+              </Button>
             </Grid>
           ))}
         </Grid>
