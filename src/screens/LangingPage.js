@@ -14,6 +14,9 @@ import SingleInsurance from "../components/SingleInsurance";
 import Spinner from "../components/Spinner";
 import car from "../accets/car-image.svg";
 import Login from "./auth/Login";
+import Life from "../components/Life/Life";
+import Travel from "../components/Travel/Travel";
+import Health from "../components/Health/Health";
 
 const rootStyle = {
   textAlign: "center",
@@ -103,6 +106,15 @@ export default function LandingPage({}) {
             <Switch>
               <Route path={`${path}`} exact component={Card} />
               <Route path={`${path}/auto`} component={Auto} />
+              <Route path={`${path}/life`}>
+                <Life />
+              </Route>
+              <Route path={`${path}/health`}>
+                <Health />
+              </Route>
+              <Route path={`${path}/travel`}>
+                <Travel />
+              </Route>
             </Switch>
           </div>
           {/* {insurance !== "" ? <SingleInsurance insurance={insurance} /> : ""} */}
