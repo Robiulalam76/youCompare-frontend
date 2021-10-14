@@ -3,6 +3,11 @@ import { Grid, Button, TextField } from "@mui/material";
 import { useSelector, useDispatch } from 'react-redux'
 import { FIELD_CHANGE } from "../../constants/autoCompare.constant";
 
+
+const Input = (props) =>
+  <TextField {...props} size="small" />
+
+
 function DetailsForm() {
   const dispatch = useDispatch()
   const autoQuery = useSelector(state => state.autoQuery)
@@ -75,7 +80,7 @@ function DetailsForm() {
         </div>
       </div>
 
-      <Grid container sx={{ mb: 3, alignItems: "flex-end"}}>
+      <Grid container sx={{ mb: 3, alignItems: "flex-end" }}>
         <Grid lg={4}>
           <p>Type of use</p>
           <Button
@@ -119,7 +124,7 @@ function DetailsForm() {
 
       <Grid container>
         <Grid lg={4}>
-        <Input
+          <Input
             value={fullName}
             label="Full Name"
             onChange={handleChange}
@@ -146,11 +151,4 @@ function DetailsForm() {
     </div>
   );
 }
-
-const Input = (props) =>
-  <TextField
-    {...props}
-    size="small"
-  />
-
 export default DetailsForm;

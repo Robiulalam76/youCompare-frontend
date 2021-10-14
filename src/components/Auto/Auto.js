@@ -145,7 +145,7 @@ function Auto() {
     <div>
       <Switch>
         <Route path={`${path}`} exact component={Card} />
-        <Route path={`${path}/commercial`} component={Commercial} />
+        <Route exact path={`${path}/commercial`} component={Commercial} />
         <Route path={`${path}/private`} component={Private} />
         <Route path={`${path}/two-wheeler`} component={TwoWheeler} />
         <Route path={`${path}/three-wheeler`} component={ThreeWheeler} />

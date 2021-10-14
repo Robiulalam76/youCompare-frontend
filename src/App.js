@@ -6,6 +6,8 @@ import LandingPage from "./screens/LangingPage";
 import Login from "./screens/auth/Login";
 import Signup from "./screens/auth/Signup";
 
+import AutoCompare from "./screens/autoCompare";
+
 import "./App.css";
 
 function App() {
@@ -17,6 +19,11 @@ function App() {
             <LandingPage />
           </Route>
           <Redirect exact from="/" to="/home" />
+          
+          <Route path="/compare">
+            <AutoCompare />
+          </Route>
+
           <Route exact path="/login">
             <Login />
           </Route>
