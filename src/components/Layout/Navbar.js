@@ -2,7 +2,7 @@ import { getFormControlUnstyledUtilityClasses } from "@mui/core";
 import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "../accets/logo.png";
+import logo from "../../accets/logo.png";
 
 const navStyle = {
   display: "flex",

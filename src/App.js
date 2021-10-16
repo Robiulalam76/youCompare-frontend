@@ -7,6 +7,7 @@ import Login from "./screens/auth/Login";
 import Signup from "./screens/auth/Signup";
 
 import AutoCompare from "./screens/autoCompare";
+import AutoBuyNow from "./screens/autoBuyNow";
 
 import "./App.css";
 
@@ -22,6 +23,10 @@ function App() {
           
           <Route path="/compare">
             <AutoCompare />
+          </Route>
+
+          <Route path="/auto/buynow">
+            <AutoBuyNow />
           </Route>
 
           <Route exact path="/login">
