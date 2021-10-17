@@ -1,4 +1,4 @@
-import { TextField, Box, InputAdornment, Select, Button, Typography } from '@mui/material'
+import { Box, InputAdornment, Button, Typography } from '@mui/material'
 import React from 'react'
 import { useForm } from '../../components/customHooks/useForm'
 import Calender from '../../components/Calender'
@@ -57,8 +57,8 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
           placeholder="Mobile Number"
           InputProps={{
             startAdornment:
-              <InputAdornment>
-                <Typography sx={{ fontSize: 13, pr: 1}}> +234  </Typography>
+              <InputAdornment position="start">
+                <Typography sx={{ fontSize: 13 }}> +234  </Typography>
               </InputAdornment>
           }}
         />

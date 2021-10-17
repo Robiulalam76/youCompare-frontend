@@ -108,6 +108,14 @@ const PolicyDetails = ({ autoquote }) => {
             discounts={autoquote.discounts}
           />
       }
+      <br />
+      <Button
+        href="/auto/buynow"
+        size="small"
+        variant="contained"
+      >
+        Proceed
+      </Button>
     </>
   )
 }

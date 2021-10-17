@@ -2,7 +2,7 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { userLoginReducer, userRegisterReducer } from "./reducers/userReducer";
-import { autoQueryFormReducer } from "./reducers/autoCompare.reducer";
+import { queryReducer } from "./reducers/auto.reducer";
 
 // import {
 //   userLoginReducer,
@@ -15,7 +15,7 @@ const rootReducer = combineReducers({
   // userSignup: userLoginReducer,
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
-  autoQuery: autoQueryFormReducer,
+  autoQuery: queryReducer,
   // userLogout: userLogoutReducer,
 });
 
