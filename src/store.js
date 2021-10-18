@@ -2,7 +2,10 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { userLoginReducer, userRegisterReducer } from "./reducers/userReducer";
-import { queryReducer } from "./reducers/auto.reducer";
+import { autoQueryReducer } from "./reducers/auto.reducer";
+import { travelQueryReducer } from "./reducers/travel.reducer";
+import { healthQueryReducer } from "./reducers/health.reducer";
+import { lifeQueryReducer } from "./reducers/life.reducer";
 
 // import {
 //   userLoginReducer,
@@ -15,7 +18,10 @@ const rootReducer = combineReducers({
   // userSignup: userLoginReducer,
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
-  autoQuery: queryReducer,
+  autoQuery: autoQueryReducer,
+  travelQuery: travelQueryReducer,
+  healthQuery: healthQueryReducer,
+  lifeQuery: lifeQueryReducer
   // userLogout: userLogoutReducer,
 });
 

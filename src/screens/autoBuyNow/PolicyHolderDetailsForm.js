@@ -1,14 +1,15 @@
-import { Box, InputAdornment, Button, Typography } from '@mui/material'
+import { Box, InputAdornment, Button, Typography, Autocomplete, TextField } from '@mui/material'
 import React from 'react'
 import { useForm } from '../../components/customHooks/useForm'
 import Calender from '../../components/Calender'
 
 import TodayIcon from '@mui/icons-material/Today';
 import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined';
-
 import Popover from '@mui/material/Popover';
-
 import { SelectInput, InputBox, Input } from './utils';
+
+import { Country, State, City } from 'country-state-city';
+
 
 export default function PolicyHolderDetailsForm({ handleStepChange }) {
   const [policyHolder, handleChange] = useForm({
@@ -16,17 +17,36 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
     email: "",
     mobile: "",
     address: "",
-    state: "",
-    city: "",
     pincode: "",
-    maritalStatus: ""
   })
   const [dob, setDob] = React.useState("")
-
-  console.log(policyHolder)
+  const [maritalStatus, setMaritalStatus] = React.useState("")
 
   const [calenderElem, setCalenderElem] = React.useState(null)
   const calenderRef = React.useRef(null)
+
+  // states are 36 states of Nigeria
+  const [states, setStates] = React.useState([])
+  const [cities, setCities] = React.useState([])
+
+  const [selectedState, setSelectedState] = React.useState({ name: "", isoCode: "" })
+  const [selectedCity, setSelectedCity] = React.useState("")
+
+  React.useEffect(() => {
+    const _states = State.getStatesOfCountry('NG').map(state => {
+      if (state.name.slice(-5) === 'State')
+        state.name = state.name.slice(0, -6)
+      return { name: state.name, isoCode: state.isoCode }
+    })
+    setStates(_states)
+  }, [])
+
+  React.useEffect(() => {
+    const _cities = City.getCitiesOfState('NG', selectedState.isoCode)
+      .map(city => city.name)
+
+    setCities(_cities)
+  }, [selectedState])
 
   return (
     <div>
@@ -97,20 +117,38 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
           </Popover>
         </InputBox>
 
+        {/* ################  MARITAL STATUS ##################### */}
         <InputBox label="Marital Status" style={{ width: "50%" }}>
-          <SelectInput
-            name="maritalStatus"
-            value={policyHolder.maritalStatus}
-            onChange={handleChange}
-          >
-            {['Select Option', 'Married', 'Single', 'Divorced'].map((elem) => (
-              <option key={elem} value={elem}>
-                {elem}
-              </option>
-            ))}
-          </SelectInput>
+          <Autocomplete
+            options={['Married', 'Single', 'Diverced']}
+            disableClearable
+            onChange={(e, value) => setMaritalStatus(value)}
+            renderOption={(props, option) => (
+              <Typography
+                {...props}
+                sx={{ fontSize: 13, px: 1, py: .25 }}>
+                {option}
+              </Typography>
+            )}
+            renderInput={(params) => (
+              <TextField {...params}
+                size="small"
+                placeholder="Select Option"
+                inputProps={{
+                  ...params.inputProps,
+                  autoComplete: 'new-password', // disable autocomplete and autofill
+                }}
+                sx={{
+                  ".MuiOutlinedInput-input": {
+                    fontSize: 13,
+                    py: 1
+                  }
+                }} />
+            )} />
         </InputBox>
       </Box>
+
+      {/* ******************* ADDRESS ***************** */}
       <InputBox label="Address">
         <Input
           type="text"
@@ -122,32 +160,68 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
       </InputBox>
 
       <Box sx={{ display: "flex", alignItems: "center" }}>
+
+        {/* ######################## STATE ################## */}
         <InputBox label="State" style={{ width: "50%", marginRight: "16px" }}>
-          <SelectInput
-            name="state"
-            value={policyHolder.state}
-            onChange={handleChange}
-          >
-            {['Select Option', 'Bangladesh', 'India', 'Pakistan', 'Nigeria'].map((elem) => (
-              <option key={elem} value={elem}>
-                {elem}
-              </option>
-            ))}
-          </SelectInput>
+          <Autocomplete
+            options={states}
+            disableClearable
+            onChange={(e, value) => setSelectedState(value)}
+            getOptionLabel={option => option.name}
+            renderOption={(props, option) => (
+              <Typography
+                {...props}
+                sx={{ fontSize: 13, px: 1, py: .25 }}>
+                {option.name}
+              </Typography>
+            )}
+            renderInput={(params) => (
+              <TextField {...params}
+                size="small"
+                placeholder="Select State"
+                inputProps={{
+                  ...params.inputProps,
+                  autoComplete: 'new-password', // disable autocomplete and autofill
+                }}
+                sx={{
+                  ".MuiOutlinedInput-input": {
+                    fontSize: 13,
+                    py: 1
+                  }
+                }} />
+            )} />
         </InputBox>
 
+        {/* ######################## CITY ################## */}
         <InputBox label="City" style={{ width: "50%" }}>
-          <SelectInput
-            name="city"
-            value={policyHolder.city}
-            onChange={handleChange}
-          >
-            {['Dhaka', 'Rajshahi', 'Khulna', 'Sylhet'].map((elem) => (
-              <option key={elem} value={elem}>
-                {elem}
-              </option>
-            ))}
-          </SelectInput>
+          <Autocomplete
+            options={cities}
+            disableClearable
+            autoHighlight
+            onChange={(e, value) => setSelectedCity(value)}
+            getOptionLabel={option => option}
+            renderOption={(props, option) => (
+              <Typography
+                {...props}
+                sx={{ fontSize: 13, px: 1, py: .25 }}>
+                {option}
+              </Typography>
+            )}
+            renderInput={(params) => (
+              <TextField {...params}
+                size="small"
+                placeholder="Select City"
+                inputProps={{
+                  ...params.inputProps,
+                  autoComplete: 'new-password', // disable autocomplete and autofill
+                }}
+                sx={{
+                  ".MuiOutlinedInput-input": {
+                    fontSize: 13,
+                    py: 1
+                  }
+                }} />
+            )} />
         </InputBox>
       </Box>
 

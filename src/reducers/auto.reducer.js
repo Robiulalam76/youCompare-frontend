@@ -10,7 +10,7 @@ const query = {
   year: ""
 }
 
-export const queryReducer = (state = query, action) => {
+export const autoQueryReducer = (state = query, action) => {
   switch (action.type) {
     case FIELD_CHANGE:
       return {
