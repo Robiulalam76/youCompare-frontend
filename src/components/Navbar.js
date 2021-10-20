@@ -41,7 +41,7 @@ export default function Navbar() {
         ) : (
           <Link className="Link" to="/login">
             {" "}
-            <Button variant="contained">
+            <Button className="mainBtn" variant="contained">
               <li>Login</li>
             </Button>
           </Link>
