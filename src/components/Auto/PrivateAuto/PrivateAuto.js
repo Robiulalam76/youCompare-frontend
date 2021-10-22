@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid } from "@mui/material";
+import { Grid, Button, Typography } from "@mui/material";
 import InsuranceStepper from "../../StepperInsurance";
 
 function PrivateAuto({ privateAuto }) {
@@ -18,6 +18,7 @@ function PrivateAuto({ privateAuto }) {
       <Grid lg={7}>
         <InsuranceStepper />
       </Grid>
+      <Typography>Hi Buddy</Typography>
     </Grid>
   );
 }
