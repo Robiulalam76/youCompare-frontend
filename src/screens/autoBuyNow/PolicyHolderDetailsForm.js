@@ -71,6 +71,7 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
       <InputBox label="Mobile Number">
         <Input
           type="number"
+          inputmode="tel"
           name="mobile"
           value={policyHolder.mobile}
           onChange={handleChange}
