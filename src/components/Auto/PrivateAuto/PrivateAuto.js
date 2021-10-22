@@ -18,7 +18,7 @@ function PrivateAuto({ privateAuto }) {
       <Grid lg={7}>
         <InsuranceStepper />
       </Grid>
-      <Typography>Hi Buddy</Typography>
+      <Typography variant="h6">Hi Buddy</Typography>
     </Grid>
   );
 }
