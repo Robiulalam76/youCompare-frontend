@@ -1,11 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+/*
+  Box-Shadow: 0px 0px 63px #F0F0F0;
+*/
+
 /* common  */
+.MuiTypography-root{
+  font-family: 'Poppins', sans-serif;
+}
 .p5 {
   padding: 50px 0px;
 }
 
 .mainBtn {
   color: rgb(255, 255, 255);
-  background-color: rgb(47, 133, 214);
+  background-color: var(--main-color);
   border-radius: 4px;
   transition: 0.2s ease-in-out;
 }
@@ -46,4 +54,39 @@ img {
 }
 
 
+<<<<<<< HEAD
 /* Global Material Styling Customization */
+=======
+
+
+/* variables  */
+/* color:  */
+/* primary-color: #000000
+secondary-color: #707070
+third-color: #F85276
+
+primary-text: #000000
+secondary-text: #B6B6B6
+
+primary-background: #1482D2 //yellow 
+secondary-background: #F5AB0C //blue
+background-black: 
+
+auto-background: #FFDFD2
+life-background: #D4E5FB
+travel-background: #FDEDC9
+health-background: #FFDAED
+/* color:  */
+
+/* font-family
+p-fontsize: 24x
+header-fontSize: 90px;
+small: 16px;
+sectionHeader: 36px
+*/
+
+/*
+primary-font-family:Poppins */
+/* font-family */
+/* variables  */
+>>>>>>> dev
