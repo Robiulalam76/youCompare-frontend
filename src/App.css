@@ -4,9 +4,25 @@
 */
 
 /* common  */
-.MuiTypography-root {
+
+/* Mui Overriding */
+/* .MuiTypography-root {
   font-family: "Poppins", sans-serif !important;
+} */
+
+.MuiInputBase-root-MuiOutlinedInput-root {
+  font-family: "Poppins", sans-serif;
 }
+/* .MuiOutlinedInput-root, 
+.MuiInputBase-root,
+.MuiInputBase-colorPrimary, 
+.MuiInputBase-fullWidth,
+.MuiInputBase-formControl, 
+.MuiInputBase-adornedEnd,
+.MuiAutocomplete-inputRoot{
+  border: 1px solid green!important;
+} */
+
 .p5 {
   padding: 50px 0px;
 }
@@ -58,6 +74,14 @@ img {
   background: #ffffff 0% 0% no-repeat padding-box;
   box-shadow: 0px 0px 63px #f0f0f0;
   border-radius: 25px;
+}
+
+/* Custom Input */
+.custom-input {
+  height: 52px;
+  padding: 0 16px;
+  font-size: 16px;
+  line-height: 25px;
 }
 
 /* variables  */

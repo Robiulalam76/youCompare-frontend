@@ -1,15 +1,34 @@
-import { Box, InputAdornment, Button, Typography, Autocomplete, TextField } from '@mui/material'
+import {
+  Box, InputAdornment, Button, Typography,
+  Autocomplete, TextField, InputBase, IconButton
+} from '@mui/material'
 import React from 'react'
 import { useForm } from '../../components/customHooks/useForm'
 import Calender from '../../components/Calender'
 
 import TodayIcon from '@mui/icons-material/Today';
 import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+
 import Popover from '@mui/material/Popover';
-import { SelectInput, InputBox, Input } from './utils';
+import { SelectInput, InputBox } from './utils';
+import { CustomInput as Input } from './utils'
 
 import { Country, State, City } from 'country-state-city';
+import { ArrowDownward } from '@mui/icons-material';
 
+import { State as StateAutoComplete } from './State';
+
+const inputStyle = {
+  outline: "none",
+  height: "52px",
+  boxShadow: "0px 4px 8px #2c27380a",
+  border: "1px solid #dbe2ea",
+  borderRadius: "6px",
+  padding: "0 16px",
+  fontSize: "16px",
+  lineHeight: "25px"
+}
 
 export default function PolicyHolderDetailsForm({ handleStepChange }) {
   const [policyHolder, handleChange] = useForm({
@@ -59,6 +78,8 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
           placeholder="Enter Full Name"
         />
       </InputBox>
+      <br />
+      <InputBase placeholder="My Text Field" />
       <InputBox label="Email ID">
         <Input
           type="email"
@@ -69,7 +90,7 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
         />
       </InputBox>
       <InputBox label="Mobile Number">
-        <Input
+        <TextField
           type="number"
           inputmode="tel"
           name="mobile"
@@ -127,23 +148,18 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
             renderOption={(props, option) => (
               <Typography
                 {...props}
-                sx={{ fontSize: 13, px: 1, py: .25 }}>
+                variant="body2"
+                color="text.secondary">
                 {option}
               </Typography>
             )}
             renderInput={(params) => (
               <TextField {...params}
-                size="small"
-                placeholder="Select Option"
+                placeholder="Select Gender"
+                className="custom-input"
                 inputProps={{
                   ...params.inputProps,
                   autoComplete: 'new-password', // disable autocomplete and autofill
-                }}
-                sx={{
-                  ".MuiOutlinedInput-input": {
-                    fontSize: 13,
-                    py: 1
-                  }
                 }} />
             )} />
         </InputBox>
@@ -171,24 +187,17 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
             getOptionLabel={option => option.name}
             renderOption={(props, option) => (
               <Typography
-                {...props}
-                sx={{ fontSize: 13, px: 1, py: .25 }}>
+                {...props}>
                 {option.name}
               </Typography>
             )}
             renderInput={(params) => (
               <TextField {...params}
-                size="small"
                 placeholder="Select State"
+                className="custom-input"
                 inputProps={{
                   ...params.inputProps,
                   autoComplete: 'new-password', // disable autocomplete and autofill
-                }}
-                sx={{
-                  ".MuiOutlinedInput-input": {
-                    fontSize: 13,
-                    py: 1
-                  }
                 }} />
             )} />
         </InputBox>
@@ -203,24 +212,17 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
             getOptionLabel={option => option}
             renderOption={(props, option) => (
               <Typography
-                {...props}
-                sx={{ fontSize: 13, px: 1, py: .25 }}>
+                {...props}>
                 {option}
               </Typography>
             )}
             renderInput={(params) => (
               <TextField {...params}
-                size="small"
                 placeholder="Select City"
+                className="custom-input"
                 inputProps={{
                   ...params.inputProps,
                   autoComplete: 'new-password', // disable autocomplete and autofill
-                }}
-                sx={{
-                  ".MuiOutlinedInput-input": {
-                    fontSize: 13,
-                    py: 1
-                  }
                 }} />
             )} />
         </InputBox>

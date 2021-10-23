@@ -28,7 +28,7 @@ export default function PlanDetails({ currentStep }) {
   const [showDetails, setShowDetails] = React.useState(false)
 
   return (
-    <Paper>
+    <div>
 
       {/* Logo */}
       <Box>
@@ -95,7 +95,7 @@ export default function PlanDetails({ currentStep }) {
             Buy Now
           </Button> : null
       }
-    </Paper>
+    </div>
   )
 }
 

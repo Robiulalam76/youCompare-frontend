@@ -1,8 +1,7 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import { Typography } from '@mui/material';
 
-import { Title, Paper} from './utils'
+import { Title, Subtitle, Paper } from './utils'
 
 // components
 import MinimalLayout from '../../components/Layout/MinimalLayout';
@@ -22,11 +21,14 @@ export default function AutoBuyNow() {
   return (
     <MinimalLayout>
       <Box sx={{ display: "flex", justifyContent: "center" }}>
-        <Box sx={{ mx: 4 }}>
+        <Box sx={{ mx: 4, mb: 6, mt: 4 }}>
           <Title>Comprehensive</Title>
           {
             currentStep < 2 ?
-              <Paper>
+              <Paper sx={{
+                px: 4.5, pt: 2, pb: 4,
+                maxWidth: 500
+              }}>
                 <FormStepper
                   currentStep={currentStep}
                   steps={steps} />
@@ -39,7 +41,7 @@ export default function AutoBuyNow() {
                 }
               </Paper> :
               <>
-                <Paper>
+                <Paper sx={{ p: 4 }}>
                   <FormStepper
                     currentStep={currentStep}
                     steps={steps} />
@@ -50,14 +52,22 @@ export default function AutoBuyNow() {
         </Box>
 
         {/* Plan Details Section */}
-        <Box sx={{ mx: 4 }}>
+
+        {/*<Box sx={{ mx: 4, mb: 6, mt: 4 }}>
           <Title>Plan Details</Title>
-          <Box>
+          <Box
+            sx={{ p: 5 }}
+            style={{
+              background: "#FFFFFF 0% 0% no-repeat padding-box",
+              boxShadow: "0px 0px 63px #F0F0F0",
+              borderRadius: "15px",
+              minWidth: 450
+            }}>
             <PlanDetails currentStep={currentStep} />
           </Box>
-        </Box>
+          </Box>*/}
       </Box>
-    </MinimalLayout>
+    </MinimalLayout >
   );
 }
 
@@ -70,29 +80,26 @@ const FormStepper = ({ steps, currentStep }) => {
         steps.map((step, i) => {
           if (i === 0) {
             return (
-              <Typography
-                variant="body2"
+              <Subtitle
                 key={i}
                 sx={{
-                  color: i > currentStep ? "text.disabled" : "text.primary"
+                  color: i > currentStep ? "text.disabled" : "text.primary",
                 }}>
-                <strong>{step}</strong>
-              </Typography>)
+                {step}
+              </Subtitle>)
           } else {
             return <React.Fragment key={i}>
               <Box sx={{
                 height: "1px",
                 backgroundColor: i > currentStep ? "text.disabled" : "text.primary",
                 width: 40,
-                mx: 1.5
               }} />
-              <Typography
-                variant="body2"
+              <Subtitle
                 sx={{
-                  color: i > currentStep ? "text.disabled" : "text.primary"
+                  color: i > currentStep ? "text.disabled" : "text.primary",
                 }}>
-                <strong>{step}</strong>
-              </Typography>
+                {step}
+              </Subtitle>
             </React.Fragment>
           }
         })
