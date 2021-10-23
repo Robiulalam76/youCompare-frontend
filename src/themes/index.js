@@ -25,7 +25,7 @@ export function theme(customization) {
         light: '#FFE9EE'
       },
       text: {
-        primary: '#056866',
+        primary: '#000000',
         secondary: '#707070',
         disabled: '#CECECE',
         nav: "#2A2B40"
@@ -47,23 +47,30 @@ export function theme(customization) {
       }
     },
     typography: {
+      button: {
+        textTransform: "normal",
+      },
       h1: {
-        fontWeight: 600
+        fontWeight: 600,
       },
       h2: {
         fontWeight: 600
       },
       h3: {
-        fontWeight: 600
+        fontWeight: 600,
+        fontSize: 24
       },
       h4: {
-        fontWeight: 600
+        fontWeight: 600,
+        fontSize: 20
       },
       h5: {
-        fontWeight: 600
+        fontWeight: 600,
+        fontSize: 16
       },
       h6: {
-        fontWeight: 600
+        fontWeight: 600,
+        fontSize: 14
       },
       subtitle1: {
         fontWeight: 400
@@ -75,10 +82,40 @@ export function theme(customization) {
         fontWeight: 400
       },
       body1: {
-        fontWeight: 500
+        fontWeight: 500,
+        fontSize: 16
       },
       body2: {
-        fontWeight: 500
+        fontWeight: 500,
+        fontSize: 14
+      }
+    },
+    components: {
+      MuiInputBase: {
+        styleOverrides: {
+          root: {
+            boxShadow: "0px 4px 8px #2c27380a",
+            border: "1px solid #dbe2ea",
+            borderRadius: "6px",
+          },
+        }
+      },
+      MuiOutlinedInput: {
+        styleOverrides: {
+          root: {
+            border: "none",
+          },
+          notchedOutline: {
+            borderColor: "#dbe2ea",
+          }
+        }
+      },
+      MuiTypography: {
+        styleOverrides: {
+          root: {
+            fontFamily: "Poppins"
+          }
+        }
       }
     }
   })
