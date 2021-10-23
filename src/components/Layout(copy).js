@@ -1,9 +1,16 @@
+/**
+ * This file is no longer needed. 
+ * This has been moved to Layout folder as index.js
+ * style guides were documented in README.md in Layout folder
+ */
+
+
 import React from "react";
-import Footer from "./Footer";
-import Navbar from "./Navbar";
+import Footer from "./Layout/Footer";
+import Navbar from "./Layout/Navbar";
 
 import "animate.css";
-import { Container } from "./styledComponents";
+import { Container } from "@mui/material";
 
 // image
 import group1 from "../accets/Group 1907.svg";

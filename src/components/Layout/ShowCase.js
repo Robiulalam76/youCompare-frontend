@@ -8,6 +8,15 @@ import group2 from "../../accets/Group 2005.svg";
 import group3 from "../../accets/Group 2751.svg";
 import store from "../../accets/Image 7.png";
 
+import logo1 from "../../accets/logo1/NoPath.png";
+import logo2 from "../../accets/logo1/NoPath - Copy.png";
+import logo3 from "../../accets/logo1/NoPath - Copy (2).png";
+import logo4 from "../../accets/logo1/NoPath - Copy (3).png";
+import logo5 from "../../accets/logo1/NoPath - Copy (4).png";
+
+
+import { Grid, TextField } from "@mui/material";
+
 const methodology = {
   margin: "8rem 0",
   textAlign: "center",
@@ -42,6 +51,43 @@ const steps = [
 export default function Showcase() {
   return (
     <React.Fragment>
+      {/* logo's of sponsore */}
+      <Grid
+        container
+        style={{
+          marginTop: "3%",
+          padding: "0px 5%",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        <Grid xs={2}>
+          <img style={{ height: "40%" }} src={logo1} alt="" />
+        </Grid>
+        <Grid xs={2}>
+          <div
+            style={{
+              width: "100%",
+              margin: "0 auto",
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <img style={{ height: "40%", width: "60%" }} src={logo2} alt="" />
+          </div>
+        </Grid>
+        <Grid xs={2}>
+          <img style={{ height: "40%" }} src={logo3} alt="" />
+        </Grid>
+        <Grid xs={2}>
+          <img style={{ height: "40%" }} src={logo4} alt="" />
+        </Grid>
+        <Grid xs={2}>
+          <img style={{ height: "40%" }} src={logo5} alt="" />
+        </Grid>
+      </Grid>
+
+      {/* How it works Section */}
       <div style={methodology}>
         <h1>How does it work?</h1>
         <p className="pera">

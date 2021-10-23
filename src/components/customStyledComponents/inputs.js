@@ -10,12 +10,3 @@ export const CustomInput = (props) =>
       },
     }}
   />
-
-// MuiOutlinedInput - root
-// MuiInputBase - root
-// MuiInputBase - colorPrimary
-// Mui - focused
-// MuiInputBase - formControl
-// MuiInputBase - sizeSmall
-// MuiInputBase - adornedStart
-// css - 1q6at85 - MuiInputBase - root - MuiOutlinedInput - root
