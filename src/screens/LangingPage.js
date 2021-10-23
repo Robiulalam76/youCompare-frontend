@@ -14,9 +14,12 @@ import SingleInsurance from "../components/SingleInsurance";
 import Spinner from "../components/Spinner";
 import car from "../accets/car-image.svg";
 import Login from "./auth/Login";
+import LifePic from "../accets/life.svg";
+import TravelPic from "../accets/driver.svg";
 import Life from "../components/Life/Life";
 import Travel from "../components/Travel/Travel";
 import Health from "../components/Health/Health";
+import HealthPic from "../accets/health.svg";
 import { Button, Grid } from "@mui/material";
 
 const rootStyle = {
@@ -28,8 +31,7 @@ const insurances = [
     title: "Auto Insurance",
     url: "auto",
     color: "#FFDFD2",
-    image:
-      "https://images.unsplash.com/photo-1502067294280-729dc7fea201?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80",
+    image: car,
     description:
       "Auto insurance is designed to protect yourself and others agains many various risks",
   },
@@ -37,8 +39,7 @@ const insurances = [
     title: "Life Insurance",
     url: "life",
     color: "#D4E5FB",
-    image:
-      "https://images.unsplash.com/photo-1475503572774-15a45e5d60b9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=870&q=80",
+    image: LifePic,
     description:
       "Prepare for your family's future in the case of an unexpected tragedy. Insurance helps you.",
   },
@@ -46,19 +47,17 @@ const insurances = [
     title: "Travel Insurance",
     url: "travel",
     color: "#FDEDC9",
-    image:
-      "https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=735&q=80",
+    image: TravelPic,
     description:
       "Insurance plans that cover trip cancellation, travel medicines and many more from your loss.",
   },
   {
-    title: "Health Isurance",
+    title: "Health Insurance",
     url: "health",
     color: "#FFDAED",
-    image:
-      "https://images.unsplash.com/photo-1517120026326-d87759a7b63b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+    image: HealthPic,
     description:
-      "Health is the most important thing that we should protect. Health insurance will take care of medical expenses.",
+      "Health is the most important thing that we should protect. Health insurance will take care.",
   },
 ];
 
@@ -70,36 +69,50 @@ export default function LandingPage({}) {
       {" "}
       <div className="bannner">
         {" "}
-        <h1 className="BannerHeader">
+        <h1 className="BannerHeader poppinFont ">
           Smart way <br />
           to buy insurance.
         </h1>
-        <p className="BannerPera">
+        <p className="BannerPera poppinFont">
           Compare insurance policies, rate, detail, & buy instantly in less than
           five minutes!
         </p>
       </div>
       <Grid container>
         {insurances.map((insurance, i) => (
-          <Grid lg={3}>
-            <Link className="Link" to={`${url}/${insurance.url}`}>
-              <Button
-                style={{ backgroundColor: insurance.color, margin: "1%" }}
-                variant="text"
-              >
-                <div
-                  // style={{ backgroundColor: insurance.color }}
-
-                  className="insuranceDiv"
-                  key={i}
+          <Grid lg={3} xs={3} md={6} sm={12}>
+            <div style={{ padding: "0px 5px" }}>
+              <Link className="Link" to={`${url}/${insurance.url}`}>
+                <Button
+                  style={{
+                    backgroundColor: insurance.color,
+                    margin: "1%",
+                    borderRadius: "15px",
+                  }}
+                  variant="text"
                 >
-                  {/* <img src={insurance.image} alt="" /> */}
-                  <car />
-                  <h1 className="insurance">{insurance.title}</h1>
-                  <p>{insurance.description}</p>
-                </div>
-              </Button>
-            </Link>{" "}
+                  <div className="insuranceDiv" key={i}>
+                    <img
+                      style={{ height: "150px" }}
+                      src={insurance.image}
+                      alt=""
+                    />
+                    {/* <car /> */}
+                    <div className="insuranceDetails">
+                      <h1
+                        style={{ fontSize: "25px", padding: "0px 15px" }}
+                        className="insurance"
+                      >
+                        {insurance.title}
+                      </h1>
+                      <p className="poppinFont" style={{ fontSize: "12px" }}>
+                        {insurance.description}
+                      </p>
+                    </div>
+                  </div>
+                </Button>
+              </Link>
+            </div>
           </Grid>
         ))}
       </Grid>
