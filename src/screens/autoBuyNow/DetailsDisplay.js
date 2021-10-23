@@ -1,5 +1,6 @@
 import React from 'react'
-import { Typography, Paper, Box, Divider, Button } from '@mui/material'
+import { Typography, Box, Divider, Button } from '@mui/material'
+import { Paper } from './utils'
 
 export default function DetailsDisplay({ setCurrentStep }) {
   return (

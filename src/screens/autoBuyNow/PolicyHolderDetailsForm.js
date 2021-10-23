@@ -1,6 +1,6 @@
 import {
   Box, InputAdornment, Button, Typography,
-  Autocomplete, TextField, InputBase, IconButton
+  Autocomplete, TextField,
 } from '@mui/material'
 import React from 'react'
 import { useForm } from '../../components/customHooks/useForm'
@@ -8,27 +8,12 @@ import Calender from '../../components/Calender'
 
 import TodayIcon from '@mui/icons-material/Today';
 import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 import Popover from '@mui/material/Popover';
-import { SelectInput, InputBox } from './utils';
-import { CustomInput as Input } from './utils'
+import { InputBox } from './utils';
+import { CustomInput as Input, textfieldStyle } from './utils'
 
-import { Country, State, City } from 'country-state-city';
-import { ArrowDownward } from '@mui/icons-material';
-
-import { State as StateAutoComplete } from './State';
-
-const inputStyle = {
-  outline: "none",
-  height: "52px",
-  boxShadow: "0px 4px 8px #2c27380a",
-  border: "1px solid #dbe2ea",
-  borderRadius: "6px",
-  padding: "0 16px",
-  fontSize: "16px",
-  lineHeight: "25px"
-}
+import { State, City } from 'country-state-city';
 
 export default function PolicyHolderDetailsForm({ handleStepChange }) {
   const [policyHolder, handleChange] = useForm({
@@ -61,6 +46,7 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
   }, [])
 
   React.useEffect(() => {
+    if (!selectedState.isoCode) return;
     const _cities = City.getCitiesOfState('NG', selectedState.isoCode)
       .map(city => city.name)
 
@@ -78,8 +64,6 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
           placeholder="Enter Full Name"
         />
       </InputBox>
-      <br />
-      <InputBase placeholder="My Text Field" />
       <InputBox label="Email ID">
         <Input
           type="email"
@@ -92,15 +76,18 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
       <InputBox label="Mobile Number">
         <TextField
           type="number"
-          inputmode="tel"
+          inputMode="tel"
           name="mobile"
           value={policyHolder.mobile}
           onChange={handleChange}
           placeholder="Mobile Number"
+          inputProps={{
+            sx: textfieldStyle
+          }}
           InputProps={{
             startAdornment:
               <InputAdornment position="start">
-                <Typography sx={{ fontSize: 13 }}> +234  </Typography>
+                <Typography variant="body2">+234</Typography>
               </InputAdornment>
           }}
         />
@@ -143,7 +130,6 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
         <InputBox label="Marital Status" style={{ width: "50%" }}>
           <Autocomplete
             options={['Married', 'Single', 'Diverced']}
-            disableClearable
             onChange={(e, value) => setMaritalStatus(value)}
             renderOption={(props, option) => (
               <Typography
@@ -156,7 +142,6 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
             renderInput={(params) => (
               <TextField {...params}
                 placeholder="Select Gender"
-                className="custom-input"
                 inputProps={{
                   ...params.inputProps,
                   autoComplete: 'new-password', // disable autocomplete and autofill
@@ -182,19 +167,18 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
         <InputBox label="State" style={{ width: "50%", marginRight: "16px" }}>
           <Autocomplete
             options={states}
-            disableClearable
             onChange={(e, value) => setSelectedState(value)}
             getOptionLabel={option => option.name}
             renderOption={(props, option) => (
               <Typography
-                {...props}>
+                {...props} variant="body2"
+                color="text.secondary">
                 {option.name}
               </Typography>
             )}
             renderInput={(params) => (
               <TextField {...params}
                 placeholder="Select State"
-                className="custom-input"
                 inputProps={{
                   ...params.inputProps,
                   autoComplete: 'new-password', // disable autocomplete and autofill
@@ -212,17 +196,16 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
             getOptionLabel={option => option}
             renderOption={(props, option) => (
               <Typography
-                {...props}>
+                {...props} variant="body2"
+                color="text.secondary">
                 {option}
               </Typography>
             )}
             renderInput={(params) => (
               <TextField {...params}
                 placeholder="Select City"
-                className="custom-input"
                 inputProps={{
-                  ...params.inputProps,
-                  autoComplete: 'new-password', // disable autocomplete and autofill
+                  ...params.inputProps
                 }} />
             )} />
         </InputBox>

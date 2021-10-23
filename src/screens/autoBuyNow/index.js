@@ -41,7 +41,10 @@ export default function AutoBuyNow() {
                 }
               </Paper> :
               <>
-                <Paper sx={{ p: 4 }}>
+                <Paper sx={{
+                  px: 4.5, pt: 2, pb: 4,
+                  maxWidth: 500
+                }}>
                   <FormStepper
                     currentStep={currentStep}
                     steps={steps} />
@@ -53,7 +56,7 @@ export default function AutoBuyNow() {
 
         {/* Plan Details Section */}
 
-        {/*<Box sx={{ mx: 4, mb: 6, mt: 4 }}>
+        <Box sx={{ mx: 4, mb: 6, mt: 4 }}>
           <Title>Plan Details</Title>
           <Box
             sx={{ p: 5 }}
@@ -65,7 +68,7 @@ export default function AutoBuyNow() {
             }}>
             <PlanDetails currentStep={currentStep} />
           </Box>
-          </Box>*/}
+        </Box>
       </Box>
     </MinimalLayout >
   );

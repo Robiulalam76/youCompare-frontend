@@ -4,9 +4,35 @@ export const CustomInput = (props) => {
   return (
     <TextField
       {...props}
-      className="custom-input"
+      sx={{ mb: 1 }}
+      inputProps={{
+        sx: {
+          fontSize: 14,
+          py: 1.5,
+          px: 2,
+          color: "text.primary",
+          fontWeight: 400,
+          fontFamily: "Poppins",
+          lineHeight: "25px",
+          "&::placeholder": {
+            color: "text.secondary"
+          }
+        }
+      }}
     />
   )
+}
+
+export const textfieldStyle = {
+  fontSize: 14,
+  py: 1.5,
+  color: "text.primary",
+  fontWeight: 400,
+  fontFamily: "Poppins",
+  lineHeight: "25px",
+  "&::placeholder": {
+    color: "text.secondary"
+  }
 }
 
 export const SelectInput = (props) => {
@@ -25,6 +51,7 @@ export const InputBox = (props) => {
     <Box sx={{ display: "flex", flexDirection: "column", mt: 1.5 }}
       {...props}>
       <Typography
+        variant="body2"
         sx={{
           color: "text.secondary",
           lineHeight: "25px",

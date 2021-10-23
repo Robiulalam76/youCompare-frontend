@@ -1,28 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
-/*
-  Box-Shadow: 0px 0px 63px #F0F0F0;
-*/
-
-/* common  */
 
 /* Mui Overriding */
-/* .MuiTypography-root {
-  font-family: "Poppins", sans-serif !important;
-} */
-
 .MuiInputBase-root-MuiOutlinedInput-root {
   font-family: "Poppins", sans-serif;
 }
-/* .MuiOutlinedInput-root, 
-.MuiInputBase-root,
-.MuiInputBase-colorPrimary, 
-.MuiInputBase-fullWidth,
-.MuiInputBase-formControl, 
-.MuiInputBase-adornedEnd,
-.MuiAutocomplete-inputRoot{
-  border: 1px solid green!important;
-} */
 
+
+/* Common */
 .p5 {
   padding: 50px 0px;
 }

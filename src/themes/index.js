@@ -116,6 +116,11 @@ export function theme(customization) {
             fontFamily: "Poppins"
           }
         }
+      },
+      MuiAutocomplete: {
+        input: {
+          padding: "28px"
+        }
       }
     }
   })
