@@ -55,7 +55,6 @@ export default function Layout({ children }) {
     <React.Fragment>
       <Container>
         <Navbar />
-        <TextField id="outlined-basic" variant="outlined" />
         {children}
 
         {/* logo's of sponsore */}
