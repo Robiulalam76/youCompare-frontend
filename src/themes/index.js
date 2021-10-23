@@ -25,7 +25,7 @@ export function theme(customization) {
         light: '#FFE9EE'
       },
       text: {
-        primary: '#056866',
+        primary: '#000000',
         secondary: '#707070',
         disabled: '#CECECE',
         nav: "#2A2B40"
@@ -48,7 +48,7 @@ export function theme(customization) {
     },
     typography: {
       h1: {
-        fontWeight: 600
+        fontWeight: 600,
       },
       h2: {
         fontWeight: 600
@@ -80,6 +80,15 @@ export function theme(customization) {
       body2: {
         fontWeight: 500
       }
+    },
+    overrides: {
+      MuiPaper: {
+        root: {
+          padding: '20px',
+          marginBottom: '10px',
+          border: "red"
+        },
+      },
     }
   })
 }

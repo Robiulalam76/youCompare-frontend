@@ -1,6 +1,8 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import { Typography, Divider, Paper } from '@mui/material';
+import { Typography } from '@mui/material';
+
+import { Title, Paper} from './utils'
 
 // components
 import MinimalLayout from '../../components/Layout/MinimalLayout';
@@ -17,17 +19,14 @@ export default function AutoBuyNow() {
     if (currentStep > steps.length - 2) return;
     if (action === 'stepUp') setCurrentStep(currentStep + 1)
   }
-  console.log(currentStep)
   return (
     <MinimalLayout>
       <Box sx={{ display: "flex", justifyContent: "center" }}>
         <Box sx={{ mx: 4 }}>
-          <Typography variant="h6">
-            <strong>Comprehensive</strong>
-          </Typography>
+          <Title>Comprehensive</Title>
           {
             currentStep < 2 ?
-              <Paper sx={{ maxWidth: 420, p: 4 }} elevation={24}>
+              <Paper>
                 <FormStepper
                   currentStep={currentStep}
                   steps={steps} />
@@ -40,7 +39,7 @@ export default function AutoBuyNow() {
                 }
               </Paper> :
               <>
-                <Paper sx={{ maxWidth: 420, p: 4, }} elevation={24}>
+                <Paper>
                   <FormStepper
                     currentStep={currentStep}
                     steps={steps} />
@@ -52,12 +51,10 @@ export default function AutoBuyNow() {
 
         {/* Plan Details Section */}
         <Box sx={{ mx: 4 }}>
-          <Typography variant="h6">
-            <strong>Plan Details</strong>
-          </Typography>
-          <Paper sx={{ minWidth: 420, p: 4 }} elevation={24}>
+          <Title>Plan Details</Title>
+          <Box>
             <PlanDetails currentStep={currentStep} />
-          </Paper>
+          </Box>
         </Box>
       </Box>
     </MinimalLayout>

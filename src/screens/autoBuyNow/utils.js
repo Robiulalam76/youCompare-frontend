@@ -1,4 +1,4 @@
-import { TextField, Select, Box } from "@mui/material"
+import { TextField, Select, Box, Typography } from "@mui/material"
 
 export const Input = (props) => {
   return (
@@ -43,3 +43,21 @@ export const InputBox = (props) => {
     </Box>
   )
 }
+
+export const Title = (props) =>
+  <Typography {...props} style={{
+    font: "normal normal 600 24px/54px Poppins"
+  }} />
+
+export const Subtitle = (props) =>
+  <Typography {...props} style={{
+    font: "normal normal 600 16px/54px Poppins"
+  }} />
+
+export const Paper = (props) => (
+  <Box {...props}
+    style={{
+      background: "#FFFFFF 0% 0% no-repeat padding-box",
+      boxShadow: "0px 0px 63px #F0F0F0",
+      borderRadius: "25px"
+    }} />)

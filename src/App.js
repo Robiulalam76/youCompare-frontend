@@ -22,31 +22,6 @@ function App() {
 
   return (
     <React.Fragment>
-<<<<<<< HEAD
-      <BrowserRouter>
-        <Switch>
-          <Route path="/home">
-            <LandingPage />
-          </Route>
-          <Redirect exact from="/" to="/home" />
-          
-          <Route path="/compare">
-            <AutoCompare />
-          </Route>
-
-          <Route path="/auto/buynow">
-            <AutoBuyNow />
-          </Route>
-
-          <Route exact path="/login">
-            <Login />
-          </Route>
-          <Route exact path="/signup">
-            <Signup />
-          </Route>
-        </Switch>
-      </BrowserRouter>
-=======
       <ThemeProvider theme={theme(customvariables)}>
         <BrowserRouter>
           <Switch>
@@ -59,6 +34,10 @@ function App() {
               <AutoCompare />
             </Route>
 
+            <Route path="/auto/buynow">
+              <AutoBuyNow />
+            </Route>
+
             <Route exact path="/login">
               <Login />
             </Route>
@@ -68,7 +47,6 @@ function App() {
           </Switch>
         </BrowserRouter>
       </ThemeProvider>
->>>>>>> dev
     </React.Fragment>
   );
 }

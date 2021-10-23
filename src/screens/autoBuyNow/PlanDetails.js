@@ -3,11 +3,9 @@ import PropTypes from 'prop-types'
 
 import { Box, Typography, Divider, Button } from '@mui/material'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
-import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
-
 import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
+
+import { Title, Subtitle, Paper } from './utils';
 
 export default function PlanDetails({ currentStep }) {
   const idv = 5000;
@@ -30,7 +28,7 @@ export default function PlanDetails({ currentStep }) {
   const [showDetails, setShowDetails] = React.useState(false)
 
   return (
-    <Box>
+    <Paper>
 
       {/* Logo */}
       <Box>
@@ -97,7 +95,7 @@ export default function PlanDetails({ currentStep }) {
             Buy Now
           </Button> : null
       }
-    </Box>
+    </Paper>
   )
 }
 
