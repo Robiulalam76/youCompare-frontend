@@ -8,7 +8,7 @@ import Signup from "./screens/auth/Signup";
 
 import AutoCompare from "./screens/autoCompare";
 import AutoBuyNow from "./screens/autoBuyNow";
-import PaymentSuccessfull from './screens/PaymentSuccessfull'
+import PaymentSuccessfull from './screens/paymentSuccessfull'
 
 import { ThemeProvider } from '@mui/material/styles';
 import { theme } from './themes/index'
@@ -39,7 +39,7 @@ function App() {
               <AutoBuyNow />
             </Route>
 
-            <Route path="/auto/payment-successfull">
+            <Route exact path="/auto/payment-success">
               <PaymentSuccessfull />
             </Route>
 

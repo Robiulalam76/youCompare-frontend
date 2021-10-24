@@ -2,6 +2,10 @@ import { createTheme } from '@mui/material/styles'
 
 export function theme(customization) {
 
+  const primaryMain = '#1482D2'
+  const secondaryMain = '#F5AB0C'
+  const shadowColor = '#2c27380a'
+
   return createTheme({
     palette: {
       background: {
@@ -15,12 +19,12 @@ export function theme(customization) {
         health: '#FFDAED'
       },
       primary: {
-        main: '#1482D2' // blue
+        main: primaryMain // blue
       },
       secondary: {
-        main: '#F5AB0C' // yellow
+        main: secondaryMain // yellow
       },
-      tertiary: {
+      pink: {
         main: '#F85276',  // pink
         light: '#FFE9EE'
       },
@@ -91,7 +95,7 @@ export function theme(customization) {
       MuiInputBase: {
         styleOverrides: {
           root: {
-            boxShadow: "0px 4px 8px #2c27380a",
+            boxShadow: `0px 4px 8px ${shadowColor}`,
             border: "1px solid #dbe2ea",
             borderRadius: "6px",
           }
@@ -127,7 +131,6 @@ export function theme(customization) {
               textTransform: "none",
               height: "36px",
               borderRadius: "50px",
-              border: "1px solid #CECECE",
               fontsize: "14px",
               fontFamily: 'Poppins',
               fontWeight: 400,
@@ -136,11 +139,22 @@ export function theme(customization) {
           {
             props: { variant: 'round', color: 'primary' },
             style: {
-              backgroundColor: '#1482D2',
+              backgroundColor: primaryMain,
               color: '#FFFFFF',
-              border: '1px solid #1482D2',
+              border: `1px solid ${primaryMain}`,
               "&:hover": {
-                backgroundColor: '#1482D2'
+                backgroundColor: primaryMain
+              }
+            }
+          },
+          {
+            props: { variant: 'round', color: 'secondary' },
+            style: {
+              backgroundColor: secondaryMain,
+              color: '#FFFFFF',
+              border: `1px solid ${secondaryMain}`,
+              "&:hover": {
+                backgroundColor: secondaryMain
               }
             }
           },
