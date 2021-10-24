@@ -5,7 +5,6 @@
   font-family: "Poppins", sans-serif;
 }
 
-
 /* Common */
 .p5 {
   padding: 50px 0px;
@@ -67,6 +66,17 @@ img {
   padding: 0 16px;
   font-size: 16px;
   line-height: 25px;
+}
+
+/* Font Weight */
+.font-500 {
+  font-weight: 500;
+}
+.font-400 {
+  font-weight: 400;
+}
+.font-600 {
+  font-weight: 600;
 }
 
 /* variables  */

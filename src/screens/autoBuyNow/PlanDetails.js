@@ -7,6 +7,8 @@ import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
 
 import { Title, Subtitle, Paper } from './utils';
 
+import styles from './styles.module.css'
+
 export default function PlanDetails({ currentStep }) {
   const idv = 5000;
   const discounts = [
@@ -25,24 +27,35 @@ export default function PlanDetails({ currentStep }) {
       value: 2000
     }
   ]
-  const [showDetails, setShowDetails] = React.useState(false)
+  const [showDetails, setShowDetails] = React.useState(true)
 
   return (
     <div>
 
       {/* Logo */}
-      <Box>
-        <Typography variant="h5">Company Logo</Typography>
+      <Box sx={{ display: 'flex', alignItems: "center", mb: 2 }}>
+        <div className={styles.logo}></div>
+        <Box sx={{ ml: 1 }}>
+          <Typography variant="h4">Insurer Company Name</Typography>
+          <Typography variant="subtitle2" >Subtitle Text</Typography>
+        </Box>
       </Box>
 
       {/* Inurance Type and IDV */}
-      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-        <Typography>Comprehensive</Typography>
-        <Typography>IDV &#8358; {idv}</Typography>
+      <Box className={styles.flexBetween}>
+        <Typography variant="body1" sx={{ lineHeight: "54px" }}>
+          Comprehensive
+        </Typography>
+        <Typography variant="body1" sx={{ lineHeight: "54px" }}>
+          <span className={styles.idv}>IDV</span>
+          {" " + idv}
+        </Typography>
       </Box>
       <Divider />
-      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-        <Typography>Plan features + 2 addons</Typography>
+      <Box className={styles.flexBetween}>
+        <Typography sx={{ lineHeight: "54px" }}>
+          Plan features + 2 addons
+        </Typography>
         <KeyboardArrowDownIcon
           style={{
             transform: showDetails ? "rotate(180deg)" : "rotate(0deg)",
@@ -50,26 +63,28 @@ export default function PlanDetails({ currentStep }) {
           }}
           onClick={() => setShowDetails(!showDetails)} />
       </Box>
-      <br />
       {
         showDetails ?
           <>
             <Box>
-              <Typography><strong>Important Plan Benifites</strong></Typography>
+              <Typography variant="body2" sx={{ fontWeight: 600, lineHeight: "30px" }}>
+                Important Plan Benifites
+              </Typography>
               {
                 ['Self Inspection', 'Self Video Claim', 'Zero Deprecation Claim']
                   .map((elem, i) => <ItemDisplay title={elem} key={i} />)
               }
             </Box>
             <Box>
-              <Typography><strong>Addons Included</strong></Typography>
+              <Typography variant="body2" sx={{ fontWeight: 600, mt: 1, lineHeight: "30px" }}>
+                Addons Included
+              </Typography>
               {
                 ['Zero Depreciation', 'Engine Protection Cover']
-                  .map((elem, i) => <Typography variant="body2" key={i}>{elem}</Typography>)
+                  .map((elem, i) => <AddonsDisplay title={elem} key={i} />)
               }
             </Box>
-            <Divider />
-            <br />
+            <Divider sx={{ my: 2 }} />
           </> : null
       }
       {
@@ -87,8 +102,9 @@ export default function PlanDetails({ currentStep }) {
             value={discount.value}
             key={discount.title} />)
       }
-      <br />
       <PremiumDisplay title="Vat" value="350" />
+      <Divider sx={{ my: 1 }} />
+      <PremiumDisplay title="Total" value="4500" />
       {
         currentStep > 1 ?
           <Button variant="contained" fullWidth>
@@ -99,11 +115,24 @@ export default function PlanDetails({ currentStep }) {
   )
 }
 
+const AddonsDisplay = ({ title }) => {
+  return (
+    <Box sx={{ display: "flex", alignItems: "center", pt: .5 }}>
+      <CircleOutlinedIcon sx={{ fontSize: 12, mr: .5, color: "#1482D2" }} />
+      <Typography
+        variant="body2" sx={{ fontWeight: "normal", lineHeight: "20px" }}
+      >{title}</Typography>
+    </Box>
+  )
+}
+
 const ItemDisplay = ({ title }) => {
   return (
     <Box sx={{ display: "flex", alignItems: "center", pt: .5 }}>
-      <CircleOutlinedIcon sx={{ fontSize: 12, mr: .5 }} />
-      <Typography variant="body2">{title}</Typography>
+      <CircleOutlinedIcon sx={{ fontSize: 12, mr: .5, color: "#1482D2" }} />
+      <Typography
+        variant="body2" sx={{ fontWeight: "normal", lineHeight: "20px" }}
+      >{title}</Typography>
     </Box>
   )
 }
@@ -114,7 +143,12 @@ ItemDisplay.propTypes = {
 const PremiumDisplay = ({ title, value }) => {
   return (
     <Box sx={{ display: "flex", justifyContent: "space-between", width: 1 }}>
-      <Typography variant="body2" gutterBottom>{title}</Typography>
+      <Typography
+        variant="body2"
+        sx={{ fontWeight: "medium", color: "text.secondary" }}
+        gutterBottom>
+        {title}
+      </Typography>
       <Typography variant="body2" gutterBottom>&#8358; {value}</Typography>
     </Box>
   )

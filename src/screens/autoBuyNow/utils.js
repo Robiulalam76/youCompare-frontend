@@ -7,11 +7,11 @@ export const CustomInput = (props) => {
       sx={{ mb: 1 }}
       inputProps={{
         sx: {
-          fontSize: 14,
-          py: 1.5,
-          px: 2,
+          // fontSize: 14,
+          // py: 1.5,
+          // px: 2,
           color: "text.primary",
-          fontWeight: 400,
+          fontWeight: "normal",
           fontFamily: "Poppins",
           lineHeight: "25px",
           "&::placeholder": {
@@ -24,8 +24,8 @@ export const CustomInput = (props) => {
 }
 
 export const textfieldStyle = {
-  fontSize: 14,
-  py: 1.5,
+  // fontSize: 14,
+  // py: 1.5,
   color: "text.primary",
   fontWeight: 400,
   fontFamily: "Poppins",
@@ -55,6 +55,7 @@ export const InputBox = (props) => {
         sx={{
           color: "text.secondary",
           lineHeight: "25px",
+          fontWeight: "medium",
           mb: .5
         }}
       >
@@ -83,5 +84,7 @@ export const Paper = (props) => (
     style={{
       background: "#FFFFFF 0% 0% no-repeat padding-box",
       boxShadow: "0px 0px 63px #F0F0F0",
-      borderRadius: "25px"
+      borderRadius: "25px",
+      padding: "1rem 2.5rem 1rem 2.5rem",
+      width: "inherit"
     }} />)

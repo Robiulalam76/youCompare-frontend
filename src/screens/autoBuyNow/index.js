@@ -25,32 +25,28 @@ export default function AutoBuyNow() {
           <Title>Comprehensive</Title>
           {
             currentStep < 2 ?
-              <Paper sx={{
-                px: 4.5, pt: 2, pb: 4,
-                maxWidth: 500
-              }}>
-                <FormStepper
-                  currentStep={currentStep}
-                  steps={steps} />
-                {
-                  currentStep === 0 ?
-                    <PolicyHolderDetailsForm
-                      handleStepChange={handleStepChange} /> :
-                    currentStep === 1 ?
-                      <CarDetailsForm handleStepChange={handleStepChange} /> : null
-                }
-              </Paper> :
-              <>
-                <Paper sx={{
-                  px: 4.5, pt: 2, pb: 4,
-                  maxWidth: 500
-                }}>
+              <Box sx={{ width: 500 }} >
+                <Paper>
+                  <FormStepper
+                    currentStep={currentStep}
+                    steps={steps} />
+                  {
+                    currentStep === 0 ?
+                      <PolicyHolderDetailsForm
+                        handleStepChange={handleStepChange} /> :
+                      currentStep === 1 ?
+                        <CarDetailsForm handleStepChange={handleStepChange} /> : null
+                  }
+                </Paper>
+              </Box> :
+              <Box sx={{ width: 500 }}>
+                <Paper sx={{ mb: 3 }}>
                   <FormStepper
                     currentStep={currentStep}
                     steps={steps} />
                 </Paper>
                 <DetailsDisplay setCurrentStep={setCurrentStep} />
-              </>
+              </Box>
           }
         </Box>
 

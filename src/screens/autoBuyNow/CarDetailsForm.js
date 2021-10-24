@@ -3,6 +3,8 @@ import { useForm } from '../../components/customHooks/useForm';
 import { Box, Typography, Button } from '@mui/material';
 import { SelectInput, InputBox, CustomInput as Input } from './utils';
 
+import styles from './styles.module.css'
+
 export default function CarDetailsForm({ handleStepChange }) {
   const [car, handleChange] = useForm({
     brand: "Brand Three", model: "", year: "", carNo: "", chassisNo: "",
@@ -184,7 +186,7 @@ export default function CarDetailsForm({ handleStepChange }) {
 
       {/* *********8 QUESTION'S SECTION ***************** */}
       <InputBox label="Did Car's ownership change in the last 12 months?">
-        <Box style={{ display: "flex" }}>
+        <Box className={styles.questionContainer}>
           <input
             type="radio"
             checked={ownershipChanged === "Yes"}
@@ -192,7 +194,7 @@ export default function CarDetailsForm({ handleStepChange }) {
             value="Yes"
             style={{ cursor: "pointer" }}
           />
-          <Typography variant="body2">Yes</Typography>
+          <RadioButtonLabel>Yes</RadioButtonLabel>
           <input
             type="radio"
             checked={ownershipChanged === "No"}
@@ -200,12 +202,12 @@ export default function CarDetailsForm({ handleStepChange }) {
             value="No"
             style={{ cursor: "pointer", marginLeft: "16px" }}
           />
-          <Typography variant="body2">No</Typography>
+          <RadioButtonLabel>No</RadioButtonLabel>
         </Box>
       </InputBox>
 
       <InputBox label="Does this car has an external CNG/LPG kit?">
-        <Box style={{ display: "flex" }}>
+        <Box className={styles.questionContainer}>
           <input
             type="radio"
             checked={externalKit === "Yes"}
@@ -213,7 +215,7 @@ export default function CarDetailsForm({ handleStepChange }) {
             value="Yes"
             style={{ cursor: "pointer" }}
           />
-          <Typography variant="body2">Yes</Typography>
+          <RadioButtonLabel>Yes</RadioButtonLabel>
           <input
             type="radio"
             checked={externalKit === "No"}
@@ -221,12 +223,12 @@ export default function CarDetailsForm({ handleStepChange }) {
             value="No"
             style={{ cursor: "pointer", marginLeft: "16px" }}
           />
-          <Typography variant="body2">No</Typography>
+          <RadioButtonLabel>No</RadioButtonLabel>
         </Box>
       </InputBox>
 
       <InputBox label="Car is owned by">
-        <Box style={{ display: "flex" }}>
+        <Box className={styles.questionContainer}>
           <input
             type="radio"
             checked={owner === "individual"}
@@ -234,7 +236,7 @@ export default function CarDetailsForm({ handleStepChange }) {
             value="individual"
             style={{ cursor: "pointer" }}
           />
-          <Typography variant="body2">Individual</Typography>
+          <RadioButtonLabel>Individual</RadioButtonLabel>
           <input
             type="radio"
             checked={owner === "commercial"}
@@ -242,7 +244,7 @@ export default function CarDetailsForm({ handleStepChange }) {
             value="commercial"
             style={{ cursor: "pointer", marginLeft: "16px" }}
           />
-          <Typography variant="body2">Company</Typography>
+          <RadioButtonLabel>Company</RadioButtonLabel>
         </Box>
       </InputBox>
 
@@ -253,3 +255,11 @@ export default function CarDetailsForm({ handleStepChange }) {
     </div >
   )
 }
+
+const RadioButtonLabel = (props) =>
+  <Typography
+    {...props}
+    sx={{ ml: .5 }}
+    variant="body2"
+    color="text.secondary">
+  </Typography>

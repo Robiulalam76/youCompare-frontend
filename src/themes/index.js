@@ -47,9 +47,6 @@ export function theme(customization) {
       }
     },
     typography: {
-      button: {
-        textTransform: "normal",
-      },
       h1: {
         fontWeight: 600,
       },
@@ -97,13 +94,13 @@ export function theme(customization) {
             boxShadow: "0px 4px 8px #2c27380a",
             border: "1px solid #dbe2ea",
             borderRadius: "6px",
-          },
+          }
         }
       },
       MuiOutlinedInput: {
         styleOverrides: {
           root: {
-            border: "none",
+            border: "none"
           },
           notchedOutline: {
             borderColor: "#dbe2ea",
@@ -121,6 +118,40 @@ export function theme(customization) {
         input: {
           padding: "28px"
         }
+      },
+      MuiButton: {
+        variants: [
+          {
+            props: { variant: 'round' },
+            style: {
+              textTransform: "none",
+              height: "36px",
+              borderRadius: "50px",
+              border: "1px solid #CECECE",
+              fontsize: "14px",
+              fontFamily: 'Poppins',
+              fontWeight: 400,
+            },
+          },
+          {
+            props: { variant: 'round', color: 'primary' },
+            style: {
+              backgroundColor: '#1482D2',
+              color: '#FFFFFF',
+              border: '1px solid #1482D2',
+              "&:hover": {
+                backgroundColor: '#1482D2'
+              }
+            }
+          },
+          {
+            props: { variant: 'round', size: 'small' },
+            style: {
+              height: "30px",
+              borderRadius: "42px"
+            }
+          }
+        ]
       }
     }
   })

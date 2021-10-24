@@ -92,9 +92,10 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
           }}
         />
       </InputBox>
-      <Box sx={{ display: "flex", alignItems: "center" }}>
+      {/** DATE OF BIRTH AND MARITAL STATUS */}
+      <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         {/** Date of Birth */}
-        <InputBox label="Date of Birth" style={{ marginRight: "16px", width: "50%" }}>
+        <InputBox label="Date of Birth" style={{ width: "48%" }}>
           <Input
             type="text"
             fullWidth
@@ -126,8 +127,8 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
           </Popover>
         </InputBox>
 
-        {/* ################  MARITAL STATUS ##################### */}
-        <InputBox label="Marital Status" style={{ width: "50%" }}>
+        {/* **** marital status ***** */}
+        <InputBox label="Marital Status" style={{ width: "48%" }}>
           <Autocomplete
             options={['Married', 'Single', 'Diverced']}
             onChange={(e, value) => setMaritalStatus(value)}
@@ -139,6 +140,7 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
                 {option}
               </Typography>
             )}
+            sx={{ mb: .75 }}
             renderInput={(params) => (
               <TextField {...params}
                 placeholder="Select Gender"
@@ -161,10 +163,10 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
         />
       </InputBox>
 
-      <Box sx={{ display: "flex", alignItems: "center" }}>
+      <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
 
         {/* ######################## STATE ################## */}
-        <InputBox label="State" style={{ width: "50%", marginRight: "16px" }}>
+        <InputBox label="State" style={{ width: "48%" }}>
           <Autocomplete
             options={states}
             onChange={(e, value) => setSelectedState(value)}
@@ -187,7 +189,7 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
         </InputBox>
 
         {/* ######################## CITY ################## */}
-        <InputBox label="City" style={{ width: "50%" }}>
+        <InputBox label="City" style={{ width: "48%" }}>
           <Autocomplete
             options={cities}
             disableClearable
@@ -236,6 +238,7 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
       </Box>
       <Button
         variant="contained"
+        style={{ height: "42px" }}
         onClick={() => handleStepChange('stepUp')}
         sx={{ mt: 2 }}>Next</Button>
     </div>
