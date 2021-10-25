@@ -21,7 +21,8 @@ export default function Navbar() {
   const logoutHandler = () => {
     localStorage.removeItem("userInfo");
   };
-  useEffect(() => {}, [localStorageData]);
+  useEffect(() => { }, [localStorageData]);
+  
   return (
     <div style={navStyle}>
       <Link className="Link" to="/">
@@ -32,19 +33,21 @@ export default function Navbar() {
       </Link>
 
       <ul style={ulStyle}>
-        <li style={liStyle}>Products</li>
-        <li style={liStyle}>Get a Quote</li>
         {localStorageData ? (
           <li onClick={logoutHandler} style={liStyle}>
             Logout
           </li>
         ) : (
-          <Link className="Link" to="/login">
-            {" "}
-            <Button className="mainBtn" variant="contained">
-              <li>Login</li>
-            </Button>
-          </Link>
+          <>
+            <li style={liStyle}>Products</li>
+            <li style={liStyle}>Get a Quote</li>
+            <Link className="Link" to="/login">
+              {" "}
+              <Button className="mainBtn" variant="contained">
+                <li>Login</li>
+              </Button>
+            </Link>
+          </>
         )}
       </ul>
     </div>

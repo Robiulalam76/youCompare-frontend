@@ -54,3 +54,19 @@ export const TextButton = (props) =>
     disableTouchRipple={true}
     loadingPosition="start"
   ></Button>
+
+export const RedButton = (props) =>
+  <Button
+    {...props}
+    variant="round"
+    size="small"
+    sx={{
+      color: "pink.main",
+      bgcolor: "pink.light",
+      cursor: "auto",
+      border: "none",
+      "&:hover": {
+        bgcolor: "pink.light"
+      }
+    }}>
+  </Button>
