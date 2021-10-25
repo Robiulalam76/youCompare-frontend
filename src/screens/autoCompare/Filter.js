@@ -10,7 +10,7 @@ import { CustomInput } from '../../components/customStyledComponents/inputs';
 import { CustomCheckbox } from '../../components/customStyledComponents/checkbox';
 
 const Item = styled(Box)(({ theme }) => ({
-  border: `1px solid lightgray`,
+  border: `1px solid ${theme.palette.text.disabled}`,
   padding: theme.spacing(1.5),
   borderRadius: 4,
 }))
