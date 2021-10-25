@@ -247,11 +247,6 @@ export default function CarDetailsForm({ handleStepChange }) {
           <RadioButtonLabel>Company</RadioButtonLabel>
         </Box>
       </InputBox>
-
-      <Button
-        variant="contained"
-        onClick={() => handleStepChange('stepUp')}
-        sx={{ mt: 2 }}>Next</Button>
     </div >
   )
 }

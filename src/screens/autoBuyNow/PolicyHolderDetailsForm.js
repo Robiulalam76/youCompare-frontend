@@ -236,11 +236,6 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
           />
         </InputBox>
       </Box>
-      <Button
-        variant="contained"
-        style={{ height: "42px" }}
-        onClick={() => handleStepChange('stepUp')}
-        sx={{ mt: 2 }}>Next</Button>
     </div>
   )
 }

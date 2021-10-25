@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 
 import { Paper } from './utils'
 import { Title, Subtitle } from '../../components/customStyledComponents/texts';
@@ -33,10 +34,23 @@ export default function AutoBuyNow() {
                     steps={steps} />
                   {
                     currentStep === 0 ?
-                      <PolicyHolderDetailsForm
-                        handleStepChange={handleStepChange} /> :
+                      <>
+                        <PolicyHolderDetailsForm />
+                        <Button
+                          variant="contained"
+                          style={{ height: "42px" }}
+                          onClick={() => handleStepChange('stepUp')}
+                          sx={{ mt: 2 }}>Next</Button>
+                      </> :
                       currentStep === 1 ?
-                        <CarDetailsForm handleStepChange={handleStepChange} /> : null
+                        <>
+                          <CarDetailsForm />
+                          <Button
+                            variant="contained"
+                            style={{ height: "42px" }}
+                            onClick={() => handleStepChange('stepUp')}
+                            sx={{ mt: 2 }}>Next</Button>
+                        </> : null
                   }
                 </Paper>
               </Box> :
