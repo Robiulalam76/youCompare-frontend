@@ -1,7 +1,8 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 
-import { Title, Subtitle, Paper } from './utils'
+import { Paper } from './utils'
+import { Title, Subtitle } from '../../components/customStyledComponents/texts';
 
 // components
 import MinimalLayout from '../../components/Layout/MinimalLayout';

@@ -10,6 +10,9 @@ import AutoCompare from "./screens/autoCompare";
 import AutoBuyNow from "./screens/autoBuyNow";
 import PaymentSuccessfull from './screens/paymentSuccessfull'
 
+import MyDocs from './screens/profile/MyDocs'
+import MyPolicies from './screens/profile/MyPolicies'
+
 import { ThemeProvider } from '@mui/material/styles';
 import { theme } from './themes/index'
 
@@ -41,6 +44,14 @@ function App() {
 
             <Route exact path="/auto/payment-success">
               <PaymentSuccessfull />
+            </Route>
+
+            <Route exact path="/profile/mydocs">
+              <MyDocs />
+            </Route>
+
+            <Route exact path="/profile/mypolicies">
+              <MyPolicies />
             </Route>
 
             <Route exact path="/login">

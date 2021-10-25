@@ -66,19 +66,6 @@ export const InputBox = (props) => {
   )
 }
 
-export const Title = (props) =>
-  <Typography {...props}
-    variant="h3"
-    style={{ lineHeight: "54px" }}
-    gutterBottom />
-
-export const Subtitle = (props) =>
-  <Typography {...props}
-    variant="h5"
-    style={{
-      lineHeight: "54px"
-    }} />
-
 export const Paper = (props) => (
   <Box {...props}
     style={{

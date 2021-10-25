@@ -12,6 +12,7 @@ import { Paper } from './utils'
 
 import styles from './styles.module.css'
 import MinimalLayout from '../../components/Layout/MinimalLayout'
+import { RedButton } from '../../components/customStyledComponents/buttons'
 
 
 // Some utilities components
@@ -26,10 +27,9 @@ const Title = (props) =>
     }} />
 
 const FieldValueDisplay = ({ field, value }) => {
-  console.log(field)
   return (
     <div>
-      <Typography 
+      <Typography
         sx={{ color: "text.disabled", fontWeight: "normal", lineHeight: "25px" }}>
         {field}
       </Typography>
@@ -126,22 +126,6 @@ const PaymentDetails = ({ paymentDetails }) => {
 
 /** ***************** SECOND-SECTION: POLICY DETAILS ***************************** */
 
-const ExpireButton = ({ text }) =>
-  <Button
-    variant="round"
-    size="small"
-    sx={{
-      color: "pink.main",
-      bgcolor: "pink.light",
-      cursor: "auto",
-      border: "none",
-      "&:hover": {
-        bgcolor: "pink.light"
-      }
-    }}>
-    {text}
-  </Button>
-
 const PolicyDetails = ({ policyDetails }) => {
   return (
     <React.Fragment>
@@ -149,7 +133,7 @@ const PolicyDetails = ({ policyDetails }) => {
       <div className={styles.flexBetween}>
         <Box></Box>
         <Box>
-          <ExpireButton text="Expires 25 Nov'22" />
+          <RedButton>Expires 25 Nov'22</RedButton>
         </Box>
       </div>
 
