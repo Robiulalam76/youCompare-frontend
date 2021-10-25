@@ -2,6 +2,10 @@ import { createTheme } from '@mui/material/styles'
 
 export function theme(customization) {
 
+  const primaryMain = '#1482D2'
+  const secondaryMain = '#F5AB0C'
+  const shadowColor = '#2c27380a'
+
   return createTheme({
     palette: {
       background: {
@@ -15,17 +19,17 @@ export function theme(customization) {
         health: '#FFDAED'
       },
       primary: {
-        main: '#1482D2' // blue
+        main: primaryMain // blue
       },
       secondary: {
-        main: '#F5AB0C' // yellow
+        main: secondaryMain // yellow
       },
-      tertiary: {
+      pink: {
         main: '#F85276',  // pink
         light: '#FFE9EE'
       },
       text: {
-        primary: '#056866',
+        primary: '#000000',
         secondary: '#707070',
         disabled: '#CECECE',
         nav: "#2A2B40"
@@ -48,22 +52,26 @@ export function theme(customization) {
     },
     typography: {
       h1: {
-        fontWeight: 600
+        fontWeight: 600,
       },
       h2: {
         fontWeight: 600
       },
       h3: {
-        fontWeight: 600
+        fontWeight: 600,
+        fontSize: 24
       },
       h4: {
-        fontWeight: 600
+        fontWeight: 600,
+        fontSize: 20
       },
       h5: {
-        fontWeight: 600
+        fontWeight: 600,
+        fontSize: 16
       },
       h6: {
-        fontWeight: 600
+        fontWeight: 600,
+        fontSize: 14
       },
       subtitle1: {
         fontWeight: 400
@@ -75,10 +83,89 @@ export function theme(customization) {
         fontWeight: 400
       },
       body1: {
-        fontWeight: 500
+        fontWeight: 500,
+        fontSize: 16
       },
       body2: {
-        fontWeight: 500
+        fontWeight: 500,
+        fontSize: 14
+      }
+    },
+    components: {
+      MuiInputBase: {
+        styleOverrides: {
+          root: {
+            boxShadow: `0px 4px 8px ${shadowColor}`,
+            border: "1px solid #dbe2ea",
+            borderRadius: "6px",
+          }
+        }
+      },
+      MuiOutlinedInput: {
+        styleOverrides: {
+          root: {
+            border: "none"
+          },
+          notchedOutline: {
+            borderColor: "#dbe2ea",
+          }
+        }
+      },
+      MuiTypography: {
+        styleOverrides: {
+          root: {
+            fontFamily: "Poppins"
+          }
+        }
+      },
+      MuiAutocomplete: {
+        input: {
+          padding: "28px"
+        }
+      },
+      MuiButton: {
+        variants: [
+          {
+            props: { variant: 'round' },
+            style: {
+              textTransform: "none",
+              height: "36px",
+              borderRadius: "50px",
+              fontsize: "14px",
+              fontFamily: 'Poppins',
+              fontWeight: 400,
+            },
+          },
+          {
+            props: { variant: 'round', color: 'primary' },
+            style: {
+              backgroundColor: primaryMain,
+              color: '#FFFFFF',
+              border: `1px solid ${primaryMain}`,
+              "&:hover": {
+                backgroundColor: primaryMain
+              }
+            }
+          },
+          {
+            props: { variant: 'round', color: 'secondary' },
+            style: {
+              backgroundColor: secondaryMain,
+              color: '#FFFFFF',
+              border: `1px solid ${secondaryMain}`,
+              "&:hover": {
+                backgroundColor: secondaryMain
+              }
+            }
+          },
+          {
+            props: { variant: 'round', size: 'small' },
+            style: {
+              height: "30px",
+              borderRadius: "42px"
+            }
+          }
+        ]
       }
     }
   })

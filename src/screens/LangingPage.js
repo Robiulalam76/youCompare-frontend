@@ -9,7 +9,7 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
-import Layout from "../components/Layout";
+import Layout from "../components/Layout/index";
 import SingleInsurance from "../components/SingleInsurance";
 import Spinner from "../components/Spinner";
 import car from "../accets/car-image.svg";

@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "../../components/Navbar";
-import Footer from "../../components/Footer";
+import Navbar from "../../components/Layout/Navbar";
+import Footer from "../../components/Layout/Footer";
 import { formDiv, form, input, button } from "./styles";
 
-import { Container } from "../../components/styledComponents";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../actions/userActions";
 import { useHistory } from "react-router-dom";
 
 import "./auth.css";
-import { Button } from "@mui/material";
+import { Button, Container } from "@mui/material";
 
 export default function Login({ location }) {
   const [email, setEmail] = useState("");
