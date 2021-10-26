@@ -3,15 +3,15 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 
 import { Paper } from './utils'
-import { Title, Subtitle } from '../../components/customStyledComponents/texts';
+import { Title } from '../../../components/customStyledComponents/texts';
 
 // components
-import MinimalLayout from '../../components/Layout/MinimalLayout';
+import MinimalLayout from '../../../components/Layout/MinimalLayout';
 import PolicyHolderDetailsForm from './PolicyHolderDetailsForm';
 import CarDetailsForm from './CarDetailsForm';
 import PlanDetails from './PlanDetails';
 import DetailsDisplay from './DetailsDisplay';
-import Formstepper from '../../components/Formstepper';
+import Formstepper from '../../../components/Formstepper'
 
 export default function AutoBuyNow() {
   const [currentStep, setCurrentStep] = React.useState(0)

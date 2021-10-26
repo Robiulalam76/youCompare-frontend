@@ -2,12 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Stack, Typography, Box, Grid, Button, Divider } from '@mui/material'
 import { styled } from '@mui/material/styles'
-import { CustomButton, UnstyledButton } from '../../../components/customStyledComponents/buttons'
-import { SubNavItem } from '../../../components/customStyledComponents/subNavItem'
+import { CustomButton, UnstyledButton } from '../../../../components/customStyledComponents/buttons'
+import { SubNavItem } from '../../../../components/customStyledComponents/subNavItem'
 
 import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
-import { premiumCalculator } from '../../../helpers/premiumCalculator'
+import { premiumCalculator } from '../../../../helpers/premiumCalculator'
 
 const Item = styled(Box)(({ theme }) => ({
   padding: theme.spacing(3),

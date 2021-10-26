@@ -6,8 +6,11 @@ import LandingPage from "./screens/LangingPage";
 import Login from "./screens/auth/Login";
 import Signup from "./screens/auth/Signup";
 
-import AutoCompare from "./screens/autoCompare";
-import AutoBuyNow from "./screens/autoBuyNow";
+import AutoCompare from "./screens/compare/auto";
+import AutoBuyNow from "./screens/buyprocess/auto";
+
+import LifeCompare from "./screens/compare/life";
+
 import PaymentSuccessfull from './screens/paymentSuccessfull'
 
 import MyDocs from './screens/profile/MyDocs'
@@ -34,18 +37,45 @@ function App() {
             </Route>
             <Redirect exact from="/" to="/home" />
 
+            {/** Compare Pages */}
             <Route path="/compare">
               <AutoCompare />
             </Route>
 
+            <Route exact path="/life/compare">
+              <LifeCompare />
+            </Route>
+
+            <Route exact path="/health/compare">
+              <LifeCompare />
+            </Route>
+
+            <Route exact path="/travel/compare">
+              <LifeCompare />
+            </Route>
+
+            {/** Buy Now Pages */}
             <Route path="/auto/buynow">
               <AutoBuyNow />
             </Route>
 
+            <Route path="/life/buynow">
+              <AutoBuyNow />
+            </Route>
+
+            <Route path="/health/buynow">
+              <AutoBuyNow />
+            </Route>
+            <Route path="/travel/buynow">
+              <AutoBuyNow />
+            </Route>
+
+            {/** Payment */}
             <Route exact path="/auto/payment-success">
               <PaymentSuccessfull />
             </Route>
 
+            {/** Profile */}
             <Route exact path="/profile/mydocs">
               <MyDocs />
             </Route>
@@ -54,12 +84,14 @@ function App() {
               <MyPolicies />
             </Route>
 
+            {/**Auth pages */}
             <Route exact path="/login">
               <Login />
             </Route>
             <Route exact path="/signup">
               <Signup />
             </Route>
+
           </Switch>
         </BrowserRouter>
       </ThemeProvider>

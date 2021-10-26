@@ -1,5 +1,6 @@
 import React from 'react'
 
+// material ui
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
@@ -7,33 +8,55 @@ import IconButton from '@mui/material/IconButton'
 import Divider from '@mui/material/Divider'
 import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
 import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 import { Paper } from './utils'
-
 import styles from './styles.module.css'
+// components
 import MinimalLayout from '../../components/Layout/MinimalLayout'
 import { RedButton } from '../../components/customStyledComponents/buttons'
 
 
 // Some utilities components
-const Title = (props) =>
-  <Typography
-    {...props}
-    sx={{
-      ...props.sx,
-      fontWeight: "medium",
-      textTransform: "uppercase",
-      color: "text.secondary"
-    }} />
+const Title = (props) => {
+  const theme = useTheme();
+  const largeScreen = useMediaQuery(theme.breakpoints.up('lg'));
+
+  return (
+    <Typography
+      {...props}
+      sx={{
+        ...props.sx,
+        fontSize: largeScreen ? "16px" : "14px",
+        fontWeight: "medium",
+        textTransform: "uppercase",
+        color: "text.secondary"
+      }} />
+  )
+}
 
 const FieldValueDisplay = ({ field, value }) => {
+  const theme = useTheme();
+  const largeScreen = useMediaQuery(theme.breakpoints.up('lg'));
+
   return (
     <div>
       <Typography
-        sx={{ color: "text.disabled", fontWeight: "normal", lineHeight: "25px" }}>
+        sx={{
+          fontSize: largeScreen ? "16px" : "14px",
+          color: "text.disabled",
+          fontWeight: "normal",
+          lineHeight: "25px"
+        }}>
         {field}
       </Typography>
-      <Typography sx={{ fontWeight: "normal", lineHeight: "27px" }}>
+
+      <Typography sx={{
+        fontSize: largeScreen ? "16px" : "14px",
+        fontWeight: "normal",
+        lineHeight: "27px"
+      }}>
         {value}
       </Typography>
     </div>

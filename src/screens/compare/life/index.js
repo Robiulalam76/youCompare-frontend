@@ -1,16 +1,20 @@
 import React from 'react'
-import MinimalLayout from '../../components/Layout/MinimalLayout'
-import Results from './results'
-import Filter from './Filter'
-import { Grid } from '@mui/material'
 
-export default function AutoCompare(props) {
+// material ui
+import Grid from '@mui/material/Grid'
+
+// components
+import MinimalLayout from '../../../components/Layout/MinimalLayout'
+import Filters from './filters'
+import Results from './results'
+
+export default function LifeCompare() {
   return (
     <MinimalLayout>
       <br />
       <Grid container spacing={4}>
         <Grid item xs={3}>
-          <Filter />
+          <Filters />
         </Grid>
         <Grid item xs={9}>
           <Results />
