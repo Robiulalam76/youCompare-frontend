@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 import IconButton from '@mui/material/IconButton'
 import Divider from '@mui/material/Divider'
+import Grid from '@mui/material/Grid'
 import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
 import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined';
 import { useTheme } from '@mui/material/styles';
@@ -20,15 +21,12 @@ import { RedButton } from '../../components/customStyledComponents/buttons'
 
 // Some utilities components
 const Title = (props) => {
-  const theme = useTheme();
-  const largeScreen = useMediaQuery(theme.breakpoints.up('lg'));
-
   return (
     <Typography
       {...props}
       sx={{
         ...props.sx,
-        fontSize: largeScreen ? "16px" : "14px",
+        fontSize: "14px",
         fontWeight: "medium",
         textTransform: "uppercase",
         color: "text.secondary"
@@ -37,14 +35,12 @@ const Title = (props) => {
 }
 
 const FieldValueDisplay = ({ field, value }) => {
-  const theme = useTheme();
-  const largeScreen = useMediaQuery(theme.breakpoints.up('lg'));
 
   return (
     <div>
       <Typography
         sx={{
-          fontSize: largeScreen ? "16px" : "14px",
+          fontSize: ".9rem",
           color: "text.disabled",
           fontWeight: "normal",
           lineHeight: "25px"
@@ -53,7 +49,7 @@ const FieldValueDisplay = ({ field, value }) => {
       </Typography>
 
       <Typography sx={{
-        fontSize: largeScreen ? "16px" : "14px",
+        fontSize: ".9rem",
         fontWeight: "normal",
         lineHeight: "27px"
       }}>
@@ -100,18 +96,19 @@ export default function PaymentSuccessfull() {
     <MinimalLayout>
       <div className={styles.container}>
         <Paper>
-          <PaymentDetails paymentDetails={paymentDetails} />
+          <PaymentDetails
+            paymentDetails={paymentDetails} />
         </Paper>
 
-        <Paper sx={{ mt: 3 }}>
+        <Paper sx={{ mt: 2 }}>
           <PolicyDetails policyDetails={policyDetails} />
         </Paper>
 
-        <Paper sx={{ mt: 3 }}>
+        <Paper sx={{ mt: 2 }}>
           <Overview overview={overview} />
         </Paper>
 
-        <Paper sx={{ mt: 3 }}>
+        <Paper sx={{ mt: 2 }}>
           <PolicyHolderDetails policyHolder={policyHolder} />
         </Paper>
 
@@ -122,7 +119,9 @@ export default function PaymentSuccessfull() {
 
 /** ******************** FIRST SECTION: PAYMENT DETAILS ******************* */
 
-const PaymentDetails = ({ paymentDetails }) => {
+const PaymentDetails = ({ paymentDetails, smallScreen }) => {
+
+
   return (
     <React.Fragment>
 
@@ -133,16 +132,17 @@ const PaymentDetails = ({ paymentDetails }) => {
         </Button>
       </div>
 
-      <Box sx={{ display: "flex", justifyContent: "space-between", mt: 3 }}>
+      <Grid container spacing={1} sx={{ mt: 1 }}>
         {
           paymentDetails.map((elem, i) => (
-            <FieldValueDisplay
-              field={elem.field}
-              value={elem.value}
-              key={i} />
+            <Grid item xs={6} sm={4} md={3} key={i}>
+              <FieldValueDisplay
+                field={elem.field}
+                value={elem.value} />
+            </Grid>
           ))
         }
-      </Box>
+      </Grid>
     </React.Fragment>
   )
 }
@@ -174,16 +174,18 @@ const PolicyDetails = ({ policyDetails }) => {
         </IconButton>
       </div>
       <Divider sx={{ my: 1 }} />
-      <Box sx={{ display: "flex", justifyContent: "space-between", mt: 3 }}>
+
+      <Grid container spacing={1} sx={{ mt: 1 }}>
         {
           policyDetails.map((elem, i) => (
-            <FieldValueDisplay
-              field={elem.field}
-              value={elem.value}
-              key={i} />
+            <Grid item xs={6} sm={4} md={3} key={i}>
+              <FieldValueDisplay
+                field={elem.field}
+                value={elem.value} />
+            </Grid>
           ))
         }
-      </Box>
+      </Grid>
     </React.Fragment>
   )
 }
@@ -195,17 +197,18 @@ const Overview = ({ overview }) => {
   return (
     <React.Fragment>
       <Title>Overview</Title>
-      {
-        overview.map((elem, i) => (
-          <Box sx={{ display: "inline-block", minWidth: "200px", mt: 1 }}>
-            <FieldValueDisplay
-              field={elem.field}
-              value={elem.value}
-              key={i} />
-          </Box>
-        ))
-      }
-    </React.Fragment>
+      <Grid container spacing={1} sx={{ mt: 1 }}>
+        {
+          overview.map((elem, i) => (
+            <Grid item xs={6} sm={4} key={i}>
+              <FieldValueDisplay
+                field={elem.field}
+                value={elem.value} />
+            </Grid>
+          ))
+        }
+      </Grid>
+    </React.Fragment >
   )
 }
 
@@ -215,16 +218,18 @@ const PolicyHolderDetails = ({ policyHolder }) => {
   return (
     <React.Fragment>
       <Title>Policy Holder Details</Title>
-      {
-        policyHolder.map((elem, i) => (
-          <Box sx={{ display: "inline-block", minWidth: "200px", mt: 1 }}>
-            <FieldValueDisplay
-              field={elem.field}
-              value={elem.value}
-              key={i} />
-          </Box>
-        ))
-      }
+      <Grid container spacing={1} sx={{ mt: 1 }}>
+        {
+          policyHolder.map((elem, i) => (
+            <Grid item xs={6} sm={4}
+              key={i}>
+              <FieldValueDisplay
+                field={elem.field}
+                value={elem.value} />
+            </Grid>
+          ))
+        }
+      </Grid>
     </React.Fragment>
   )
 }

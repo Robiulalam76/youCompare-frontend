@@ -1,10 +1,8 @@
 import React from 'react' 
-import MinimalLayout from '../../../components/Layout/MinimalLayout'
+import CompareLayout from '../../../components/Layout/compareLayout'
 
 export default function TravelCompare(){
   return (
-    <MinimalLayout>
-      
-    </MinimalLayout>
+    <CompareLayout />
   )
 }
