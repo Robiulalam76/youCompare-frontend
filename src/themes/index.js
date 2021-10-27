@@ -28,8 +28,9 @@ export function theme(customization) {
         light: "#FFE9EE",
       },
       text: {
-        primary: "#000000",
+        primary: "#212121",
         secondary: "#707070",
+        hover: "#B6B6B6",
         disabled: "#CECECE",
         nav: "#2A2B40",
       },
@@ -128,7 +129,6 @@ export function theme(customization) {
             props: { variant: "round" },
             style: {
               textTransform: "none",
-              height: "36px",
               borderRadius: "50px",
               fontsize: "14px",
               fontFamily: "Poppins",
@@ -160,7 +160,7 @@ export function theme(customization) {
           {
             props: { variant: "round", size: "small" },
             style: {
-              height: "25px",
+              padding: "0px 12px",
               borderRadius: "42px",
             },
           },
