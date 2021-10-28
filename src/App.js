@@ -7,9 +7,11 @@ import Login from "./screens/auth/Login";
 import Signup from "./screens/auth/Signup";
 
 import AutoCompare from "./screens/compare/auto";
-import AutoBuyNow from "./screens/buyprocess/auto";
-
 import LifeCompare from "./screens/compare/life";
+import HealthCompare from "./screens/compare/health";
+import TravelCompare from "./screens/compare/travel";
+
+import AutoBuyNow from "./screens/buyprocess/auto";
 
 import PaymentSuccessfull from './screens/paymentSuccessfull'
 
@@ -47,11 +49,11 @@ function App() {
             </Route>
 
             <Route exact path="/health/compare">
-              <LifeCompare />
+              <HealthCompare />
             </Route>
 
             <Route exact path="/travel/compare">
-              <LifeCompare />
+              <TravelCompare />
             </Route>
 
             {/** Buy Now Pages */}

@@ -46,16 +46,7 @@ export default function Filters() {
   return (
     <div>
       <Title>Filters</Title>
-
-      <BorderedDiv>
-        <Typography color="text.hover">Pay</Typography>
-        <Box sx={{ display: "flex", alignItems: "center" }}>
-          <TextNormal sx={{ mr: 1 }}>Monthly</TextNormal>
-          <CusotmSwitch height={26} padding={2} />
-          <TextNormal sx={{ ml: 1 }}>Yearly</TextNormal>
-        </Box>
-      </BorderedDiv>
-
+      
       <BorderedDiv>
         <Typography color="text.hover">Insurer</Typography>
         <FormGroup>
@@ -79,7 +70,7 @@ export default function Filters() {
       </BorderedDiv>
 
       <BorderedDiv>
-        <Typography color="text.hover">Life Cover</Typography>
+        <Typography color="text.hover">Sum Insured</Typography>
         <Autocomplete
           options={['N 3400', 'N 6000', 'N 9000']}
           autoSelect={true}
@@ -95,7 +86,7 @@ export default function Filters() {
           renderInput={(params) => (
             <TextField {...params}
               size="small"
-              placeholder="Select Option"
+              placeholder="Sum Insured"
               inputProps={{
                 ...params.inputProps,
                 autoComplete: 'new-password', // disable autocomplete and autofill
@@ -104,29 +95,7 @@ export default function Filters() {
       </BorderedDiv>
 
       <BorderedDiv>
-        <Typography color="text.hover">Cover Till Age</Typography>
-        <Autocomplete
-          options={['60 Y', '50 Y', '40Y']}
-          autoSelect={true}
-          renderOption={(props, option) => (
-            <Typography
-              {...props}
-              variant="body2"
-              color="text.secondary">
-              {option}
-            </Typography>
-          )}
-          sx={{ my: .75 }}
-          renderInput={(params) => (
-            <TextField {...params}
-              size="small"
-              placeholder="Select Option"
-              inputProps={{
-                ...params.inputProps,
-                sx:{ fontSize: ".9rem" },
-                autoComplete: 'new-password', // disable autocomplete and autofill
-              }} />
-          )} />
+        <Typography color="text.hover">More Filter Option</Typography>
       </BorderedDiv>
     </div>
   )

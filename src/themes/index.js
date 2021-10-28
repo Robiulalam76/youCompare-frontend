@@ -18,7 +18,8 @@ export function theme(customization) {
         health: "#FFDAED",
       },
       primary: {
-        main: primaryMain, // blue
+        main: primaryMain, 
+        light: "#e9eff5" // blue
       },
       secondary: {
         main: secondaryMain, // yellow
@@ -28,7 +29,7 @@ export function theme(customization) {
         light: "#FFE9EE",
       },
       text: {
-        primary: "#212121",
+        primary: "rgba(0, 0, 0, 0.87)",
         secondary: "#707070",
         hover: "#B6B6B6",
         disabled: "#CECECE",
@@ -84,7 +85,6 @@ export function theme(customization) {
       },
       body1: {
         fontWeight: 500,
-        fontSize: 16,
       },
       body2: {
         fontWeight: 500,
@@ -115,6 +115,7 @@ export function theme(customization) {
         styleOverrides: {
           root: {
             fontFamily: "Poppins",
+            color: "rgba(0,0,0,.9)"
           },
         },
       },
