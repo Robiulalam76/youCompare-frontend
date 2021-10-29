@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid, Button, Typography } from "@mui/material";
-import InsuranceStepper from "../../StepperInsurance";
+import InsuranceStepper from "../../StepperInsuranceAuto";
 
 function PrivateAuto({ privateAuto }) {
   return (

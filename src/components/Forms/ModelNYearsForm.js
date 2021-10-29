@@ -35,34 +35,12 @@ function ModelNYearsForm() {
 
   return (
     <div style={{ marginTop: "4%" }}>
-      {/* <p>Model and Year</p> */}
-      <div
-        // className="brandname"
-        style={{
-          width: "12%",
-          padding: "30px 0px",
-          border: "1px solid #1482d2",
-          borderRadius: "10px",
-          textAlignLast: "center",
-        }}
-      >
-        {brand}
-      </div>
-
       {/* Model Selection */}
       <form style={{ textAlignLast: "left", marginBottom: "6%" }}>
         <br />
         <label for="html">Select Model</label>
         <div>
           <input className="search" type="search" />
-          {/* <TextField
-            type="search"
-            id="mySearch"
-            name="q"
-            size="small"
-            placeholder="Search the site..."
-          />
-          <Button>Search</Button> */}
         </div>
         {["190", "220", "290", "150", "157", "134"].map((elem, i) => (
           <Button
