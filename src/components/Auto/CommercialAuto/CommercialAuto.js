@@ -10,7 +10,7 @@ import {
 import { BsArrowLeft } from "react-icons/bs";
 import { subCommercial, subInsurances } from "../../../Data/data";
 
-import InsuranceStepper from "../../StepperInsurance";
+import InsuranceStepper from "../../StepperInsuranceAuto";
 import SubCard from "../SubCard/SubCard";
 
 function CommercialAuto({ commercial }) {

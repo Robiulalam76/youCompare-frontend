@@ -1,6 +1,6 @@
 import { Grid } from "@mui/material";
 import React from "react";
-import InsuranceStepper from "../../StepperInsurance";
+import InsuranceStepper from "../../StepperInsuranceLife";
 
 function PermanentLife({ permanentLife }) {
   return (

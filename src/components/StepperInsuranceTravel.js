@@ -9,8 +9,8 @@ import { Link } from "react-router-dom";
 import DetailsForm from "./Forms/DetailsForm";
 import ModelNYearsForm from "./Forms/ModelNYearsForm";
 import BrandForm from "./Forms/BrandForm";
-import Cover from "./Forms/Life/Cover";
-import Insurance from "./Forms/Life/Insurance";
+import Cover from "./Forms/Travel/Cover";
+import Insurance from "./Forms/Travel/Insurance";
 
 const steps = ["Cover", "Insurance", "Compare"];
 
@@ -110,7 +110,7 @@ export default function InsuranceStepper() {
             {activeStep !== 1 ? (
               <Button onClick={handleNext}>Next</Button>
             ) : (
-              <Link className="Link" to="/life/compare">
+              <Link className="Link" to="/travel/compare">
                 <Button variant={"contained"}>Compare</Button>
               </Link>
             )}

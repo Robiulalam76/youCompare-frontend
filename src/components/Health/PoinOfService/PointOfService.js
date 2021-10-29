@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid } from "@mui/material";
-import InsuranceStepper from "../../StepperInsurance";
+import InsuranceStepper from "../../StepperInsuranceHealth";
 function PointOfService({ Health }) {
   return (
     <Grid container>

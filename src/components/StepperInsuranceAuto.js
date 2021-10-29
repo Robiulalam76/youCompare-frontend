@@ -9,10 +9,8 @@ import { Link } from "react-router-dom";
 import DetailsForm from "./Forms/DetailsForm";
 import ModelNYearsForm from "./Forms/ModelNYearsForm";
 import BrandForm from "./Forms/BrandForm";
-import Cover from "./Forms/Life/Cover";
-import Insurance from "./Forms/Life/Insurance";
 
-const steps = ["Cover", "Insurance", "Compare"];
+const steps = ["Select Brans", "Model And Year", "Details", "Compare"];
 
 export default function InsuranceStepper() {
   const [activeStep, setActiveStep] = React.useState(0);
@@ -89,8 +87,9 @@ export default function InsuranceStepper() {
         </React.Fragment>
       ) : (
         <React.Fragment>
-          {activeStep === 0 && <Cover />}
-          {activeStep === 1 && <Insurance />}
+          {activeStep === 0 && <BrandForm />}
+          {activeStep === 1 && <ModelNYearsForm />}
+          {activeStep === 2 && <DetailsForm />}
           {/* <Typography sx={{ mt: 2, mb: 1 }}>Step {activeStep}</Typography> */}
           <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
             <Button
@@ -107,10 +106,10 @@ export default function InsuranceStepper() {
                 Skip
               </Button>
             )} */}
-            {activeStep !== 1 ? (
+            {activeStep !== 2 ? (
               <Button onClick={handleNext}>Next</Button>
             ) : (
-              <Link className="Link" to="/life/compare">
+              <Link className="Link" to="/auto/compare">
                 <Button variant={"contained"}>Compare</Button>
               </Link>
             )}
