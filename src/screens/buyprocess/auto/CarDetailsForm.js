@@ -1,5 +1,5 @@
 import React from 'react'
-import { useForm } from '../../components/customHooks/useForm';
+import { useForm } from '../../../components/customHooks/useForm';
 import { Box, Typography, Button } from '@mui/material';
 import { SelectInput, InputBox, CustomInput as Input } from './utils';
 
@@ -247,11 +247,6 @@ export default function CarDetailsForm({ handleStepChange }) {
           <RadioButtonLabel>Company</RadioButtonLabel>
         </Box>
       </InputBox>
-
-      <Button
-        variant="contained"
-        onClick={() => handleStepChange('stepUp')}
-        sx={{ mt: 2 }}>Next</Button>
     </div >
   )
 }

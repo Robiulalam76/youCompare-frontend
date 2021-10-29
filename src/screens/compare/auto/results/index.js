@@ -6,13 +6,13 @@ import { Stack, Typography, Box, } from '@mui/material'
 import { styled } from '@mui/material/styles'
 
 // custom styled components
-import { CustomButton } from '../../../components/customStyledComponents/buttons'
+import { CustomButton } from '../../../../components/customStyledComponents/buttons'
 
 // components
 import SingleResult from './SingleResult'
 
 // data
-import { quotes } from '../../../Data/autoQuotes'
+import { quotes } from '../../../../Data/autoQuotes'
 
 const Item = styled(Box)(({ theme }) => ({
   padding: theme.spacing(3),

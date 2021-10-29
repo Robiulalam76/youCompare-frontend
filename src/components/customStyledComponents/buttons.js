@@ -46,6 +46,22 @@ export const UnstyledButton = (props) =>
     }}>
   </Button>
 
+export const NonrippledButton = (props) =>
+  <Button
+    {...props}
+    variant="contained"
+    disableElevation
+    disableRipple
+    disableFocusRipple
+    disableTouchRipple
+    sx={{
+      borderRadius: "10px",
+      mb: .5,
+      "&:hover": {
+        bgcolor: "primary.main"
+      }
+    }} />
+
 export const TextButton = (props) =>
   <Button
     disableElevation={true}

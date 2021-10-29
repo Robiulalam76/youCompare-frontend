@@ -3,8 +3,13 @@
   max-width: 650px;
 }
 
+
 .flexBetween{
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.paymentDetails{
+  display: grid;
 }

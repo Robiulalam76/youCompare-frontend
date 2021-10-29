@@ -3,8 +3,8 @@ import {
   Autocomplete, TextField,
 } from '@mui/material'
 import React from 'react'
-import { useForm } from '../../components/customHooks/useForm'
-import Calender from '../../components/Calender'
+import { useForm } from '../../../components/customHooks/useForm'
+import Calender from '../../../components/Calender'
 
 import TodayIcon from '@mui/icons-material/Today';
 import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined';
@@ -236,11 +236,6 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
           />
         </InputBox>
       </Box>
-      <Button
-        variant="contained"
-        style={{ height: "42px" }}
-        onClick={() => handleStepChange('stepUp')}
-        sx={{ mt: 2 }}>Next</Button>
     </div>
   )
 }

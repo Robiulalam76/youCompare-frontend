@@ -5,12 +5,12 @@ import { styled } from '@mui/material/styles'
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 
 // custom styled components
-import { CustomButton } from '../../components/customStyledComponents/buttons';
-import { CustomInput } from '../../components/customStyledComponents/inputs';
-import { CustomCheckbox } from '../../components/customStyledComponents/checkbox';
+import { CustomButton } from '../../../components/customStyledComponents/buttons';
+import { CustomInput } from '../../../components/customStyledComponents/inputs';
+import { CustomCheckbox } from '../../../components/customStyledComponents/checkbox';
 
 const Item = styled(Box)(({ theme }) => ({
-  border: `1px solid lightgray`,
+  border: `1px solid #eeeeee`,
   padding: theme.spacing(1.5),
   borderRadius: 4,
 }))

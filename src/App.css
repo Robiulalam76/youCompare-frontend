@@ -79,6 +79,22 @@ img {
   font-weight: 600;
 }
 
+/* Flex Utilities */
+.flex-row-between-center {
+  display: "flex";
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex {
+  display: flex;
+}
+.align-center {
+  align-items: center;
+}
+
+
+
 /* variables  */
 /* color:  */
 /* primary-color: #000000

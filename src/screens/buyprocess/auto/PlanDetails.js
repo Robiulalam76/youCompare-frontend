@@ -5,6 +5,8 @@ import { Box, Typography, Divider, Button } from '@mui/material'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
 
+import { Link } from 'react-router-dom';
+
 import { Title, Subtitle, Paper } from './utils';
 
 import styles from './styles.module.css'
@@ -107,9 +109,12 @@ export default function PlanDetails({ currentStep }) {
       <PremiumDisplay title="Total" value="4500" />
       {
         currentStep > 1 ?
-          <Button variant="contained" fullWidth>
-            Buy Now
-          </Button> : null
+          <Link to="/auto/payment-success">
+            <Button
+              variant="contained" fullWidth>
+              Buy Now
+            </Button>
+          </Link> : null
       }
     </div>
   )
