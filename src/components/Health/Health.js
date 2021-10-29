@@ -7,7 +7,7 @@ import {
   Switch,
   Link,
 } from "react-router-dom";
-import InsuranceStepper from "../StepperInsurance";
+import InsuranceStepper from "../StepperInsuranceHealth";
 import "./Health.css";
 
 // image
