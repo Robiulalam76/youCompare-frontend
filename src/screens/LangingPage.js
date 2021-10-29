@@ -73,9 +73,6 @@ export default function LandingPage({}) {
           Smart way <br />
           to buy insurance.
         </h1>
-        <Button variant="round" color="secondary" size="small">
-          1920
-        </Button>
         <p className="BannerPera poppinFont">
           Compare insurance policies, rate, detail, & buy instantly in less than
           five minutes!

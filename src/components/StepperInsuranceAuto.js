@@ -109,7 +109,7 @@ export default function InsuranceStepper() {
             {activeStep !== 2 ? (
               <Button onClick={handleNext}>Next</Button>
             ) : (
-              <Link className="Link" to="/compare">
+              <Link className="Link" to="/auto/compare">
                 <Button variant={"contained"}>Compare</Button>
               </Link>
             )}

@@ -8,21 +8,20 @@ import Signup from "./screens/auth/Signup";
 
 import AutoCompare from "./screens/autoCompare";
 import AutoBuyNow from "./screens/autoBuyNow";
-import PaymentSuccessfull from './screens/paymentSuccessfull'
+import PaymentSuccessfull from "./screens/paymentSuccessfull";
 
-import MyDocs from './screens/profile/MyDocs'
-import MyPolicies from './screens/profile/MyPolicies'
+import MyDocs from "./screens/profile/MyDocs";
+import MyPolicies from "./screens/profile/MyPolicies";
 
-import { ThemeProvider } from '@mui/material/styles';
-import { theme } from './themes/index'
+import { ThemeProvider } from "@mui/material/styles";
+import { theme } from "./themes/index";
 
 import "./App.css";
 
 function App() {
-
   const [customvariables, setCustomvariables] = React.useState({
-    bg: "#454545"
-  })
+    bg: "#454545",
+  });
 
   return (
     <React.Fragment>
@@ -34,11 +33,17 @@ function App() {
             </Route>
             <Redirect exact from="/" to="/home" />
 
-            <Route path="/compare">
+            <Route path="/auto/compare">
+              <AutoCompare />
+            </Route>
+            <Route path="/travel/compare">
+              <AutoCompare />
+            </Route>
+            <Route path="/life/compare">
               <AutoCompare />
             </Route>
 
-            <Route path="/auto/buynow">
+            <Route path="/health/buynow">
               <AutoBuyNow />
             </Route>
 
