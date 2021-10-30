@@ -10,13 +10,10 @@ import { Title } from '../../../../components/customStyledComponents/texts'
 
 import { styled } from '@mui/system';
 
-const BorderedDiv = styled(Box)(({ theme }) => ({
-	borderColor: "#eeeeee",
-	borderWidth: "1px",
-	borderStyle: "solid",
-	borderRadius: "10px",
-	padding: theme.spacing(2),
-	marginBottom: theme.spacing(2)
+const Item = styled(Box)(({ theme }) => ({
+  border: `1px solid #eeeeee`,
+  padding: theme.spacing(1.5),
+  borderRadius: 4,
 }))
 
 
@@ -24,7 +21,7 @@ export default function Filters() {
 	return (
 		<div>
 			<Title>Filter</Title>
-			<BorderedDiv>
+			<Item>
 				<Typography color="text.hover">All Filters</Typography>
 				{/* Cover */}
 				<Autocomplete
@@ -106,7 +103,7 @@ export default function Filters() {
 								autoComplete: 'new-password', // disable autocomplete and autofill
 							}} />
 					)} />
-			</BorderedDiv>
+			</Item>
 		</div>
 	)
 }

@@ -59,7 +59,7 @@ export default function Filters() {
                   onChange={(e) => handleInsurers(e, insurer.id)}
                   checked={insurer.checked}
                   key={insurer.id} />}
-
+                sx={{ m: 0 }}
                 label={<TextNormal
                   sx={{ color: insurer.checked ? "text.primary" : "text.hover" }}>
                   {insurer.name}

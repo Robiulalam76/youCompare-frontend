@@ -68,7 +68,7 @@ export default function Filters() {
                   onChange={(e) => handleInsurers(e, insurer.id)}
                   checked={insurer.checked}
                   key={insurer.id} />}
-
+                sx={{ m: 0 }}
                 label={<TextNormal
                   sx={{ color: insurer.checked ? "text.primary" : "text.hover" }}>
                   {insurer.name}
@@ -123,7 +123,7 @@ export default function Filters() {
               placeholder="Select Option"
               inputProps={{
                 ...params.inputProps,
-                sx:{ fontSize: ".9rem" },
+                sx: { fontSize: ".9rem" },
                 autoComplete: 'new-password', // disable autocomplete and autofill
               }} />
           )} />

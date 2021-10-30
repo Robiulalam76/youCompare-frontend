@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 export const SubNavItem = (props) => (
   <Box onClick={props.onClick} 
     sx={{ cursor: "pointer" }}>
-    <Typography variant="body2" sx={{ px: 2, color: props.selected ? "text.primary" : "text.hover" }}>
+    <Typography  sx={{ px: 2, color: props.selected ? "text.primary" : "text.hover" }}>
       {props.title}
     </Typography>
     <Box sx={{

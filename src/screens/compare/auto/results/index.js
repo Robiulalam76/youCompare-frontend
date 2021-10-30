@@ -2,11 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 // material ui
-import { Stack, Typography, Box, } from '@mui/material'
+import { Stack, Typography, Box, Button } from '@mui/material'
 import { styled } from '@mui/material/styles'
 
 // custom styled components
 import { CustomButton } from '../../../../components/customStyledComponents/buttons'
+import { Title } from '../../../../components/customStyledComponents/texts'
 
 // components
 import SingleResult from './SingleResult'
@@ -19,22 +20,42 @@ const Item = styled(Box)(({ theme }) => ({
   borderRadius: 4,
 }))
 
-const Text = (props) =>
-  <Typography
-    {...props}
-    variant="body2">
-  </Typography>
+const ResponsiveBox = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "center",
+  [theme.breakpoints.only('xs')]: {
+    flexDirection: "column",
+    alignItems: "flex-start"
+  }
+}))
+
 
 export default function Results() {
   const [autoquotes, setAutoquotes] = React.useState(quotes)
   return (
     <React.Fragment>
-      <Typography variant="h6">Results</Typography>
-      <Box sx={{ display: "flex" }}>
-        <Text sx={{ pt: 2, mr: 1, textTransform: "uppercase" }}>Popular Addons</Text>
-        <CustomButton variant="outlined">Zero Depreciation</CustomButton>
-        <CustomButton variant="outlined">24/7 Roadside Assistance</CustomButton>
-      </Box>
+      <Title>Results</Title>
+      <ResponsiveBox sx={{ display: "flex", alignItems: "center" }}>
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          sx={{ textTransform: "uppercase", mr: 2 }}>
+          Popular Addons
+        </Typography>
+        <div>
+          {
+            ['Zero Depreciation', '24/7 Roadside Assistance'].map((elem, i) => (
+              <Button
+                key={i}
+                variant="round"
+                color="text" sx={{ mr: 1, mt: 1 }}>
+                {elem}
+              </Button>
+            ))
+          }
+        </div>
+      </ResponsiveBox>
       <Stack spacing={2}>
         {
           autoquotes.map(quote => (
