@@ -1,12 +1,11 @@
 import React from 'react'
-import { Stack, Box, Typography, InputAdornment, InputLabel, Checkbox } from '@mui/material'
+import { Stack, Box, Typography, InputAdornment, Button, Grid, TextField } from '@mui/material'
 import { styled } from '@mui/material/styles'
 
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 
 // custom styled components
-import { CustomButton } from '../../../components/customStyledComponents/buttons';
-import { CustomInput } from '../../../components/customStyledComponents/inputs';
+import { Title } from '../../../components/customStyledComponents/texts'
 import { CustomCheckbox } from '../../../components/customStyledComponents/checkbox';
 
 const Item = styled(Box)(({ theme }) => ({
@@ -15,9 +14,11 @@ const Item = styled(Box)(({ theme }) => ({
   borderRadius: 4,
 }))
 
+
 const Text = (props) =>
   <Typography
     {...props}
+    color="text.secondary"
     variant="body2">
   </Typography>
 
@@ -53,12 +54,12 @@ const Filter = () => {
   }
   return (
     <>
-      <Typography variant="h6">Filters</Typography>
+      <Title>Filters</Title>
       <Stack spacing={2}>
 
         {/** Car Model, Year */}
         <Item>
-          <Text>Model</Text>
+          <Text sx={{ mb: .5 }}>Model</Text>
           <Box sx={{
             display: "flex",
             alignItems: "center",
@@ -74,20 +75,28 @@ const Filter = () => {
 
         {/** IDV and Value */}
         <Item>
-          <Text>IDV</Text>
+          <Text sx={{ mb: 1 }}>IDV</Text>
+
           {['Recommended', 'Lowest', 'Maximum', 'Choose Your'].map((val, i) => (
-            <CustomButton
+            <Button
+              key={i}
               value={val}
-              variant={idvRange === val ? "contained" : "outlined"}
+              variant="round"
+              size="small"
+              color={idvRange === val ? "primary" : "text"}
+              sx={{ fontSize: "12px", py: .5, mr: 1, mb: 1 }}
               onClick={(e) => setIdvrange(e.target.value)}>
               {val}
-            </CustomButton>
+            </Button>
           ))}
 
-          <Text sx={{ mt: 1.5 }}>Value</Text>
-          <CustomInput
+
+          <Text sx={{ mt: 2, mb: 1 }}>Value</Text>
+          <TextField
             type="number"
             placeholder="E.g. 85000"
+            fullWidth
+            size="small"
             InputProps={{
               startAdornment:
                 <InputAdornment position="start">
@@ -101,15 +110,17 @@ const Filter = () => {
 
         {/* Type of Insurance */}
         <Item>
-          <Text>Type of Insurance</Text>
+          <Text sx={{ mb: 1 }}>Type of Insurance</Text>
           {['Comprehensive', 'Third Party'].map((val, i) => (
-            <CustomButton
-              key={i}
+            <Button
               value={val}
-              variant={typeOfInsurance === val ? "contained" : "outlined"}
+              variant="round"
+              size="small"
+              color={typeOfInsurance === val ? "primary" : "text"}
+              sx={{ fontSize: "12px", py: .5, mr: 1 }}
               onClick={(e) => setTypeOfInsurance(e.target.value)}>
               {val}
-            </CustomButton>
+            </Button>
           ))}
         </Item>
         {/* Addons Selection */}
@@ -123,7 +134,7 @@ const Filter = () => {
                   size="small"
                   checked={addon.checked}
                   onChange={() => handleAddonChange(addon.id)} />
-                <Text sx={{ color: "text.secondary" }}>{addon.title}</Text>
+                <Text sx={{ color: "text.hover", fontWeight: "normal" }}>{addon.title}</Text>
               </Box>
             ))
           }

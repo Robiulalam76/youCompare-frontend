@@ -37,8 +37,8 @@ export const UnstyledButton = (props) =>
     disableRipple={true}
     disableFocusRipple={true}
     disableTouchRipple={true}
-    size="small"
     sx={{
+      color: "#f4f4f4",
       background: '#1565c0',
       '&:hover': {
         background: '#1565c0',

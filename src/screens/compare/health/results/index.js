@@ -2,8 +2,8 @@ import React from 'react'
 import { Title } from '../../../../components/customStyledComponents/texts'
 
 import { styled } from '@mui/system';
-import { Grid, Typography, Box, Divider, Stack } from '@mui/material';
-import { NonrippledButton } from '../../../../components/customStyledComponents/buttons';
+import { Grid, Typography, Box, Divider, Stack, ButtonBase } from '@mui/material';
+import { NonrippledButton, UnstyledButton } from '../../../../components/customStyledComponents/buttons';
 import { useTheme } from '@emotion/react';
 import { ArrowDownwardOutlined, ArrowUpwardOutlined } from '@mui/icons-material';
 
@@ -17,6 +17,28 @@ const CustomDiv = styled('div')(({ theme }) => ({
   borderRadius: "15px",
   padding: theme.spacing(3)
 }));
+
+const StyledGrid = styled(Grid)(({ theme }) => ({
+  [theme.breakpoints.only('xs')]: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center"
+  }
+}))
+
+const ButtonBox = styled(Box)(({ theme }) => ({
+  [theme.breakpoints.up('md')]: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center"
+  },
+  [theme.breakpoints.down('md')]: {
+    display: "flex",
+    flexDirection: "row-reverse",
+    justifyContent: "space-between",
+    alignItems: "center"
+  }
+}))
 
 const LogoDiv = styled('div')(({ theme }) => ({
   backgroundColor: theme.palette.background.life,
@@ -74,32 +96,34 @@ const SingleResult = (props) => {
       <CustomDiv>
         <Grid container spacing={1}>
 
-          <Grid xs={6} sm={2}>
-            <LogoDiv></LogoDiv>
-          </Grid>
-
-          <Grid xs={6} sm={2}>
-            <Text sx={{ mt: 2 }}>Care Plus</Text>
+          <Grid item xs={12} sm={6} md={4}>
+            <div style={{ display: "flex" }}>
+              <LogoDiv></LogoDiv>
+              <Text sx={{ mt: 2 }}>Care Plus</Text>
+            </div>
           </Grid>
 
           {/** Cover Period */}
-          <Grid item xs={4} sm={3} md={2}>
+          <StyledGrid item xs={12} sm={3} md={3}>
             <GrayText>Cover</GrayText>
             <Text>N 5L</Text>
-          </Grid>
+          </StyledGrid>
 
           {/* Claim Settelment */}
-          <Grid item xs={4} sm={3} md={2}>
+          <StyledGrid item xs={12} sm={3} md={3}>
             <GrayText>Cashless Hopitals</GrayText>
             <Text>256</Text>
-          </Grid>
+          </StyledGrid>
 
           {/** IDV Button, Discounts*/}
-          <Grid item xs={12} sm={12} md={4}>
-            <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <Grid item xs={12} sm={12} md={2}>
+            <ButtonBox>
+              <NonrippledButton
+                sx={{ maxWidth: "100px" }}>
+                N 200/month
+              </NonrippledButton>
               <BlueText>N 2100 anually</BlueText>
-              <NonrippledButton> N 200/month</NonrippledButton>
-            </Box>
+            </ButtonBox>
           </Grid>
         </Grid>
 

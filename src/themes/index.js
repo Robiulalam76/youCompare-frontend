@@ -18,7 +18,7 @@ export function theme(customization) {
         health: "#FFDAED",
       },
       primary: {
-        main: primaryMain, 
+        main: primaryMain,
         light: "#e9eff5" // blue
       },
       secondary: {
@@ -137,6 +137,15 @@ export function theme(customization) {
             },
           },
           {
+            props: { variant: "round", color: "text" },
+            style: {
+              backgroundColor: "transparent",
+              color: "#B6B6B6",
+              border: `1px solid #CECECE`,
+              fontSize: "12px"
+            },
+          },
+          {
             props: { variant: "round", color: "primary" },
             style: {
               backgroundColor: primaryMain,
@@ -161,8 +170,8 @@ export function theme(customization) {
           {
             props: { variant: "round", size: "small" },
             style: {
-              padding: "0px 12px",
-              borderRadius: "42px",
+              padding: "2px 12px",
+              fontSize: "12px"
             },
           },
         ],

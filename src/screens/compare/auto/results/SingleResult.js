@@ -1,24 +1,65 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Stack, Typography, Box, Grid, Button, Divider } from '@mui/material'
+import { Stack, Typography, Box, Grid, Button, Divider, ButtonBase } from '@mui/material'
+import useMediaQuery from '@mui/material/useMediaQuery';
 import { styled } from '@mui/material/styles'
+
 import { CustomButton, UnstyledButton } from '../../../../components/customStyledComponents/buttons'
 import { SubNavItem } from '../../../../components/customStyledComponents/subNavItem'
 
 import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import { premiumCalculator } from '../../../../helpers/premiumCalculator'
 
 const Item = styled(Box)(({ theme }) => ({
   padding: theme.spacing(3),
-  borderRadius: 4,
+  borderRadius: "8px",
+  background: "#FFFFFF 0% 0% no-repeat padding-box",
+  boxShadow: "0px 0px 63px #F0F0F0"
 }))
+
+const StyledGrid = styled(Grid)(({ theme }) => ({
+  [theme.breakpoints.only('xs')]: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center"
+  }
+}))
+
+const GrayText = (props) =>
+  <Typography
+    {...props}
+    color="text.secondary"
+    style={{ fontWeight: "medium" }}
+    variant="body2">
+  </Typography>
 
 const Text = (props) =>
   <Typography
     {...props}
-    variant="body2">
+    variant="body1">
   </Typography>
+
+const LargeText = (props) =>
+  <Typography
+    {...props}
+    style={{
+      fontSize: "20px",
+      fontWeight: "normal",
+    }}
+  />
+
+const PremiumTitle = (props) =>
+  <Typography {...props}
+    color="text.secondary"
+    variant="body1"
+    gutterBottom
+    sx={{
+      fontWeight: "medium",
+      textTransform: "uppercase",
+      pt: 1.5
+    }} />
 
 export default function SingleResult({ autoquote }) {
   const [showDetails, setShowDetails] = React.useState(false)
@@ -27,12 +68,13 @@ export default function SingleResult({ autoquote }) {
     setShowDetails(!showDetails)
   }
   return (
-    <Item sx={{ boxShadow: 3, mt: 2 }}>
+    <Item sx={{ mt: 3 }}>
       {
         autoquote ?
           <Quote
             autoquote={autoquote}
-            toggleDetailsShow={toggleDetailsShow} /> : null
+            toggleDetailsShow={toggleDetailsShow}
+            showDetails={showDetails} /> : null
       }
       {
         showDetails ? <PolicyDetails autoquote={autoquote} /> : null
@@ -46,32 +88,41 @@ export default function SingleResult({ autoquote }) {
 /** ************* QUOTE SECTION ***************** */
 /************************************************ */
 
-const Quote = ({ autoquote, toggleDetailsShow }) => {
+const Quote = ({ autoquote, toggleDetailsShow, showDetails }) => {
   const { premiums, discounts, vatInParcentage } = autoquote
   const { netPremium } = premiumCalculator(premiums, discounts, vatInParcentage)
 
   return (
-    <Grid container xs={12} spacing={1}>
-      <Grid item xs={3}>
+    <Grid container spacing={1}>
+
+      <StyledGrid item xs={12} sm={6} md={3}>
         <Typography variant="h6">Company Logo</Typography>
-      </Grid>
-      <Grid item xs={2} justify="center">
-        <Text>IDV</Text>
-        <Text><strong>{autoquote.idv}</strong></Text>
-      </Grid>
-      <Grid item xs={3}>
-        <Text>Addons</Text>
-        <Text><strong>Zero Dep - unavailable</strong></Text>
-      </Grid>
-      <Grid item xs={4} sx={{ display: "flex", justifyContent: "flex-end" }}>
-        <Button
-          sx={{ textTransform: "none" }}
-          variant="text"
+      </StyledGrid>
+
+      <StyledGrid item xs={12} sm={6} md={3}>
+        <GrayText>IDV</GrayText>
+        <Text>{autoquote.idv}</Text>
+      </StyledGrid>
+
+      <StyledGrid item xs={12} sm={6} md={3}>
+        <GrayText>Addons</GrayText>
+        <Text>Zero Dep - unavailable</Text>
+      </StyledGrid>
+
+      <StyledGrid item xs={12} sm={6} md={3}>
+        <ButtonBase
+          disableRipple
+          sx={{ mr: 1, py: .25, color: "primary.main" }}
           onClick={toggleDetailsShow}>
+          <ArrowDownwardIcon
+            style={{
+              padding: "4px",
+              transform: showDetails ? "rotate(180deg)" : "rotate(0deg"
+            }} />
           Policy Details
-        </Button>
+        </ButtonBase>
         <UnstyledButton variant="contained">{netPremium}</UnstyledButton>
-      </Grid>
+      </StyledGrid>
     </Grid>
   )
 }
@@ -111,7 +162,6 @@ const PolicyDetails = ({ autoquote }) => {
       <br />
       <Button
         href="/auto/buynow"
-        size="small"
         variant="contained"
       >
         Proceed
@@ -121,12 +171,26 @@ const PolicyDetails = ({ autoquote }) => {
 }
 
 // Display Coverages
+
+const CoverageBox = styled('div')(({ theme }) => ({
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "flex-start",
+  [theme.breakpoints.only('xs')]: {
+    flexDirection: "column"
+  }
+}))
+
 const Coverage = ({ coverages }) => {
+
   return (
-    <Box sx={{ display: "flex", pt: 1 }}>
+    <CoverageBox>
       {Object.keys(coverages).map((keyName, i) => (
-        <Box sx={{ pr: 4 }} key={i}>
-          <Typography variant="body2" sx={{ textTransform: "uppercase" }}>
+        <Box sx={{ pr: 4, py: 1 }} key={i}>
+          <Typography
+            color="text.secondary"
+            variant="body2"
+            sx={{ textTransform: "uppercase", lineHeight: "25px" }}>
             {keyName === 'covered' ? "What's Covered" : "What's not Covered"}
           </Typography>
           {
@@ -136,14 +200,18 @@ const Coverage = ({ coverages }) => {
           }
         </Box>
       ))}
-    </Box>
+    </CoverageBox>
   )
 }
+
+// helper to display item
 const ItemDisplay = ({ title }) => {
   return (
     <Box sx={{ display: "flex", alignItems: "center", pt: .5 }}>
-      <CircleOutlinedIcon sx={{ fontSize: 12, mr: .5 }} />
-      <Typography variant="body2">{title}</Typography>
+      <CircleOutlinedIcon sx={{ fontSize: 12, mr: .5, color: "primary.main" }} />
+      <Typography variant="body2" sx={{ fontWeight: "normal", lineHeight: "27px" }}>
+        {title}
+      </Typography>
     </Box>
   )
 }
@@ -151,60 +219,67 @@ ItemDisplay.propTypes = {
   title: PropTypes.string.isRequired
 }
 
-
-
 // Display Premiums
 const PremuimBreakup = ({ premiums, discounts }) => {
   const vatInParcentage = 15;
   const { packagePremium, vat, netPremium } = premiumCalculator(premiums, discounts, vatInParcentage)
   return (
     <>
-      {/* Selected Car Model And Year */}
-      <Box sx={{ display: "flex", alignItems: "center", }}>
-        <Typography variant="h6">Brand Name</Typography>
-        <FiberManualRecordIcon
-          sx={{ fontSize: 10, m: 1 }}
-        />
-        <Typography variant="h6">Model</Typography>
-        <FiberManualRecordIcon
-          sx={{ fontSize: 10, m: 1 }}
-        />
-        <Typography variant="h6">2021</Typography>
-      </Box>
+      <Grid container>
+        <Grid item xs={12} sm={8} md={6}>
 
-      {/* Basic Premiums */}
-      <Typography variant="body1" gutterBottom><u>Base Premiums</u></Typography>
-      {
-        premiums.map((premium, i) =>
-          <PremiumDisplay title={premium.title} value={premium.value} key={i} />)
-      }
+          {/* Selected Car Model And Year */}
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <LargeText>Brand Name</LargeText>
+            <FiberManualRecordIcon
+              sx={{ fontSize: 10, m: 1 }}
+            />
+            <LargeText>Model</LargeText>
+            <FiberManualRecordIcon
+              sx={{ fontSize: 10, m: 1 }}
+            />
+            <LargeText>2021</LargeText>
+          </div>
 
-      {/* Discounts */}
-      <Typography variant="body1" gutterBottom><u>Discounts</u></Typography>
-      {
-        discounts.map((discount, i) =>
-          <PremiumDisplay title={discount.title} value={discount.value} />)
-      }
+          {/* Basic Premiums */}
+          <Box>
+            <PremiumTitle>Base premium</PremiumTitle>
+            {
+              premiums.map((premium, i) =>
+                <PremiumDisplay title={premium.title} value={premium.value} key={i} />)
+            }
 
-      <Typography variant="body1" gutterBottom><u>Premium Details</u></Typography>
-      <PremiumDisplay title="Package Premium" value={packagePremium} />
-      <PremiumDisplay title={`Vat ${vatInParcentage}%`} value={vat} />
-      {/* Net Premium */}
-      <Divider />
+            {/* Discounts */}
+            <PremiumTitle>Discounts</PremiumTitle>
+            {
+              discounts.map((discount, i) =>
+                <PremiumDisplay title={discount.title} value={discount.value} />)
+            }
 
-      <Box sx={{ display: "flex", justifyContent: "space-between", width: 2 / 4 }}>
-        <Typography variant="body1" gutterBottom><strong>Net Premium</strong></Typography>
-        <Typography variant="body1" gutterBottom><strong>&#8358; {netPremium}</strong></Typography>
-      </Box>
+            <PremiumTitle>Premium Details</PremiumTitle>
+            <PremiumDisplay title="Package Premium" value={packagePremium} />
+            <PremiumDisplay title={`Vat ${vatInParcentage}%`} value={vat} />
+          </Box>
+          {/* Net Premium */}
+          <Divider />
+
+          <Box sx={{ display: "flex", justifyContent: "space-between", width: 1 }}>
+            <Typography variant="body1" gutterBottom><strong>Net Premium</strong></Typography>
+            <Typography variant="body1" gutterBottom><strong>&#8358; {netPremium}</strong></Typography>
+          </Box>
+
+        </Grid>
+      </Grid>
     </>
   )
 }
 
 const PremiumDisplay = ({ title, value }) => {
+  const fontStyle = { lineHeight: "27px", fontWeight: "normal" }
   return (
-    <Box sx={{ display: "flex", justifyContent: "space-between", width: 2 / 4 }}>
-      <Typography variant="body2" gutterBottom>{title}</Typography>
-      <Typography variant="body2" gutterBottom>&#8358; {value}</Typography>
+    <Box sx={{ display: "flex", justifyContent: "space-between", width: 1 }}>
+      <Typography variant="body2" gutterBottom style={fontStyle}>{title}</Typography>
+      <Typography variant="body2" gutterBottom style={fontStyle}>&#8358; {value}</Typography>
     </Box>
   )
 }
