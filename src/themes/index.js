@@ -107,8 +107,8 @@ export function theme(customization) {
             border: "none",
           },
           notchedOutline: {
-            borderColor: "#dbe2ea",
-          },
+            borderColor: "#dbe2ea"
+          }
         },
       },
       MuiTypography: {

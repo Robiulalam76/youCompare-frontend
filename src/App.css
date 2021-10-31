@@ -94,6 +94,9 @@ img {
 }
 
 
+#pan-number:focus{
+  border-width: 1px!important;
+}
 
 /* variables  */
 /* color:  */

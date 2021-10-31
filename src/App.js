@@ -7,13 +7,15 @@ import Login from "./screens/auth/Login";
 import Signup from "./screens/auth/Signup";
 
 //compare pages
+
 import AutoCompare from "./screens/compare/auto";
 import LifeCompare from "./screens/compare/life";
 import HealthCompare from "./screens/compare/health";
 import TravelCompare from "./screens/compare/travel";
 
 import AutoBuyNow from "./screens/buyprocess/auto";
-
+import LifeBuyNow from "./screens/buyprocess/life";
+ 
 import PaymentSuccessfull from './screens/paymentSuccessfull'
 
 
@@ -40,12 +42,10 @@ function App() {
             </Route>
             <Redirect exact from="/" to="/home" />
 
-
+{/*
             <Route path="/auto/compare">
               <AutoCompare />
             </Route>
-
-            {/** Compare Pages */}
 
             <Route exact path="/life/compare">
               <LifeCompare />
@@ -58,14 +58,14 @@ function App() {
             <Route exact path="/travel/compare">
               <TravelCompare />
             </Route>
-
+*/}
             {/** Buy Now Pages */}
             <Route path="/auto/buynow">
               <AutoBuyNow />
             </Route>
 
             <Route path="/life/buynow">
-              <AutoBuyNow />
+              <LifeBuyNow />
             </Route>
 
             <Route path="/health/buynow">
