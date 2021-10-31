@@ -3,7 +3,8 @@ import { Grid, Button, TextField } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import { FIELD_CHANGE } from "../../constants/autoCompare.constant";
 
-const Input = (props) => <TextField {...props} size="small" />;
+import { CustomTextField as Input } from "../customStyledComponents/inputs";
+import InputBox from "../customStyledComponents/InputBox";
 
 function DetailsForm() {
   const dispatch = useDispatch();
@@ -115,69 +116,78 @@ function DetailsForm() {
           </Button>
         </Grid> */}
         <Grid style={{ marginTop: "2%" }} lg={6}>
-          <p style={{ color: "#666", margin: "10px 0px " }}>
-            Type of Insurance
-          </p>
-          <div style={{ display: "flex" }}>
-            <Button
-              style={{ marginRight: "2%" }}
-              variant={
-                typeofInsurance === "thirdparty" ? "contained" : "outlined"
-              }
-              value="thirdparty"
-              name="typeofInsurance"
-              onClick={handleChange}
-            >
-              Third party
-            </Button>
+          <InputBox label="Type of Insurance">
+            <div>
+              <Button
+                sx={{ mr: 1, fontSize: ".8rem", py: .5 }}
+                variant="round"
+                color={
+                  typeofInsurance === "thirdparty" ? "primary" : "text"
+                }
+                value="thirdparty"
+                name="typeofInsurance"
+                onClick={handleChange}
+              >
+                Third party
+              </Button>
 
-            <Button
-              variant={
-                typeofInsurance === "comprehensive" ? "contained" : "outlined"
-              }
-              value="comprehensive"
-              name="typeofInsurance"
-              onClick={handleChange}
-            >
-              Compremsive
-            </Button>
-          </div>
+              <Button
+                sx={{ mr: 1, fontSize: ".8rem", py: .5 }}
+                variant="round"
+                color={
+                  typeofInsurance === "comprehensive" ? "primary" : "text"
+                }
+                value="comprehensive"
+                name="typeofInsurance"
+                onClick={handleChange}
+              >
+                Compremsive
+              </Button>
+            </div>
+          </InputBox>
         </Grid>
         <Grid lg={4}>
-          <Input
-            value={value}
-            // label="Value"
-            placeholder="Value"
-            onChange={handleChange}
-            name="value"
-          />
+          <InputBox label="Label">
+            <Input
+              value={value}
+              placeholder="Value"
+              onChange={handleChange}
+              name="value"
+            />
+          </InputBox>
         </Grid>
       </Grid>
 
       <Grid container>
         <Grid lg={4}>
-          <Input
-            value={fullName}
-            placeholder="Full Name"
-            onChange={handleChange}
-            name="fullName"
-          />
+          <InputBox label="Full Name">
+            <Input
+              value={fullName}
+              placeholder="John Doe"
+              onChange={handleChange}
+              name="fullName"
+            />
+          </InputBox>
         </Grid>
         <Grid lg={4}>
-          <Input
-            value={email}
-            placeholder="Email Address"
-            onChange={handleChange}
-            name="Email"
-          />
+          <InputBox label="Email Address">
+            <Input
+              value={email}
+              placeholder="john@domain.com"
+              onChange={handleChange}
+              name="Email"
+            />
+          </InputBox>
         </Grid>
         <Grid lg={4}>
-          <Input
-            value={phone}
-            placeholder="Phone No"
-            onChange={handleChange}
-            name="phone"
-          />
+          <InputBox label="Phone No">
+            <Input
+              value={phone}
+              placeholder="94092300293"
+              onChange={handleChange}
+              name="phone"
+            />
+          </InputBox>
         </Grid>
       </Grid>
     </div>

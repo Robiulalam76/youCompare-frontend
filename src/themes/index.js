@@ -131,7 +131,7 @@ export function theme(customization) {
             style: {
               textTransform: "none",
               borderRadius: "50px",
-              fontsize: "14px",
+              fontsize: "12px",
               fontFamily: "Poppins",
               fontWeight: 400,
             },
@@ -142,13 +142,15 @@ export function theme(customization) {
               backgroundColor: "transparent",
               color: "#B6B6B6",
               border: `1px solid #CECECE`,
-              fontSize: "12px"
+              fontSize: "12px",
             },
           },
           {
             props: { variant: "round", color: "primary" },
             style: {
               backgroundColor: primaryMain,
+              fontsize: "12px",
+              fontWeight: 400,
               color: "#FFFFFF",
               border: `1px solid ${primaryMain}`,
               "&:hover": {
@@ -161,6 +163,7 @@ export function theme(customization) {
             style: {
               backgroundColor: secondaryMain,
               color: "#FFFFFF",
+              fontSize: "12px",
               border: `1px solid ${secondaryMain}`,
               "&:hover": {
                 backgroundColor: secondaryMain,

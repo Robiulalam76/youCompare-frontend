@@ -10,7 +10,7 @@ import DetailsForm from "./Forms/DetailsForm";
 import ModelNYearsForm from "./Forms/ModelNYearsForm";
 import BrandForm from "./Forms/BrandForm";
 
-const steps = ["Select Brans", "Model And Year", "Details", "Compare"];
+const steps = ["Select Brand", "Model And Year", "Details", "Compare"];
 
 export default function InsuranceStepper() {
   const [activeStep, setActiveStep] = React.useState(0);
@@ -60,11 +60,11 @@ export default function InsuranceStepper() {
         {steps.map((label, index) => {
           const stepProps = {};
           const labelProps = {};
-          if (isStepOptional(index)) {
-            labelProps.optional = (
-              <Typography variant="caption">Optional</Typography>
-            );
-          }
+          // if (isStepOptional(index)) {
+          //   labelProps.optional = (
+          //     <Typography variant="caption">Optional</Typography>
+          //   );
+          // }
           if (isStepSkipped(index)) {
             stepProps.completed = false;
           }

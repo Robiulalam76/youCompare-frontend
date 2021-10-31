@@ -1,10 +1,12 @@
-import { Grid, TextField, InputBase, Typography } from "@mui/material";
+import { Grid, InputBase, Typography } from "@mui/material";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FIELD_CHANGE } from "../../constants/autoCompare.constant";
 import { BiCheck } from "react-icons/bi";
 import "./style.css";
+
 import InputBox from "../customStyledComponents/InputBox";
+import { CustomTextField as TextField } from '../customStyledComponents/inputs'
 
 const brands = [
   "BMW",
