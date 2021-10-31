@@ -1,27 +1,25 @@
 import { TextField, Select, Box, Typography, InputBase } from "@mui/material"
+import { styled } from "@mui/system"
 
-export const CustomInput = (props) => {
-  return (
-    <TextField
-      {...props}
-      sx={{ mb: 1 }}
-      inputProps={{
-        sx: {
-          // fontSize: 14,
-          // py: 1.5,
-          // px: 2,
-          color: "text.primary",
-          fontWeight: "normal",
-          fontFamily: "Poppins",
-          lineHeight: "25px",
-          "&::placeholder": {
-            color: "text.secondary"
-          }
-        }
-      }}
-    />
-  )
-}
+export const CustomInput = styled(TextField)(({ theme }) => ({
+  '& .MuiInputBase-input': {
+    padding: ".75rem 1rem",
+    fontSize: ".85rem",
+    color: theme.palette.text.primary,
+    fontWeight: "normal",
+    fontFamily: "Poppins",
+    lineHeight: "25px",
+  },
+  '& .MuiOutlinedInput-root': {
+    '&:hover fieldset': {
+      borderColor: theme.palette.text.secondary,
+    },
+    '&.Mui-focused fieldset': {
+      borderWidth: "1px",
+      borderColor: theme.palette.primary.main
+    },
+  },
+}))
 
 export const textfieldStyle = {
   // fontSize: 14,

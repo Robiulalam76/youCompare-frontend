@@ -18,8 +18,13 @@ function CommercialAuto({ commercial }) {
   return (
     <div>
       <Grid container>
-        <Grid lg={5} className="GridDiv">
-          <div>
+        <Grid lg={6} md={6} xl={5} sm={12} xs={12} className="GridDiv">
+          <div
+            style={{
+              textAlign: "-webkit-match-parent",
+              justifyContent: "space-around",
+            }}
+          >
             <h1 className="BannerHeader">Comercial Auto </h1>
             <p>
               Auto insurance is designed to protect yourself and others against
@@ -28,7 +33,7 @@ function CommercialAuto({ commercial }) {
           </div>
           <img src={commercial} alt="" />
         </Grid>
-        <Grid lg={7}>
+        <Grid className="SubCard" lg={6} md={6} xl={5} sm={12} xs={12}>
           {/* <InsuranceStepper /> */}
           <Switch>
             <Route path={`${path}`} exact>
@@ -64,14 +69,14 @@ export default CommercialAuto;
 const CommerialCard = () => {
   const { path, url } = useRouteMatch();
   return (
-    <div>
+    <div className="SubAuto">
       <h1>
         {" "}
         <BsArrowLeft /> Types of Vahical{" "}
       </h1>
       <Grid container>
         {subCommercial.map((insurance, i) => (
-          <Grid lg={4} className="SubcardDiv">
+          <Grid lg={4} xl={4} md={6} xs={12} sm={6} className="SubcardDiv">
             <Link className="Link" to={`${url}/${insurance.url}`}>
               <SubCard insurance={insurance} i={i} />
               {/* <div key={i}>

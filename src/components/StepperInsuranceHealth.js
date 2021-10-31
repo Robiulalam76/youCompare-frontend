@@ -57,16 +57,16 @@ export default function InsuranceStepper() {
   };
 
   return (
-    <Box sx={{ width: "100%" }} className="SteeperDiv">
+    <Box sx={{ width: "100%" }} className="SteeperDiv SubAuto">
       <Stepper activeStep={activeStep}>
         {steps.map((label, index) => {
           const stepProps = {};
           const labelProps = {};
-          if (isStepOptional(index)) {
-            labelProps.optional = (
-              <Typography variant="caption">Optional</Typography>
-            );
-          }
+          // if (isStepOptional(index)) {
+          //   labelProps.optional = (
+          //     <Typography variant="caption">Optional</Typography>
+          //   );
+          // }
           if (isStepSkipped(index)) {
             stepProps.completed = false;
           }

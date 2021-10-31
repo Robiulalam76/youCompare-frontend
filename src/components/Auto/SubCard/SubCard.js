@@ -15,7 +15,11 @@ function SubCard({ i, insurance }) {
   return (
     <div>
       <div style={insuranceDiv}>
-        <div className="subCard" key={i}>
+        <div
+          className="subCard"
+          key={i}
+          style={{ justifyContent: "space-around" }}
+        >
           <p style={{ textAlignLast: "left" }}>{insurance.title}</p>
           <img
             style={{ height: "80%", width: "80%" }}

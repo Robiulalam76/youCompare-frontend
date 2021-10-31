@@ -1,9 +1,11 @@
 import React from "react";
-import { Grid, Button, Input } from "@mui/material";
-import { TextField, Box } from "@mui/material";
+import { Grid, Button, Box } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import { FIELD_CHANGE } from "../../../constants/autoCompare.constant";
 // import { FIELD_CHANGE } from "../../constants/autoCompare.constant";
+
+import { CustomTextField as Input } from "../../customStyledComponents/inputs";
+import InputBox from "../../customStyledComponents/InputBox";
 
 function Cover() {
   const dispatch = useDispatch();
@@ -41,46 +43,35 @@ function Cover() {
         <br />
         <Grid container style={{ display: "" }}>
           <Grid md={4} style={{ padding: "0% 3%" }}>
-            <label for="html">Amoung of Cover</label>
-            <br />
-            <br />
-            {/* <input type="search" /> */}
-            <TextField
-              type="text"
-              size="small"
-              name="brand"
-              //   value={brand}
-              //   onChange={handleChange}
-            />
-            {/* <TextField
-            type="search"
-            id="mySearch"
-            name="q"
-            size="small"
-            placeholder="Search the site..."
-          />
-          <Button>Search</Button> */}
+            <InputBox label="Amount of Cover">
+              <Input type="number" placeholder="cover amount" />
+            </InputBox>
           </Grid>
           <Grid md={8}>
-            <label for="html">Who is the cover for?</label>
-            <br /> <br />
-            {["190", "220", "290", "150", "157", "134"].map((elem, i) => (
-              <Button
-                style={{ margin: "0px 5px" }}
-                key={i}
-                variant={elem === model ? "round" : "outlined"}
-                name="model"
-                value={elem}
-                onClick={() =>
-                  dispatch({
-                    type: FIELD_CHANGE,
-                    payload: { field: "model", value: elem },
-                  })
-                }
-              >
-                {elem}
-              </Button>
-            ))}
+            <InputBox label="Who is cover for?">
+              <div>
+                {["Myself", "My Partner", "Father", "Mother", "Parents"].map(
+                  (elem, i) => (
+                    <Button
+                      sx={{ mr: 1, fontSize: ".8rem", py: 0.5 }}
+                      key={i}
+                      variant="round"
+                      color={elem === model ? "primary" : "text"}
+                      name="model"
+                      value={elem}
+                      onClick={() =>
+                        dispatch({
+                          type: FIELD_CHANGE,
+                          payload: { field: "model", value: elem },
+                        })
+                      }
+                    >
+                      {elem}
+                    </Button>
+                  )
+                )}
+              </div>
+            </InputBox>
           </Grid>
         </Grid>
       </form>
@@ -88,14 +79,15 @@ function Cover() {
       {/* Year Selection */}
       <form>
         <Grid container style={{ display: "" }}>
-          <Grid md={3.3}>
+          <Grid md={3.5}>
             <label for="html">Gender</label>
             <br /> <br />
             {["Male", "Female"].map((elem, i) => (
               <Button
                 style={{ margin: "0px 5px" }}
                 key={i}
-                variant={elem === model ? "round" : "outlined"}
+                variant="round"
+                color={elem === model ? "primary" : "text"}
                 name="model"
                 value={elem}
                 onClick={() =>
@@ -109,7 +101,7 @@ function Cover() {
               </Button>
             ))}
           </Grid>
-          <Grid md={2.7}>
+          <Grid md={3.4}>
             <label for="html">Do You Smoke?</label>
             <br />
             <br />
@@ -117,7 +109,8 @@ function Cover() {
               <Button
                 style={{ margin: "0px 5px" }}
                 key={i}
-                variant={elem === model ? "round" : "outlined"}
+                variant="round"
+                color={elem === model ? "primary" : "text"}
                 name="model"
                 value={elem}
                 onClick={() =>
@@ -131,7 +124,7 @@ function Cover() {
               </Button>
             ))}
           </Grid>
-          <Grid md={6}>
+          <Grid md={5.1}>
             <label for="html">Employment</label>
             <br />
             <br />
@@ -139,7 +132,8 @@ function Cover() {
               <Button
                 style={{ margin: "0px 5px" }}
                 key={i}
-                variant={elem === model ? "round" : "outlined"}
+                variant="round"
+                color={elem === model ? "primary" : "text"}
                 name="model"
                 value={elem}
                 onClick={() =>

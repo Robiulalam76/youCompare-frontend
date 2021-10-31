@@ -1,17 +1,24 @@
-import {
-  Box, InputAdornment, Button, Typography,
-  Autocomplete, TextField,
-} from '@mui/material'
 import React from 'react'
-import { useForm } from '../../../components/customHooks/useForm'
-import Calender from '../../../components/Calender'
 
+import {
+  Box, InputAdornment, Typography, TextField,
+} from '@mui/material'
 import TodayIcon from '@mui/icons-material/Today';
 import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined';
-
 import Popover from '@mui/material/Popover';
-import { InputBox } from './utils';
-import { CustomInput as Input, textfieldStyle } from './utils'
+
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
+import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
+
+
+import { InputBox, textfieldStyle } from './utils'
+import { useForm } from '../../../components/customHooks/useForm'
+import Calender from '../../../components/Calender'
+import {
+  CustomTextField as Input,
+  CustomAutocomplete as Autocomplete
+} from '../../../components/customStyledComponents/inputs'
 
 import { State, City } from 'country-state-city';
 
@@ -36,6 +43,12 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
   const [selectedState, setSelectedState] = React.useState({ name: "", isoCode: "" })
   const [selectedCity, setSelectedCity] = React.useState("")
 
+  const [date, setDate] = React.useState(new Date('2014-08-18T21:11:54'));
+
+  const handleDateChange = (d) => {
+    setDate(d);
+  };
+
   React.useEffect(() => {
     const _states = State.getStatesOfCountry('NG').map(state => {
       if (state.name.slice(-5) === 'State')
@@ -46,7 +59,7 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
   }, [])
 
   React.useEffect(() => {
-    if (!selectedState.isoCode) return;
+    if (!selectedState) return;
     const _cities = City.getCitiesOfState('NG', selectedState.isoCode)
       .map(city => city.name)
 
@@ -74,7 +87,7 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
         />
       </InputBox>
       <InputBox label="Mobile Number">
-        <TextField
+        <Input
           type="number"
           inputMode="tel"
           name="mobile"
@@ -95,6 +108,7 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
       {/** DATE OF BIRTH AND MARITAL STATUS */}
       <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         {/** Date of Birth */}
+        {/*
         <InputBox label="Date of Birth" style={{ width: "48%" }}>
           <Input
             type="text"
@@ -126,9 +140,28 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
             </Box>
           </Popover>
         </InputBox>
+          */}
+        <InputBox label="Date of Birth" style={{ width: "48%" }}>
+          <LocalizationProvider dateAdapter={AdapterDateFns}>
+            <DesktopDatePicker
+              inputFormat="MM/dd/yyyy"
+              value={date}
+              onChange={handleDateChange}
+              renderInput={(params) => (
+                <Input {...params}
+                  placeholder="Select Gender"
+                  inputProps={{
+                    ...params.inputProps,
+                    style: { padding: ".75rem 1rem" },
+                    autoComplete: 'new-password', // disable autocomplete and autofill
+                  }} />
+              )}
+            />
+          </LocalizationProvider>
+        </InputBox>
 
         {/* **** marital status ***** */}
-        <InputBox label="Marital Status" style={{ width: "48%" }}>
+        <InputBox label="Marital Status" style={{ width: "48%", paddingTop: "4px" }}>
           <Autocomplete
             options={['Married', 'Single', 'Diverced']}
             onChange={(e, value) => setMaritalStatus(value)}
@@ -142,10 +175,11 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
             )}
             sx={{ mb: .75 }}
             renderInput={(params) => (
-              <TextField {...params}
+              <Input {...params}
                 placeholder="Select Gender"
                 inputProps={{
                   ...params.inputProps,
+                  style: { padding: ".75rem 1rem" },
                   autoComplete: 'new-password', // disable autocomplete and autofill
                 }} />
             )} />
@@ -179,10 +213,11 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
               </Typography>
             )}
             renderInput={(params) => (
-              <TextField {...params}
+              <Input {...params}
                 placeholder="Select State"
                 inputProps={{
                   ...params.inputProps,
+                  style: { padding: ".75rem 1rem" },
                   autoComplete: 'new-password', // disable autocomplete and autofill
                 }} />
             )} />
@@ -204,10 +239,12 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
               </Typography>
             )}
             renderInput={(params) => (
-              <TextField {...params}
+              <Input {...params}
                 placeholder="Select City"
                 inputProps={{
-                  ...params.inputProps
+                  ...params.inputProps,
+                  style: { padding: ".75rem 1rem" },
+                  autoComplete: 'new-password',
                 }} />
             )} />
         </InputBox>

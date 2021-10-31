@@ -5,8 +5,8 @@ import InsuranceStepper from "../../StepperInsuranceAuto";
 function ThreeWheeler({ ThreeWheeler }) {
   return (
     <Grid container>
-      <Grid lg={5} className="GridDiv">
-        <div>
+      <Grid lg={6} md={6} xl={5} sm={12} xs={12} className="GridDiv">
+        <div style={{ justifyContent: "space-around" }}>
           <h1 className="BannerHeader">Three Wheel </h1>
           <p>
             Auto insurance is designed to protect yourself and others against
@@ -15,7 +15,7 @@ function ThreeWheeler({ ThreeWheeler }) {
         </div>
         <img src={ThreeWheeler} alt="" />
       </Grid>
-      <Grid lg={7}>
+      <Grid lg={6} md={6} xl={5} sm={12} xs={12}>
         <InsuranceStepper />
       </Grid>
     </Grid>

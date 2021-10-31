@@ -37,20 +37,31 @@ const LogoDiv = styled('div')(({ theme }) => ({
 }));
 
 const ResponsiveBox = styled(Box)(({ theme }) => ({
-  [theme.breakpoints.only('xs')]: {
+  [theme.breakpoints.down('sm')]: {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center"
   }
 }))
 
+const ButtonBox = styled(Box)(({ theme }) => ({
+  [theme.breakpoints.down('md')]: {
+    display: "flex",
+    flexDirection: "row-reverse",
+    justifyContent: "space-between",
+    alignItems: "center"
+  }
+}))
+
+
 const Text = (props) =>
   <Typography
     {...props}
-    sx={{ font: "normal normal 600 16px/32px Poppins" }} />
+    variant="body2"
+    sx={{ lineHeight: "28px", fontWeight: 600 }} />
 
 const GrayText = styled(Typography)(({ theme }) => ({
-  fontSize: ".85rem",
+  fontSize: ".8rem",
   color: theme.palette.text.hover,
   lineHeight: "1rem",
   fontFamily: "Poppins",
@@ -95,7 +106,7 @@ const SingleResult = ({ result }) => {
           </Grid>
 
           {/** Cover Period */}
-          <Grid item xs={12} sm={3} md={2}>
+          <Grid item xs={12} sm={3} md={3}>
             <ResponsiveBox>
               <GrayText>Cover Till Age</GrayText>
               <Text>{result.ageLimit} Years</Text>
@@ -111,7 +122,7 @@ const SingleResult = ({ result }) => {
           </Grid>
 
           {/** IDV Button, Discounts*/}
-          <Grid item xs={12} sm={12} md={3}
+          <Grid item xs={12} sm={12} md={2}
             sx={{
               textAlign: "right"
             }}>

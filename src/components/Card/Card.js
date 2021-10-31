@@ -26,17 +26,24 @@ function AutoCard({
 }) {
   return (
     <Grid container>
-      <Grid lg={4} className="GridDiv">
-        <div>
+      <Grid lg={5} xs={12} xl={5} md={12} sm={12} className="GridDiv">
+        <div style={{ textAlign: "-webkit-match-parent" }}>
           <h1 className="BannerHeader">{title}</h1>
           <p>{description}</p>
         </div>
         <img src={sideBanner} alt="" />
       </Grid>
-      <Grid lg={8} className="CardMain">
+      <Grid lg={7} xl={7} md={12} xs={12} sm={12} className="CardMain SubAuto">
         <Grid container>
           {subInsuranceArray.map((insurance, i) => (
-            <Grid lg={rowNumber} className="SubcardDiv">
+            <Grid
+              lg={rowNumber}
+              xl={rowNumber}
+              xs={12}
+              md={rowNumber}
+              sm={6}
+              className="SubcardDiv SubAuto"
+            >
               <Button variant="text">
                 <Link className="Link" to={`${url}/${insurance.url}`}>
                   <SubCard insurance={insurance} i={i} />

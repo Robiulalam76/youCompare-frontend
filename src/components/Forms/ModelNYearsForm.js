@@ -1,8 +1,18 @@
 import React from "react";
-import { Grid, Button } from "@mui/material";
-import { TextField, Box } from "@mui/material";
+import { Box, Button, ButtonBase, Stack } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import { FIELD_CHANGE } from "../../constants/autoCompare.constant";
+
+import { CustomTextField as Input } from "../customStyledComponents/inputs";
+import InputBox from "../customStyledComponents/InputBox";
+import { styled } from "@mui/system";
+
+const RoundPrimaryBtn = styled(ButtonBase)(({ theme }) => ({
+  backgroundColor: theme.palette.primary.main,
+  color: "white",
+  padding: theme.spacing(0.5, 1),
+  borderRadius: "40px",
+}));
 
 function ModelNYearsForm() {
   const dispatch = useDispatch();
@@ -34,74 +44,83 @@ function ModelNYearsForm() {
   };
 
   return (
-    <div style={{ marginTop: "4%" }}>
+    <div style={{ marginTop: "4%", textAlignLast: "start" }}>
       {/* <p>Model and Year</p> */}
       <div
         // className="brandname"
         style={{
-          width: "12%",
-          padding: "30px 0px",
+          padding: "20px 20px",
           border: "1px solid #1482d2",
           borderRadius: "10px",
-          textAlignLast: "center",
+          display: "inline-block",
         }}
       >
         {brand}
       </div>
+      <Stack spacing={1} sx={{ textAlign: "left" }}>
+        {/* Model Selection */}
+        <form>
+          <InputBox label="Select Model" sx={{ py: 1 }}>
+            <Input
+              fullWidth
+              name="model"
+              type="search"
+              value={model}
+              onChange={handleChange}
+            />
+          </InputBox>
 
-      {/* Model Selection */}
-      <form style={{ textAlignLast: "left", marginBottom: "6%" }}>
-        <br />
-        <label for="html">Select Model</label>
-        <div>
-          <input className="search" type="search" />
-          {/* <TextField
-            type="search"
-            id="mySearch"
-            name="q"
-            size="small"
-            placeholder="Search the site..."
-          />
-          <Button>Search</Button> */}
-        </div>
-        {["190", "220", "290", "150", "157", "134"].map((elem, i) => (
-          <Button
-            style={{ margin: "0px 5px" }}
-            key={i}
-            variant={elem === model ? "contained" : "outlined"}
-            name="model"
-            value={elem}
-            onClick={() =>
-              dispatch({
-                type: FIELD_CHANGE,
-                payload: { field: "model", value: elem },
-              })
-            }
-          >
-            {elem}
-          </Button>
-        ))}
-      </form>
+          {["190", "220", "290", "150", "157", "134"].map((elem, i) => (
+            <Button
+              sx={{ mr: 1, fontSize: ".8rem", py: 0.5 }}
+              key={i}
+              variant="round"
+              color={elem === model ? "primary" : "text"}
+              name="model"
+              value={elem}
+              onClick={() =>
+                dispatch({
+                  type: FIELD_CHANGE,
+                  payload: { field: "model", value: elem },
+                })
+              }
+            >
+              {elem}
+            </Button>
+          ))}
+        </form>
 
-      {/* Year Selection */}
-      <form>
-        <label for="html">Select Year</label> <br />
-        <div>
-          <input className="search" type="search" />
-        </div>
-        {["2021", "2020", "2019", "2018", "2017"].map((elem, i) => (
-          <Button
-            style={{ margin: "0px 5px" }}
-            key={i}
-            name="year"
-            value={elem}
-            variant={elem === year ? "contained" : "outlined"}
-            onClick={handleChange}
-          >
-            {elem}
-          </Button>
-        ))}
-      </form>
+        {/* Year Selection */}
+        <form>
+          <InputBox label="Select Year" sx={{ py: 1 }}>
+            <Input name="year" fullWidth value={year} onChange={handleChange} />
+          </InputBox>
+
+          {[
+            "2021",
+            "2020",
+            "2011",
+            "2018",
+            "2027",
+            "2010",
+            "2019",
+            "2028",
+            "2037",
+          ].map((elem, i) => (
+            <Button
+              sx={{ mr: 1, my: 0.5, fontSize: ".8rem", py: 0.5 }}
+              key={i}
+              name="year"
+              value={elem}
+              variant="round"
+              color={elem === year ? "primary" : "text"}
+              onClick={handleChange}
+            >
+              {elem}
+            </Button>
+          ))}
+        </form>
+      </Stack>
     </div>
   );
 }

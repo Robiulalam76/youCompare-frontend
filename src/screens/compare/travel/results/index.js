@@ -1,14 +1,15 @@
 import React from 'react'
 import { Title } from '../../../../components/customStyledComponents/texts'
 
+import EditForm from './EditForm';
 import { styled } from '@mui/system';
 import {
-  Grid, Typography, Box, Button, Paper,
+  Grid, Typography, Box, Button, Paper, IconButton,
   useMediaQuery, Divider, Drawer, TextField, InputBase
 } from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import EditIcon from '@mui/icons-material/Edit';
 
-import styles from './results.module.css'
 import { useTheme } from '@emotion/react';
 
 const borderRadius = "8px"
@@ -41,6 +42,17 @@ const GrayText = styled(Typography)(({ theme }) => ({
   fontWeight: "normal"
 }))
 
+const StyledDivider = styled(Divider)(({ theme }) => ({
+  margin: theme.spacing(1, 0)
+}))
+
+const ResponsiveBox = styled(Box)(({ theme }) => ({
+  [theme.breakpoints.only('xs')]: {
+    display: "flex",
+    justifyContent: "space-between"
+  }
+}))
+
 export default function Results() {
   const theme = useTheme()
   const smallScreen = useMediaQuery(theme.breakpoints.only('xs'))
@@ -60,102 +72,132 @@ export default function Results() {
 }
 
 
-// Travel Details From User Input
-
-
-const EditForm = (props) => {
-  return (
-    <Box sx={{ mx: "auto", mt: 5, p: "0 2rem", minWidth: "40vw"}}>
-      <InputBase />
-    </Box>
-  )
-}
+// Travel Details
 
 const TravelDetails = () => {
   const countries = ['Canada', 'Bangladesh', 'India']
   const [showEditForm, setShowEditForm] = React.useState(false)
 
+
   return (
-    <Box sx={{ mb: 2, display: "flex", justifyContent: "space-between" }}>
-      <div>
-        <Typography variant="body2" color="text.hover">Destinations</Typography>
-        <Typography>
-          {countries.map((country, i) => (
-            <span>{country}{i !== countries.length - 1 ? ", " : null}</span>
-          ))}
-        </Typography>
-      </div>
+    <Box sx={{ py: .5 }}>
+      <Grid container spacing={1}>
+        <Grid item xs={12} sm={4}>
+          <ResponsiveBox>
+            <Typography variant="body2" color="text.hover">Destinations</Typography>
+            <div>
+              {countries.map((country, i) => (
+                <Typography key={i}
+                  variant="body2"
+                  sx={{ display: "inline-block" }}>
+                  {country}
+                  {
+                    i !== countries.length - 1 ? ", " :
+                      <IconButton aria-label="edit" size="small">
+                        <EditIcon fontSize="inherit" />
+                      </IconButton>
+                  }
+                </Typography>
+              ))}
+            </div>
+          </ResponsiveBox>
+        </Grid>
 
-      <div>
-        <Typography variant="body2" color="text.hover">Travellers</Typography>
-        <Typography>One Traveller</Typography>
-      </div>
+        <Grid item xs={12} sm={4}>
+          <ResponsiveBox>
+            <Typography variant="body2" color="text.hover">Travellers</Typography>
+            <Typography variant="body2">
+              One Traveller
+              <IconButton aria-label="edit" size="small">
+                <EditIcon fontSize="inherit" />
+              </IconButton>
+            </Typography>
+          </ResponsiveBox>
+        </Grid>
 
-      <div>
-        <Typography variant="body2" color="text.hover">Trip Date</Typography>
-        <Typography>23 Sep'21 - 29 Sep'21</Typography>
-      </div>
+        <Grid item xs={12} sm={4}>
+          <ResponsiveBox>
+            <Typography variant="body2" color="text.hover">Trip Date</Typography>
+            <Typography variant="body2">
+              23 Sep'21 - 29 Sep'21
+              <IconButton aria-label="edit" size="small">
+                <EditIcon fontSize="inherit" />
+              </IconButton>
+            </Typography>
+          </ResponsiveBox>
+        </Grid>
 
-      <Button variant="outlined" onClick={() => setShowEditForm(true)}>Edit</Button>
+        {/* <Grid item container xs={12} lg={2}
+        style={{ justifyContent: "end" }}>
+        <div>
+          <Button
+            variant="outlined"
+            onClick={() => setShowEditForm(true)}>
+            Edit
+          </Button>
+        </div>
+      </Grid> */}
 
-      <Drawer anchor="right" open={showEditForm} onClose={() => setShowEditForm(false)}>
-        <EditForm />
-      </Drawer>
+        <Drawer
+          anchor="right"
+          open={showEditForm}
+          onClose={() => setShowEditForm(false)}>
+          <EditForm />
+        </Drawer>
+      </Grid>
     </Box>
   )
 }
 
 // Single Result
 const SingleResult = (props) => {
-
-  const coverages = ['Claim Guarantee', 'Passport Loss Covered'];
+  const coverages = ['Claim Guarantee', 'Passport Loss Covered', 'Passport Loss Covered'];
   return (
     <React.Fragment>
       <CustomDiv>
-        <Grid container>
+        <Grid container spacing={1}>
 
-          <Grid item container xs={12} sm={4}>
+          <Grid item container xs={12} lg={4}>
             <Grid item xs={6}>
-              {/* <LogoDiv>Logo</LogoDiv> */}
               <Typography>Insurer Logo</Typography>
             </Grid>
-            <Grid item xs={6}>
-              <GrayText sx={{ px: "4px", pt: "4px" }}>Explore Canada  (Excluding USA)</GrayText>
+            <Grid item container xs={6} sx={{ justifyContent: "end" }}>
+              <GrayText>Explore Canada  (Excluding USA)</GrayText>
             </Grid>
           </Grid>
 
-          <Grid item xs={12} sm={6} md={6}>
-            <Grid container>
-              {coverages.map((item, i) => (
-                <Grid item key={i}
-                  xs={12} sm={6} md={6}
-                  sx={{ display: "flex" }}>
+          <Grid item container xs={12} sm={6} lg={6}>
+            {coverages.map((item, i) => (
+              <Grid item xs={6} sm={12} lg={6} key={i}>
+                <div style={{ display: "flex", alignItems: "center" }}>
                   <CheckCircleIcon sx={{ color: "success.main", p: "4px" }} />
                   <Typography variant="caption">{item}</Typography>
-                </Grid>
-              ))}
-            </Grid>
+                </div>
+              </Grid>
+            ))}
           </Grid>
 
-          <Grid item xs={6} sm={2}>
-            <Button
-              variant="contained"
-              disableElevation
-              disableRipple
-              disableFocusRipple
-              disableTouchRipple
-              fullWidth
-              sx={{
-                borderRadius: borderRadius,
-                mb: .5,
-                cursor: "auto",
-                "&:hover": {
-                  bgcolor: "primary.main"
-                }
-              }}>N 2300</Button>
+          <Grid item container xs={12} sm={6} lg={2}
+            style={{ justifyContent: "end" }}>
+            <div>
+              <Button
+                variant="contained"
+                disableElevation
+                disableRipple
+                disableFocusRipple
+                disableTouchRipple
+                sx={{
+                  borderRadius: borderRadius,
+                  mb: .5,
+                  cursor: "auto",
+                  "&:hover": {
+                    bgcolor: "primary.main"
+                  }
+                }}>N 2300</Button>
+            </div>
           </Grid>
         </Grid>
-        <Divider sx={{ my: 2 }} />
+        <StyledDivider />
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <Typography variant="caption" color="text.secondary">
             Covers covid-19 related trip calcellation and interruption

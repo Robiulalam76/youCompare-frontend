@@ -46,7 +46,8 @@ function Insurance() {
               <Button
                 style={{ margin: "0px 5px" }}
                 key={i}
-                variant={elem === model ? "round" : "outlined"}
+                variant="round"
+                color={elem === model ? "primary" : "text"}
                 name="model"
                 value={elem}
                 onClick={() =>
@@ -68,7 +69,8 @@ function Insurance() {
               <Button
                 style={{ margin: "0px 5px" }}
                 key={i}
-                variant={elem === model ? "round" : "outlined"}
+                variant="round"
+                color={elem === model ? "primary" : "text"}
                 name="model"
                 value={elem}
                 onClick={() =>
@@ -116,6 +118,7 @@ function Insurance() {
             <br />
             <br />
             <TextField
+              placeholder="Trip Date"
               type="text"
               size="small"
               name="brand"
@@ -134,6 +137,7 @@ function Insurance() {
             <br />
             <br />
             <TextField
+              placeholder="John Doe"
               type="text"
               size="small"
               name="brand"
@@ -146,6 +150,7 @@ function Insurance() {
             <br />
             <br />
             <TextField
+              placeholder="john@domain.com"
               type="text"
               size="small"
               name="brand"
@@ -158,6 +163,7 @@ function Insurance() {
             <br />
             <br />
             <TextField
+              placeholder="94092300293"
               type="text"
               size="small"
               name="brand"
