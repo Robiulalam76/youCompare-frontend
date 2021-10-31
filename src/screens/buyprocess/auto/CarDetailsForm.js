@@ -1,76 +1,128 @@
 import React from 'react'
 import { useForm } from '../../../components/customHooks/useForm';
 import { Box, Typography, Button } from '@mui/material';
-import { SelectInput, InputBox, CustomInput as Input } from './utils';
+import { SelectInput, InputBox } from './utils';
+
+import {
+  CustomTextField as Input,
+  CustomAutocomplete as Autocomplete
+} from '../../../components/customStyledComponents/inputs'
 
 import styles from './styles.module.css'
 
 export default function CarDetailsForm({ handleStepChange }) {
-  const [car, handleChange] = useForm({
-    brand: "Brand Three", model: "", year: "", carNo: "", chassisNo: "",
-    idv: "490000"
-  })
+
+  const [brand, setBrand] = React.useState("")
+  const [model, setModel] = React.useState("")
+  const [year, setYear] = React.useState("")
+  const [carNo, setCarNo] = React.useState("")
+  const [chassisNo, setChassisNo] = React.useState("")
+  const [idv, setIdv] = React.useState("45000")
   const [ownershipChanged, setOwnershipChanged] = React.useState("No")
   const [externalKit, setExternalKit] = React.useState("No")
   const [owner, setOwner] = React.useState("individual")
   const [carRegDate, handleCarRegDate] = useForm({ date: "", month: "", year: "" })
   const [policyExpireDate, handlePolicyExpireDate] = useForm({ date: "", month: "", year: "" })
 
+  const handleChange = (e) => {
+
+  }
+
+  console.log(brand)
+
   return (
     <div>
       {/* ******** BRAND NAME & MODEL ************ */}
       <Box sx={{ display: "flex", alignItems: "center" }}>
         <InputBox label="Brand Name" style={{ width: "50%", marginRight: "16px" }}>
-          <SelectInput
-            name="brand"
-            value={car.brand}
-            onChange={handleChange}
-          >
-            {['Brand One', 'Brand Two', 'Brand Three'].map((elem) => (
-              <option key={elem} value={elem}>
-                {elem}
-              </option>
-            ))}
-          </SelectInput>
+
+          <Autocomplete
+            fullWidth
+            options={['BMW', 'Honda', 'Tesla']}
+            autoHighlight
+            onChange={(e, value) => setBrand(value)}
+            getOptionLabel={option => option}
+            renderOption={(props, option) => (
+              <Typography
+                {...props}
+                variant="body2"
+                color="text.secondary">
+                {option}
+              </Typography>
+            )}
+            renderInput={(params) => (
+              <Input {...params}
+                placeholder="Brand Name"
+                inputProps={{
+                  ...params.inputProps,
+                  style: { padding: ".75rem 1rem" },
+                  autoComplete: 'new-password',
+                }} />
+            )} />
+
         </InputBox>
 
         <InputBox label="Model" style={{ width: "50%" }}>
-          <SelectInput
-            name="model"
-            value={car.model}
-            onChange={handleChange}
-          >
-            {['M345', 'G879', 'K343'].map((elem) => (
-              <option key={elem} value={elem}>
-                {elem}
-              </option>
-            ))}
-          </SelectInput>
+          <Autocomplete
+            fullWidth
+            options={['M34', 'U76', 'T56']}
+            autoHighlight
+            onChange={(e, value) => setModel(value)}
+            getOptionLabel={option => option}
+            renderOption={(props, option) => (
+              <Typography
+                {...props}
+                variant="body2"
+                color="text.secondary">
+                {option}
+              </Typography>
+            )}
+            renderInput={(params) => (
+              <Input {...params}
+                placeholder="Car Model"
+                inputProps={{
+                  ...params.inputProps,
+                  style: { padding: ".75rem 1rem" },
+                  autoComplete: 'new-password',
+                }} />
+            )} />
         </InputBox>
       </Box>
 
       {/* *********** YEAR & CAR NO ***************** */}
       <Box sx={{ display: "flex", alignItems: "center" }}>
         <InputBox label="Year" style={{ width: "50%", marginRight: "16px" }}>
-          <SelectInput
-            name="year"
-            value={car.year}
-            onChange={handleChange}
-          >
-            {['2021', '2020', '2019', '2018', '2017', '2016'].map((elem) => (
-              <option key={elem} value={elem}>
-                {elem}
-              </option>
-            ))}
-          </SelectInput>
+
+          <Autocomplete
+            fullWidth
+            options={['2021', '2020', '2019', '2018', '2017', '2016']}
+            autoHighlight
+            onChange={(e, value) => setYear(value)}
+            getOptionLabel={option => option}
+            renderOption={(props, option) => (
+              <Typography
+                {...props}
+                variant="body2"
+                color="text.secondary">
+                {option}
+              </Typography>
+            )}
+            renderInput={(params) => (
+              <Input {...params}
+                placeholder="Launch Year"
+                inputProps={{
+                  ...params.inputProps,
+                  style: { padding: ".75rem 1rem" },
+                  autoComplete: 'new-password',
+                }} />
+            )} />
         </InputBox>
 
         <InputBox label="Car Number" style={{ width: "50%" }}>
           <Input
             type="text"
-            value={car.carNo}
-            name="carNo"
-            onChange={handleChange}
+            value={carNo}
+            onChange={(e) => setCarNo(e.target.value)}
             placeholder="E.g. HR26DQ555"
           />
         </InputBox>
@@ -82,15 +134,16 @@ export default function CarDetailsForm({ handleStepChange }) {
           <Input
             type="text"
             name="chassisNo"
-            value={car.chassisNo}
-            onChange={handleChange}
+            value={chassisNo}
+            onChange={(e) => setChassisNo(e.target.value)}
             placeholder="E.g. HR26DQ555"
           />
         </InputBox>
         <InputBox label="IDV" style={{ width: "50%" }}>
           <Input
             type="text"
-            value={car.idv}
+            value={idv}
+            onChange={(e) => setIdv(e.target.value)}
             name="idv"
           />
         </InputBox>

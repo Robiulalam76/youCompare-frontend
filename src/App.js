@@ -42,7 +42,6 @@ function App() {
             </Route>
             <Redirect exact from="/" to="/home" />
 
-{/*
             <Route path="/auto/compare">
               <AutoCompare />
             </Route>
@@ -58,7 +57,7 @@ function App() {
             <Route exact path="/travel/compare">
               <TravelCompare />
             </Route>
-*/}
+
             {/** Buy Now Pages */}
             <Route path="/auto/buynow">
               <AutoBuyNow />

@@ -37,6 +37,15 @@ export const SelectInput = (props) => {
   return (
     <Select
       native
+      inputProps={{
+        sx: {
+          padding: ".75rem 1rem",
+          fontSize: ".85rem",
+          fontWeight: "normal",
+          fontFamily: "Poppins",
+          lineHeight: "25px",
+        },
+      }}
       {...props}
     >
       {props.children}
