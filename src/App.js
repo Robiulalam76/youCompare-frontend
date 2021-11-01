@@ -1,13 +1,14 @@
 import React from "react";
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 
+import NavigationScroll from './components/HOC/NavigationScroll'
+
 //screens
 import LandingPage from "./screens/LangingPage";
 import Login from "./screens/auth/Login";
 import Signup from "./screens/auth/Signup";
 
 //compare pages
-
 import AutoCompare from "./screens/compare/auto";
 import LifeCompare from "./screens/compare/life";
 import HealthCompare from "./screens/compare/health";
@@ -15,7 +16,7 @@ import TravelCompare from "./screens/compare/travel";
 
 import AutoBuyNow from "./screens/buyprocess/auto";
 import LifeBuyNow from "./screens/buyprocess/life";
- 
+
 import PaymentSuccessfull from './screens/paymentSuccessfull'
 
 
@@ -35,6 +36,7 @@ function App() {
   return (
     <React.Fragment>
       <ThemeProvider theme={theme(customvariables)}>
+        <NavigationScroll>
         <BrowserRouter>
           <Switch>
             <Route path="/home">
@@ -98,6 +100,7 @@ function App() {
 
           </Switch>
         </BrowserRouter>
+        </NavigationScroll>
       </ThemeProvider>
     </React.Fragment>
   );
