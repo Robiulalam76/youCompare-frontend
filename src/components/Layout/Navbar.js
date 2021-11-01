@@ -21,8 +21,8 @@ export default function Navbar() {
   const logoutHandler = () => {
     localStorage.removeItem("userInfo");
   };
-  useEffect(() => { }, [localStorageData]);
-  
+  useEffect(() => {}, [localStorageData]);
+
   return (
     <div style={navStyle}>
       <Link className="Link" to="/">

@@ -41,7 +41,7 @@ function Insurance() {
         <Grid container style={{ display: "" }}>
           <Grid md={5} style={{ padding: "0% 3%" }}>
             <label for="html">Destination</label>
-            <br /> <br />
+
             {["Local", "International"].map((elem, i) => (
               <Button
                 style={{ margin: "0px 5px" }}
@@ -63,8 +63,7 @@ function Insurance() {
           </Grid>
           <Grid md={7} style={{ padding: "0% 3%" }}>
             <label for="html">Mode of Transport</label>
-            <br />
-            <br />
+
             {["Car", "Airplane", "Train", "Bus"].map((elem, i) => (
               <Button
                 style={{ margin: "0px 5px" }}
@@ -115,8 +114,7 @@ function Insurance() {
           </Grid>
           <Grid md={4} style={{ padding: "0% 3%" }}>
             <label for="html">Trip Date</label>
-            <br />
-            <br />
+
             <TextField
               placeholder="Trip Date"
               type="text"
@@ -134,8 +132,7 @@ function Insurance() {
         <Grid container style={{ display: "" }}>
           <Grid md={4} style={{ padding: "0% 3%" }}>
             <label for="html">Full Name </label>
-            <br />
-            <br />
+
             <TextField
               placeholder="John Doe"
               type="text"
@@ -147,8 +144,7 @@ function Insurance() {
           </Grid>
           <Grid md={4} style={{ padding: "0% 3%" }}>
             <label for="html">Email ID</label>
-            <br />
-            <br />
+
             <TextField
               placeholder="john@domain.com"
               type="text"
@@ -160,8 +156,7 @@ function Insurance() {
           </Grid>
           <Grid md={4} style={{ padding: "0% 3%" }}>
             <label for="html">Mobile</label>
-            <br />
-            <br />
+
             <TextField
               placeholder="94092300293"
               type="text"

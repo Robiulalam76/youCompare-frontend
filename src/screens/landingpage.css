@@ -35,11 +35,11 @@
 
 /* step */
 .step {
-  border: 1px solid rgb(235, 235, 235);
+  border: 1px solid rgb(255, 255, 255);
   border-radius: 4px;
 }
 .step:hover {
-  border: 1px solid grey;
+  border: 1px solid rgb(248, 248, 248);
 }
 
 /* play store */

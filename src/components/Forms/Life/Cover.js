@@ -42,12 +42,19 @@ function Cover() {
       <form style={{ textAlignLast: "left", marginBottom: "6%" }}>
         <br />
         <Grid container style={{ display: "" }}>
-          <Grid md={4} style={{ padding: "0% 3%" }}>
+          <Grid
+            md={4}
+            xl={4}
+            lg={4}
+            sm={12}
+            xs={12}
+            style={{ padding: "0% 3%" }}
+          >
             <InputBox label="Amount of Cover">
               <Input type="number" placeholder="cover amount" />
             </InputBox>
           </Grid>
-          <Grid md={8}>
+          <Grid md={8} xl={8} lg={8} sm={12} xs={12}>
             <InputBox label="Who is cover for?">
               <div>
                 {["Myself", "My Partner", "Father", "Mother", "Parents"].map(
@@ -81,7 +88,7 @@ function Cover() {
         <Grid container style={{ display: "" }}>
           <Grid md={3.5}>
             <label for="html">Gender</label>
-            <br /> <br />
+            {/* <br /> <br /> */}
             {["Male", "Female"].map((elem, i) => (
               <Button
                 style={{ margin: "0px 5px" }}
@@ -103,8 +110,8 @@ function Cover() {
           </Grid>
           <Grid md={3.4}>
             <label for="html">Do You Smoke?</label>
-            <br />
-            <br />
+            {/* <br />
+            <br /> */}
             {["Yes", "No"].map((elem, i) => (
               <Button
                 style={{ margin: "0px 5px" }}
@@ -126,8 +133,8 @@ function Cover() {
           </Grid>
           <Grid md={5.1}>
             <label for="html">Employment</label>
-            <br />
-            <br />
+            {/* <br />
+            <br /> */}
             {["Salaired", "Self Employment"].map((elem, i) => (
               <Button
                 style={{ margin: "0px 5px" }}
