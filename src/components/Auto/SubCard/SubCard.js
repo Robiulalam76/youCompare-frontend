@@ -4,32 +4,22 @@ import { borderRadius, styled } from "@mui/system";
 
 const InsuranceBox = styled('div')(({ theme }) => ({
   border: `1px solid ${theme.palette.text.hover}`,
-  borderRadius: theme.spacing(1)
+  borderRadius: theme.spacing(1),
+  [theme.breakpoints.up('xs')]:{
+    width: "100%",
+    height: "100%"
+  }
 }))
 
 const ImageBox = styled('div')(({ theme }) => ({
   width: "300px",
   height: "150px",
   margin: "0 auto",
-  padding: theme.spacing(4),
-  [theme.breakpoints.only('xs')]: {
-    width: "inherit"
-  }
+  padding: theme.spacing(4)
 }))
 
 
 function SubCard({ i, insurance }) {
-  // const insuranceDiv = {
-  //   display: "inline-grid",
-  //   width: "90%",
-  //   border: "1px solid lightgray",
-  //   margin: "1rem 1%",
-  //   padding: "2%",
-  //   height: "250px",
-  //   cursor: "pointer",
-  //   borderRadius: "5px",
-  //   backgroundColor: "white",
-  // };
   return (
     <InsuranceBox>
       <Typography sx={{

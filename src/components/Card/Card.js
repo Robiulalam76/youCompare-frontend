@@ -81,10 +81,6 @@ const ImageBox = styled('div')(({ theme }) => ({
   [theme.breakpoints.only('md')]:{
     paddingTop: "0"
   },
-  // [theme.breakpoints.up('lg')]:{
-  //   marginLeft: 0,
-  //   marginRight: "auto"
-  // }
 }))
 
 function AutoCard({
