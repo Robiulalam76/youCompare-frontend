@@ -15,10 +15,10 @@ import HealthCompare from "./screens/compare/health";
 import TravelCompare from "./screens/compare/travel";
 
 import AutoBuyNow from "./screens/buyprocess/auto";
+
 import LifeBuyNow from "./screens/buyprocess/life";
 
-import PaymentSuccessfull from './screens/paymentSuccessfull'
-
+import PaymentSuccessfull from "./screens/paymentSuccessfull";
 
 import MyDocs from "./screens/profile/MyDocs";
 import MyPolicies from "./screens/profile/MyPolicies";
@@ -36,7 +36,7 @@ function App() {
   return (
     <React.Fragment>
       <ThemeProvider theme={theme(customvariables)}>
-        <NavigationScroll>
+
         <BrowserRouter>
           <Switch>
             <Route path="/home">
@@ -51,11 +51,9 @@ function App() {
             <Route exact path="/life/compare">
               <LifeCompare />
             </Route>
-
             <Route exact path="/health/compare">
               <HealthCompare />
             </Route>
-
             <Route exact path="/travel/compare">
               <TravelCompare />
             </Route>
@@ -64,32 +62,26 @@ function App() {
             <Route path="/auto/buynow">
               <AutoBuyNow />
             </Route>
-
             <Route path="/life/buynow">
               <LifeBuyNow />
             </Route>
-
             <Route path="/health/buynow">
               <AutoBuyNow />
             </Route>
             <Route path="/travel/buynow">
               <AutoBuyNow />
             </Route>
-
             {/** Payment */}
             <Route exact path="/auto/payment-success">
               <PaymentSuccessfull />
             </Route>
-
             {/** Profile */}
             <Route exact path="/profile/mydocs">
               <MyDocs />
             </Route>
-
             <Route exact path="/profile/mypolicies">
               <MyPolicies />
             </Route>
-
             {/**Auth pages */}
             <Route exact path="/login">
               <Login />
@@ -97,10 +89,9 @@ function App() {
             <Route exact path="/signup">
               <Signup />
             </Route>
-
           </Switch>
         </BrowserRouter>
-        </NavigationScroll>
+
       </ThemeProvider>
     </React.Fragment>
   );

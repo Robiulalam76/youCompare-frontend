@@ -46,6 +46,7 @@ function Insurance() {
             <br />
             <br />
             <TextField
+              placeholder="John Doe"
               type="text"
               size="small"
               name="brand"
@@ -58,6 +59,7 @@ function Insurance() {
             <br />
             <br />
             <TextField
+              placeholder="john@domain.com"
               type="text"
               size="small"
               name="brand"
@@ -73,6 +75,7 @@ function Insurance() {
               type="text"
               size="small"
               name="brand"
+              placeholder="94092300293"
               //   value={brand}
               //   onChange={handleChange}
             />
@@ -91,6 +94,7 @@ function Insurance() {
               type="text"
               size="small"
               name="brand"
+              placeholder="Age"
               //   value={brand}
               //   onChange={handleChange}
             />

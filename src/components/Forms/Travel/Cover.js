@@ -48,7 +48,8 @@ function Cover() {
               <Button
                 style={{ margin: "0px 5px" }}
                 key={i}
-                variant={elem === model ? "round" : "outlined"}
+                variant="round"
+                color={elem === model ? "primary" : "text"}
                 name="model"
                 value={elem}
                 onClick={() =>
@@ -69,7 +70,8 @@ function Cover() {
               <Button
                 style={{ margin: "0px 5px" }}
                 key={i}
-                variant={elem === model ? "round" : "outlined"}
+                variant="round"
+                color={elem === model ? "primary" : "text"}
                 name="model"
                 value={elem}
                 onClick={() =>
@@ -93,6 +95,7 @@ function Cover() {
             <br />
             <br />
             <TextField
+              placeholder="John Doe"
               type="text"
               size="small"
               name="brand"

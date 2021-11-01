@@ -6,9 +6,9 @@ import { useLocation, useRouteMatch } from 'react-router-dom';
 
 const NavigationScroll = ({ children }) => {
 	// const location = useLocation();
-  const { path, url } = useRouteMatch();
+	const { path, url } = useRouteMatch();
 	//const { pathname } = location;
-
+	console.log(path)
 	useEffect(() => {
 		window.scrollTo({
 			top: 0,

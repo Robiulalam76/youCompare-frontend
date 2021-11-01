@@ -5,7 +5,6 @@
   font-family: Poppins, sans-serif;
 }
 
-
 body {
   background-color: #ffffff;
 }
@@ -18,9 +17,19 @@ label {
   text-transform: capitalize !important;
 }
 
-
-
-a{
+a {
   text-decoration: none;
 }
 
+@media only screen and (max-width: 1290px) {
+  /*Tablets [601px -> 1200px]*/
+  .SubAuto {
+    margin-top: 10%;
+  }
+}
+@media only screen and (max-width: 600px) {
+  /*Big smartphones [426px -> 600px]*/
+}
+@media only screen and (max-width: 425px) {
+  /*Small smartphones [325px -> 425px]*/
+}

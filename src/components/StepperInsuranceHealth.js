@@ -57,7 +57,7 @@ export default function InsuranceStepper() {
   };
 
   return (
-    <Box sx={{ width: "100%" }} className="SteeperDiv">
+    <Box sx={{ width: "100%" }} className="SteeperDiv SubAuto">
       <Stepper activeStep={activeStep}>
         {steps.map((label, index) => {
           const stepProps = {};

@@ -40,14 +40,15 @@ function Cover() {
       <form style={{ textAlignLast: "left", marginBottom: "6%" }}>
         <br />
         <Grid container style={{ display: "" }}>
-          <Grid md={5}>
+          <Grid md={6}>
             <label for="html">Who is the cover for?</label>
             <br /> <br />
             {["Personal", "Business"].map((elem, i) => (
               <Button
                 style={{ margin: "0px 5px" }}
                 key={i}
-                variant={elem === model ? "round" : "outlined"}
+                variant="round"
+                color={elem === model ? "primary" : "text"}
                 name="model"
                 value={elem}
                 onClick={() =>
@@ -61,14 +62,15 @@ function Cover() {
               </Button>
             ))}
           </Grid>
-          <Grid md={7}>
+          <Grid md={6}>
             <label for="html">Who is the cover for?</label>
             <br /> <br />
             {["One Person", "Couple", "Family", "Group"].map((elem, i) => (
               <Button
-                style={{ margin: "0px 5px" }}
+                style={{ margin: "0px 4px" }}
                 key={i}
-                variant={elem === model ? "round" : "outlined"}
+                variant="round"
+                color={elem === model ? "primary" : "text"}
                 name="model"
                 value={elem}
                 onClick={() =>

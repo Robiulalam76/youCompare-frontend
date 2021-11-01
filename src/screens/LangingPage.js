@@ -80,7 +80,7 @@ export default function LandingPage({}) {
       </div>
       <Grid container>
         {insurances.map((insurance, i) => (
-          <Grid lg={3} xs={3} md={6} sm={12}>
+          <Grid lg={3} xs={12} md={6} sm={12}>
             <div style={{ padding: "0px 5px" }}>
               <Link className="Link" to={`${url}/${insurance.url}`}>
                 <Button

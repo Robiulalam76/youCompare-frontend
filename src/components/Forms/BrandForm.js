@@ -6,7 +6,7 @@ import { BiCheck } from "react-icons/bi";
 import "./style.css";
 
 import InputBox from "../customStyledComponents/InputBox";
-import { CustomTextField as TextField } from '../customStyledComponents/inputs'
+import { CustomTextField as TextField } from "../customStyledComponents/inputs";
 
 const brands = [
   "BMW",
@@ -56,7 +56,9 @@ function BrandForm() {
             placeholder="Brand Name"
           />
         </InputBox>
-        <Typography variant="body2" color="text.hover" sx={{ px: 2, mt: 6 }}>OR</Typography>
+        <Typography variant="body2" color="text.hover" sx={{ px: 2, mt: 6 }}>
+          OR
+        </Typography>
         <InputBox label="Enter Number Plate">
           <TextField
             type="text"
@@ -72,7 +74,11 @@ function BrandForm() {
         {brands.map((elem, i) => (
           <Grid
             item
-            lg={2}
+            lg={3}
+            xl={2}
+            md={4}
+            sm={4}
+            xs={6}
             key={i}
             onClick={() => {
               dispatch({

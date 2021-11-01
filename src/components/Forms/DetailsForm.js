@@ -53,26 +53,29 @@ function DetailsForm() {
       >
         <div
           style={{
-            width: "17%",
-            padding: "30px 0px",
+            // width: "17%",
+            padding: "30px 20px",
             border: "1px solid #1482d2",
             borderRadius: "10px",
             textAlignLast: "center",
             margin: "0px 2% 0 0",
             height: "20px",
+            display: "flex",
+            alignItems: "center",
           }}
         >
           {brand}
         </div>
         <div
           style={{
-            width: "17%",
-            padding: "30px 0px",
+            padding: "30px 20px",
             border: "1px solid #1482d2",
             borderRadius: "10px",
             textAlignLast: "center",
             margin: "0px 2% 0 0",
             height: "20px",
+            display: "flex",
+            alignItems: "center",
           }}
         >
           {" "}
@@ -81,16 +84,17 @@ function DetailsForm() {
         </div>
         <div
           style={{
-            width: "17%",
-            padding: "30px 0px",
+            padding: "30px 20px",
             border: "1px solid #1482d2",
             borderRadius: "10px",
             textAlignLast: "center",
             margin: "0px 2% 0 0",
             height: "20px",
+            display: "flex",
+            alignItems: "center",
           }}
         >
-          <span>Year </span>
+          <span style={{ padding: "0px 5px" }}>Year </span>
           {year}
         </div>
       </div>
@@ -119,11 +123,9 @@ function DetailsForm() {
           <InputBox label="Type of Insurance">
             <div>
               <Button
-                sx={{ mr: 1, fontSize: ".8rem", py: .5 }}
+                sx={{ mr: 1, fontSize: ".8rem", py: 0.5 }}
                 variant="round"
-                color={
-                  typeofInsurance === "thirdparty" ? "primary" : "text"
-                }
+                color={typeofInsurance === "thirdparty" ? "primary" : "text"}
                 value="thirdparty"
                 name="typeofInsurance"
                 onClick={handleChange}
@@ -132,11 +134,9 @@ function DetailsForm() {
               </Button>
 
               <Button
-                sx={{ mr: 1, fontSize: ".8rem", py: .5 }}
+                sx={{ mr: 1, fontSize: ".8rem", py: 0.5 }}
                 variant="round"
-                color={
-                  typeofInsurance === "comprehensive" ? "primary" : "text"
-                }
+                color={typeofInsurance === "comprehensive" ? "primary" : "text"}
                 value="comprehensive"
                 name="typeofInsurance"
                 onClick={handleChange}
