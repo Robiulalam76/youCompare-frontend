@@ -21,11 +21,7 @@ function SubCard({ i, insurance }) {
           style={{ justifyContent: "space-around" }}
         >
           <p style={{ textAlignLast: "left" }}>{insurance.title}</p>
-          <img
-            style={{ height: "80%", width: "80%" }}
-            src={insurance.image}
-            alt=""
-          />
+          <img style={{}} src={insurance.image} alt="" />
         </div>
       </div>
     </div>

@@ -31,7 +31,7 @@ function AutoCard({
           <h1 className="BannerHeader">{title}</h1>
           <p>{description}</p>
         </div>
-        <img src={sideBanner} alt="" />
+        <img style={{ padding: "20px" }} src={sideBanner} alt="" />
       </Grid>
       <Grid lg={7} xl={7} md={12} xs={12} sm={12} className="CardMain SubAuto">
         <Grid container>
