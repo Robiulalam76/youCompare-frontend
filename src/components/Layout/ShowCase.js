@@ -22,7 +22,7 @@ const methodology = {
   // padding: "2rem 3rem",
 };
 const methodStyle = { display: "flex", justifyContent: "space-around" };
-const stepStyle = { width: "30%", padding: "30px 30px 0px 0px " };
+const stepStyle = {};
 const community = { ...methodology };
 const getApp = { marginTop: "8rem", maxWidth: "400px" };
 
