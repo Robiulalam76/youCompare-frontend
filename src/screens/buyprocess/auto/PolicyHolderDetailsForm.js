@@ -12,7 +12,8 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
 
 
-import { InputBox, textfieldStyle } from './utils'
+import { textfieldStyle } from './utils'
+import InputBox from '../../../components/customStyledComponents/InputBox'
 import { useForm } from '../../../components/customHooks/useForm'
 import Calender from '../../../components/Calender'
 import {
@@ -70,6 +71,7 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
     <div>
       <InputBox label="Full Name">
         <Input
+          fullWidth
           type="text"
           name="fullName"
           value={policyHolder.fullName}
@@ -79,6 +81,7 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
       </InputBox>
       <InputBox label="Email ID">
         <Input
+          fullWidth
           type="email"
           name="email"
           value={policyHolder.email}
@@ -88,6 +91,7 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
       </InputBox>
       <InputBox label="Mobile Number">
         <Input
+          fullWidth
           type="number"
           inputMode="tel"
           name="mobile"
@@ -108,39 +112,6 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
       {/** DATE OF BIRTH AND MARITAL STATUS */}
       <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         {/** Date of Birth */}
-        {/*
-        <InputBox label="Date of Birth" style={{ width: "48%" }}>
-          <Input
-            type="text"
-            fullWidth
-            value={dob}
-            onChange={(e) => setDob(e.target.value)}
-            placeholder="mm/dd/yyyy"
-            InputProps={{
-              endAdornment:
-                <InputAdornment position="end">
-                  <TodayIcon
-                    fontSize="small"
-                    sx={{ cursor: "pointer" }}
-                    onClick={(e) => setCalenderElem(e.currentTarget)} />
-                </InputAdornment>
-            }}
-          />
-          <Popover
-            open={Boolean(calenderElem)}
-            anchorEl={calenderElem}
-            onClose={(e) => setCalenderElem(null)}
-            anchorOrigin={{
-              vertical: 'top',
-              horizontal: 'left',
-            }}
-          >
-            <Box>
-              <Calender getDate={(e) => console.log(e)} />
-            </Box>
-          </Popover>
-        </InputBox>
-          */}
         <InputBox label="Date of Birth" style={{ width: "48%" }}>
           <LocalizationProvider dateAdapter={AdapterDateFns}>
             <DesktopDatePicker
@@ -163,6 +134,7 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
         {/* **** marital status ***** */}
         <InputBox label="Marital Status" style={{ width: "48%", paddingTop: "4px" }}>
           <Autocomplete
+            fullWidth
             options={['Married', 'Single', 'Diverced']}
             onChange={(e, value) => setMaritalStatus(value)}
             renderOption={(props, option) => (
@@ -189,6 +161,7 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
       {/* ******************* ADDRESS ***************** */}
       <InputBox label="Address">
         <Input
+          fullWidth
           type="text"
           name="address"
           value={policyHolder.address}
@@ -202,6 +175,7 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
         {/* ######################## STATE ################## */}
         <InputBox label="State" style={{ width: "48%" }}>
           <Autocomplete
+            fullWidth
             options={states}
             onChange={(e, value) => setSelectedState(value)}
             getOptionLabel={option => option.name}
@@ -226,6 +200,7 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
         {/* ######################## CITY ################## */}
         <InputBox label="City" style={{ width: "48%" }}>
           <Autocomplete
+            fullWidth
             options={cities}
             disableClearable
             autoHighlight
@@ -253,6 +228,7 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
       <Box sx={{ display: "flex", alignItems: "center" }}>
         <InputBox label="Pincode" style={{ marginRight: "16px", width: "50%" }}>
           <Input
+            fullWidth
             type="text"
             name="pincode"
             value={policyHolder.pincode}
@@ -262,6 +238,7 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
         </InputBox>
         <InputBox label="Driver's License Image" style={{ width: "50%" }}>
           <Input
+            fullWidth
             placeholder="Upload"
             InputProps={{
               startAdornment:

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box } from '@mui/system'
-import { Subtitle } from './customStyledComponents/texts'
+import { Typography } from '@mui/material'
 
 export default function Formstepper({ steps, currentStep }) {
   return (
@@ -9,13 +9,14 @@ export default function Formstepper({ steps, currentStep }) {
         steps.map((step, i) => {
           if (i === 0) {
             return (
-              <Subtitle
+              <Typography
                 key={i}
                 sx={{
+                  fontWeight: 600,
                   color: i > currentStep ? "text.disabled" : "text.primary",
                 }}>
                 {step}
-              </Subtitle>)
+              </Typography>)
           } else {
             return <React.Fragment key={i}>
               <Box sx={{
@@ -23,12 +24,13 @@ export default function Formstepper({ steps, currentStep }) {
                 backgroundColor: i > currentStep ? "text.disabled" : "text.primary",
                 width: 40,
               }} />
-              <Subtitle
+              <Typography
                 sx={{
+                  fontWeight: 600,
                   color: i > currentStep ? "text.disabled" : "text.primary",
                 }}>
                 {step}
-              </Subtitle>
+              </Typography>
             </React.Fragment>
           }
         })
