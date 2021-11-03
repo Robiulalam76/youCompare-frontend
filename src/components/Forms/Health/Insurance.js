@@ -43,8 +43,7 @@ function Insurance() {
         <Grid container style={{ display: "" }}>
           <Grid md={4} style={{ padding: "0% 3%" }}>
             <label for="html">Full Name </label>
-            <br />
-            <br />
+           
             <TextField
               placeholder="John Doe"
               type="text"
@@ -56,8 +55,7 @@ function Insurance() {
           </Grid>
           <Grid md={4} style={{ padding: "0% 3%" }}>
             <label for="html">Email ID</label>
-            <br />
-            <br />
+            
             <TextField
               placeholder="john@domain.com"
               type="text"
@@ -69,8 +67,7 @@ function Insurance() {
           </Grid>
           <Grid md={4} style={{ padding: "0% 3%" }}>
             <label for="html">Mobile</label>
-            <br />
-            <br />
+           
             <TextField
               type="text"
               size="small"
@@ -88,8 +85,7 @@ function Insurance() {
         <Grid container style={{ display: "" }}>
           <Grid md={4} style={{ padding: "0% 3%" }}>
             <label for="html">Age</label>
-            <br />
-            <br />
+           
             <TextField
               type="text"
               size="small"

@@ -26,6 +26,14 @@ a {
   .SubAuto {
     margin-top: 10%;
   }
+  .responsiceMiddle {
+    text-align: center;
+    margin: 0 auto;
+  }
+  .responsiceMiddle p {
+    padding: 0px;
+    margin: 20px 0px;
+  }
 }
 @media only screen and (max-width: 600px) {
   /*Big smartphones [426px -> 600px]*/

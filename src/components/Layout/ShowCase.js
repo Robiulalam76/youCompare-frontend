@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 import "animate.css";
 
@@ -14,16 +14,15 @@ import logo3 from "../../accets/logo1/NoPath - Copy (2).png";
 import logo4 from "../../accets/logo1/NoPath - Copy (3).png";
 import logo5 from "../../accets/logo1/NoPath - Copy (4).png";
 
-
 import { Grid, TextField } from "@mui/material";
 
 const methodology = {
   margin: "8rem 0",
   textAlign: "center",
-  padding: "2rem 3rem",
+  // padding: "2rem 3rem",
 };
 const methodStyle = { display: "flex", justifyContent: "space-around" };
-const stepStyle = { width: "250px", padding: "30px 30px 0px 0px " };
+const stepStyle = {};
 const community = { ...methodology };
 const getApp = { marginTop: "8rem", maxWidth: "400px" };
 
@@ -47,13 +46,11 @@ const steps = [
   },
 ];
 
-
 export default function Showcase() {
   return (
     <React.Fragment>
       {/* logo's of sponsore */}
       <Grid
-        container
         style={{
           marginTop: "3%",
           padding: "0px 5%",
@@ -94,15 +91,30 @@ export default function Showcase() {
           Complete 3 simple steps to find the best insurance plan for your or
           your family!
         </p>
-        <div style={methodStyle}>
+        <br />
+        <br />
+        <Grid container style={methodStyle}>
           {steps.map((step, i) => (
-            <div className="step" style={stepStyle} key={i}>
-              <img src={step.image} alt="Step Logo" />
+            <Grid
+              xl={4}
+              lg={4}
+              md={6}
+              sm={6}
+              xs={12}
+              className="step"
+              style={stepStyle}
+              key={i}
+            >
+              <img
+                src={step.image}
+                style={{ height: "45%", marginBottom: "5%" }}
+                alt="Step Logo"
+              />
               <h3>{step.title}</h3>
               <p>{step.description}</p>
-            </div>
+            </Grid>
           ))}
-        </div>
+        </Grid>
       </div>
 
       {/* Community Section */}
@@ -115,10 +127,16 @@ export default function Showcase() {
       </div>
 
       {/* Get the app */}
-      <div className="store">
-        <div
+      <Grid container className="store">
+        <Grid
+          lg={6}
+          md={6}
+          xl={6}
+          sm={12}
+          xs={12}
           className="animate__animated animate__bounce animate__bounceInLeft"
           style={getApp}
+          className="responsiceMiddle"
         >
           <h1 style={{ marginBottom: "0px" }}>Get the</h1>
           <h1 style={{ marginTop: "0px" }}> youcompare app</h1>
@@ -126,11 +144,11 @@ export default function Showcase() {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
             finibus sapien lorem, molestie dictum urna accumsan sit amet.
           </p>
-        </div>
-        <div style={{ width: "50%" }}>
-          <img src={store} alt="" />
-        </div>
-      </div>
+        </Grid>
+        <Grid lg={6} md={6} xl={6} sm={12} xs={12} style={{ width: "50%" }}>
+          <img className="SubAuto" src={store} alt="" />
+        </Grid>
+      </Grid>
     </React.Fragment>
-  )
+  );
 }
