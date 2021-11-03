@@ -31,12 +31,13 @@ import { Link } from "react-router-dom";
 import { FiLogOut } from "react-icons/fi";
 import { ImProfile } from "react-icons/im";
 
-const BrandLogoBox = styled("div")(
-  () => `
-    width: 200px;
-    height: auto;
-  `
-);
+const BrandLogoBox = styled(Box)(({ theme }) => ({
+  width: "200px",
+  height: "auto",
+  [theme.breakpoints.up('md')]:{
+    width: "250px"
+  }
+}))
 
 const UserLogo = ({ size }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -119,7 +120,7 @@ export default function Navbar() {
 
   var prevScrollPos = window.scrollY;
   const handleScroll = () => {
-    window.scrollY > 150 ? setNavbarElevation(true) : setNavbarElevation(false);
+    window.scrollY > 100 ? setNavbarElevation(true) : setNavbarElevation(false);
     var currentScrollPos = window.scrollY;
 
     prevScrollPos > currentScrollPos
