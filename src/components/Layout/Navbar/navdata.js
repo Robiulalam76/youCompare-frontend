@@ -1,3 +1,8 @@
+import { BsLifePreserver } from "react-icons/bs";
+import { AiFillCar } from "react-icons/ai";
+import { GiCommercialAirplane } from "react-icons/gi";
+import { MdHealthAndSafety } from 'react-icons/md';
+ 
 export const navdata = [
   {
     id: 1,
@@ -8,35 +13,100 @@ export const navdata = [
         id: 1,
         category: "Auto Insurance",
         depth: 1,
+        icon: <AiFillCar />,
         subcat: [
           {
             id: 1,
-            category: "Insurance for Van",
+            category: "Two Wheeler",
             depth: 2,
           },
           {
             id: 2,
-            category: "Insurance for Two Wheeler",
+            category: "Three Wheeler",
             depth: 2,
-          }
-        ]
+          },
+          {
+            id: 3,
+            category: "Commercial Auto",
+            depth: 2,
+          },
+          {
+            id: 4,
+            category: "Private Auto",
+            depth: 2,
+          },
+        ],
       },
       {
         id: 2,
         category: "Life Insurance",
         depth: 1,
+        icon: <BsLifePreserver />,
+        subcat: [
+          {
+            id: 1,
+            category: "Private Life Insurance",
+            depth: 2,
+          },
+          {
+            id: 2,
+            category: "Term Life Insurance",
+            depth: 2,
+          },
+          {
+            id: 3,
+            category: "Group Life Insurance",
+            depth: 2,
+          },
+        ],
       },
       {
         id: 3,
         category: "Health Insurace",
         depth: 1,
+        icon: <MdHealthAndSafety />,
+        subcat: [
+          {
+            id: 1,
+            category: "PPO",
+            depth: 2,
+          },
+          {
+            id: 2,
+            category: "HMO",
+            depth: 2,
+          },
+          {
+            id: 3,
+            category: "Point of Service",
+            depth: 2,
+          },
+          {
+            id: 4,
+            category: "Health Saving",
+            depth: 2,
+          },
+        ],
       },
       {
         id: 4,
         category: "Travel Insurance",
         depth: 1,
-      }
-    ]
+        icon: <GiCommercialAirplane />,
+        subcat: [
+          {
+            id: 1,
+            category: "Single Trip",
+            depth: 2,
+          },
+          {
+            id: 2,
+            category: "Multi Trip",
+            depth: 2,
+          },
+        ],
+      },
+    ],
   },
   {
     id: 2,
@@ -62,12 +132,12 @@ export const navdata = [
         id: 4,
         category: "Travel Insurance Renewal",
         depth: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 3,
     category: "File a Claim",
     depth: 0,
-  }
-]
+  },
+];
