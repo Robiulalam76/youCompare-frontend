@@ -9,7 +9,7 @@ export default function Layout({ children }) {
   return (
     <React.Fragment>
       <Navbar />
-      <Container>
+      <Container sx={{ mt: "20vh" }}>
         {children}
         <Showcase />
       </Container>
