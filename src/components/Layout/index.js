@@ -1,7 +1,7 @@
 import React from "react";
 
 import Navbar from "./Navbar/index";
-import Footer from "./Footer";
+// import Footer from "./Footer";
 import Showcase from "./ShowCase";
 import { Container } from "@mui/material";
 
@@ -13,7 +13,7 @@ export default function Layout({ children }) {
         {children}
         <Showcase />
       </Container>
-      <Footer />
+      {/* <Footer /> */}
     </React.Fragment>
   );
 }

@@ -88,7 +88,7 @@ export default function Showcase() {
       {/* How it works Section */}
       <div style={methodology}>
         <h1>How does it work?</h1>
-        <p style={{ marginBottom: "5%" }} className="pera">
+        <p style={{ marginBottom: "2%" }} className="pera">
           Complete 3 simple steps to find the best insurance plan for your or
           your family!
         </p>
@@ -112,6 +112,7 @@ export default function Showcase() {
                     objectFit: "contain",
                     height: "100%",
                     width: "100%",
+                    padding: "4%",
                   }}
                   alt="Step Logo"
                 />
@@ -144,7 +145,7 @@ export default function Showcase() {
           style={getApp}
           className="responsiceMiddle"
         >
-          <p className="appHeader">Get the</p>
+          <h5 className="appHeader">Get the</h5>
           <p className="appHeader">youcompare app</p>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
