@@ -11,7 +11,10 @@ import {
   Drawer,
   Hidden,
   ListItem,
+  Paper,
+  ListItemButton,
 } from "@mui/material";
+import Popover from "@mui/material/Popover";
 import IconButton from "@mui/material/IconButton";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
@@ -25,6 +28,9 @@ import logo from "../../../accets/logo.png";
 import profile from "../../../accets/profile.jpg";
 import { Link } from "react-router-dom";
 
+import { FiLogOut } from "react-icons/fi";
+import { ImProfile } from "react-icons/im";
+
 const BrandLogoBox = styled("div")(
   () => `
     width: 200px;
@@ -33,28 +39,73 @@ const BrandLogoBox = styled("div")(
 );
 
 const UserLogo = ({ size }) => {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? "simple-popover" : undefined;
+
   return (
-    <Box
-      sx={{
-        height: size === "large" ? "60px" : "40px",
-        width: size === "large" ? "60px" : "40px",
-        borderRadius: "50%",
-        overflow: "hidden",
-        cursor: "pointer",
-      }}
-    >
-      <img
-        src={profile}
-        alt="A Girl"
-        style={{ height: "100%", width: "100%", objectFit: "cover" }}
-      />
-    </Box>
+    <React.Fragment>
+      <Box
+        aria-describedby={id}
+        onClick={handleClick}
+        sx={{
+          height: size === "large" ? "60px" : "40px",
+          width: size === "large" ? "60px" : "40px",
+          borderRadius: "50%",
+          overflow: "hidden",
+          cursor: "pointer",
+        }}
+      >
+        <img
+          src={profile}
+          alt="A Girl"
+          style={{ height: "100%", width: "100%", objectFit: "cover" }}
+        />
+      </Box>
+      <Popover
+        id={id}
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "right",
+        }}
+        transformOrigin={{
+          vertical: "top",
+          horizontal: "right",
+        }}
+      >
+        {[
+          { title: "Profile", icon: <ImProfile className={styles.icon} /> },
+          { title: "Logout", icon: <FiLogOut className={styles.icon} /> },
+        ].map((elem, i) => (
+          <ListItemButton sx={{ width: "200px", m: 1 }} key={i}>
+            {elem.icon}
+            <Typography sx={{ fontSize: ".9rem", lineHeight: "27px" }}>
+              {elem.title}
+            </Typography>
+          </ListItemButton>
+        ))}
+      </Popover>
+    </React.Fragment>
   );
 };
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = React.useState(false);
   const [isLoggedin, setIsLoggedin] = React.useState(false);
+  const [navbarElevation, setNavbarElevation] = React.useState(false);
+  const [showTopBar, setShowTopBar] = React.useState(true);
 
   const toggleMenuVisibility = (open) => (event) => {
     if (
@@ -66,13 +117,29 @@ export default function Navbar() {
     setMenuOpen(open);
   };
 
+  var prevScrollPos = window.scrollY;
+  const handleScroll = () => {
+    window.scrollY > 150 ? setNavbarElevation(true) : setNavbarElevation(false);
+    var currentScrollPos = window.scrollY;
+
+    prevScrollPos > currentScrollPos
+      ? setShowTopBar(true)
+      : setShowTopBar(false);
+    prevScrollPos = currentScrollPos;
+  };
+
+  React.useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  });
+
   return (
-    <AppBar color="inherit" elevation={2}>
-      <Hidden mdDown>
-        <TopBar />
-      </Hidden>
+    <AppBar color="inherit" elevation={navbarElevation ? 2 : 0}>
+      <Hidden mdDown>{showTopBar ? <TopBar /> : null}</Hidden>
       <Toolbar>
-        <Container>
+        <Container className={styles.text}>
           <div className={styles.navbar}>
             <BrandLogoSection setMenuOpen={setMenuOpen} />
             <ul className={styles.navlist}>
@@ -82,6 +149,13 @@ export default function Navbar() {
                     {elem}
                   </li>
                 ))}
+                {isLoggedin
+                  ? ["My Documents", "My Policies"].map((elem, i) => (
+                      <li key={i} className={styles.navlistItem}>
+                        {elem}
+                      </li>
+                    ))
+                  : null}
               </Hidden>
               {isLoggedin ? (
                 <li>
