@@ -4,7 +4,7 @@
   width: 100%;
 }
 
-.logoText{
+.logoText {
   display: flex;
   align-items: center;
 }
@@ -22,7 +22,7 @@
 }
 
 .navlistItem {
-  font-size: .95rem;
+  font-size: 0.95rem;
   line-height: 27px;
   padding: 0 1rem;
 }
@@ -31,7 +31,7 @@
   color: #2a2b40;
 }
 
-.navlogoItems{
+.navlogoItems {
   position: absolute;
   margin-right: "3rem";
 }
@@ -39,4 +39,13 @@
 .icon {
   margin-right: 8px;
   color: #2a2b40;
+}
+
+.navSidebar {
+  height: inherit;
+  width: 0px;
+  border-right-width: 5px;
+  border-right-style: solid;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }

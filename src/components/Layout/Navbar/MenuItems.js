@@ -13,13 +13,28 @@ import { ArrowRight } from "@mui/icons-material";
 import { display, fontSize } from "@mui/system";
 import { BsCircleFill } from "react-icons/bs";
 
+import { styled } from "@mui/material/styles";
+import styles from "./styles.module.css";
+
+const NavSideBar = styled(Box)(({ theme }) => ({
+  height: "inherit",
+  borderRightWidth: ".25rem",
+  borderRightStyle: "solid",
+  borderTopRightRadius: "10px",
+  borderBottomRightRadius: "10px",
+  marginRight: ".75rem",
+  "&:hover": {
+    borderColor: theme.palette.primary.light,
+  },
+}));
+
 const RootNavItem = (props) => (
   <Typography
     {...props}
     sx={{
       ...props.sx,
       fontSize: ".9rem",
-      fontWeight: 600
+      fontWeight: 600,
     }}
   />
 );
@@ -32,6 +47,7 @@ const ChildNavItem = (props) => (
 );
 
 export default function MenuItems({ isLoggedin }) {
+  const [selectedNavItem, setSelectedNavItem] = React.useState("My Policies");
   return (
     <React.Fragment>
       <List>
@@ -39,7 +55,24 @@ export default function MenuItems({ isLoggedin }) {
           ? ["My Policies", "My Documents", "My Quotes"].map((item, i) => (
               <React.Fragment key={i}>
                 <ListItem sx={{ py: 0, px: 2 }}>
-                  <ListItemButton sx={{ py: 1.5, borderRadius: "4px" }}>
+                  <ListItemButton
+                    onClick={() => setSelectedNavItem(item)}
+                    sx={{
+                      py: 1.5,
+                      px: 0,
+                      color: "primary.main",
+                      borderRadius: "4px",
+                      height: "48px",
+                    }}
+                  >
+                    <NavSideBar
+                      sx={{
+                        borderColor:
+                          selectedNavItem === item
+                            ? "primary.main"
+                            : "transparent",
+                      }}
+                    ></NavSideBar>
                     <RootNavItem>{item}</RootNavItem>
                   </ListItemButton>
                 </ListItem>
@@ -47,32 +80,57 @@ export default function MenuItems({ isLoggedin }) {
             ))
           : null}
 
-        {navdata.map((item) => {
-          return <Navigation item={item} key={item.id} />;
-        })}
+        {navdata.map((item) => (
+          <Navigation
+            item={item}
+            key={item.id}
+            selectedNavItem={selectedNavItem}
+            setSelectedNavItem={setSelectedNavItem}
+          />
+        ))}
       </List>
     </React.Fragment>
   );
 }
 
-const Navigation = ({ item }) => {
+const Navigation = ({ item, selectedNavItem, setSelectedNavItem }) => {
   const [showChildren, setShowChildren] = React.useState(false);
   const rootItem = item.depth === 0;
+
+  const handleItemButtonClick = () => {
+    setShowChildren(!showChildren);
+    if (rootItem) {
+      setSelectedNavItem(item.category);
+    }
+  };
 
   return (
     <React.Fragment>
       <ListItem sx={{ px: 2, py: 0 }}>
         <ListItemButton
-          onClick={() => setShowChildren(!showChildren)}
+          onClick={handleItemButtonClick}
           sx={{
             py: 1.5,
+            px: 0,
+            height: "48px",
             borderRadius: "4px",
-            display: "flex",
-            justifyContent: "space-between",
+            color: "primary.main",
           }}
         >
-          <div style={{ display: "flex" }}>
-            {!rootItem ? (
+          {rootItem ? (
+            <>
+              <NavSideBar
+                sx={{
+                  borderColor:
+                    selectedNavItem === item.category
+                      ? "primary.main"
+                      : "transparent",
+                }}
+              ></NavSideBar>
+              <RootNavItem>{item.category}</RootNavItem>
+            </>
+          ) : (
+            <div style={{ display: "flex", marginLeft: "2rem" }}>
               <Box sx={{ mr: ".5rem", color: "text.secondary" }}>
                 {item.icon ? (
                   item.icon
@@ -82,19 +140,15 @@ const Navigation = ({ item }) => {
                   />
                 )}
               </Box>
-            ) : null}
-
-            {rootItem ? (
-              <RootNavItem>{item.category}</RootNavItem>
-            ) : (
               <ChildNavItem>{item.category}</ChildNavItem>
-            )}
-          </div>
+            </div>
+          )}
 
           {item.subcat ? (
             <ArrowForwardIosIcon
               sx={{
                 p: "6px",
+                color: "#2a2b40",
                 transform: !showChildren ? "rotate(0deg)" : "rotate(90deg)",
               }}
             />
