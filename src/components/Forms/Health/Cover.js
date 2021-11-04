@@ -38,11 +38,11 @@ function Cover() {
     <div style={{ marginTop: "4%" }}>
       {/* Model Selection */}
       <form style={{ textAlignLast: "left", marginBottom: "6%" }}>
-        <br />
+     
         <Grid container style={{ display: "" }}>
           <Grid md={6}>
             <label for="html">Who is the cover for?</label>
-            <br /> <br />
+           
             {["Personal", "Business"].map((elem, i) => (
               <Button
                 sx={{ mr: 1, fontSize: ".8rem", py: 0.5, my: 0.5 }}
@@ -64,7 +64,7 @@ function Cover() {
           </Grid>
           <Grid md={6}>
             <label for="html">Who is the cover for?</label>
-            <br /> <br />
+           
             {["One Person", "Couple", "Family", "Group"].map((elem, i) => (
               <Button
                 sx={{ mr: 1, fontSize: ".8rem", py: 0.5, my: 0.5 }}
