@@ -15,7 +15,7 @@ const ImageBox = styled("div")(({ theme }) => ({
   width: "300px",
   height: "150px",
   margin: "0 auto",
-  padding: theme.spacing(4),
+  padding: theme.spacing(3),
 }));
 
 function SubCard({ insurance }) {
@@ -36,7 +36,7 @@ function SubCard({ insurance }) {
       </Typography>
       <ImageBox>
         <img
-          style={{ width: "100%", height: "100%" }}
+          style={{ width: "100%", height: "100%", objectFit: "contain" }}
           src={insurance.image}
           alt=""
         />
