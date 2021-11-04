@@ -91,7 +91,8 @@ function Cover() {
             {/* <br /> <br /> */}
             {["Male", "Female"].map((elem, i) => (
               <Button
-                style={{ margin: "0px 5px" }}
+                sx={{ mr: 1, fontSize: ".8rem", py: 0.5 }}
+                // style={{ margin: "0px 5px" }}
                 key={i}
                 variant="round"
                 color={elem === model ? "primary" : "text"}
@@ -114,7 +115,7 @@ function Cover() {
             <br /> */}
             {["Yes", "No"].map((elem, i) => (
               <Button
-                style={{ margin: "0px 5px" }}
+                sx={{ mr: 1, fontSize: ".8rem", py: 0.5 }}
                 key={i}
                 variant="round"
                 color={elem === model ? "primary" : "text"}
@@ -137,7 +138,7 @@ function Cover() {
             <br /> */}
             {["Salaired", "Self Employment"].map((elem, i) => (
               <Button
-                style={{ margin: "0px 5px" }}
+                sx={{ mr: 1, fontSize: ".8rem", py: 0.5 }}
                 key={i}
                 variant="round"
                 color={elem === model ? "primary" : "text"}

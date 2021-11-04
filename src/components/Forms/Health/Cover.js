@@ -45,7 +45,7 @@ function Cover() {
             <br /> <br />
             {["Personal", "Business"].map((elem, i) => (
               <Button
-                style={{ margin: "0px 5px" }}
+                sx={{ mr: 1, fontSize: ".8rem", py: 0.5, my: 0.5 }}
                 key={i}
                 variant="round"
                 color={elem === model ? "primary" : "text"}
@@ -67,7 +67,7 @@ function Cover() {
             <br /> <br />
             {["One Person", "Couple", "Family", "Group"].map((elem, i) => (
               <Button
-                style={{ margin: "0px 4px" }}
+                sx={{ mr: 1, fontSize: ".8rem", py: 0.5, my: 0.5 }}
                 key={i}
                 variant="round"
                 color={elem === model ? "primary" : "text"}

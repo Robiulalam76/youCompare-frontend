@@ -43,7 +43,7 @@ function Insurance() {
         <Grid container style={{ display: "" }}>
           <Grid md={4} style={{ padding: "0% 3%" }}>
             <label for="html">Full Name </label>
-           
+
             <TextField
               placeholder="John Doe"
               type="text"
@@ -90,33 +90,31 @@ function Insurance() {
               type="text"
               size="small"
               name="brand"
-              //   value={brand}
-              //   onChange={handleChange}
             />
           </Grid>
           <Grid md={4} style={{ padding: "0% 3%" }}>
-            <InputBox label="Marital Status" style={{ width: "100%" }}>
-              <Autocomplete
-                options={["Married", "Single", "Diverced"]}
-                // onChange={(e, value) => setMaritalStatus(value)}
-                renderOption={(props, option) => (
-                  <Typography {...props} variant="body2" color="text.secondary">
-                    {option}
-                  </Typography>
-                )}
-                // sx={{ mb: 0.75 }}
-                renderInput={(params) => (
-                  <TextField
-                    {...params}
-                    placeholder="Select Gender"
-                    inputProps={{
-                      ...params.inputProps,
-                      autoComplete: "new-password", // disable autocomplete and autofill
-                    }}
-                  />
-                )}
-              />
-            </InputBox>
+            <label for="html">Marital Status</label>
+            <Autocomplete
+              options={["Married", "Single", "Diverced"]}
+              autoSelect={true}
+              // onChange={(e, value) => setMaritalStatus(value)}
+              renderOption={(props, option) => (
+                <Typography {...props} variant="body2" color="text.secondary">
+                  {option}
+                </Typography>
+              )}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  size="small"
+                  placeholder="Select Gender"
+                  inputProps={{
+                    ...params.inputProps,
+                    autoComplete: "new-password", // disable autocomplete and autofill
+                  }}
+                />
+              )}
+            />
           </Grid>
         </Grid>
       </form>
