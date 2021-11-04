@@ -34,10 +34,10 @@ import { ImProfile } from "react-icons/im";
 const BrandLogoBox = styled(Box)(({ theme }) => ({
   width: "200px",
   height: "auto",
-  [theme.breakpoints.up('md')]:{
-    width: "250px"
-  }
-}))
+  [theme.breakpoints.up("md")]: {
+    width: "250px",
+  },
+}));
 
 const UserLogo = ({ size }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -118,15 +118,26 @@ export default function Navbar() {
     setMenuOpen(open);
   };
 
-  var prevScrollPos = window.scrollY;
+  var prevPos = window.scrollY;
   const handleScroll = () => {
-    window.scrollY > 100 ? setNavbarElevation(true) : setNavbarElevation(false);
-    var currentScrollPos = window.scrollY;
+    if (window.scrollY > 100) {
+      setNavbarElevation(true);
+      setShowTopBar(false);
+    } else {
+      setShowTopBar(true);
+      setNavbarElevation(false);
+    }
 
-    prevScrollPos > currentScrollPos
-      ? setShowTopBar(true)
-      : setShowTopBar(false);
-    prevScrollPos = currentScrollPos;
+    let currentPos = window.scrollY;
+    let navbar = document.getElementById("navbar");
+    let navHeight = navbar.clientHeight;
+
+    if (prevPos > currentPos) {
+      navbar.style.top = "0px";
+    } else if (currentPos > 200) {
+      navbar.style.top = `-${navHeight}px`;
+    }
+    prevPos = currentPos;
   };
 
   React.useEffect(() => {
@@ -137,80 +148,82 @@ export default function Navbar() {
   });
 
   return (
-    <AppBar color="inherit" elevation={navbarElevation ? 2 : 0}>
-      <Hidden mdDown>{showTopBar ? <TopBar /> : null}</Hidden>
-      <Toolbar>
-        <Container className={styles.text}>
-          <div className={styles.navbar}>
-            <BrandLogoSection setMenuOpen={setMenuOpen} />
-            <ul className={styles.navlist}>
-              <Hidden mdDown>
-                {["Products", "Get a Quote"].map((elem, i) => (
-                  <li key={i} className={styles.navlistItem}>
-                    {elem}
-                  </li>
-                ))}
-                {isLoggedin
-                  ? ["My Documents", "My Policies"].map((elem, i) => (
-                      <li key={i} className={styles.navlistItem}>
-                        {elem}
-                      </li>
-                    ))
-                  : null}
-              </Hidden>
-              {isLoggedin ? (
-                <li>
-                  <UserLogo size="small" />
-                </li>
-              ) : (
-                <li>
-                  <Button
-                    variant="contained"
-                    onClick={() => setIsLoggedin(true)}
-                  >
-                    Login
-                  </Button>
-                </li>
-              )}
-            </ul>
-          </div>
-        </Container>
-      </Toolbar>
-
-      {/** Drawer, displayed on small screen */}
-      <Hidden mdUp>
-        <Drawer open={menuOpen} onClose={toggleMenuVisibility(false)}>
-          <div style={{ minWidth: "350px" }}>
-            <Box sx={{ px: 2, py: 1 }}>
-              {/** Brand Logo */}
-              <BrandLogoSectionMobile setMenuOpen={setMenuOpen} />
-
-              {/** Login Button or Profile Logo */}
-              <Box sx={{ mt: 2 }}>
-                {!isLoggedin ? (
-                  <Button
-                    fullWidth
-                    variant="contained"
-                    onClick={() => setIsLoggedin(true)}
-                  >
-                    Login
-                  </Button>
-                ) : (
-                  <div style={{ display: "flex", alignItems: "center" }}>
+    <React.Fragment>
+      <AppBar color="inherit" elevation={navbarElevation ? 2 : 0} id="navbar">
+        <Hidden mdDown>{showTopBar ? <TopBar /> : null}</Hidden>
+        <Toolbar>
+          <Container className={styles.text}>
+            <div className={styles.navbar}>
+              <BrandLogoSection setMenuOpen={setMenuOpen} />
+              <ul className={styles.navlist}>
+                <Hidden mdDown>
+                  {["Products", "Get a Quote"].map((elem, i) => (
+                    <li key={i} className={styles.navlistItem}>
+                      {elem}
+                    </li>
+                  ))}
+                  {isLoggedin
+                    ? ["My Documents", "My Policies"].map((elem, i) => (
+                        <li key={i} className={styles.navlistItem}>
+                          {elem}
+                        </li>
+                      ))
+                    : null}
+                </Hidden>
+                {isLoggedin ? (
+                  <li>
                     <UserLogo size="small" />
-                    <Typography sx={{ px: 2, fontSize: "20px" }}>
-                      Jane Doe
-                    </Typography>
-                  </div>
+                  </li>
+                ) : (
+                  <li>
+                    <Button
+                      variant="contained"
+                      onClick={() => setIsLoggedin(true)}
+                    >
+                      Login
+                    </Button>
+                  </li>
                 )}
+              </ul>
+            </div>
+          </Container>
+        </Toolbar>
+
+        {/** Drawer, displayed on small screen */}
+        <Hidden mdUp>
+          <Drawer open={menuOpen} onClose={toggleMenuVisibility(false)}>
+            <div style={{ minWidth: "350px" }}>
+              <Box sx={{ px: 2, py: 1 }}>
+                {/** Brand Logo */}
+                <BrandLogoSectionMobile setMenuOpen={setMenuOpen} />
+
+                {/** Login Button or Profile Logo */}
+                <Box sx={{ mt: 2 }}>
+                  {!isLoggedin ? (
+                    <Button
+                      fullWidth
+                      variant="contained"
+                      onClick={() => setIsLoggedin(true)}
+                    >
+                      Login
+                    </Button>
+                  ) : (
+                    <div style={{ display: "flex", alignItems: "center" }}>
+                      <UserLogo size="small" />
+                      <Typography sx={{ px: 2, fontSize: "20px" }}>
+                        Jane Doe
+                      </Typography>
+                    </div>
+                  )}
+                </Box>
               </Box>
-            </Box>
-            {/** Navigation Menu Items */}
-            <MenuItems isLoggedin={isLoggedin} />
-          </div>
-        </Drawer>
-      </Hidden>
-    </AppBar>
+              {/** Navigation Menu Items */}
+              <MenuItems isLoggedin={isLoggedin} />
+            </div>
+          </Drawer>
+        </Hidden>
+      </AppBar>
+    </React.Fragment>
   );
 }
 
@@ -230,7 +243,7 @@ const BrandLogoSectionMobile = ({ setMenuOpen }) => {
         edge="end"
         color="inherit"
         aria-label="menu-close"
-        onClick={() => setMenuOpen(false)}
+        onClick={(menuOpen) => setMenuOpen(false)}
       >
         <CloseOutlinedIcon />
       </IconButton>

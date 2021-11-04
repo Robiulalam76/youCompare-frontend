@@ -1,17 +1,15 @@
-import React from 'react'
-import Navbar from './Navbar'
-import Footer from './Footer'
+import React from "react";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 
-import { Container } from '@mui/material'
+import { Container } from "@mui/material";
 
 export default function MinimalLayout({ children }) {
   return (
     <React.Fragment>
-      <Container>
-        <Navbar />
-        {children}
-      </Container>
+      <Navbar />
+      <Container sx={{ mt: "20vh" }}>{children}</Container>
       <Footer />
     </React.Fragment>
-  )
+  );
 }
