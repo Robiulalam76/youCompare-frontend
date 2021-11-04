@@ -1,5 +1,12 @@
 import React from "react";
-import { Grid, Button, Input, Autocomplete, Typography } from "@mui/material";
+import {
+  Grid,
+  Button,
+  Input,
+  Autocomplete,
+  Typography,
+  Stack,
+} from "@mui/material";
 import { TextField, Box } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import { FIELD_CHANGE } from "../../../constants/autoCompare.constant";
@@ -38,89 +45,95 @@ function Insurance() {
   return (
     <div style={{ marginTop: "4%" }}>
       {/* Model Selection */}
-      <form style={{ textAlignLast: "left", marginBottom: "6%" }}>
-        <br />
-        <Grid container style={{ display: "" }}>
-          <Grid md={4} style={{ padding: "0% 3%" }}>
-            <label for="html">Full Name </label>
-
-            <TextField
-              placeholder="John Doe"
-              type="text"
-              size="small"
-              name="brand"
-              //   value={brand}
-              //   onChange={handleChange}
-            />
+      <Grid container spacing={2}>
+        <Grid item container spacing={2}>
+          <Grid item md={4}>
+            {/* <label for="html">Full Name </label> */}
+            <InputBox label="Full Name ">
+              <TextField
+                placeholder="John Doe"
+                type="text"
+                size="small"
+                name="brand"
+                //   value={brand}
+                //   onChange={handleChange}
+              />
+            </InputBox>
           </Grid>
-          <Grid md={4} style={{ padding: "0% 3%" }}>
-            <label for="html">Email ID</label>
-
-            <TextField
-              placeholder="john@domain.com"
-              type="text"
-              size="small"
-              name="brand"
-              //   value={brand}
-              //   onChange={handleChange}
-            />
+          <Grid item md={4}>
+            {/* <label for="html">Email ID</label> */}
+            <InputBox label="Email ID">
+              <TextField
+                placeholder="john@domain.com"
+                type="text"
+                size="small"
+                name="brand"
+                //   value={brand}
+                //   onChange={handleChange}
+              />
+            </InputBox>
           </Grid>
-          <Grid md={4} style={{ padding: "0% 3%" }}>
-            <label for="html">Mobile</label>
-
-            <TextField
-              type="text"
-              size="small"
-              name="brand"
-              placeholder="94092300293"
-              //   value={brand}
-              //   onChange={handleChange}
-            />
-          </Grid>
-        </Grid>
-      </form>
-
-      {/* Year Selection */}
-      <form>
-        <Grid container style={{ display: "" }}>
-          <Grid md={4} style={{ padding: "0% 3%" }}>
-            <label for="html">Age</label>
-
-            <TextField
-              type="text"
-              size="small"
-              name="brand"
-              placeholder="Age"
-              //   value={brand}
-              //   onChange={handleChange}
-            />
-          </Grid>
-          <Grid md={4} style={{ padding: "0% 3%" }}>
-            <label for="html">Age</label>
-            <Autocomplete
-              options={["Married", "Single", "Diverced"]}
-              // onChange={(e, value) => setMaritalStatus(value)}
-              renderOption={(props, option) => (
-                <Typography {...props} variant="body2" color="text.secondary">
-                  {option}
-                </Typography>
-              )}
-              // sx={{ mb: 0.75 }}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  size="small"
-                  placeholder="Select Gender"
-                  inputProps={{
-                    ...params.inputProps,
-                    autoComplete: "new-password", // disable autocomplete and autofill
-                  }}
-                />
-              )}
-            />
+          <Grid item md={4}>
+            {/* <label for="html">Mobile</label> */}
+            <InputBox label="Mobile">
+              <TextField
+                type="text"
+                size="small"
+                name="brand"
+                placeholder="94092300293"
+                //   value={brand}
+                //   onChange={handleChange}
+              />
+            </InputBox>
           </Grid>
         </Grid>
-      </form>
+
+        <Grid item container spacing={2}>
+          <Grid item md={4}>
+            {/* <label for="html">Age</label> */}
+            <InputBox label="Age">
+              <TextField
+                fullWidth
+                type="text"
+                size="small"
+                name="brand"
+                placeholder="Age"
+                //   value={brand}
+                //   onChange={handleChange}
+              />
+            </InputBox>
+          </Grid>
+          <Grid item md={4}>
+            {/* <label for="html">Gender</label> */}
+            <InputBox label="Gender">
+              {/* <div> */}
+              <Autocomplete
+                fullWidth
+                options={["Married", "Single", "Diverced"]}
+                // onChange={(e, value) => setMaritalStatus(value)}
+                renderOption={(props, option) => (
+                  <Typography {...props} variant="body2" color="text.secondary">
+                    {option}
+                  </Typography>
+                )}
+                // sx={{ mb: 0.75 }}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    size="small"
+                    placeholder="Select Gender"
+                    inputProps={{
+                      ...params.inputProps,
+                      autoComplete: "new-password", // disable autocomplete and autofill
+                    }}
+                  />
+                )}
+              />
+              {/* </div> */}
+            </InputBox>
+          </Grid>
+        </Grid>
+      </Grid>
     </div>
   );
 }

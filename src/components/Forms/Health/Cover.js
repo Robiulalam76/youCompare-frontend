@@ -38,51 +38,52 @@ function Cover() {
     <div style={{ marginTop: "4%" }}>
       {/* Model Selection */}
       <form style={{ textAlignLast: "left", marginBottom: "6%" }}>
-     
         <Grid container style={{ display: "" }}>
-          <Grid md={6}>
+          <Grid md={12}>
             <label for="html">Who is the cover for?</label>
-           
-            {["Personal", "Business"].map((elem, i) => (
-              <Button
-                sx={{ mr: 1, fontSize: ".8rem", py: 0.5, my: 0.5 }}
-                key={i}
-                variant="round"
-                color={elem === model ? "primary" : "text"}
-                name="model"
-                value={elem}
-                onClick={() =>
-                  dispatch({
-                    type: FIELD_CHANGE,
-                    payload: { field: "model", value: elem },
-                  })
-                }
-              >
-                {elem}
-              </Button>
-            ))}
+            <div>
+              {["Personal", "Business"].map((elem, i) => (
+                <Button
+                  sx={{ mr: 1, fontSize: ".8rem", py: 0.5, my: 0.5 }}
+                  key={i}
+                  variant="round"
+                  color={elem === model ? "primary" : "text"}
+                  name="model"
+                  value={elem}
+                  onClick={() =>
+                    dispatch({
+                      type: FIELD_CHANGE,
+                      payload: { field: "model", value: elem },
+                    })
+                  }
+                >
+                  {elem}
+                </Button>
+              ))}
+            </div>
           </Grid>
-          <Grid md={6}>
+          <Grid md={12}>
             <label for="html">Who is the cover for?</label>
-           
-            {["One Person", "Couple", "Family", "Group"].map((elem, i) => (
-              <Button
-                sx={{ mr: 1, fontSize: ".8rem", py: 0.5, my: 0.5 }}
-                key={i}
-                variant="round"
-                color={elem === model ? "primary" : "text"}
-                name="model"
-                value={elem}
-                onClick={() =>
-                  dispatch({
-                    type: FIELD_CHANGE,
-                    payload: { field: "model", value: elem },
-                  })
-                }
-              >
-                {elem}
-              </Button>
-            ))}
+            <div style={{ textAlign: "left" }}>
+              {["One Person", "Couple", "Family", "Group"].map((elem, i) => (
+                <Button
+                  sx={{ mr: 1, fontSize: ".8rem", py: 0.5, my: 0.5 }}
+                  key={i}
+                  variant="round"
+                  color={elem === model ? "primary" : "text"}
+                  name="model"
+                  value={elem}
+                  onClick={() =>
+                    dispatch({
+                      type: FIELD_CHANGE,
+                      payload: { field: "model", value: elem },
+                    })
+                  }
+                >
+                  {elem}
+                </Button>
+              ))}
+            </div>
           </Grid>
         </Grid>
       </form>

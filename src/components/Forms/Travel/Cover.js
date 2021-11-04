@@ -1,9 +1,13 @@
 import React from "react";
-import { Grid, Button, Input, Autocomplete, Typography } from "@mui/material";
-import { TextField, Box } from "@mui/material";
+import { Grid, Button, Input, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import { FIELD_CHANGE } from "../../../constants/autoCompare.constant";
 import InputBox from "../../customStyledComponents/InputBox";
+import {
+  CustomTextField as TextField,
+  CustomAutocomplete as Autocomplete,
+} from "../../../components/customStyledComponents/inputs";
 // import { FIELD_CHANGE } from "../../constants/autoCompare.constant";
 
 function Cover() {
@@ -43,48 +47,50 @@ function Cover() {
         <Grid container style={{ display: "" }}>
           <Grid xl={6} lg={6} md={5} sm={5} xs={4}>
             <label for="html">Gender</label>
-            <br />
 
-            {["Male", "Female"].map((elem, i) => (
-              <Button
-                sx={{ mr: 1, fontSize: ".8rem", py: 0.5 }}
-                key={i}
-                variant="round"
-                color={elem === model ? "primary" : "text"}
-                name="model"
-                value={elem}
-                onClick={() =>
-                  dispatch({
-                    type: FIELD_CHANGE,
-                    payload: { field: "model", value: elem },
-                  })
-                }
-              >
-                {elem}
-              </Button>
-            ))}
+            <div>
+              {["Male", "Female"].map((elem, i) => (
+                <Button
+                  sx={{ mr: 1, fontSize: ".8rem", py: 0.5 }}
+                  key={i}
+                  variant="round"
+                  color={elem === model ? "primary" : "text"}
+                  name="model"
+                  value={elem}
+                  onClick={() =>
+                    dispatch({
+                      type: FIELD_CHANGE,
+                      payload: { field: "model", value: elem },
+                    })
+                  }
+                >
+                  {elem}
+                </Button>
+              ))}
+            </div>
           </Grid>
           <Grid xl={6} lg={6} md={7} sm={7} xs={8}>
             <label for="html">How many people are Travelling</label>
-            <br />
-            {["One", "Couple", "Family", "Group"].map((elem, i) => (
-              <Button
-                sx={{ mr: 1, fontSize: ".8rem", py: 0.5, my: 0.5 }}
-                key={i}
-                variant="round"
-                color={elem === model ? "primary" : "text"}
-                name="model"
-                value={elem}
-                onClick={() =>
-                  dispatch({
-                    type: FIELD_CHANGE,
-                    payload: { field: "model", value: elem },
-                  })
-                }
-              >
-                {elem}
-              </Button>
-            ))}
+            <div style={{ textAlign: "left" }}>
+              {["One", "Couple", "Family", "Group"].map((elem, i) => (
+                <Button
+                  sx={{ mr: 1, fontSize: ".8rem", py: 0.5, my: 0.5 }}
+                  key={i}
+                  variant="round"
+                  color={elem === model ? "primary" : "text"}
+                  name="model"
+                  value={elem}
+                  onClick={() =>
+                    dispatch({
+                      type: FIELD_CHANGE,
+                      payload: { field: "model", value: elem },
+                    })
+                  }
+                >
+                  {elem}
+                </Button>
+              ))}
+            </div>
           </Grid>
         </Grid>
       </form>
@@ -93,6 +99,7 @@ function Cover() {
         <Grid container style={{ display: "" }}>
           <Grid md={4} style={{ padding: "0% 3%" }}>
             <label for="html">Full Name </label>
+            <br />
             <TextField
               placeholder="John Doe"
               type="text"
@@ -121,6 +128,7 @@ function Cover() {
                   placeholder="Condition"
                   inputProps={{
                     ...params.inputProps,
+                    style: { padding: "0.2rem 1rem" },
                     autoComplete: "new-password", // disable autocomplete and autofill
                   }}
                 />
@@ -128,7 +136,8 @@ function Cover() {
             />
           </Grid>
           <Grid md={4} style={{ padding: "0% 3%" }}>
-            <label for="html">Marital Statu </label>
+            <label for="html">Marital Status </label>
+
             <Autocomplete
               options={["Married", "Single", "Diverced"]}
               // onChange={(e, value) => setMaritalStatus(value)}
@@ -145,6 +154,7 @@ function Cover() {
                   placeholder="Select Gender"
                   inputProps={{
                     ...params.inputProps,
+                    // style: { padding: "0.2rem 1rem" },
                     autoComplete: "new-password", // disable autocomplete and autofill
                   }}
                 />

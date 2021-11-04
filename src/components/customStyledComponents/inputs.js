@@ -1,8 +1,8 @@
-import { Autocomplete, TextField } from "@mui/material"
-import { styled } from "@mui/system"
+import { Autocomplete, TextField } from "@mui/material";
+import { styled } from "@mui/system";
 
 export const CustomTextField = styled(TextField)(({ theme }) => ({
-  '& .MuiInputBase-input': {
+  "& .MuiInputBase-input": {
     padding: ".75rem 1rem",
     fontSize: ".85rem",
     color: theme.palette.text.primary,
@@ -10,19 +10,39 @@ export const CustomTextField = styled(TextField)(({ theme }) => ({
     fontFamily: "Poppins",
     lineHeight: "25px",
   },
-  '& .MuiOutlinedInput-root': {
-    '&:hover fieldset': {
+  "& .MuiOutlinedInput-root": {
+    "&:hover fieldset": {
       borderColor: theme.palette.text.secondary,
     },
-    '&.Mui-focused fieldset': {
+    "&.Mui-focused fieldset": {
       borderWidth: "1px",
-      borderColor: theme.palette.primary.main
+      borderColor: theme.palette.primary.main,
     },
   },
-}))
+}));
+
+export const CustomTextFieldStepper = styled(TextField)(({ theme }) => ({
+  "& .MuiInputBase-input": {
+    padding: ".5rem 1rem",
+    fontSize: ".85rem",
+    color: theme.palette.text.primary,
+    fontWeight: "normal",
+    fontFamily: "Poppins",
+    lineHeight: "25px",
+  },
+  "& .MuiOutlinedInput-root": {
+    "&:hover fieldset": {
+      borderColor: theme.palette.text.secondary,
+    },
+    "&.Mui-focused fieldset": {
+      borderWidth: "1px",
+      borderColor: theme.palette.primary.main,
+    },
+  },
+}));
 
 export const CustomAutocomplete = styled(Autocomplete)(() => ({
   "& .MuiAutocomplete-inputRoot": {
-    padding: "0px"
-  }
-}))
+    padding: "0px",
+  },
+}));
