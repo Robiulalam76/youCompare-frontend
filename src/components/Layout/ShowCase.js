@@ -52,8 +52,8 @@ export default function Showcase() {
       {/* logo's of sponsore */}
       <Grid
         style={{
-          marginTop: "4%",
-          padding: "0px 5%",
+          margin: "7% 0% 4% 0%",
+          padding: "0px 1%",
           display: "flex",
           justifyContent: "center",
           alignItems: "cente",
@@ -118,7 +118,9 @@ export default function Showcase() {
                 />
               </div>
               <h3>{step.title}</h3>
-              <p style={{ padding: "2% 10%" }}>{step.description}</p>
+              <p className="ThirdHeaderPera" style={{ padding: "2% 10%" }}>
+                {step.description}
+              </p>
             </Grid>
           ))}
         </Grid>
@@ -127,7 +129,7 @@ export default function Showcase() {
       {/* Community Section */}
       <div className="p5" style={community}>
         <b className="SecondHeaderTitle">1000+ people believed in us.</b>
-        <p style={{ padding: "2% 18%" }}>
+        <p className="ThirdHeaderPera" style={{ padding: "2% 18%" }}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
           finibus sapien lorem, molestie dictum urna accumsan sit amet.
         </p>
@@ -138,21 +140,23 @@ export default function Showcase() {
         <Grid
           lg={6}
           xl={6}
-          md={12}
-          sm={12}
+          md={6}
+          sm={6}
           xs={12}
           className="animate__animated animate__bounce animate__bounceInLeft"
           style={getApp}
           className="responsiceMiddle"
         >
           <h5 className="appHeader">Get the</h5>
-          <p className="appHeader">youcompare app</p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
+          <h5 style={{ marginBottom: "4%" }} className="appHeader">
+            youcompare app
+          </h5>
+          <p className="ThirdHeaderPera">
+            Lorem ipsum dolor sit amet, a consectetur adipiscing elit. Maecenas
             finibus sapien lorem, molestie dictum urna accumsan sit amet.
           </p>
         </Grid>
-        <Grid lg={6} md={12} xl={6} sm={12} xs={12} style={{ width: "50%" }}>
+        <Grid lg={6} md={6} xl={6} sm={6} xs={12} style={{ width: "50%" }}>
           <img className="SubAuto appImage" src={store} alt="" />
         </Grid>
       </Grid>

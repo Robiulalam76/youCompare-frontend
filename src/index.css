@@ -29,7 +29,7 @@ a {
     font-size: 70px;
   }
   .SubAuto {
-    margin-top: 10%;
+    /* margin-top: 10%; */
   }
   .responsiceMiddle {
     margin: 0 auto;
@@ -70,7 +70,7 @@ a {
     margin-top: "1%";
   }
   .SubAuto {
-    margin-top: 10%;
+    /* margin-top: 10%; */
   }
   .responsiceMiddle {
     margin: 0 auto;
@@ -94,10 +94,14 @@ a {
     margin: 0px;
   }
   .appHeader {
-    font-size: 40px;
+    font-size: 210%;
     font-weight: bold;
     margin: 0;
-    /* text-align: center; */
+    line-height: 100%;
+  }
+  .ThirdHeaderPera {
+    padding: 0% 10% 0% 0%;
+    width: 90%;
   }
 }
 
@@ -110,7 +114,7 @@ a {
     margin-top: "2%";
   }
   .SubAuto {
-    margin-top: 10%;
+    /* margin-top: 10%; */
   }
   .responsiceMiddle {
     margin: 0 auto;
@@ -134,9 +138,14 @@ a {
     margin: 0px;
   }
   .appHeader {
-    font-size: 40px;
-    text-align: center;
+    font-size: 180%;
     font-weight: bold;
+    padding: 0% 10% 0% 0%;
+    line-height: 100%;
+  }
+  .ThirdHeaderPera {
+    padding: 0% 10% 0% 0%;
+    width: 90%;
   }
   /* .appImage {
     display: none;
@@ -164,12 +173,14 @@ a {
     margin: 0px;
   }
   .appHeader {
-    font-size: 40px;
+    font-size: 150%;
+    line-height: 35px;
     font-weight: bold;
-    text-align: center;
+    /* text-align: center; */
   }
-  .appImage {
-    display: none;
+  .ThirdHeaderPera {
+    font-size: 80%;
+    width: 90%;
   }
 }
 
@@ -177,13 +188,19 @@ a {
   .SecondHeaderTitle {
     font-size: 28px;
   }
+  .ThirdHeaderPera {
+    font-size: 14px;
+    text-align: center;
+    width: 100%;
+    padding: 0% 2%;
+  }
   .insuranceCardMT {
     margin-top: "1%";
   }
   .BannerHeader {
-    font-size: 18px;
+    font-size: 28px;
     margin-bottom: 5%;
-    line-height: 40px;
+    line-height: 30px;
   }
   .BannerPera {
     font-size: 12px;
@@ -197,15 +214,27 @@ a {
     font-size: 25px;
     font-weight: bold;
     text-align: center;
+    line-height: 25px;
   }
   .appImage {
     display: none;
   }
+  .step {
+    margin-top: 8% !important;
+  }
+  .step:first-child {
+    margin-top: 0% !important;
+  }
 }
 @media only screen and (max-width: 425px) {
   .SecondHeaderTitle {
-    font-size: 20px;
+    font-size: 18px;
   }
+  .ThirdHeaderPera {
+    font-size: 12px;
+    width: 100%;
+  }
+
   .insuranceCardMT {
     margin-top: "1%";
   }
@@ -234,6 +263,6 @@ a {
 
 @media (min-width: 885px) and (max-width: 1280px) {
   .appImage {
-    display: none;
+    /* display: none; */
   }
 }
