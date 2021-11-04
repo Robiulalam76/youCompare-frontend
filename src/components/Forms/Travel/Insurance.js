@@ -41,10 +41,10 @@ function Insurance() {
         <Grid container style={{ display: "" }}>
           <Grid md={5} style={{ padding: "0% 3%" }}>
             <label for="html">Destination</label>
-
+            <br />
             {["Local", "International"].map((elem, i) => (
               <Button
-                style={{ margin: "0px 5px" }}
+                sx={{ mr: 1, fontSize: ".8rem", py: 0.5, my: 0.5 }}
                 key={i}
                 variant="round"
                 color={elem === model ? "primary" : "text"}
@@ -63,10 +63,10 @@ function Insurance() {
           </Grid>
           <Grid md={7} style={{ padding: "0% 3%" }}>
             <label for="html">Mode of Transport</label>
-
+            <br />
             {["Car", "Airplane", "Train", "Bus"].map((elem, i) => (
               <Button
-                style={{ margin: "0px 5px" }}
+                sx={{ mr: 1, fontSize: ".8rem", py: 0.5, my: 0.5 }}
                 key={i}
                 variant="round"
                 color={elem === model ? "primary" : "text"}
@@ -89,32 +89,33 @@ function Insurance() {
       <form style={{ textAlignLast: "left", marginBottom: "6%" }}>
         <Grid container style={{ display: "" }}>
           <Grid md={4} style={{ padding: "0% 3%" }}>
-            <InputBox label="Location" style={{ width: "100%" }}>
-              <Autocomplete
-                options={["Dhaka", "Mirpur", "Savar", "Gazipur", , "Banani"]}
-                // onChange={(e, value) => setMaritalStatus(value)}
-                renderOption={(props, option) => (
-                  <Typography {...props} variant="body2" color="text.secondary">
-                    {option}
-                  </Typography>
-                )}
-                // sx={{ mb: 0.75 }}
-                renderInput={(params) => (
-                  <TextField
-                    {...params}
-                    placeholder="Select Location"
-                    inputProps={{
-                      ...params.inputProps,
-                      autoComplete: "new-password", // disable autocomplete and autofill
-                    }}
-                  />
-                )}
-              />
-            </InputBox>
+            {/* <InputBox label="Location" style={{ width: "100%" }}> */}
+            <label for="html">Location </label>
+            <Autocomplete
+              options={["Dhaka", "Mirpur", "Savar", "Gazipur", , "Banani"]}
+              // onChange={(e, value) => setMaritalStatus(value)}
+              renderOption={(props, option) => (
+                <Typography {...props} variant="body2" color="text.secondary">
+                  {option}
+                </Typography>
+              )}
+              // sx={{ mb: 0.75 }}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  size="small"
+                  placeholder="Select Location"
+                  inputProps={{
+                    ...params.inputProps,
+                    autoComplete: "new-password", // disable autocomplete and autofill
+                  }}
+                />
+              )}
+            />
           </Grid>
           <Grid md={4} style={{ padding: "0% 3%" }}>
             <label for="html">Trip Date</label>
-
+            <br />
             <TextField
               placeholder="Trip Date"
               type="text"
@@ -132,7 +133,7 @@ function Insurance() {
         <Grid container style={{ display: "" }}>
           <Grid md={4} style={{ padding: "0% 3%" }}>
             <label for="html">Full Name </label>
-
+            <br />
             <TextField
               placeholder="John Doe"
               type="text"
@@ -144,7 +145,7 @@ function Insurance() {
           </Grid>
           <Grid md={4} style={{ padding: "0% 3%" }}>
             <label for="html">Email ID</label>
-
+            <br />
             <TextField
               placeholder="john@domain.com"
               type="text"
@@ -156,7 +157,7 @@ function Insurance() {
           </Grid>
           <Grid md={4} style={{ padding: "0% 3%" }}>
             <label for="html">Mobile</label>
-
+            <br />
             <TextField
               placeholder="94092300293"
               type="text"

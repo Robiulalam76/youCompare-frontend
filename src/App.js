@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 
-import NavigationScroll from './components/HOC/NavigationScroll'
+import NavigationScroll from "./components/HOC/NavigationScroll";
 
 //screens
 import LandingPage from "./screens/LangingPage";
@@ -36,7 +36,6 @@ function App() {
   return (
     <React.Fragment>
       <ThemeProvider theme={theme(customvariables)}>
-
         <BrowserRouter>
           <Switch>
             <Route path="/home">
@@ -91,7 +90,6 @@ function App() {
             </Route>
           </Switch>
         </BrowserRouter>
-
       </ThemeProvider>
     </React.Fragment>
   );

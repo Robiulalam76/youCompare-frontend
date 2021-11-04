@@ -80,7 +80,7 @@ export default function Footer() {
             textAlign: "center",
           }}
         >
-          All rights reserved by youcompares
+        Copyright &copy; 2021, All rights reserved by YouCompare
         </Typography>
       </Container>
     </Box>

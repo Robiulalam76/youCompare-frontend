@@ -41,12 +41,13 @@ function Cover() {
       <form style={{ textAlignLast: "left", marginBottom: "6%" }}>
         <br />
         <Grid container style={{ display: "" }}>
-          <Grid md={5}>
+          <Grid xl={6} lg={6} md={5} sm={5} xs={4}>
             <label for="html">Gender</label>
-            <br /> <br />
+            <br />
+
             {["Male", "Female"].map((elem, i) => (
               <Button
-                style={{ margin: "0px 5px" }}
+                sx={{ mr: 1, fontSize: ".8rem", py: 0.5 }}
                 key={i}
                 variant="round"
                 color={elem === model ? "primary" : "text"}
@@ -63,12 +64,12 @@ function Cover() {
               </Button>
             ))}
           </Grid>
-          <Grid md={7}>
+          <Grid xl={6} lg={6} md={7} sm={7} xs={8}>
             <label for="html">How many people are Travelling</label>
-            <br /> <br />
+            <br />
             {["One", "Couple", "Family", "Group"].map((elem, i) => (
               <Button
-                style={{ margin: "0px 5px" }}
+                sx={{ mr: 1, fontSize: ".8rem", py: 0.5, my: 0.5 }}
                 key={i}
                 variant="round"
                 color={elem === model ? "primary" : "text"}
@@ -92,64 +93,63 @@ function Cover() {
         <Grid container style={{ display: "" }}>
           <Grid md={4} style={{ padding: "0% 3%" }}>
             <label for="html">Full Name </label>
-            <br />
-            <br />
             <TextField
               placeholder="John Doe"
               type="text"
               size="small"
               name="brand"
+              sx={{ width: "100%" }}
               //   value={brand}
               //   onChange={handleChange}
             />
           </Grid>
           <Grid md={4} style={{ padding: "0% 3%" }}>
-            <InputBox label="Marital Status" style={{ width: "100%" }}>
-              <Autocomplete
-                options={["Married", "Single", "Diverced"]}
-                // onChange={(e, value) => setMaritalStatus(value)}
-                renderOption={(props, option) => (
-                  <Typography {...props} variant="body2" color="text.secondary">
-                    {option}
-                  </Typography>
-                )}
-                // sx={{ mb: 0.75 }}
-                renderInput={(params) => (
-                  <TextField
-                    {...params}
-                    placeholder="Select Gender"
-                    inputProps={{
-                      ...params.inputProps,
-                      autoComplete: "new-password", // disable autocomplete and autofill
-                    }}
-                  />
-                )}
-              />
-            </InputBox>
+            <label for="html">Pre-Existing Condition</label>
+            <Autocomplete
+              options={["Yes", "No"]}
+              // onChange={(e, value) => setMaritalStatus(value)}
+              renderOption={(props, option) => (
+                <Typography {...props} variant="body2" color="text.secondary">
+                  {option}
+                </Typography>
+              )}
+              // sx={{ mb: 0.75 }}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  size="small"
+                  placeholder="Condition"
+                  inputProps={{
+                    ...params.inputProps,
+                    autoComplete: "new-password", // disable autocomplete and autofill
+                  }}
+                />
+              )}
+            />
           </Grid>
           <Grid md={4} style={{ padding: "0% 3%" }}>
-            <InputBox label="Marital Status" style={{ width: "100%" }}>
-              <Autocomplete
-                options={["Married", "Single", "Diverced"]}
-                // onChange={(e, value) => setMaritalStatus(value)}
-                renderOption={(props, option) => (
-                  <Typography {...props} variant="body2" color="text.secondary">
-                    {option}
-                  </Typography>
-                )}
-                // sx={{ mb: 0.75 }}
-                renderInput={(params) => (
-                  <TextField
-                    {...params}
-                    placeholder="Select Gender"
-                    inputProps={{
-                      ...params.inputProps,
-                      autoComplete: "new-password", // disable autocomplete and autofill
-                    }}
-                  />
-                )}
-              />
-            </InputBox>
+            <label for="html">Marital Statu </label>
+            <Autocomplete
+              options={["Married", "Single", "Diverced"]}
+              // onChange={(e, value) => setMaritalStatus(value)}
+              renderOption={(props, option) => (
+                <Typography {...props} variant="body2" color="text.secondary">
+                  {option}
+                </Typography>
+              )}
+              // sx={{ mb: 0.75 }}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  size="small"
+                  placeholder="Select Gender"
+                  inputProps={{
+                    ...params.inputProps,
+                    autoComplete: "new-password", // disable autocomplete and autofill
+                  }}
+                />
+              )}
+            />
           </Grid>
         </Grid>
       </form>

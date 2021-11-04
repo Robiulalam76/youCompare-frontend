@@ -7,7 +7,7 @@
 
 /* Common */
 .p5 {
-  padding: 50px 0px;
+  padding: 5% 0% 7% 0%;
 }
 
 .mainBtn {
@@ -22,6 +22,9 @@
   border-radius: 4px;
 }
 
+.autoInsurance {
+  width: 97%;
+}
 /* bannner */
 .bannner {
   width: 60%;
@@ -30,19 +33,19 @@
 img {
   width: 100%;
 }
-.BannerHeader {
+/* .BannerHeader {
   font-size: 70px;
   margin: 0px;
   line-height: 70px;
-}
-.BannerHeaderSmall {
+} */
+/* .BannerHeaderSmall {
   font-size: 60px;
   margin: 0px;
-}
-.BannerPera {
+} */
+/* .BannerPera {
   font-size: 20px;
   color: #74769e;
-}
+} */
 .Link {
   text-decoration: none;
   color: black;
@@ -93,9 +96,8 @@ img {
   align-items: center;
 }
 
-
-#pan-number:focus{
-  border-width: 1px!important;
+#pan-number:focus {
+  border-width: 1px !important;
 }
 
 /* variables  */
