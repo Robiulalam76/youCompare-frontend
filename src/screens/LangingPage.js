@@ -66,9 +66,7 @@ export default function LandingPage({}) {
 
   const Card = () => (
     <div>
-      {" "}
       <div className="bannner">
-        {" "}
         <h1 className="BannerHeader poppinFont ">
           Smart way <br />
           to buy insurance.
@@ -80,7 +78,7 @@ export default function LandingPage({}) {
       </div>
       <Grid container>
         {insurances.map((insurance, i) => (
-          <Grid style={{ marginTop: "1%" }} lg={3} xs={12} md={6} sm={12}>
+          <Grid style={{ marginTop: "1%" }} lg={3} xs={12} md={6} sm={6}>
             <div style={{ padding: "0px 5px" }}>
               <Link className="Link" to={`${url}/${insurance.url}`}>
                 <Button
