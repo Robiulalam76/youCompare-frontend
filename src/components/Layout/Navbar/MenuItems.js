@@ -12,6 +12,7 @@ import { navdata } from "./navdata";
 import { ArrowRight } from "@mui/icons-material";
 import { display, fontSize } from "@mui/system";
 import { BsCircleFill } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 import { styled } from "@mui/material/styles";
 import styles from "./styles.module.css";
@@ -106,58 +107,69 @@ const Navigation = ({ item, selectedNavItem, setSelectedNavItem }) => {
 
   return (
     <React.Fragment>
-      <ListItem sx={{ px: 2, py: 0 }}>
-        <ListItemButton
-          onClick={handleItemButtonClick}
-          sx={{
-            py: 1.5,
-            px: 0,
-            height: "48px",
-            borderRadius: "4px",
-            color: "primary.main",
-          }}
-        >
-          {rootItem ? (
-            <>
-              <NavSideBar
-                sx={{
-                  borderColor:
-                    selectedNavItem === item.category
-                      ? "primary.main"
-                      : "transparent",
-                }}
-              ></NavSideBar>
-              <RootNavItem>{item.category}</RootNavItem>
-            </>
-          ) : (
-            <div style={{ display: "flex", marginLeft: "2rem" }}>
-              <Box sx={{ mr: ".5rem", color: "text.secondary" }}>
-                {item.icon ? (
-                  item.icon
-                ) : (
-                  <BsCircleFill
-                    style={{ color: "text.primary", padding: "5px" }}
-                  />
-                )}
-              </Box>
-              <ChildNavItem>{item.category}</ChildNavItem>
-            </div>
-          )}
+      <LinkWrapper link={item.link}>
+        <ListItem sx={{ px: 2, py: 0 }}>
+          <ListItemButton
+            onClick={handleItemButtonClick}
+            sx={{
+              py: 1.5,
+              px: 0,
+              height: "48px",
+              borderRadius: "4px",
+              color: "primary.main",
+            }}
+          >
+            {rootItem ? (
+              <>
+                <NavSideBar
+                  sx={{
+                    borderColor:
+                      selectedNavItem === item.category
+                        ? "primary.main"
+                        : "transparent",
+                  }}
+                ></NavSideBar>
+                <RootNavItem>{item.category}</RootNavItem>
+              </>
+            ) : (
+              <div style={{ display: "flex", marginLeft: "2rem" }}>
+                <Box sx={{ mr: ".5rem", color: "text.secondary" }}>
+                  {item.icon ? (
+                    item.icon
+                  ) : (
+                    <BsCircleFill
+                      style={{ color: "text.primary", padding: "5px" }}
+                    />
+                  )}
+                </Box>
+                <ChildNavItem>{item.category}</ChildNavItem>
+              </div>
+            )}
 
-          {item.subcat ? (
-            <ArrowForwardIosIcon
-              sx={{
-                p: "6px",
-                color: "#2a2b40",
-                transform: !showChildren ? "rotate(0deg)" : "rotate(90deg)",
-              }}
-            />
-          ) : null}
-        </ListItemButton>
-      </ListItem>
+            {item.subcat ? (
+              <ArrowForwardIosIcon
+                sx={{
+                  p: "6px",
+                  color: "#2a2b40",
+                  transform: !showChildren ? "rotate(0deg)" : "rotate(90deg)",
+                }}
+              />
+            ) : null}
+          </ListItemButton>
+        </ListItem>
+      </LinkWrapper>
+
       {item.subcat && showChildren
         ? item.subcat.map((elem) => <Navigation item={elem} key={elem.id} />)
         : null}
     </React.Fragment>
   );
+};
+
+const LinkWrapper = ({ children, link }) => {
+  if (link) {
+    return <Link to={link}>{children}</Link>;
+  } else {
+    return <React.Fragment>{children}</React.Fragment>;
+  }
 };

@@ -5,19 +5,19 @@ import { useLocation, useRouteMatch } from 'react-router-dom';
 // ===========================|| NAVIGATION SCROLL TO TOP ||=========================== //
 
 const NavigationScroll = ({ children }) => {
-	// const location = useLocation();
-	const { path, url } = useRouteMatch();
-	//const { pathname } = location;
-	console.log(path)
+	const location = useLocation();
+
+	const { pathname } = location;
+
 	useEffect(() => {
 		window.scrollTo({
 			top: 0,
 			left: 0,
 			behavior: 'smooth'
 		});
-	}, [path]);
+	}, [pathname]);
 
-	return children || null;
+	return children;
 };
 
 NavigationScroll.propTypes = {

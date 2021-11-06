@@ -53,7 +53,7 @@ const Filter = () => {
     ])
   }
   return (
-    <>
+    <div>
       <Title>Filters</Title>
       <Stack spacing={2}>
 
@@ -128,7 +128,7 @@ const Filter = () => {
           <Text>Select Addons & Accessories</Text>
           {
             addons.map((addon, i) => (
-              <Box key={addon.id}
+              <Box key={i}
                 sx={{ display: "flex", alignItems: "center" }}>
                 <CustomCheckbox
                   size="small"
@@ -140,7 +140,7 @@ const Filter = () => {
           }
         </Item>
       </Stack>
-    </>
+    </div>
   )
 }
 

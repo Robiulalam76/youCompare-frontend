@@ -3,14 +3,15 @@ import styles from "./styles.module.css";
 import { Container, Typography } from "@mui/material";
 import { MdEmail } from "react-icons/md";
 import { AiTwotonePhone } from "react-icons/ai";
+import { Link } from "react-router-dom";
 import { Box } from "@mui/system";
 
 export default function TopBar() {
   const insurances = [
-    "Auto Insurance",
-    "Health Insurance",
-    "Travel Insurance",
-    "Life Insurance",
+    { title: "Auto Insurance", link: "/home/auto" },
+    { title: "Health Insurance", link: "/home/health" },
+    { title: "Travel Insurance", link: "/home/travel" },
+    { title: "Life Insurance", link: "/home/life" },
   ];
   return (
     <div className={styles.topbar}>
@@ -39,13 +40,15 @@ export default function TopBar() {
         </div>
         <div>
           {insurances.map((elem, i) => (
-            <Typography
-              variant="caption"
-              sx={{ pl: 2 }}
-              className={styles.textColor}
-            >
-              {elem}
-            </Typography>
+            <Link to={elem.link} key={i}>
+              <Typography
+                variant="caption"
+                sx={{ pl: 2 }}
+                className={styles.textColor}
+              >
+                {elem.title}
+              </Typography>
+            </Link>
           ))}
         </div>
       </Container>

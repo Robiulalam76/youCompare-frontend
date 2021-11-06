@@ -40,6 +40,8 @@ export function theme(customization) {
       },
       success: {
         main: "#57BC3C",
+        light: "#c8e6c9",
+        dark: "#2e7d32"
       },
     },
     breakpoints: {

@@ -34,7 +34,7 @@ const ResponsiveBox = styled(Box)(({ theme }) => ({
 export default function Results() {
   const [autoquotes, setAutoquotes] = React.useState(quotes)
   return (
-    <React.Fragment>
+    <div style={{ marginBottom: "5rem" }}>
       <Title>Results</Title>
       <ResponsiveBox sx={{ display: "flex", alignItems: "center" }}>
         <Typography
@@ -63,6 +63,6 @@ export default function Results() {
           ))
         }
       </Stack>
-    </React.Fragment>
+    </div>
   )
 }

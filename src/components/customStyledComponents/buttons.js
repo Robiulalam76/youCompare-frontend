@@ -87,3 +87,20 @@ export const RedButton = (props) =>
       }
     }}>
   </Button>
+
+export const GreenButton = (props) =>
+<Button
+  {...props}
+  variant="round"
+  size="small"
+  disableRipple
+  sx={{
+    color: "success.dark",
+    bgcolor: "success.light",
+    cursor: "auto",
+    border: "none",
+    "&:hover": {
+      bgcolor: "success.light"
+    }
+  }}>
+</Button>

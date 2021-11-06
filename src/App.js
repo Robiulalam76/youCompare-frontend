@@ -15,8 +15,8 @@ import HealthCompare from "./screens/compare/health";
 import TravelCompare from "./screens/compare/travel";
 
 import AutoBuyNow from "./screens/buyprocess/auto";
-
 import LifeBuyNow from "./screens/buyprocess/life";
+import HealthBuyNow from "./screens/buyprocess/health";
 
 import PaymentSuccessfull from "./screens/paymentSuccessfull";
 
@@ -37,58 +37,60 @@ function App() {
     <React.Fragment>
       <ThemeProvider theme={theme(customvariables)}>
         <BrowserRouter>
-          <Switch>
-            <Route path="/home">
-              <LandingPage />
-            </Route>
-            <Redirect exact from="/" to="/home" />
+          <NavigationScroll>
+            <Switch>
+              <Route path="/home">
+                <LandingPage />
+              </Route>
+              <Redirect exact from="/" to="/home" />
 
-            <Route path="/auto/compare">
-              <AutoCompare />
-            </Route>
+              <Route exact path="/auto/compare">
+                <AutoCompare />
+              </Route>
 
-            <Route exact path="/life/compare">
-              <LifeCompare />
-            </Route>
-            <Route exact path="/health/compare">
-              <HealthCompare />
-            </Route>
-            <Route exact path="/travel/compare">
-              <TravelCompare />
-            </Route>
+              <Route exact path="/life/compare">
+                <LifeCompare />
+              </Route>
+              <Route exact path="/health/compare">
+                <HealthCompare />
+              </Route>
+              <Route exact path="/travel/compare">
+                <TravelCompare />
+              </Route>
 
-            {/** Buy Now Pages */}
-            <Route path="/auto/buynow">
-              <AutoBuyNow />
-            </Route>
-            <Route path="/life/buynow">
-              <LifeBuyNow />
-            </Route>
-            <Route path="/health/buynow">
-              <AutoBuyNow />
-            </Route>
-            <Route path="/travel/buynow">
-              <AutoBuyNow />
-            </Route>
-            {/** Payment */}
-            <Route exact path="/auto/payment-success">
-              <PaymentSuccessfull />
-            </Route>
-            {/** Profile */}
-            <Route exact path="/profile/mydocs">
-              <MyDocs />
-            </Route>
-            <Route exact path="/profile/mypolicies">
-              <MyPolicies />
-            </Route>
-            {/**Auth pages */}
-            <Route exact path="/login">
-              <Login />
-            </Route>
-            <Route exact path="/signup">
-              <Signup />
-            </Route>
-          </Switch>
+              {/** Buy Now Pages */}
+              <Route exact path="/auto/buynow">
+                <AutoBuyNow />
+              </Route>
+              <Route exact path="/life/buynow">
+                <LifeBuyNow />
+              </Route>
+              <Route exact path="/health/buynow">
+                <HealthBuyNow />
+              </Route>
+              <Route path="/travel/buynow">
+                <AutoBuyNow />
+              </Route>
+              {/** Payment */}
+              <Route exact path="/auto/payment-success">
+                <PaymentSuccessfull />
+              </Route>
+              {/** Profile */}
+              <Route exact path="/profile/mydocs">
+                <MyDocs />
+              </Route>
+              <Route exact path="/profile/mypolicies">
+                <MyPolicies />
+              </Route>
+              {/**Auth pages */}
+              <Route exact path="/login">
+                <Login />
+              </Route>
+              <Route exact path="/signup">
+                <Signup />
+              </Route>
+            </Switch>
+          </NavigationScroll>
         </BrowserRouter>
       </ThemeProvider>
     </React.Fragment>
