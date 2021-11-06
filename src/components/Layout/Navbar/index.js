@@ -121,12 +121,14 @@ export default function Navbar() {
   const [navbarElevation, setNavbarElevation] = React.useState(false);
   const [showTopBar, setShowTopBar] = React.useState(true);
 
-  let location = useLocation()
+  let location = useLocation();
 
-  React.useEffect((menuOpen) => {
-    setMenuOpen(false)
-  },[location.pathname])
-
+  React.useEffect(
+    (menuOpen) => {
+      setMenuOpen(false);
+    },
+    [location.pathname]
+  );
 
   const toggleMenuVisibility = (open) => (event) => {
     if (
