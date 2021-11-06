@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Grid, Box, Typography } from "@mui/material";
+import { Button, Grid, Box, Typography, TextareaAutosize } from "@mui/material";
 import { styled } from "@mui/system";
 
 import {
@@ -16,12 +16,14 @@ import privateAuto from "../../accets/private.svg";
 import threeWheel from "../../accets/threeWheel.svg";
 import twowheeler from "../../accets/twowheeler.svg";
 import SubCard from "../Auto/SubCard/SubCard";
+import { BsArrowLeft } from "react-icons/bs";
 
 const RootBox = styled("div")(({ theme }) => ({
   marginTop: "3rem",
   height: "auto",
-  [theme.breakpoints.up("lg")]: {
-    minHeight: "80vh",
+  [theme.breakpoints.between("lg", "xl")]: {
+    maxHeight: "80vh",
+    overflow: "hidden",
   },
 }));
 
@@ -35,7 +37,8 @@ const ResponsiveButton = styled(Button)(({ theme }) => ({
 const Heading = styled(Typography)(({ theme }) => ({
   fontSize: "4rem",
   fontWeight: "bold",
-  lineHeight: "4.5rem",
+  lineHeight: "3.5rem",
+  textAlign: "left",
   [theme.breakpoints.only("xs")]: {
     fontSize: "2.5rem",
     lineHeight: "3rem",
@@ -49,15 +52,24 @@ const Heading = styled(Typography)(({ theme }) => ({
 }));
 
 const SubHeading = styled(Typography)(({ theme }) => ({
+  marginTop: "1rem",
   color: "#74769E",
   fontSize: "1rem",
   fontWeight: "normal",
+  // width: "75%",
+  textAlign: "left",
+
   [theme.breakpoints.only("xs")]: {
+    width: "80%",
+    margin: "0 auto",
     fontSize: ".85rem",
     lineHeight: "1.2rem",
     textAlign: "center",
   },
+
   [theme.breakpoints.only("sm")]: {
+    width: "90%",
+    margin: "0 auto",
     textAlign: "center",
   },
 }));
@@ -100,31 +112,39 @@ function AutoCard({
           xs={12}
           lg={5}
           xl={12}
-          style={{ textAlign: "-webkit-left" }}
+          style={{ textAlign: "-webkit-center" }}
         >
-          <Grid item xs={12} md={6} lg={12}>
+          <Grid item container lg={12} md={12} xs={12}>
             <div style={{ textAlign: "-webkit-match-parent" }}>
               {title
-                ? title
-                    .split(" ")
-                    .map((txt) => <Heading key={txt}>{txt}</Heading>)
+                ? title.split(" ").map((txt) => (
+                    <Heading
+                      style={{
+                        fontSize: "3.5rem",
+                        fontWeight: "bold",
+                        lineHeight: "3.5rem",
+                      }}
+                      key={txt}
+                    >
+                      {txt}
+                    </Heading>
+                  ))
                 : null}
               <SubHeading>{description}</SubHeading>
             </div>
-          </Grid>
-
-          <Grid item xs={12} md={6} lg={12}>
-            <ImageBox>
-              <img
-                alt={title}
-                src={sideBanner}
-                style={{
-                  height: "auto",
-                  width: "100%",
-                  objectFit: "contain",
-                }}
-              />
-            </ImageBox>
+            <div className={title.split(" ").join("_")}>
+              <ImageBox>
+                <img
+                  alt={title}
+                  src={sideBanner}
+                  style={{
+                    height: "auto",
+                    width: "85%",
+                    objectFit: "contain",
+                  }}
+                />
+              </ImageBox>
+            </div>
           </Grid>
         </Grid>
         <Grid
@@ -136,6 +156,17 @@ function AutoCard({
           sx={{ justifyContent: "center", alignItems: "start" }}
         >
           <ShadowedBox>
+            <Typography
+              sx={{
+                textAlign: "left",
+                display: "flex",
+                alignItems: "center",
+                paddingLeft: "3%",
+              }}
+            >
+              <BsArrowLeft style={{ paddingRight: "3px" }} />
+              {title}
+            </Typography>
             {/** Arrow back button needed */}
             {subInsuranceArray.map((insurance, i) => (
               <Link className="Link" to={`${url}/${insurance.url}`} key={i}>

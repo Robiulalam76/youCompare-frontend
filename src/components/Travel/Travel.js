@@ -49,7 +49,7 @@ function Travel() {
 
   const commercialTitle = "Travel Insurance";
   const commercialDescription =
-    "Travel insurance is designed to protect yourself and others against";
+    "Insurance that plans cover trip cancellation, travel medical & many more from your loss.";
   return (
     <div style={{ marginTop: "2%" }}>
       <Switch>

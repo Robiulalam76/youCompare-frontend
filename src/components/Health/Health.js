@@ -52,7 +52,7 @@ function Travel() {
 
   const commercialTitle = "Health Insurance";
   const commercialDescription =
-    "Health insurance is designed to protect yourself and others against";
+    "Health is the most important thing we should protect, when we can't take care of ourselves, then insurance will help.";
   return (
     <div style={{ marginTop: "2%" }}>
       <Switch>
@@ -69,7 +69,7 @@ function Travel() {
           <PPO Health={ppo} />
         </Route>
         <Route path={`${path}/HMO`}>
-          <HMO Health={HMO} />
+          <HMO Health={hmo} />
         </Route>
         <Route path={`${path}/point-of-service`}>
           <PointOfService Health={poinOfService} />

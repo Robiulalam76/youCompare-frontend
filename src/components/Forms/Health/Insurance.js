@@ -47,10 +47,11 @@ function Insurance() {
       {/* Model Selection */}
       <Grid container spacing={2}>
         <Grid item container spacing={2}>
-          <Grid item md={4}>
+          <Grid item md={4} sm={6} xs={12}>
             {/* <label for="html">Full Name </label> */}
             <InputBox label="Full Name ">
               <TextField
+                fullWidth
                 placeholder="John Doe"
                 type="text"
                 size="small"
@@ -60,10 +61,11 @@ function Insurance() {
               />
             </InputBox>
           </Grid>
-          <Grid item md={4}>
+          <Grid item md={4} sm={6} xs={12}>
             {/* <label for="html">Email ID</label> */}
             <InputBox label="Email ID">
               <TextField
+                fullWidth
                 placeholder="john@domain.com"
                 type="text"
                 size="small"
@@ -73,10 +75,11 @@ function Insurance() {
               />
             </InputBox>
           </Grid>
-          <Grid item md={4}>
+          <Grid item md={4} sm={6} xs={12}>
             {/* <label for="html">Mobile</label> */}
             <InputBox label="Mobile">
               <TextField
+                fullWidth
                 type="text"
                 size="small"
                 name="brand"
@@ -89,7 +92,7 @@ function Insurance() {
         </Grid>
 
         <Grid item container spacing={2}>
-          <Grid item md={4}>
+          <Grid item md={4} sm={6} xs={12}>
             {/* <label for="html">Age</label> */}
             <InputBox label="Age">
               <TextField
@@ -103,7 +106,7 @@ function Insurance() {
               />
             </InputBox>
           </Grid>
-          <Grid item md={4}>
+          <Grid item md={4} sm={6} xs={12}>
             {/* <label for="html">Gender</label> */}
             <InputBox label="Gender">
               {/* <div> */}
@@ -121,6 +124,7 @@ function Insurance() {
                   <TextField
                     {...params}
                     size="small"
+                    fullWidth
                     placeholder="Select Gender"
                     inputProps={{
                       ...params.inputProps,

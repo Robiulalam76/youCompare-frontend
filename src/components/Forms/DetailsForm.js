@@ -120,7 +120,7 @@ function DetailsForm() {
             Commercial
           </Button>
         </Grid> */}
-          <Grid item style={{ marginTop: "5%" }} lg={6} md={6} sm={8} xs={12}>
+          <Grid item lg={6} sm={6} xs={12}>
             <InputBox label="Type of Insurance">
               <div>
                 <Button
@@ -149,8 +149,8 @@ function DetailsForm() {
               </div>
             </InputBox>
           </Grid>
-          <Grid item lg={6} xs={6} style={{ padding: "0% 2%" }}>
-            <InputBox label="IDS">
+          <Grid item lg={6} sm={6} xs={12}>
+            <InputBox label="IDB">
               <Input
                 fullWidth
                 value={value}
@@ -166,9 +166,9 @@ function DetailsForm() {
           item
           container
           spacing={2}
-          style={{ padding: "0% 3%", marginTop: "1%" }}
+          // style={{ padding: "0% 3%", marginTop: "1%" }}
         >
-          <Grid item lg={4} md={4} sm={6} xs={12} style={{ padding: "0% 1%" }}>
+          <Grid item lg={4} md={4} sm={6} xs={12}>
             <InputBox label="Full Name">
               <Input
                 fullWidth
@@ -179,7 +179,7 @@ function DetailsForm() {
               />
             </InputBox>
           </Grid>
-          <Grid item lg={4} md={4} sm={6} xs={12} style={{ padding: "0% 1%" }}>
+          <Grid item lg={4} md={4} sm={6} xs={12}>
             <InputBox label="Email Address">
               <Input
                 fullWidth
@@ -190,7 +190,7 @@ function DetailsForm() {
               />
             </InputBox>
           </Grid>
-          <Grid item lg={4} md={4} xs={12} style={{ padding: "0% 1%" }}>
+          <Grid item lg={4} md={4} xs={12}>
             <InputBox label="Phone No">
               <Input
                 fullWidth

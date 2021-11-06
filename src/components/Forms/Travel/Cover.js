@@ -96,10 +96,11 @@ function Cover() {
       <form style={{ textAlignLast: "left", marginBottom: "6%" }}>
         <br />
         <Grid container style={{ display: "" }}>
-          <Grid md={4} style={{ padding: "0% 1%" }}>
+          <Grid lg={4} md={6} sm={6} xs={12} style={{ padding: "0% 1%" }}>
             <label for="html">Full Name </label>
             <br />
             <TextField
+              fullWidth
               placeholder="John Doe"
               type="text"
               size="small"
@@ -109,7 +110,7 @@ function Cover() {
               //   onChange={handleChange}
             />
           </Grid>
-          <Grid md={4} style={{ padding: "0% 3%" }}>
+          <Grid lg={4} md={6} sm={6} xs={12} style={{ padding: "0% 3%" }}>
             <label for="html">Pre-Existing Condition</label>
             <Autocomplete
               options={["Yes", "No"]}
@@ -124,6 +125,7 @@ function Cover() {
                 <TextField
                   {...params}
                   size="small"
+                  fullWidth
                   placeholder="Condition"
                   inputProps={{
                     ...params.inputProps,
@@ -134,7 +136,7 @@ function Cover() {
               )}
             />
           </Grid>
-          <Grid md={4} style={{ padding: "0% 1%" }}>
+          <Grid lg={4} md={6} sm={6} xs={12} style={{ padding: "0% 1%" }}>
             <label for="html">Marital Status </label>
 
             <Autocomplete
@@ -150,6 +152,7 @@ function Cover() {
                 <TextField
                   {...params}
                   size="small"
+                  fullWidth
                   placeholder="Select Gender"
                   inputProps={{
                     ...params.inputProps,
