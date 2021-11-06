@@ -1,28 +1,14 @@
 import React from 'react'
 
-// material ui
-import Grid from '@mui/material/Grid'
-import Hidden from '@mui/material/Hidden';
-
 // components
-import MinimalLayout from '../../../components/Layout/MinimalLayout'
 import Filters from './filters'
 import Results from './results'
+import CompareLayout from '../../../components/Layout/compareLayout';
 
 export default function LifeCompare() {
   return (
-    <MinimalLayout>
-      <br />
-      <Grid container spacing={4}>
-        <Grid item xs={12} md={3}>
-          <Hidden only={['xs', 'sm']}>
-            <Filters />
-          </Hidden>
-        </Grid>
-        <Grid item xs={12} md={9}>
-          <Results />
-        </Grid>
-      </Grid>
-    </MinimalLayout >
+    <React.Fragment>
+      <CompareLayout filter={<Filters />} result={<Results />} />
+    </React.Fragment>
   )
 }

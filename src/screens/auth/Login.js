@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "../../components/Layout/Navbar";
-import Footer from "../../components/Layout/Footer";
+// import Navbar from "../../components/Layout/Navbar/index";
+// import Footer from "../../components/Layout/Footer";
+import AuthLayout from "./AuthLayout";
 import { formDiv, form, input, button } from "./styles";
 
 import { Link } from "react-router-dom";
@@ -9,11 +10,24 @@ import { login } from "../../actions/userActions";
 import { useHistory } from "react-router-dom";
 
 import "./auth.css";
-import { Button, Container } from "@mui/material";
+import {
+  Button,
+  Container,
+  Typography,
+  Stack,
+  InputAdornment,
+  Box,
+} from "@mui/material";
+import InputBox from "../../components/customStyledComponents/InputBox";
+import { CustomTextField as Input } from "../../components/customStyledComponents/inputs";
+
+import { AiOutlineEyeInvisible } from "react-icons/ai";
+import { AiOutlineEye } from "react-icons/ai";
 
 export default function Login({ location }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const dispatch = useDispatch();
   let history = useHistory();
@@ -37,38 +51,79 @@ export default function Login({ location }) {
   };
 
   return (
-    <React.Fragment>
+    <AuthLayout>
       <Container>
-        <Navbar />
-        <div style={formDiv}>
-          <form style={form}>
-            <h3>Login</h3>
-            <Input
-              label="Email Address"
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter email address"
-            />
-            <Input
-              label="Password"
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Type password"
-            />
-            <Button
-              variant="contained"
-              className="mainBtn"
-              onClick={(e) => submitHandler(e)}
-              // type="submit"
-              style={button}
-            >
+        <Box style={formDiv}>
+          <form>
+            <Typography variant="h3" gutterBottom>
               Login
-            </Button>
+            </Typography>
+            <Stack spacing={2}>
+              {[
+                {
+                  label: "Email Address",
+                  type: "email",
+                  name: "email",
+                  placeholder: "someone@domain.com",
+                  value: email,
+                  onChange: setEmail,
+                },
+                {
+                  label: "Password",
+                  type: showPassword ? "text" : "password",
+                  name: "password",
+                  placeholder: "Enter Password",
+                  value: password,
+                  onChange: setPassword,
+                },
+              ].map((elem) => (
+                <InputBox label={elem.label}>
+                  <Input
+                    fullWidth
+                    type={elem.type}
+                    value={elem.value}
+                    onChange={(e) => elem.onChange(e.target.value)}
+                    placeholder={elem.placeholder}
+                    InputProps={
+                      elem.name === "password"
+                        ? {
+                            endAdornment: (
+                              <InputAdornment
+                                position="end"
+                                onClick={() => setShowPassword(!showPassword)}
+                              >
+                                {showPassword ? (
+                                  <AiOutlineEye style={{ cursor: "pointer" }} />
+                                ) : (
+                                  <AiOutlineEyeInvisible
+                                    style={{ cursor: "pointer" }}
+                                  />
+                                )}
+                              </InputAdornment>
+                            ),
+                          }
+                        : null
+                    }
+                  />
+                </InputBox>
+              ))}
+
+              <Button
+                variant="contained"
+                className="mainBtn"
+                onClick={(e) => submitHandler(e)}
+                // type="submit"
+                style={button}
+              >
+                Login
+              </Button>
+            </Stack>
+
             <div style={{ width: "100%", textAlign: "center" }}>
-              {" "}
               <small>
                 New User?
                 <Link className="Link" to="/signup">
-                  {" "}
-                  <span className="linkPera">Create an account</span>{" "}
+                  <span className="linkPera">Create an account</span>
                 </Link>
               </small>
             </div>
@@ -77,18 +132,8 @@ export default function Login({ location }) {
               Signup
             </button> */}
           </form>
-        </div>
+        </Box>
       </Container>
-      <Footer />
-    </React.Fragment>
+    </AuthLayout>
   );
 }
-
-const Input = (props) => {
-  return (
-    <>
-      <label>{props.label}</label>
-      <input {...props} style={input} />
-    </>
-  );
-};

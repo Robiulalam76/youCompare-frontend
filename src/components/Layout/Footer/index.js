@@ -1,5 +1,7 @@
 import { Typography, Box, Container, Divider, Grid } from "@mui/material";
+import CopyrightText from "./CopyrightText";
 import React from "react";
+
 export default function Footer() {
   const items = {
     insurances: [
@@ -70,17 +72,17 @@ export default function Footer() {
         ></div>
         <Typography
           sx={{
-            fontSize: "13px",
-            lineHeight: "24px",
             fontSize: "14px",
+            lineHeight: "24px",
             fontWeight: 400,
-            color: "#eeeeee",
+            color: "white",
             pt: 2,
             pb: 3,
             textAlign: "center",
           }}
         >
-        Copyright &copy; 2021, All rights reserved by YouCompare
+          Copyright <span style={{ fontSize: "14px" }}>&copy;</span> 2021, All
+          rights reserved by YouCompare
         </Typography>
       </Container>
     </Box>

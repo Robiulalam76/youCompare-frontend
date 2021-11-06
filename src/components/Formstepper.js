@@ -3,6 +3,16 @@ import { Box } from '@mui/system'
 import { Typography } from '@mui/material'
 
 export default function Formstepper({ steps, currentStep }) {
+
+  // scroll to top when step changes
+  React.useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  }, [currentStep]);
+
   return (
     <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
       {
@@ -13,6 +23,7 @@ export default function Formstepper({ steps, currentStep }) {
                 key={i}
                 sx={{
                   fontWeight: 600,
+                  fontSize: ".95rem",
                   color: i > currentStep ? "text.disabled" : "text.primary",
                 }}>
                 {step}
@@ -27,6 +38,7 @@ export default function Formstepper({ steps, currentStep }) {
               <Typography
                 sx={{
                   fontWeight: 600,
+                  fontSize: ".95rem",
                   color: i > currentStep ? "text.disabled" : "text.primary",
                 }}>
                 {step}

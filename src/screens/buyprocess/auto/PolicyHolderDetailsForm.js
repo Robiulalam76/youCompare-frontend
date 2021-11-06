@@ -1,5 +1,6 @@
 import React from 'react'
 
+// mui components
 import {
   Box, InputAdornment, Typography, TextField,
 } from '@mui/material'
@@ -7,11 +8,12 @@ import TodayIcon from '@mui/icons-material/Today';
 import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined';
 import Popover from '@mui/material/Popover';
 
+// date picker utils from mui
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
 
-
+// customized components
 import { textfieldStyle } from './utils'
 import InputBox from '../../../components/customStyledComponents/InputBox'
 import { useForm } from '../../../components/customHooks/useForm'
@@ -109,6 +111,7 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
           }}
         />
       </InputBox>
+      
       {/** DATE OF BIRTH AND MARITAL STATUS */}
       <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         {/** Date of Birth */}
