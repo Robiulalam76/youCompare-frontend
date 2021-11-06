@@ -99,8 +99,9 @@ function DetailsForm() {
         </div>
       </div>
 
-      <Grid container spacing={2} sx={{ mb: 3, alignItems: "flex-end" }}>
-        {/* <Grid lg={4}>
+      <Grid container spacing={2}>
+        <Grid item container spacing={2} sx={{ mb: 3, alignItems: "flex-end" }}>
+          {/* <Grid lg={4}>
           <p>Type of use</p>
           <Button
             variant={typeofUse === "private" ? "contained" : "outlined"}
@@ -119,75 +120,87 @@ function DetailsForm() {
             Commercial
           </Button>
         </Grid> */}
-        <Grid item style={{ marginTop: "2%" }} lg={6}>
-          <InputBox label="Type of Insurance">
-            <div>
-              <Button
-                sx={{ mr: 1, fontSize: ".8rem", py: 0.5 }}
-                variant="round"
-                color={typeofInsurance === "thirdparty" ? "primary" : "text"}
-                value="thirdparty"
-                name="typeofInsurance"
-                onClick={handleChange}
-              >
-                Third party
-              </Button>
+          <Grid item style={{ marginTop: "5%" }} lg={6} md={6} sm={8} xs={12}>
+            <InputBox label="Type of Insurance">
+              <div>
+                <Button
+                  sx={{ mr: 1, fontSize: ".8rem", py: 0.5 }}
+                  variant="round"
+                  color={typeofInsurance === "thirdparty" ? "primary" : "text"}
+                  value="thirdparty"
+                  name="typeofInsurance"
+                  onClick={handleChange}
+                >
+                  Third party
+                </Button>
 
-              <Button
-                sx={{ mr: 1, fontSize: ".8rem", py: 0.5 }}
-                variant="round"
-                color={typeofInsurance === "comprehensive" ? "primary" : "text"}
-                value="comprehensive"
-                name="typeofInsurance"
-                onClick={handleChange}
-              >
-                Compremsive
-              </Button>
-            </div>
-          </InputBox>
+                <Button
+                  sx={{ mr: 1, fontSize: ".8rem", py: 0.5 }}
+                  variant="round"
+                  color={
+                    typeofInsurance === "comprehensive" ? "primary" : "text"
+                  }
+                  value="comprehensive"
+                  name="typeofInsurance"
+                  onClick={handleChange}
+                >
+                  Compremsive
+                </Button>
+              </div>
+            </InputBox>
+          </Grid>
+          <Grid item lg={6} xs={6} style={{ padding: "0% 2%" }}>
+            <InputBox label="IDS">
+              <Input
+                fullWidth
+                value={value}
+                placeholder="Value"
+                onChange={handleChange}
+                name="value"
+              />
+            </InputBox>
+          </Grid>
         </Grid>
-        <Grid item lg={4}>
-          <InputBox label="Label">
-            <Input
-              value={value}
-              placeholder="Value"
-              onChange={handleChange}
-              name="value"
-            />
-          </InputBox>
-        </Grid>
-      </Grid>
 
-      <Grid container>
-        <Grid item lg={4}>
-          <InputBox label="Full Name">
-            <Input
-              value={fullName}
-              placeholder="John Doe"
-              onChange={handleChange}
-              name="fullName"
-            />
-          </InputBox>
-        </Grid>
-        <Grid lg={4}>
-          <InputBox label="Email Address">
-            <Input
-              value={email}
-              placeholder="john@domain.com"
-              onChange={handleChange}
-              name="Email"
-            />
-          </InputBox>
-        </Grid>
-        <Grid item lg={4}>
-          <InputBox label="Phone No">
-            <Input
-              value={phone}
-              placeholder="94092300293"
-              onChange={handleChange}
-              name="phone"
-            />
-          </InputBox>
+        <Grid
+          item
+          container
+          spacing={2}
+          style={{ padding: "0% 3%", marginTop: "1%" }}
+        >
+          <Grid item lg={4} md={4} sm={6} xs={12} style={{ padding: "0% 1%" }}>
+            <InputBox label="Full Name">
+              <Input
+                fullWidth
+                value={fullName}
+                placeholder="John Doe"
+                onChange={handleChange}
+                name="fullName"
+              />
+            </InputBox>
+          </Grid>
+          <Grid item lg={4} md={4} sm={6} xs={12} style={{ padding: "0% 1%" }}>
+            <InputBox label="Email Address">
+              <Input
+                fullWidth
+                value={email}
+                placeholder="john@domain.com"
+                onChange={handleChange}
+                name="Email"
+              />
+            </InputBox>
+          </Grid>
+          <Grid item lg={4} md={4} xs={12} style={{ padding: "0% 1%" }}>
+            <InputBox label="Phone No">
+              <Input
+                fullWidth
+                value={phone}
+                placeholder="94092300293"
+                onChange={handleChange}
+                name="phone"
+              />
+            </InputBox>
+          </Grid>
         </Grid>
       </Grid>
     </div>
