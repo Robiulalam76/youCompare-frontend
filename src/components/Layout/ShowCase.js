@@ -108,11 +108,12 @@ export default function Showcase() {
               <div style={{ height: "300px" }}>
                 <img
                   src={step.image}
+                  className="showcaseImage"
                   style={{
                     objectFit: "contain",
                     height: "100%",
                     width: "100%",
-                    padding: "4%",
+                    padding: "10%",
                   }}
                   alt="Step Logo"
                 />

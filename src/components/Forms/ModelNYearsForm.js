@@ -53,11 +53,12 @@ function ModelNYearsForm() {
           border: "1px solid #1482d2",
           borderRadius: "10px",
           display: "inline-block",
+          marginBottom: "1%",
         }}
       >
         {brand}
       </div>
-      <Stack spacing={1} sx={{ textAlign: "left" }}>
+      <Stack spacing={2} sx={{ textAlign: "left" }}>
         {/* Model Selection */}
         <form>
           <InputBox label="Select Model" sx={{ py: 1 }}>

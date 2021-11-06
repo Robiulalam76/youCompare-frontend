@@ -99,7 +99,7 @@ function DetailsForm() {
         </div>
       </div>
 
-      <Grid container sx={{ mb: 3, alignItems: "flex-end" }}>
+      <Grid container spacing={2} sx={{ mb: 3, alignItems: "flex-end" }}>
         {/* <Grid lg={4}>
           <p>Type of use</p>
           <Button
@@ -119,7 +119,7 @@ function DetailsForm() {
             Commercial
           </Button>
         </Grid> */}
-        <Grid style={{ marginTop: "2%" }} lg={6}>
+        <Grid item style={{ marginTop: "2%" }} lg={6}>
           <InputBox label="Type of Insurance">
             <div>
               <Button
@@ -146,7 +146,7 @@ function DetailsForm() {
             </div>
           </InputBox>
         </Grid>
-        <Grid lg={4}>
+        <Grid item lg={4}>
           <InputBox label="Label">
             <Input
               value={value}
@@ -159,7 +159,7 @@ function DetailsForm() {
       </Grid>
 
       <Grid container>
-        <Grid lg={4}>
+        <Grid item lg={4}>
           <InputBox label="Full Name">
             <Input
               value={fullName}
@@ -179,7 +179,7 @@ function DetailsForm() {
             />
           </InputBox>
         </Grid>
-        <Grid lg={4}>
+        <Grid item lg={4}>
           <InputBox label="Phone No">
             <Input
               value={phone}

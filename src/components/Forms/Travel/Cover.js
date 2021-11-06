@@ -42,13 +42,12 @@ function Cover() {
   return (
     <div style={{ marginTop: "4%" }}>
       {/* Model Selection */}
-      <form style={{ textAlignLast: "left", marginBottom: "6%" }}>
-        <br />
-        <Grid container style={{ display: "" }}>
-          <Grid xl={6} lg={6} md={5} sm={5} xs={4}>
-            <label for="html">Gender</label>
 
-            <div>
+      <form spacing={2} style={{ textAlignLast: "left" }}>
+        <Grid item container spacing={2}>
+          <Grid item xl={6} lg={6} md={5} sm={5} xs={4}>
+            <label for="html">Gender</label>
+            <div style={{ textAlign: "left" }}>
               {["Male", "Female"].map((elem, i) => (
                 <Button
                   sx={{ mr: 1, fontSize: ".8rem", py: 0.5 }}
@@ -69,7 +68,7 @@ function Cover() {
               ))}
             </div>
           </Grid>
-          <Grid xl={6} lg={6} md={7} sm={7} xs={8}>
+          <Grid item xl={6} lg={6} md={7} sm={7} xs={8}>
             <label for="html">How many people are Travelling</label>
             <div style={{ textAlign: "left" }}>
               {["One", "Couple", "Family", "Group"].map((elem, i) => (
@@ -97,7 +96,7 @@ function Cover() {
       <form style={{ textAlignLast: "left", marginBottom: "6%" }}>
         <br />
         <Grid container style={{ display: "" }}>
-          <Grid md={4} style={{ padding: "0% 3%" }}>
+          <Grid md={4} style={{ padding: "0% 1%" }}>
             <label for="html">Full Name </label>
             <br />
             <TextField
@@ -135,7 +134,7 @@ function Cover() {
               )}
             />
           </Grid>
-          <Grid md={4} style={{ padding: "0% 3%" }}>
+          <Grid md={4} style={{ padding: "0% 1%" }}>
             <label for="html">Marital Status </label>
 
             <Autocomplete

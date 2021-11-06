@@ -39,15 +39,18 @@ function Cover() {
   return (
     <div style={{ marginTop: "4%" }}>
       {/* Model Selection */}
-      <form style={{ textAlignLast: "left", marginBottom: "6%" }}>
-        <br />
-        <Grid container style={{ display: "" }}>
-          <Grid md={4} xl={4} lg={4} sm={12} xs={12}>
+      <Grid
+        container
+        style={{ textAlignLast: "left", marginBottom: "6%" }}
+        spacing={2}
+      >
+        <Grid item container spacing={2}>
+          <Grid item md={4} xl={4} lg={4} sm={12} xs={12}>
             <InputBox label="Amount of Cover">
               <Input type="number" placeholder="cover amount" />
             </InputBox>
           </Grid>
-          <Grid xl={8} lg={12} md={12} sm={12} xs={12}>
+          <Grid item xl={8} lg={12} md={12} sm={12} xs={12}>
             <InputBox label="Who is cover for?">
               <div style={{ textAlign: "left" }}>
                 {["Myself", "My Partner", "Father", "Mother", "Parents"].map(
@@ -75,8 +78,8 @@ function Cover() {
           </Grid>
         </Grid>
 
-        <Grid container style={{ display: "" }}>
-          <Grid md={6} lg={6}>
+        <Grid item container spacing={2}>
+          <Grid item md={6} lg={6}>
             {/* <label for="html"></label> */}
             <InputBox label="Gender">
               <div>
@@ -101,7 +104,7 @@ function Cover() {
               </div>
             </InputBox>
           </Grid>
-          <Grid md={6} lg={6}>
+          <Grid item md={6} lg={6}>
             <InputBox label="Do You Smoke?">
               <div>
                 {["Yes", "No"].map((elem, i) => (
@@ -125,7 +128,7 @@ function Cover() {
               </div>
             </InputBox>
           </Grid>
-          <Grid md={12} lg={6}>
+          <Grid item md={12} lg={6}>
             <InputBox label="Employment">
               <div>
                 {["Salaired", "Self Employment"].map((elem, i) => (
@@ -150,7 +153,7 @@ function Cover() {
             </InputBox>
           </Grid>
         </Grid>
-      </form>
+      </Grid>
     </div>
   );
 }
