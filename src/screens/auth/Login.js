@@ -24,7 +24,7 @@ import { CustomTextField as Input } from "../../components/customStyledComponent
 import { AiOutlineEyeInvisible } from "react-icons/ai";
 import { AiOutlineEye } from "react-icons/ai";
 
-export default function Login({ location }) {
+export default function Login({ location, setIsLoggedin }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -47,6 +47,9 @@ export default function Login({ location }) {
     e.preventDefault();
     console.log("email password", email, password);
     dispatch(login(email, password));
+    
+    localStorage.setItem('login', true)
+    
     history.push("/");
   };
 
