@@ -24,3 +24,9 @@
   padding: 2%;
   margin: 1% 0%;
 }
+.label {
+  display: block;
+  text-align: left;
+  padding: 0 px;
+  margin: 0;
+}

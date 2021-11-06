@@ -44,7 +44,7 @@ function Life() {
 
   const commercialTitle = "Life Insurance";
   const commercialDescription =
-    "Life insurance is designed to protect yourself and others against";
+    "Prepare for your family's future in the case of an unexpected tragedy. Insurance Helps you.";
 
   return (
     <div style={{ marginTop: "2%" }}>

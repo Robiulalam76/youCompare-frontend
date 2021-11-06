@@ -36,18 +36,19 @@ function Insurance() {
 
   return (
     <div style={{ marginTop: "4%" }}>
-      <form style={{ textAlignLast: "left", marginBottom: "4%" }}>
-        <Grid container spacing={1}>
+      <form style={{ textAlignLast: "left", marginBottom: "2%" }}>
+        <Grid container spacing={2}>
           <Grid
             item
-            xl={5}
-            lg={5}
-            md={12}
-            sm={12}
+            md={6}
+            sm={6}
             xs={12}
-            style={{ padding: "0% 3%" }}
+
+            // style={{ padding: "0% 3%" }}
           >
-            <label for="html">Destination</label>
+            <label className="label" for="html">
+              Destination
+            </label>
             <div>
               {["Local", "International"].map((elem, i) => (
                 <Button
@@ -71,12 +72,10 @@ function Insurance() {
           </Grid>
           <Grid
             item
-            xl={7}
-            lg={7}
-            md={12}
-            sm={12}
+            md={6}
+            sm={6}
             xs={12}
-            style={{ padding: "0% 3%" }}
+            // style={{ padding: "0% 3%" }}
           >
             <label for="html">Mode of Transport</label>
             <div style={{ textAlign: "left" }}>
@@ -103,93 +102,113 @@ function Insurance() {
         </Grid>
       </form>
       {/* Year Selection */}
-      <form style={{ textAlignLast: "left", marginBottom: "2%" }}>
-        <Grid container style={{ display: "" }}>
-          <Grid md={4} style={{ padding: "0% 1%" }}>
-            {/* <InputBox label="Location" style={{ width: "100%" }}> */}
-            <label for="html">Location </label>
-            <Autocomplete
-              options={["Dhaka", "Mirpur", "Savar", "Gazipur", , "Banani"]}
-              // onChange={(e, value) => setMaritalStatus(value)}
-              renderOption={(props, option) => (
-                <Typography {...props} variant="body2" color="text.secondary">
-                  {option}
-                </Typography>
-              )}
-              // sx={{ mb: 0.75 }}
-              renderInput={(params) => (
+      <Grid container spacing={3}>
+        <Grid item container>
+          <Grid lg={6} md={6} sm={6} xs={12}>
+            <div style={{ margin: "2%" }}>
+              <label className="label" for="html">
+                Location
+              </label>
+              <Autocomplete
+                options={["Dhaka", "Mirpur", "Savar", "Gazipur", , "Banani"]}
+                // onChange={(e, value) => setMaritalStatus(value)}
+                renderOption={(props, option) => (
+                  <Typography {...props} variant="body2" color="text.secondary">
+                    {option}
+                  </Typography>
+                )}
+                // sx={{ mb: 0.75 }}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    placeholder="Select Location"
+                    inputProps={{
+                      ...params.inputProps,
+                      style: { padding: "0.2rem 1rem" },
+                      autoComplete: "new-password", // disable autocomplete and autofill
+                    }}
+                  />
+                )}
+              />
+            </div>
+          </Grid>
+          <Grid lg={6} md={6} sm={6} xs={12}>
+            <div style={{ margin: "2%" }}>
+              <label className="label" for="html">
+                Trip Date
+              </label>
+              <div>
                 <TextField
-                  {...params}
-                  placeholder="Select Location"
-                  inputProps={{
-                    ...params.inputProps,
-                    style: { padding: "0.2rem 1rem" },
-                    autoComplete: "new-password", // disable autocomplete and autofill
-                  }}
+                  fullWidth
+                  placeholder="Trip Date"
+                  type="text"
+                  size="small"
+                  name="brand"
+                  //   value={brand}
+                  //   onChange={handleChange}
                 />
-              )}
-            />
-          </Grid>
-          <Grid md={4} style={{ padding: "0% 3%" }}>
-            <label for="html">Trip Date</label>
-            <div>
-              <TextField
-                placeholder="Trip Date"
-                type="text"
-                size="small"
-                name="brand"
-                //   value={brand}
-                //   onChange={handleChange}
-              />
+              </div>
             </div>
           </Grid>
         </Grid>
-      </form>
-      {/* Model Selection */}
-      <form style={{ textAlignLast: "left", marginBottom: "2%" }}>
-        <br />
-        <Grid container style={{ display: "" }}>
-          <Grid md={4} style={{ padding: "0% 1%" }}>
-            <label for="html">Full Name </label>
-            <div>
-              <TextField
-                placeholder="John Doe"
-                type="text"
-                size="small"
-                name="brand"
-                //   value={brand}
-                //   onChange={handleChange}
-              />
+
+        <Grid item container>
+          <Grid md={4} sm={4} xs={12}>
+            <div style={{ margin: "3%" }}>
+              <label className="label" for="html">
+                Full Name
+              </label>
+              <div>
+                <TextField
+                  fullWidth
+                  placeholder="John Doe"
+                  type="text"
+                  size="small"
+                  name="brand"
+                  //   value={brand}
+                  //   onChange={handleChange}
+                />
+              </div>
             </div>
           </Grid>
-          <Grid md={4} style={{ padding: "0% 3%" }}>
-            <label for="html">Email ID</label>
-            <div>
-              <TextField
-                placeholder="john@domain.com"
-                type="text"
-                size="small"
-                name="brand"
-                //   value={brand}
-                //   onChange={handleChange}
-              />
+          <Grid md={4} sm={4} xs={12}>
+            <div style={{ margin: "3%" }}>
+              <label className="label" for="html">
+                Email ID
+              </label>
+              <div>
+                <TextField
+                  fullWidth
+                  placeholder="john@domain.com"
+                  type="text"
+                  size="small"
+                  name="brand"
+                  //   value={brand}
+                  //   onChange={handleChange}
+                />
+              </div>
             </div>
           </Grid>
-          <Grid md={4} style={{ padding: "0% 1%" }}>
-            <label for="html">Mobile</label>
-            <div>
-              <TextField
-                placeholder="94092300293"
-                type="text"
-                size="small"
-                name="brand"
-                //   value={brand}
-                //   onChange={handleChange}
-              />
+          <Grid md={4} sm={4} xs={12}>
+            <div style={{ margin: "3%" }}>
+              <label className="label" for="html">
+                Mobile
+              </label>
+              <div>
+                <TextField
+                  fullWidth
+                  placeholder="94092300293"
+                  type="text"
+                  size="small"
+                  name="brand"
+                  //   value={brand}
+                  //   onChange={handleChange}
+                />
+              </div>
             </div>
           </Grid>
         </Grid>
-      </form>
+      </Grid>
     </div>
   );
 }

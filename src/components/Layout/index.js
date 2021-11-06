@@ -7,9 +7,10 @@ import { Container } from "@mui/material";
 import { styled } from "@mui/system";
 
 const StyledContainer = styled(Container)(({ theme }) => ({
-  marginTop: "14vh",
+  // marginTop: "14vh",
+  paddingTop: "14vh",
   [theme.breakpoints.down("md")]: {
-    marginTop: "10vh",
+    paddingTop: "10vh",
   },
 }));
 

@@ -195,11 +195,16 @@ export default function Navbar() {
                 <UserLogo size="small" />
               </li>
             ) : (
-              <li>
-                <Button variant="contained" onClick={() => setIsLoggedin(true)}>
-                  Login
-                </Button>
-              </li>
+              <Link className="Link" to="/login">
+                <li onClick={() => setIsLoggedin(true)}>
+                  <Button
+                    variant="contained"
+                    onClick={() => setIsLoggedin(true)}
+                  >
+                    Login
+                  </Button>
+                </li>
+              </Link>
             )}
           </ul>
         </NavContainer>

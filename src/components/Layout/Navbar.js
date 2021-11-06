@@ -42,7 +42,7 @@ export default function Navbar() {
             <li style={liStyle}>Products</li>
             <li style={liStyle}>Get a Quote</li>
             <Link className="Link" to="/login">
-              {" "}
+             
               <Button className="mainBtn" variant="contained">
                 <li>Login</li>
               </Button>

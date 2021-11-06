@@ -44,10 +44,15 @@ function Insurance() {
       {/* Model Selection */}
       <Grid container spacing={2}>
         <Grid item container spacing={2}>
-          <Grid item md={4}>
+          <Grid item md={4} sm={6} xs={12}>
             {/* <label for="html">Full Name </label> */}
             <InputBox label="Full Name ">
+<<<<<<< HEAD
               <Input
+=======
+              <TextField
+                fullWidth
+>>>>>>> 75aa0c326f6c879dcc2cd619a607f786ddbca41d
                 placeholder="John Doe"
                 type="text"
                 name="brand"
@@ -56,10 +61,15 @@ function Insurance() {
               />
             </InputBox>
           </Grid>
-          <Grid item md={4}>
+          <Grid item md={4} sm={6} xs={12}>
             {/* <label for="html">Email ID</label> */}
             <InputBox label="Email ID">
+<<<<<<< HEAD
               <Input
+=======
+              <TextField
+                fullWidth
+>>>>>>> 75aa0c326f6c879dcc2cd619a607f786ddbca41d
                 placeholder="john@domain.com"
                 type="text"
                 name="brand"
@@ -68,10 +78,15 @@ function Insurance() {
               />
             </InputBox>
           </Grid>
-          <Grid item md={4}>
+          <Grid item md={4} sm={6} xs={12}>
             {/* <label for="html">Mobile</label> */}
             <InputBox label="Mobile">
+<<<<<<< HEAD
               <Input
+=======
+              <TextField
+                fullWidth
+>>>>>>> 75aa0c326f6c879dcc2cd619a607f786ddbca41d
                 type="text"
                 name="brand"
                 placeholder="94092300293"
@@ -83,7 +98,11 @@ function Insurance() {
         </Grid>
 
         <Grid item container spacing={2}>
+<<<<<<< HEAD
           <Grid item xs={12} sm={6} md={4}>
+=======
+          <Grid item md={4} sm={6} xs={12}>
+>>>>>>> 75aa0c326f6c879dcc2cd619a607f786ddbca41d
             {/* <label for="html">Age</label> */}
             <InputBox label="Age">
               <Input
@@ -96,7 +115,11 @@ function Insurance() {
               />
             </InputBox>
           </Grid>
+<<<<<<< HEAD
           <Grid item xs={12} sm={6} md={4}>
+=======
+          <Grid item md={4} sm={6} xs={12}>
+>>>>>>> 75aa0c326f6c879dcc2cd619a607f786ddbca41d
             {/* <label for="html">Gender</label> */}
             <InputBox label="Gender">
               {/* <div> */}
@@ -113,6 +136,11 @@ function Insurance() {
                 renderInput={(params) => (
                   <Input
                     {...params}
+<<<<<<< HEAD
+=======
+                    size="small"
+                    fullWidth
+>>>>>>> 75aa0c326f6c879dcc2cd619a607f786ddbca41d
                     placeholder="Select Gender"
                     inputProps={{
                       ...params.inputProps,
