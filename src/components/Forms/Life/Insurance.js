@@ -36,12 +36,11 @@ function Insurance() {
   };
 
   return (
-    <div style={{ marginTop: "4%" }}>
+    <Grid container style={{ marginTop: "4%" }}>
       {/* Model Selection */}
-      <form style={{ textAlignLast: "left", marginBottom: "6%" }}>
-        <br />
+      <Grid item style={{ textAlignLast: "left" }}>
         <Grid container style={{ display: "" }}>
-          <Grid md={4} style={{ padding: "0% 3%" }}>
+          <Grid md={4} style={{ padding: "0% 1%" }}>
             <InputBox label="Full Name">
               <TextField
                 placeholder="John Doe"
@@ -63,7 +62,7 @@ function Insurance() {
               />
             </InputBox>
           </Grid>
-          <Grid md={4} style={{ padding: "0% 3%" }}>
+          <Grid md={4} style={{ padding: "0% 1%" }}>
             <InputBox label="Mobile">
               <TextField
                 type="text"
@@ -76,49 +75,52 @@ function Insurance() {
             </InputBox>
           </Grid>
         </Grid>
-      </form>
+      </Grid>
 
       {/* Year Selection */}
-      <form>
-        <Grid container style={{ display: "" }}>
-          <Grid md={4} style={{ padding: "0% 3%" }}>
-            <InputBox label="Age">
-              <TextField
-                placeholder="Age "
-                type="text"
-                size="small"
-                name="brand"
-              />
-            </InputBox>
-          </Grid>
-          <Grid md={4} style={{ padding: "0% 3%" }}>
-            <InputBox label="Marital Status">
-              <Autocomplete
-                options={["Married", "Single", "Diverced"]}
-                autoSelect={true}
-                // onChange={(e, value) => setMaritalStatus(value)}
-                renderOption={(props, option) => (
-                  <Typography {...props} variant="body2" color="text.secondary">
-                    {option}
-                  </Typography>
-                )}
-                renderInput={(params) => (
-                  <TextField
-                    {...params}
-                    size="small"
-                    placeholder="Select Gender"
-                    inputProps={{
-                      ...params.inputProps,
-                      autoComplete: "new-password", // disable autocomplete and autofill
-                    }}
-                  />
-                )}
-              />
-            </InputBox>
-          </Grid>
+
+      <Grid item container style={{ display: "" }}>
+        <Grid md={4} style={{ padding: "0% 1%" }}>
+          <InputBox label="Age">
+            <TextField
+              placeholder="Age "
+              type="text"
+              size="small"
+              name="brand"
+            />
+          </InputBox>
         </Grid>
-      </form>
-    </div>
+        <Grid md={4} style={{ padding: "3% 3%" }}>
+          {/* <InputBox label="Marital Status"> */}
+
+          <label for="html">Full Name </label>
+
+          <Autocomplete
+            options={["Married", "Single", "Diverced"]}
+            // autoSelect={true}
+            // onChange={(e, value) => setMaritalStatus(value)}
+            renderOption={(props, option) => (
+              <Typography {...props} variant="body2" color="text.secondary">
+                {option}
+              </Typography>
+            )}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                size="small"
+                placeholder="Select Gender"
+                inputProps={{
+                  ...params.inputProps,
+                  style: { padding: "0.2rem 1rem" },
+                  autoComplete: "new-password", // disable autocomplete and autofill
+                }}
+              />
+            )}
+          />
+          {/* </InputBox> */}
+        </Grid>
+      </Grid>
+    </Grid>
   );
 }
 

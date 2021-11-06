@@ -70,6 +70,7 @@ function BrandForm() {
           />
         </InputBox>
       </form>
+
       <Grid container>
         {brands.map((elem, i) => (
           <Grid
