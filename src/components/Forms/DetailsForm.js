@@ -119,7 +119,7 @@ function DetailsForm() {
             Commercial
           </Button>
         </Grid> */}
-        <Grid item style={{ marginTop: "2%" }} lg={6}>
+        <Grid item style={{ marginTop: "2%" }} xs={12} lg={6}>
           <InputBox label="Type of Insurance">
             <div>
               <Button
@@ -146,9 +146,10 @@ function DetailsForm() {
             </div>
           </InputBox>
         </Grid>
-        <Grid item lg={4}>
-          <InputBox label="Label">
+        <Grid item xs={12} lg={4}>
+          <InputBox label="IDV">
             <Input
+              fullWidth
               value={value}
               placeholder="Value"
               onChange={handleChange}
@@ -162,6 +163,7 @@ function DetailsForm() {
         <Grid item lg={4}>
           <InputBox label="Full Name">
             <Input
+              fullWidth
               value={fullName}
               placeholder="John Doe"
               onChange={handleChange}
@@ -172,6 +174,7 @@ function DetailsForm() {
         <Grid lg={4}>
           <InputBox label="Email Address">
             <Input
+              fullWidth
               value={email}
               placeholder="john@domain.com"
               onChange={handleChange}
@@ -182,6 +185,7 @@ function DetailsForm() {
         <Grid item lg={4}>
           <InputBox label="Phone No">
             <Input
+              fullWidth
               value={phone}
               placeholder="94092300293"
               onChange={handleChange}

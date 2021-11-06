@@ -1,16 +1,13 @@
 import React from "react";
-import {
-  Grid,
-  Button,
-  Input,
-  Autocomplete,
-  Typography,
-  Stack,
-} from "@mui/material";
-import { TextField, Box } from "@mui/material";
+import { Grid, Button, Typography, Stack } from "@mui/material";
+import { Box } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import { FIELD_CHANGE } from "../../../constants/autoCompare.constant";
 import InputBox from "../../customStyledComponents/InputBox";
+import {
+  CustomAutocomplete as Autocomplete,
+  CustomTextField as Input,
+} from "../../../components/customStyledComponents/inputs";
 // import { FIELD_CHANGE } from "../../constants/autoCompare.constant";
 
 function Insurance() {
@@ -50,10 +47,9 @@ function Insurance() {
           <Grid item md={4}>
             {/* <label for="html">Full Name </label> */}
             <InputBox label="Full Name ">
-              <TextField
+              <Input
                 placeholder="John Doe"
                 type="text"
-                size="small"
                 name="brand"
                 //   value={brand}
                 //   onChange={handleChange}
@@ -63,10 +59,9 @@ function Insurance() {
           <Grid item md={4}>
             {/* <label for="html">Email ID</label> */}
             <InputBox label="Email ID">
-              <TextField
+              <Input
                 placeholder="john@domain.com"
                 type="text"
-                size="small"
                 name="brand"
                 //   value={brand}
                 //   onChange={handleChange}
@@ -76,9 +71,8 @@ function Insurance() {
           <Grid item md={4}>
             {/* <label for="html">Mobile</label> */}
             <InputBox label="Mobile">
-              <TextField
+              <Input
                 type="text"
-                size="small"
                 name="brand"
                 placeholder="94092300293"
                 //   value={brand}
@@ -89,13 +83,12 @@ function Insurance() {
         </Grid>
 
         <Grid item container spacing={2}>
-          <Grid item md={4}>
+          <Grid item xs={12} sm={6} md={4}>
             {/* <label for="html">Age</label> */}
             <InputBox label="Age">
-              <TextField
+              <Input
                 fullWidth
                 type="text"
-                size="small"
                 name="brand"
                 placeholder="Age"
                 //   value={brand}
@@ -103,13 +96,13 @@ function Insurance() {
               />
             </InputBox>
           </Grid>
-          <Grid item md={4}>
+          <Grid item xs={12} sm={6} md={4}>
             {/* <label for="html">Gender</label> */}
             <InputBox label="Gender">
               {/* <div> */}
               <Autocomplete
                 fullWidth
-                options={["Married", "Single", "Diverced"]}
+                options={["Male", "Female", "Others"]}
                 // onChange={(e, value) => setMaritalStatus(value)}
                 renderOption={(props, option) => (
                   <Typography {...props} variant="body2" color="text.secondary">
@@ -118,12 +111,12 @@ function Insurance() {
                 )}
                 // sx={{ mb: 0.75 }}
                 renderInput={(params) => (
-                  <TextField
+                  <Input
                     {...params}
-                    size="small"
                     placeholder="Select Gender"
                     inputProps={{
                       ...params.inputProps,
+                      style: { padding: ".75rem 1rem" },
                       autoComplete: "new-password", // disable autocomplete and autofill
                     }}
                   />
