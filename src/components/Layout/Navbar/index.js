@@ -203,7 +203,7 @@ export default function Navbar() {
                       <Navtext>My Policies</Navtext>
                     </li>
                   </Link>
-                  <Link to="/profile/docs">
+                  <Link to="/profile/mydocs">
                     <li className={styles.navlistItem}>
                       <Navtext>My Documents</Navtext>
                     </li>
