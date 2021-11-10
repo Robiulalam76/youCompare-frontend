@@ -1,16 +1,13 @@
 import React from "react";
-import {
-  Grid,
-  Button,
-  Input,
-  Autocomplete,
-  Typography,
-  Stack,
-} from "@mui/material";
-import { TextField, Box } from "@mui/material";
+import { Grid, Button, Typography, TextField, Stack } from "@mui/material";
+import { Box } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import { FIELD_CHANGE } from "../../../constants/autoCompare.constant";
 import InputBox from "../../customStyledComponents/InputBox";
+import {
+  CustomAutocomplete as Autocomplete,
+  CustomTextField as Input,
+} from "../../../components/customStyledComponents/inputs";
 // import { FIELD_CHANGE } from "../../constants/autoCompare.constant";
 
 function Insurance() {
@@ -54,7 +51,6 @@ function Insurance() {
                 fullWidth
                 placeholder="John Doe"
                 type="text"
-                size="small"
                 name="brand"
                 //   value={brand}
                 //   onChange={handleChange}
@@ -68,7 +64,6 @@ function Insurance() {
                 fullWidth
                 placeholder="john@domain.com"
                 type="text"
-                size="small"
                 name="brand"
                 //   value={brand}
                 //   onChange={handleChange}
@@ -81,7 +76,6 @@ function Insurance() {
               <TextField
                 fullWidth
                 type="text"
-                size="small"
                 name="brand"
                 placeholder="94092300293"
                 //   value={brand}
@@ -95,10 +89,9 @@ function Insurance() {
           <Grid item md={4} sm={6} xs={12}>
             {/* <label for="html">Age</label> */}
             <InputBox label="Age">
-              <TextField
+              <Input
                 fullWidth
                 type="text"
-                size="small"
                 name="brand"
                 placeholder="Age"
                 //   value={brand}
@@ -112,7 +105,7 @@ function Insurance() {
               {/* <div> */}
               <Autocomplete
                 fullWidth
-                options={["Married", "Single", "Diverced"]}
+                options={["Male", "Female", "Others"]}
                 // onChange={(e, value) => setMaritalStatus(value)}
                 renderOption={(props, option) => (
                   <Typography {...props} variant="body2" color="text.secondary">
@@ -121,13 +114,14 @@ function Insurance() {
                 )}
                 // sx={{ mb: 0.75 }}
                 renderInput={(params) => (
-                  <TextField
+                  <Input
                     {...params}
                     size="small"
                     fullWidth
                     placeholder="Select Gender"
                     inputProps={{
                       ...params.inputProps,
+                      style: { padding: ".75rem 1rem" },
                       autoComplete: "new-password", // disable autocomplete and autofill
                     }}
                   />

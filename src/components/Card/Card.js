@@ -180,7 +180,7 @@ function AutoCard({
           xs={12}
           lg={7}
           xl={7}
-          sx={{ justifyContent: "center", alignItems: "start" }}
+          sx={{ justifyContent: "center", alignItems: "center" }}
         >
           <ShadowedBox>
             <Typography

@@ -47,7 +47,7 @@ const NavContainer = styled(Container)(({ theme }) => ({
   minHeight: "10vh",
 }));
 
-const UserLogo = ({ size }) => {
+const UserLogo = ({ size, setIsLoggedin }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -94,7 +94,7 @@ const UserLogo = ({ size }) => {
           horizontal: "right",
         }}
       >
-        <Link to="/profile">
+        <Link to="/profile/mypolicies">
           <ListItemButton sx={{ width: "200px", m: 1 }}>
             <ImProfile className={styles.icon} />
             <Typography sx={{ fontSize: ".9rem", lineHeight: "27px" }}>
@@ -103,7 +103,12 @@ const UserLogo = ({ size }) => {
           </ListItemButton>
         </Link>
         <Link to="/home">
-          <ListItemButton sx={{ width: "200px", m: 1 }}>
+          <ListItemButton
+            sx={{ width: "200px", m: 1 }}
+            onClick={() => {
+              localStorage.removeItem("login");
+            }}
+          >
             <FiLogOut className={styles.icon} />
             <Typography sx={{ fontSize: ".9rem", lineHeight: "27px" }}>
               Logout
@@ -117,9 +122,12 @@ const UserLogo = ({ size }) => {
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = React.useState(false);
-  const [isLoggedin, setIsLoggedin] = React.useState(false);
   const [navbarElevation, setNavbarElevation] = React.useState(false);
   const [showTopBar, setShowTopBar] = React.useState(true);
+
+  const [isLoggedin, setIsLoggedin] = React.useState(
+    localStorage.getItem("login")
+  );
 
   let location = useLocation();
 
@@ -183,16 +191,19 @@ export default function Navbar() {
                 </li>
               ))}
               {isLoggedin
-                ? ["My Documents", "My Policies"].map((elem, i) => (
-                    <li key={i} className={styles.navlistItem}>
-                      {elem}
-                    </li>
+                ? [
+                    { title: "My Documents", link: "/profile/mydocs" },
+                    { title: "My Policies", link: "/profile/mypolicies" },
+                  ].map((elem, i) => (
+                    <Link key={i} to={elem.link}>
+                      <li className={styles.navlistItem}>{elem.title}</li>
+                    </Link>
                   ))
                 : null}
             </Hidden>
             {isLoggedin ? (
               <li>
-                <UserLogo size="small" />
+                <UserLogo size="small" setIsLoggedin={setIsLoggedin} />
               </li>
             ) : (
               <Link className="Link" to="/login">
@@ -219,13 +230,15 @@ export default function Navbar() {
                 {/** Login Button or Profile Logo */}
                 <Box sx={{ mt: 2 }}>
                   {!isLoggedin ? (
-                    <Button
-                      fullWidth
-                      variant="contained"
-                      onClick={() => setIsLoggedin(true)}
-                    >
-                      Login
-                    </Button>
+                    <Link className="Link" to="/login">
+                      <Button
+                        fullWidth
+                        variant="contained"
+                        onClick={() => setIsLoggedin(true)}
+                      >
+                        Login
+                      </Button>
+                    </Link>
                   ) : (
                     <div style={{ display: "flex", alignItems: "center" }}>
                       <UserLogo size="small" />

@@ -2,7 +2,7 @@ import { Box, Typography } from "@mui/material"
 
 export default function InputBox(props) {
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", alignItems: "flex-start", mt: 1.5 }}
+    <Box sx={{ ...props.sx, display: "flex", flexDirection: "column", alignItems: "flex-start", mt: 1.5 }}
       {...props}>
       <Typography
         variant="body2"

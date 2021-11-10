@@ -53,11 +53,18 @@ export default function MenuItems({ isLoggedin }) {
     <React.Fragment>
       <List>
         {isLoggedin
-          ? ["My Policies", "My Documents", "My Quotes"].map((item, i) => (
-              <React.Fragment key={i}>
+          ? [
+              { title: "My Policies", link: "/profile/mypolicies" },
+              {
+                title: "My Documents",
+                link: "/profile/mydocs",
+              },
+              { title: "My Quotes", link: "/" },
+            ].map((item, i) => (
+              <Link to={item.link} kxey={i}>
                 <ListItem sx={{ py: 0, px: 2 }}>
                   <ListItemButton
-                    onClick={() => setSelectedNavItem(item)}
+                    onClick={() => setSelectedNavItem(item.title)}
                     sx={{
                       py: 1.5,
                       px: 0,
@@ -69,15 +76,15 @@ export default function MenuItems({ isLoggedin }) {
                     <NavSideBar
                       sx={{
                         borderColor:
-                          selectedNavItem === item
+                          selectedNavItem === item.title
                             ? "primary.main"
                             : "transparent",
                       }}
                     ></NavSideBar>
-                    <RootNavItem>{item}</RootNavItem>
+                    <RootNavItem>{item.title}</RootNavItem>
                   </ListItemButton>
                 </ListItem>
-              </React.Fragment>
+              </Link>
             ))
           : null}
 
