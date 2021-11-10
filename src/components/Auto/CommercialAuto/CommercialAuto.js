@@ -34,6 +34,7 @@ const Heading = styled(Typography)(({ theme }) => ({
   fontSize: "4rem",
   fontWeight: "bold",
   lineHeight: "4.5rem",
+  textAlign: "left",
   [theme.breakpoints.only("xs")]: {
     fontSize: "2.5rem",
     lineHeight: "3rem",
@@ -50,6 +51,7 @@ const SubHeading = styled(Typography)(({ theme }) => ({
   color: "#74769E",
   fontSize: "1rem",
   fontWeight: "normal",
+  textAlign: "left",
   [theme.breakpoints.only("xs")]: {
     fontSize: ".85rem",
     lineHeight: "1.2rem",
@@ -86,19 +88,35 @@ function CommercialAuto({ commercial }) {
   return (
     <RootBox>
       <Grid container spacing={2} sx={{ height: "inherit" }}>
-        <Grid
-          item
-          container
-          xs={12}
-          lg={5}
-          xl={12}
-          style={{ textAlign: "-webkit-left" }}
-        >
-          <Grid item xs={12} md={6} lg={12}>
-            <div style={{ textAlign: "-webkit-match-parent" }}>
-              <Heading>Commercial</Heading>
-              <Heading>Auto</Heading>
-              <SubHeading>
+        <Grid item container xs={12} lg={5} xl={5} style={{ height: "85vh" }}>
+          <Grid item xs={12} md={6} lg={6}>
+            <div>
+              <Heading
+                style={{
+                  fontSize: "3.5rem",
+                  fontWeight: "bold",
+                  lineHeight: "3rem",
+                  marginBottom: "1rem",
+                }}
+              >
+                Commercial
+              </Heading>
+              <Heading
+                style={{
+                  fontSize: "3.5rem",
+                  fontWeight: "bold",
+                  lineHeight: "3rem",
+                  marginBottom: "1rem",
+                }}
+              >
+                Auto
+              </Heading>
+              <SubHeading
+                style={{
+                  width: "100%",
+                  marginTop: "0.5rem",
+                }}
+              >
                 Auto insurance is designed to protect yourself and others
                 against many various risks.
               </SubHeading>

@@ -127,12 +127,25 @@ function AutoCard({
   title,
   description,
 }) {
+  const { path } = useRouteMatch();
+  console.log(path, "path");
+  if (path === "/home/auto") {
+    console.log(`done`, path);
+  }
+
   return (
     <RootBox>
       <Grid container spacing={2} sx={{ height: "inherit" }}>
-        <Grid className="borderG" item container lg={5} xl={12} xs={12}>
-          <Grid item container lg={12} md={12} xs={12}>
-            <div style={{ width: "100%", textAlign: "-webkit-match-parent" }}>
+        <Grid item container lg={5} xl={5} xs={12}>
+          <Grid
+            item
+            container
+            lg={12}
+            md={12}
+            xs={12}
+            style={{ height: "85vh" }}
+          >
+            <div style={{ width: "100%" }}>
               {title
                 ? title.split(" ").map((txt) => (
                     <Heading
@@ -162,6 +175,7 @@ function AutoCard({
             >
               <ImageBox>
                 <img
+                  className={path === "/home/travel" ? "imgpermanentLife" : ""}
                   alt={title}
                   src={sideBanner}
                   style={{

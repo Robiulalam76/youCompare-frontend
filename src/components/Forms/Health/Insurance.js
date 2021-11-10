@@ -121,7 +121,7 @@ function Insurance() {
                     placeholder="Select Gender"
                     inputProps={{
                       ...params.inputProps,
-                      style: { padding: ".75rem 1rem" },
+                      style: { padding: ".4rem 1rem" },
                       autoComplete: "new-password", // disable autocomplete and autofill
                     }}
                   />

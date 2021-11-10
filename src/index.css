@@ -51,6 +51,7 @@ a {
   .BannerHeaderSmall {
     font-size: 60px;
     margin: 0px;
+    line-height: 62px;
   }
   .insuranceCardMT {
     margin-top: "1%";
@@ -69,9 +70,7 @@ a {
   .insuranceCardMT {
     margin-top: "1%";
   }
-  .SubAuto {
-    /* margin-top: 10%; */
-  }
+
   .responsiceMiddle {
     margin: 0 auto;
   }
@@ -85,13 +84,17 @@ a {
   }
 
   .BannerHeader {
-    font-size: 70px;
+    font-size: 3.5rem;
     margin-bottom: 5%;
     line-height: 70px;
+  }
+  .imgpermanentLife {
+    transform: scale(75%);
   }
   .BannerHeaderSmall {
     font-size: 60px;
     margin: 0px;
+    line-height: 62px;
   }
   .appHeader {
     font-size: 210%;
@@ -105,6 +108,11 @@ a {
   }
 }
 
+@media (min-width: 960px) {
+  .height75 {
+    height: 70vh;
+  }
+}
 @media (min-width: 886px) and (max-width: 1290px) {
   .SecondHeaderTitle {
     font-size: 45px;
@@ -112,9 +120,6 @@ a {
   /*Tablets [601px -> 1200px]*/
   .insuranceCardMT {
     margin-top: "2%";
-  }
-  .SubAuto {
-    /* margin-top: 10%; */
   }
   .responsiceMiddle {
     margin: 0 auto;
@@ -129,13 +134,27 @@ a {
   }
 
   .BannerHeader {
-    font-size: 57px;
+    font-size: 3rem;
     margin-bottom: 5%;
     line-height: 70px;
+    text-align: center;
+  }
+  .BannerSubHeader {
+    font-size: 1rem;
+    /* margin-bottom: 1%; */
+
+    text-align: center;
+  }
+  .imgpermanentLife {
+    transform: scale(85%);
+  }
+  .img {
+    text-align: center;
   }
   .BannerHeaderSmall {
-    font-size: 60px;
+    font-size: 50px;
     margin: 0px;
+    line-height: 52px;
   }
   .appHeader {
     font-size: 180%;
@@ -160,17 +179,28 @@ a {
     margin-top: "1%";
   }
   .BannerHeader {
-    font-size: 38px;
-    margin-bottom: 5%;
-    line-height: 40px;
+    font-size: 2.5rem;
+    text-align: center;
+    margin: 0px !important;
+  }
+  .BannerSubHeader {
+    font-size: 1rem;
+    text-align: center;
+  }
+  .imgR {
+    text-align: center;
+  }
+  .img {
+    text-align: center;
   }
   .BannerPera {
     font-size: 16px;
     color: #74769e;
   }
   .BannerHeaderSmall {
-    font-size: 60px;
+    font-size: 50px;
     margin: 0px;
+    line-height: 52px;
   }
   .appHeader {
     font-size: 150%;
@@ -197,18 +227,31 @@ a {
   .insuranceCardMT {
     margin-top: "1%";
   }
+
   .BannerHeader {
-    font-size: 28px;
-    margin-bottom: 5%;
-    line-height: 30px;
+    font-size: 2rem;
+    text-align: center;
+    margin: 0px !important;
+    padding: 0px !important;
+  }
+  .BannerSubHeader {
+    font-size: 1rem;
+    text-align: center;
+  }
+  .imgR {
+    transform: rotateY(180deg) scale(0.6);
+  }
+  .img {
+    text-align: center;
   }
   .BannerPera {
     font-size: 12px;
     color: #74769e;
   }
   .BannerHeaderSmall {
-    font-size: 60px;
+    font-size: 50px;
     margin: 0px;
+    line-height: 52px;
   }
   .appHeader {
     font-size: 25px;
@@ -239,9 +282,22 @@ a {
     margin-top: "1%";
   }
   .BannerHeader {
-    font-size: 20px;
-    margin-bottom: 5%;
-    line-height: 35px;
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 0px !important;
+    margin-top: -1rem !important;
+    padding: 0px !important;
+  }
+  .BannerSubHeader {
+    font-size: 0.5rem;
+    margin-top: -0.5rem !important;
+    text-align: center;
+  }
+  .imgR {
+    transform: rotateY(180deg) scale(0.6);
+  }
+  .img {
+    text-align: center;
   }
   .BannerPera {
     font-size: 10px;

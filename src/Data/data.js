@@ -3,6 +3,8 @@ import car from "../accets/car-image.svg";
 import privateAuto from "../accets/private.svg";
 import threeWheel from "../accets/threeWheel.svg";
 import twowheeler from "../accets/twowheeler.svg";
+import Truck from "../accets/truck.svg";
+import Bus from "../accets/Bus.svg";
 // life
 import privateLife from "../accets/40781.png";
 import term from "../accets/37226@2x.png";
@@ -123,21 +125,21 @@ export const subCommercial = [
   {
     title: "Truck",
     url: "truck",
-    image: commercial,
+    image: Truck,
     description:
       "Auto insurance is designed to protect yourself and others agains many various risks",
   },
   {
     title: "Bus & Van",
     url: "bus_van",
-    image: privateAuto,
+    image: Bus,
     description:
       "Prepare for your family's future in the case of an unexpected tragedy. Insurance helps you.",
   },
   {
     title: "Car",
     url: "car",
-    image: threeWheel,
+    image: privateAuto,
     description:
       "Insurance plans that cover trip cancellation, travel medicines and many more from your loss.",
   },

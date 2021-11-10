@@ -90,33 +90,36 @@ function Insurance() {
             />
           </InputBox>
         </Grid>
-        <Grid md={4} style={{ padding: "3% 3%" }}>
+        <Grid md={4} style={{ padding: "0% 3%" }}>
           {/* <InputBox label="Marital Status"> */}
 
-          <label for="html">Full Name </label>
-
-          <Autocomplete
-            options={["Married", "Single", "Diverced"]}
-            // autoSelect={true}
-            // onChange={(e, value) => setMaritalStatus(value)}
-            renderOption={(props, option) => (
-              <Typography {...props} variant="body2" color="text.secondary">
-                {option}
-              </Typography>
-            )}
-            renderInput={(params) => (
-              <TextField
-                {...params}
-                size="small"
-                placeholder="Select Gender"
-                inputProps={{
-                  ...params.inputProps,
-                  style: { padding: "0.2rem 1rem" },
-                  autoComplete: "new-password", // disable autocomplete and autofill
-                }}
-              />
-            )}
-          />
+          {/* <label for="html">Gender </label> */}
+          <InputBox label="Gender">
+            <Autocomplete
+              fullWidth
+              options={["Married", "Single", "Diverced"]}
+              // autoSelect={true}
+              // onChange={(e, value) => setMaritalStatus(value)}
+              renderOption={(props, option) => (
+                <Typography {...props} variant="body2" color="text.secondary">
+                  {option}
+                </Typography>
+              )}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  size="small"
+                  fullWidth
+                  placeholder="Select Gender"
+                  inputProps={{
+                    ...params.inputProps,
+                    style: { padding: ".2rem 1rem" },
+                    autoComplete: "new-password", // disable autocomplete and autofill
+                  }}
+                />
+              )}
+            />
+          </InputBox>
           {/* </InputBox> */}
         </Grid>
       </Grid>
