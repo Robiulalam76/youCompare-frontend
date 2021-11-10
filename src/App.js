@@ -9,16 +9,16 @@ import Login from "./screens/auth/Login";
 import Signup from "./screens/auth/Signup";
 
 //compare pages
-import AutoCompare from "./screens/compare/auto";
-import LifeCompare from "./screens/compare/life";
-import HealthCompare from "./screens/compare/health";
-import TravelCompare from "./screens/compare/travel";
+// import AutoCompare from "./screens/compare/auto";
+// import LifeCompare from "./screens/compare/life";
+// import HealthCompare from "./screens/compare/health";
+// import TravelCompare from "./screens/compare/travel";
 
-import AutoBuyNow from "./screens/buyprocess/auto";
-import LifeBuyNow from "./screens/buyprocess/life";
-import HealthBuyNow from "./screens/buyprocess/health";
+// import AutoBuyNow from "./screens/buyprocess/auto";
+// import LifeBuyNow from "./screens/buyprocess/life";
+// import HealthBuyNow from "./screens/buyprocess/health";
 
-import PaymentSuccessfull from "./screens/paymentSuccessfull";
+// import PaymentSuccessfull from "./screens/paymentSuccessfull";
 
 import MyDocs from "./screens/profile/MyDocs";
 import MyPolicies from "./screens/profile/MyPolicies";
@@ -44,7 +44,8 @@ function App() {
               </Route>
               <Redirect exact from="/" to="/home" />
 
-              <Route exact path="/auto/compare">
+              
+              {/* <Route exact path="/auto/compare">
                 <AutoCompare />
               </Route>
 
@@ -56,10 +57,12 @@ function App() {
               </Route>
               <Route exact path="/travel/compare">
                 <TravelCompare />
-              </Route>
+              </Route> */}
 
+              
+              
               {/** Buy Now Pages */}
-              <Route exact path="/auto/buynow">
+              {/* <Route exact path="/auto/buynow">
                 <AutoBuyNow />
               </Route>
               <Route exact path="/life/buynow">
@@ -71,17 +74,25 @@ function App() {
               <Route path="/travel/buynow">
                 <AutoBuyNow />
               </Route>
+              
+               */}
+              
               {/** Payment */}
-              <Route exact path="/auto/payment-success">
+              {/* <Route exact path="/auto/payment-success">
                 <PaymentSuccessfull />
-              </Route>
+              </Route> */}
+              
+              
+              
               {/** Profile */}
-              <Route exact path="/profile/mydocs">
+              {/* <Route exact path="/profile/mydocs">
                 <MyDocs />
               </Route>
               <Route exact path="/profile/mypolicies">
                 <MyPolicies />
-              </Route>
+              </Route> */}
+
+
               {/**Auth pages */}
               <Route exact path="/login">
                 <Login />

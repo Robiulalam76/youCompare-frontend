@@ -16,20 +16,24 @@ import {
 } from "@mui/material";
 import Popover from "@mui/material/Popover";
 import IconButton from "@mui/material/IconButton";
-import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
-import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
-
-import MenuItems from "./MenuItems";
-import TopBar from "./TopBar";
-import styles from "./styles.module.css";
 
 import { style, styled } from "@mui/system";
 import logo from "../../../accets/logo.png";
 import profile from "../../../accets/profile.jpg";
 import { Link, useLocation } from "react-router-dom";
 
+// mui and react icons
+import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
+import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import { FiLogOut } from "react-icons/fi";
 import { ImProfile } from "react-icons/im";
+
+//components
+import ProductsMenu from "./ProductsMenu";
+import MenuItems from "./MenuItems";
+import TopBar from "./TopBar";
+import styles from "./styles.module.css";
+import { Navtext } from "../../customStyledComponents/texts";
 
 const BrandLogoBox = styled(Box)(({ theme }) => ({
   width: "200px",
@@ -44,9 +48,10 @@ const NavContainer = styled(Container)(({ theme }) => ({
   justifyContent: "space-between",
   alignItems: "center",
   color: "#2a2b40",
-  minHeight: "10vh",
+  height: "10vh",
 }));
 
+// User Logo with navigation items
 const UserLogo = ({ size, setIsLoggedin }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -179,27 +184,32 @@ export default function Navbar() {
 
   return (
     <React.Fragment>
-      <AppBar color="inherit" elevation={navbarElevation ? 2 : 0} id="navbar">
-        <Hidden mdDown>{showTopBar ? <TopBar /> : null}</Hidden>
+      <AppBar color="inherit" elevation={navbarElevation ? 1 : 0} id="navbar">
+        {/* <Hidden mdDown>{showTopBar ? <TopBar /> : null}</Hidden> */}
         <NavContainer>
           <BrandLogoSection setMenuOpen={setMenuOpen} />
           <ul className={styles.navlist}>
             <Hidden mdDown>
-              {["Products", "Get a Quote"].map((elem, i) => (
-                <li key={i} className={styles.navlistItem}>
-                  {elem}
-                </li>
-              ))}
-              {isLoggedin
-                ? [
-                    { title: "My Documents", link: "/profile/mydocs" },
-                    { title: "My Policies", link: "/profile/mypolicies" },
-                  ].map((elem, i) => (
-                    <Link key={i} to={elem.link}>
-                      <li className={styles.navlistItem}>{elem.title}</li>
-                    </Link>
-                  ))
-                : null}
+              <li className={styles.navlistItem}>
+                <ProductsMenu />
+              </li>
+              <li className={styles.navlistItem}>
+                <Navtext>Get a Quote</Navtext>
+              </li>
+              {isLoggedin ? (
+                <>
+                  <Link to="/profile/mypolicies">
+                    <li className={styles.navlistItem}>
+                      <Navtext>My Policies</Navtext>
+                    </li>
+                  </Link>
+                  <Link to="/profile/docs">
+                    <li className={styles.navlistItem}>
+                      <Navtext>My Documents</Navtext>
+                    </li>
+                  </Link>
+                </>
+              ) : null}
             </Hidden>
             {isLoggedin ? (
               <li>
