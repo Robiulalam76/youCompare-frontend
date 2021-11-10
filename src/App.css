@@ -46,6 +46,9 @@ img {
   font-size: 20px;
   color: #74769e;
 } */
+.borderG {
+  border: 2px solid green !important;
+}
 .Link {
   text-decoration: none;
   color: black;

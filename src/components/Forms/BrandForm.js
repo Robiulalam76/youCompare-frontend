@@ -101,7 +101,6 @@ function BrandForm() {
               <p>{elem}</p>
               {brand === elem && (
                 <span className="right">
-                  {" "}
                   <BiCheck />{" "}
                 </span>
               )}

@@ -65,6 +65,7 @@ export default function LandingPage({}) {
   const { path, url } = useRouteMatch();
 
   const Card = () => (
+    //landing page er main div
     <div>
       <div className="bannner">
         <h1 className="BannerHeader poppinFont ">

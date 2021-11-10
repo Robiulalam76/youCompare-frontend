@@ -39,6 +39,16 @@ const Heading = styled(Typography)(({ theme }) => ({
   fontWeight: "bold",
   lineHeight: "3.5rem",
   textAlign: "left",
+  [theme.breakpoints.only("lg")]: {
+    fontSize: "2.5rem",
+    lineHeight: "3rem",
+    textAlign: "left",
+  },
+  [theme.breakpoints.only("md")]: {
+    fontSize: "2.5rem",
+    lineHeight: "3rem",
+    textAlign: "center",
+  },
   [theme.breakpoints.only("xs")]: {
     fontSize: "2.5rem",
     lineHeight: "3rem",
@@ -59,6 +69,20 @@ const SubHeading = styled(Typography)(({ theme }) => ({
   // width: "75%",
   textAlign: "left",
 
+  [theme.breakpoints.only("lg")]: {
+    // width: "80%",
+    margin: "0 auto",
+    fontSize: ".85rem",
+    lineHeight: "1.2rem",
+    textAlign: "left",
+  },
+  [theme.breakpoints.only("md")]: {
+    width: "80%",
+    margin: "0 auto",
+    fontSize: ".85rem",
+    lineHeight: "1.2rem",
+    textAlign: "center",
+  },
   [theme.breakpoints.only("xs")]: {
     width: "80%",
     margin: "0 auto",
@@ -106,23 +130,17 @@ function AutoCard({
   return (
     <RootBox>
       <Grid container spacing={2} sx={{ height: "inherit" }}>
-        <Grid
-          item
-          container
-          xs={12}
-          lg={5}
-          xl={12}
-          style={{ textAlign: "-webkit-center" }}
-        >
+        <Grid className="borderG" item container lg={5} xl={12} xs={12}>
           <Grid item container lg={12} md={12} xs={12}>
-            <div style={{ textAlign: "-webkit-match-parent" }}>
+            <div style={{ width: "100%", textAlign: "-webkit-match-parent" }}>
               {title
                 ? title.split(" ").map((txt) => (
                     <Heading
                       style={{
                         fontSize: "3.5rem",
                         fontWeight: "bold",
-                        lineHeight: "3.5rem",
+                        lineHeight: "3rem",
+                        marginBottom: "1rem",
                       }}
                       key={txt}
                     >
@@ -130,9 +148,18 @@ function AutoCard({
                     </Heading>
                   ))
                 : null}
-              <SubHeading>{description}</SubHeading>
+              <SubHeading
+                style={{
+                  marginTop: "0.5rem",
+                }}
+              >
+                {description}
+              </SubHeading>
             </div>
-            <div className={title.split(" ").join("_")}>
+            <div
+              style={{ width: "100%", textAlign: "-webkit-match-parent" }}
+              className={title.split(" ").join("_")}
+            >
               <ImageBox>
                 <img
                   alt={title}

@@ -4,7 +4,7 @@ import InsuranceStepper from "../../StepperInsuranceHealth";
 function PPO({ Health }) {
   return (
     <Grid container>
-      <Grid lg={6} md={6} xl={5} sm={12} xs={12} className="GridDiv">
+      <Grid lg={5} md={5} xl={5} sm={12} xs={12} className="GridDiv">
         <div style={{ justifyContent: "space-around" }}>
           <h4 className="BannerHeaderSmall">PPO Insurance</h4>
           <p>
@@ -14,7 +14,7 @@ function PPO({ Health }) {
         </div>
         <img src={Health} alt="" />
       </Grid>
-      <Grid lg={6} md={6} xl={5} sm={12} xs={12}>
+      <Grid style={{ padding: "0% 1%" }} lg={7} md={7} xl={7} sm={12} xs={12}>
         <InsuranceStepper />
       </Grid>
     </Grid>

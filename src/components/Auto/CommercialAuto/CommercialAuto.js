@@ -96,7 +96,7 @@ function CommercialAuto({ commercial }) {
         >
           <Grid item xs={12} md={6} lg={12}>
             <div style={{ textAlign: "-webkit-match-parent" }}>
-              <Heading>Comercial</Heading>
+              <Heading>Commercial</Heading>
               <Heading>Auto</Heading>
               <SubHeading>
                 Auto insurance is designed to protect yourself and others
