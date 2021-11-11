@@ -89,18 +89,38 @@ function CommercialAuto({ commercial }) {
   return (
     <RootBox>
       <Grid container spacing={2} sx={{ height: "inherit" }}>
-        <Grid item container xs={12} lg={5} xl={5} style={{ height: "85vh" }}>
+        <Grid
+          item
+          container
+          xs={12}
+          lg={5}
+          xl={5}
+          sx={{
+            height: { lg: "80vh" },
+          }}
+        >
           <Grid item xs={12} md={6} lg={6}>
-            <Heading>Commercial</Heading>
-            <Heading>Vehicle</Heading>
-            <SubHeading
-              style={{
-                marginTop: "0.5rem",
-              }}
-            >
-              Auto insurance is designed to protect yourself and others against
-              many various risks.
-            </SubHeading>
+            <div>
+              <Heading
+                style={{
+                  fontSize: "3.5rem",
+                  fontWeight: "bold",
+                  lineHeight: "3rem",
+                  marginBottom: "1rem",
+                }}
+              >
+                Commercial
+              </Heading>
+              <Heading>Auto</Heading>
+              <SubHeading
+                style={{
+                  marginTop: "0.5rem",
+                }}
+              >
+                Auto insurance is designed to protect yourself and others
+                against many various risks.
+              </SubHeading>
+            </div>
           </Grid>
 
           <Grid item xs={12} md={6} lg={12}>
