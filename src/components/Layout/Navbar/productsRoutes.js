@@ -6,40 +6,45 @@ import { MdHealthAndSafety } from "react-icons/md";
 export const autoInsuranceRoutes = {
   id: 1,
   category: "Auto Insurance",
-  icon: <AiFillCar />,
+  icon: <AiFillCar style={{ color: "gray" }} />,
   subcat: [
     {
       id: 1,
-      category: "Two Insurance",
-      link: "/home/auto/two-wheeler",
+      category: "Private Car Insurance",
+      link: "/home/auto/private",
     },
     {
       id: 2,
+      category: "Two Wheeler Insurance",
+      link: "/home/auto/two-wheeler",
+    },
+    {
+      id: 3,
       category: "Three Wheeler Insurance",
       link: "/home/auto/three-wheeler",
     },
     {
-      id: 3,
-      category: "Bus or Truck Insurance",
-      link: "/home/auto/commercial",
+      id: 4,
+      category: "Commercial Bus or Van Insurance",
+      link: "/home/auto/commercial/bus_van",
     },
     {
-      id: 4,
-      category: "Van Insurance",
-      link: "/home/auto/commercial",
+      id: 5,
+      category: "Commercial Truck Insurance",
+      link: "/home/auto/commercial/truck",
     },
     {
-      id: 4,
-      category: "Private Car Insurance",
-      link: "/home/auto/private",
-    },
+      id: 6,
+      category: "Commercial Car Insurance",
+      link: "/home/auto/commercial/car",
+    }
   ],
 };
 
 export const lifeInsuranceRoutes = {
   id: 2,
   category: "Life Insurance",
-  icon: <BsLifePreserver />,
+  icon: <BsLifePreserver style={{ color: "gray" }} />,
   subcat: [
     {
       id: 1,
@@ -62,7 +67,7 @@ export const lifeInsuranceRoutes = {
 export const travelInsuranceRoutes = {
   id: 3,
   category: "Travel Insurance",
-  icon: <GiCommercialAirplane />,
+  icon: <GiCommercialAirplane style={{ color: "gray" }} />,
   subcat: [
     {
       id: 1,
@@ -79,7 +84,7 @@ export const travelInsuranceRoutes = {
 export const healthInsuranceRoutes = {
   id: 4,
   category: "Health Insurace",
-  icon: <MdHealthAndSafety />,
+  icon: <MdHealthAndSafety style={{ color: "gray" }} />,
   subcat: [
     {
       id: 1,
