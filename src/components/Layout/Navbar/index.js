@@ -98,6 +98,7 @@ const UserLogo = ({ size, setIsLoggedin }) => {
           vertical: "top",
           horizontal: "right",
         }}
+        sx={{ mt: 1 }}
       >
         <Link to="/profile/mypolicies">
           <ListItemButton sx={{ width: "200px", m: 1 }}>

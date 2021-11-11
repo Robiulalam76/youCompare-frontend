@@ -15,7 +15,7 @@ function TwoWheeler({ TwoWheeler }) {
             }}
             className="BannerHeader"
           >
-            Three Wheel
+            Two Wheeler
           </h1>
           <p
             className="BannerSubHeader"

@@ -29,6 +29,7 @@ const LeftBorderedBox = styled("div")(({ theme }) => ({
   borderColor: theme.palette.text.disabled,
   "&:hover": {
     borderColor: theme.palette.text.secondary,
+    backgroundColor: "#f4f4f4",
   },
 }));
 
@@ -65,11 +66,15 @@ const ProductsMenu = () => {
 
   return (
     <React.Fragment>
-      <div style={{ display: "flex", alignItems: "center" }}>
-        <Navtext aria-describedby={id} onClick={handleClick}>
-          Insurance Products
-        </Navtext>
-        <KeyboardArrowDownIcon sx={{ transform: open ? "rotate(180deg)" : "" }}/>
+      <div
+        aria-describedby={id}
+        onClick={handleClick}
+        style={{ display: "flex", alignItems: "center" }}
+      >
+        <Navtext>Insurance Products</Navtext>
+        <KeyboardArrowDownIcon
+          sx={{ transform: open ? "rotate(180deg)" : "" }}
+        />
       </div>
       <Popover
         id={id}
