@@ -1,9 +1,8 @@
 import React from "react";
-import { Typography, Box } from "@mui/material";
-import { borderRadius, styled } from "@mui/system";
+import { Typography } from "@mui/material";
+import { styled } from "@mui/system";
 
 const InsuranceBox = styled("div")(({ theme }) => ({
-  border: `1px solid ${theme.palette.text.hover}`,
   borderRadius: theme.spacing(1),
   [theme.breakpoints.up("xs")]: {
     width: "100%",
@@ -12,8 +11,8 @@ const InsuranceBox = styled("div")(({ theme }) => ({
 }));
 
 const ImageBox = styled("div")(({ theme }) => ({
-  width: "300px",
-  height: "150px",
+  width: "100%",
+  height: "120px",
   margin: "0 auto",
   padding: theme.spacing(3),
 }));

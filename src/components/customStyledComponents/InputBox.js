@@ -5,11 +5,11 @@ export default function InputBox(props) {
     <Box sx={{ ...props.sx, display: "flex", flexDirection: "column", alignItems: "flex-start", mt: 1.5 }}
       {...props}>
       <Typography
-        variant="body2"
         sx={{
           color: "text.secondary",
           lineHeight: "25px",
           fontWeight: "medium",
+          fontSize: ".8rem",
           mb: .5
         }}
       >

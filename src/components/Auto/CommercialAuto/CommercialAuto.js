@@ -1,4 +1,4 @@
-import { Grid, Button, Typography } from "@mui/material";
+import { Grid, Button, Typography, Box } from "@mui/material";
 import { styled } from "@mui/system";
 
 import React from "react";
@@ -10,57 +10,19 @@ import {
   Link,
 } from "react-router-dom";
 import { BsArrowLeft } from "react-icons/bs";
-import { subCommercial, subInsurances } from "../../../Data/data";
+import { subCommercial } from "../../../Data/data";
+import {
+  BannerHeader,
+  BannerSubHeader,
+} from "../../customStyledComponents/texts";
 
-import InsuranceStepper from "../../StepperInsuranceAuto";
 import SubCard from "../SubCard/SubCard";
-
-const RootBox = styled("div")(({ theme }) => ({
-  marginTop: "3rem",
-  height: "auto",
-  [theme.breakpoints.up("lg")]: {
-    minHeight: "80vh",
-  },
-}));
+import MuiStepper from "../../MuiStepper";
 
 const ResponsiveButton = styled(Button)(({ theme }) => ({
-  [theme.breakpoints.only("xs")]: {
-    width: "100%",
-    margin: theme.spacing(3, 0),
-  },
-}));
-
-const Heading = styled(Typography)(({ theme }) => ({
-  fontSize: "3.5rem",
-  fontWeight: "bold",
-  lineHeight: "3rem",
-  marginBottom: "1rem",
-  textAlign: "left",
-  [theme.breakpoints.only("xs")]: {
-    fontSize: "2.5rem",
-    lineHeight: "3rem",
-    textAlign: "center",
-  },
-  [theme.breakpoints.only("sm")]: {
-    fontSize: "3rem",
-    lineHeight: "3.5rem",
-    textAlign: "center",
-  },
-}));
-
-const SubHeading = styled(Typography)(({ theme }) => ({
-  color: "#74769E",
-  fontSize: "1rem",
-  fontWeight: "normal",
-  textAlign: "left",
-  [theme.breakpoints.only("xs")]: {
-    fontSize: ".85rem",
-    lineHeight: "1.2rem",
-    textAlign: "center",
-  },
-  [theme.breakpoints.only("sm")]: {
-    textAlign: "center",
-  },
+  width: "100%",
+  border: `1px solid ${theme.palette.text.disabled}`,
+  borderRadius: "8px",
 }));
 
 const ShadowedBox = styled("div")(
@@ -69,89 +31,54 @@ const ShadowedBox = styled("div")(
   padding: ${theme.spacing(3)};
   border-radius: 10px;
   box-shadow: 0px 0px 16px 4px rgba(240, 240, 240, 0.75);
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
   `
 );
 
-const ImageBox = styled("div")(({ theme }) => ({
-  paddingTop: "3rem",
-  width: "400px",
-  margin: "0 auto",
-  [theme.breakpoints.only("xs")]: {
-    width: "300px",
-  },
-  [theme.breakpoints.only("md")]: {
-    paddingTop: "0",
+const ImageBox = styled(Box)(({ theme }) => ({
+  height: "200px",
+  marginTop: "5vw",
+  [theme.breakpoints.up("md")]: {
+    width: "70%",
+    marginRight: "auto",
+    marginTop: "5vw",
   },
 }));
 
-function CommercialAuto({ commercial }) {
+function CommercialAuto({ commercial, steps }) {
   const { path, url } = useRouteMatch();
   return (
-    <RootBox>
-      <Grid container spacing={2} sx={{ height: "inherit" }}>
-        <Grid
-          item
-          container
-          xs={12}
-          lg={5}
-          xl={5}
-          sx={{
-            height: { lg: "80vh" },
-          }}
-        >
-          <Grid item xs={12} md={6} lg={6}>
-            <div>
-              <Heading
-                style={{
-                  fontSize: "3.5rem",
-                  fontWeight: "bold",
-                  lineHeight: "3rem",
-                  marginBottom: "1rem",
-                }}
-              >
-                Commercial
-              </Heading>
-              <Heading>Auto</Heading>
-              <SubHeading
-                style={{
-                  marginTop: "0.5rem",
-                }}
-              >
-                Auto insurance is designed to protect yourself and others
-                against many various risks.
-              </SubHeading>
-            </div>
-          </Grid>
+    <Grid container spacing={2}>
+      <Grid item lg={5} md={5} xl={5} sm={12} xs={12}>
+        <div>
+          <BannerHeader>Commercial</BannerHeader>
+          <BannerHeader>Vehicle</BannerHeader>
+        </div>
+        <Box sx={{ my: 2 }}>
+          <BannerSubHeader>
+            Auto insurance is designed to protect yourself and others against
+            many various risks.
+          </BannerSubHeader>
+        </Box>
 
-          <Grid item xs={12} md={6} lg={12}>
-            <ImageBox>
-              <img
-                src={commercial}
-                style={{ height: "auto", width: "inherit" }}
-              />
-            </ImageBox>
-          </Grid>
-        </Grid>
+        <ImageBox>
+          <img src={commercial} style={{ height: "100%", width: "100%" }} alt="" />
+        </ImageBox>
 
-        <Grid
-          item
-          container
-          xs={12}
-          lg={7}
-          xl={7}
-          sx={{ justifyContent: "center", alignItems: "start" }}
-        >
-          <Switch>
-            <Route path={`${path}`} exact>
-              <CommerialCard />
-            </Route>
-            <Route path={`${path}/:commercialCar`}>
-              <InsuranceStepper />
-            </Route>
-          </Switch>
-        </Grid>
       </Grid>
-    </RootBox>
+      <Grid item lg={7} md={7} xl={7} sm={12} xs={12}>
+        <Switch>
+          <Route path={`${path}`} exact>
+            <CommerialCard />
+          </Route>
+          <Route path={`${path}/:commercialCar`}>
+            <MuiStepper steps={steps} />
+          </Route>
+        </Switch>
+      </Grid>
+    </Grid>
   );
 }
 
@@ -164,13 +91,25 @@ const CommerialCard = () => {
       <Typography sx={{ textAlign: "left", pl: 2, pb: 2 }}>
         <BsArrowLeft /> Types of Vahical
       </Typography>
-      {subCommercial.map((insurance, i) => (
-        <Link className="Link" to={`${url}/${insurance.url}`}>
-          <ResponsiveButton variant="text">
-            <SubCard insurance={insurance} i={i} />
-          </ResponsiveButton>
-        </Link>
-      ))}
+      <Grid container spacing={2}>
+        {subCommercial.map((insurance, i) => (
+          <Grid
+            key={i}
+            item
+            xs={12}
+            sm={6}
+            md={4}
+            lg={4}
+            sx={{ margin: "0 auto" }}
+          >
+            <Link className="Link" to={`${url}/${insurance.url}`}>
+              <ResponsiveButton variant="text">
+                <SubCard insurance={insurance} i={i} />
+              </ResponsiveButton>
+            </Link>
+          </Grid>
+        ))}
+      </Grid>
     </ShadowedBox>
   );
 };

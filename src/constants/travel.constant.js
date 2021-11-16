@@ -1,0 +1,1 @@
+export const TRAVEL_FIELD_CHANGE = "Travel/FIELD/CHANGE"
