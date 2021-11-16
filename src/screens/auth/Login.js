@@ -47,10 +47,19 @@ export default function Login({ location, setIsLoggedin }) {
     e.preventDefault();
     console.log("email password", email, password);
     dispatch(login(email, password));
-    
-    localStorage.setItem('login', true)
-    
+
+    localStorage.setItem("login", true);
+
     history.push("/");
+  };
+
+  const google = () => {
+    window.open(
+      "http://localhost:5000/auth/google",
+      "_blank",
+      "resizable=yes, scrollbars=yes, titlebar=yes, width=800, height=900, top=10, left=10"
+    );
+    // window.open("http://localhost:5000/auth/google", "_self");
   };
 
   return (
@@ -120,6 +129,24 @@ export default function Login({ location, setIsLoggedin }) {
               >
                 Login
               </Button>
+              <button
+                variant="contained"
+                className="googleBtn"
+                onClick={google}
+                // type="submit"
+                style={button}
+              >
+                Google
+              </button>
+              <button
+                variant="contained"
+                className="facebookBtn"
+                onClick={(e) => submitHandler(e)}
+                // type="submit"
+                style={button}
+              >
+                Facebook
+              </button>
             </Stack>
 
             <div style={{ width: "100%", textAlign: "center" }}>

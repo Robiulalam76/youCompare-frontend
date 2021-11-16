@@ -61,7 +61,7 @@ const insurances = [
   },
 ];
 
-export default function LandingPage({}) {
+export default function LandingPage({ user }) {
   const { path, url } = useRouteMatch();
 
   const Card = () => (
@@ -121,7 +121,7 @@ export default function LandingPage({}) {
 
   return (
     <React.Fragment>
-      <Layout>
+      <Layout user={user}>
         <div style={rootStyle}>
           <div className="tabs">
             <Switch>

@@ -14,10 +14,10 @@ const StyledContainer = styled(Container)(({ theme }) => ({
   },
 }));
 
-export default function Layout({ children }) {
+export default function Layout({ user, children }) {
   return (
     <React.Fragment>
-      <Navbar />
+      <Navbar user={user} />
       <StyledContainer>
         {children}
         <Showcase />
