@@ -1,10 +1,17 @@
-const queryState = {
+import { HEALTH_QUERY_FIELD_CHANGE } from "../constants/health.constant"
 
+const queryState = {
+  insuranceType: "",
+  coverFor: "",
+  fullName: "",
+  email: "",
+  mobile: "",
+  organizationName: "",
 }
 
 export const healthQueryReducer = (state = queryState, action) => {
   switch (action.type) {
-    case "HEALTH_FIELD_CHANGE": {
+    case HEALTH_QUERY_FIELD_CHANGE: {
       return {
         ...state,
         [action.payload.field]: action.payload.value
