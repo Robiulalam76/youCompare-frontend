@@ -113,6 +113,9 @@ const Navigation = ({ item, selectedNavItem, setSelectedNavItem }) => {
     }
   };
 
+  console.log(selectedNavItem, "Selected");
+  console.log(item.category, "item");
+
   return (
     <React.Fragment>
       <LinkWrapper link={item.link}>

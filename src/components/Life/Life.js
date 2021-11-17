@@ -80,11 +80,11 @@ export default function Life() {
   const renderStepper = (title) => {
     switch (title) {
       case "Permanent Life":
-        return <MuiStepper steps={steps} />;
+        return <MuiStepper steps={steps} link="/life/compare" />;
       case "Term Life":
-        return <MuiStepper steps={stepsForTerm} />;
+        return <MuiStepper steps={stepsForTerm} link="/life/compare" />;
       case "Group Life":
-        return <MuiStepper steps={stepsForGroup} />;
+        return <MuiStepper steps={stepsForGroup} link="/life/compare" />;
       default:
         return;
     }

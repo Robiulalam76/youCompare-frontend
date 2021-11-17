@@ -64,9 +64,12 @@ function CommercialAuto({ commercial, steps }) {
         </Box>
 
         <ImageBox>
-          <img src={commercial} style={{ height: "100%", width: "100%" }} alt="" />
+          <img
+            src={commercial}
+            style={{ height: "100%", width: "100%" }}
+            alt=""
+          />
         </ImageBox>
-
       </Grid>
       <Grid item lg={7} md={7} xl={7} sm={12} xs={12}>
         <Switch>
@@ -74,7 +77,7 @@ function CommercialAuto({ commercial, steps }) {
             <CommerialCard />
           </Route>
           <Route path={`${path}/:commercialCar`}>
-            <MuiStepper steps={steps} />
+            <MuiStepper steps={steps} link="/auto/compare" />
           </Route>
         </Switch>
       </Grid>

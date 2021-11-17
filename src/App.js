@@ -101,10 +101,12 @@ function App() {
               <Route path="/travel/buynow">
                 <AutoBuyNow />
               </Route>
+
               {/** Payment */}
               <Route exact path="/auto/payment-success">
                 <PaymentSuccessfull />
               </Route>
+
               {/** Profile */}
               <Route exact path="/profile/mydocs">
                 <MyDocs />

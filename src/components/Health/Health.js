@@ -73,7 +73,12 @@ export default function Travel() {
               title={insurance.title}
               description={insurance.description}
               imageSrc={insurance.image}
-              stepper={<MuiStepper steps={renderSteps(insurance.title)} />}
+              stepper={
+                <MuiStepper
+                  steps={renderSteps(insurance.title)}
+                  link="/health/compare"
+                />
+              }
             />
           </Route>
         ))}

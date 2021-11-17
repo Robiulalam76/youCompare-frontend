@@ -261,7 +261,7 @@ export default function Navbar({ user }) {
                     </Link>
                   ) : (
                     <div style={{ display: "flex", alignItems: "center" }}>
-                      <UserLogo size="small" />
+                      {/* <UserLogo size="small" /> */}
                       <Typography sx={{ px: 2, fontSize: "20px" }}>
                         Jane Doe
                       </Typography>

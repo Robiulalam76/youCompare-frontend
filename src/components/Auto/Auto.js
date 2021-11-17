@@ -89,7 +89,12 @@ function Auto() {
                 title={insurance.title}
                 description={insurance.description}
                 imageSrc={insurance.image}
-                stepper={<MuiStepper steps={renderSteps(insurance.title)} />}
+                stepper={
+                  <MuiStepper
+                    steps={renderSteps(insurance.title)}
+                    link="/auto/compare"
+                  />
+                }
               />
             </Route>
           )
