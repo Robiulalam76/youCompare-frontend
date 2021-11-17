@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 
 import NavigationScroll from "./components/HOC/NavigationScroll";
@@ -9,19 +9,19 @@ import Login from "./screens/auth/Login";
 import Signup from "./screens/auth/Signup";
 
 //compare pages
-// import AutoCompare from "./screens/compare/auto";
-// import LifeCompare from "./screens/compare/life";
-// import HealthCompare from "./screens/compare/health";
-// import TravelCompare from "./screens/compare/travel";
+import AutoCompare from "./screens/compare/auto";
+import LifeCompare from "./screens/compare/life";
+import HealthCompare from "./screens/compare/health";
+import TravelCompare from "./screens/compare/travel";
 
-// import AutoBuyNow from "./screens/buyprocess/auto";
-// import LifeBuyNow from "./screens/buyprocess/life";
-// import HealthBuyNow from "./screens/buyprocess/health";
+import AutoBuyNow from "./screens/buyprocess/auto";
+import LifeBuyNow from "./screens/buyprocess/life";
+import HealthBuyNow from "./screens/buyprocess/health";
 
-// import PaymentSuccessfull from "./screens/paymentSuccessfull";
+import PaymentSuccessfull from "./screens/paymentSuccessfull";
 
-// import MyDocs from "./screens/profile/MyDocs";
-// import MyPolicies from "./screens/profile/MyPolicies";
+import MyDocs from "./screens/profile/MyDocs";
+import MyPolicies from "./screens/profile/MyPolicies";
 
 import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "./themes/index";
@@ -32,7 +32,37 @@ function App() {
   const [customvariables, setCustomvariables] = React.useState({
     bg: "#454545",
   });
-  
+
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const getUser = () => {
+      fetch("http://localhost:5000/auth/login/success", {
+        method: "GET",
+        credentials: "include",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Credentials": true,
+        },
+      })
+        .then((response) => {
+          if (response.status === 200) return response.json();
+          console.log(`response`, response);
+          throw new Error("authentication has been failed!");
+        })
+        .then((resObject) => {
+          setUser(resObject.user);
+          console.log(`response 2`, resObject.user);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    getUser();
+  }, []);
+  console.log("user", user?.photos[0]?.value);
+
   return (
     <React.Fragment>
       <ThemeProvider theme={theme(customvariables)}>
@@ -40,12 +70,11 @@ function App() {
           <NavigationScroll>
             <Switch>
               <Route path="/home">
-                <LandingPage />
+                <LandingPage user={user} />
               </Route>
               <Redirect exact from="/" to="/home" />
 
-              
-              {/* <Route exact path="/auto/compare">
+              <Route exact path="/auto/compare">
                 <AutoCompare />
               </Route>
 
@@ -57,12 +86,10 @@ function App() {
               </Route>
               <Route exact path="/travel/compare">
                 <TravelCompare />
-              </Route> */}
+              </Route>
 
-              
-              
               {/** Buy Now Pages */}
-              {/* <Route exact path="/auto/buynow">
+              <Route exact path="/auto/buynow">
                 <AutoBuyNow />
               </Route>
               <Route exact path="/life/buynow">
@@ -73,33 +100,30 @@ function App() {
               </Route>
               <Route path="/travel/buynow">
                 <AutoBuyNow />
-              </Route> */}
-              
-              
-              
+              </Route>
+
               {/** Payment */}
-              {/* <Route exact path="/auto/payment-success">
+              <Route exact path="/auto/payment-success">
                 <PaymentSuccessfull />
               </Route>
-               */}
-              
-              
+
               {/** Profile */}
-              {/* <Route exact path="/profile/mydocs">
+              <Route exact path="/profile/mydocs">
                 <MyDocs />
               </Route>
               <Route exact path="/profile/mypolicies">
                 <MyPolicies />
-              </Route> */}
-
+              </Route>
 
               {/**Auth pages */}
-              {/* <Route exact path="/login">
-                <Login />
-              </Route>
+              {user === null && (
+                <Route exact path="/login">
+                  <Login />
+                </Route>
+              )}
               <Route exact path="/signup">
                 <Signup />
-              </Route> */}
+              </Route>
             </Switch>
           </NavigationScroll>
         </BrowserRouter>
