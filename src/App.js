@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 
 import NavigationScroll from "./components/HOC/NavigationScroll";
@@ -32,7 +32,37 @@ function App() {
   const [customvariables, setCustomvariables] = React.useState({
     bg: "#454545",
   });
-  
+
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const getUser = () => {
+      fetch("http://localhost:5000/auth/login/success", {
+        method: "GET",
+        credentials: "include",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Credentials": true,
+        },
+      })
+        .then((response) => {
+          if (response.status === 200) return response.json();
+          console.log(`response`, response);
+          throw new Error("authentication has been failed!");
+        })
+        .then((resObject) => {
+          setUser(resObject.user);
+          console.log(`response 2`, resObject.user);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    getUser();
+  }, []);
+  console.log("user", user?.photos[0]?.value);
+
   return (
     <React.Fragment>
       <ThemeProvider theme={theme(customvariables)}>
@@ -40,11 +70,14 @@ function App() {
           <NavigationScroll>
             <Switch>
               <Route path="/home">
-                <LandingPage />
+                <LandingPage user={user} />
               </Route>
               <Redirect exact from="/" to="/home" />
 
+<<<<<<< HEAD
               
+=======
+>>>>>>> dev
               <Route exact path="/auto/compare">
                 <AutoCompare />
               </Route>
@@ -59,8 +92,6 @@ function App() {
                 <TravelCompare />
               </Route>
 
-              
-              
               {/** Buy Now Pages */}
               <Route exact path="/auto/buynow">
                 <AutoBuyNow />
@@ -74,16 +105,24 @@ function App() {
               <Route path="/travel/buynow">
                 <AutoBuyNow />
               </Route>
+<<<<<<< HEAD
               
               
               
+=======
+
+>>>>>>> dev
               {/** Payment */}
               <Route exact path="/auto/payment-success">
                 <PaymentSuccessfull />
               </Route>
+<<<<<<< HEAD
               
               
               
+=======
+
+>>>>>>> dev
               {/** Profile */}
               <Route exact path="/profile/mydocs">
                 <MyDocs />
@@ -91,12 +130,22 @@ function App() {
               <Route exact path="/profile/mypolicies">
                 <MyPolicies />
               </Route>
+<<<<<<< HEAD
 
 
               {/**Auth pages */}
               <Route exact path="/login">
                 <Login />
               </Route>
+=======
+
+              {/**Auth pages */}
+              {user === null && (
+                <Route exact path="/login">
+                  <Login />
+                </Route>
+              )}
+>>>>>>> dev
               <Route exact path="/signup">
                 <Signup />
               </Route>

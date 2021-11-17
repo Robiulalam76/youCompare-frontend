@@ -51,8 +51,7 @@ const NavContainer = styled(Container)(({ theme }) => ({
   height: "10vh",
 }));
 
-// User Logo with navigation items
-const UserLogo = ({ size, setIsLoggedin }) => {
+const UserLogo = ({ user, size, setIsLoggedin }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -80,8 +79,10 @@ const UserLogo = ({ size, setIsLoggedin }) => {
         }}
       >
         <img
-          src={profile}
-          alt="Jane Doe"
+          src={
+            user?._json.picture ? user?._json.picture : user?.photos[0]?.value
+          }
+          alt={user.displayName}
           style={{ height: "100%", width: "100%", objectFit: "cover" }}
         />
       </Box>
@@ -104,7 +105,7 @@ const UserLogo = ({ size, setIsLoggedin }) => {
           <ListItemButton sx={{ width: "200px", m: 1 }}>
             <ImProfile className={styles.icon} />
             <Typography sx={{ fontSize: ".9rem", lineHeight: "27px" }}>
-              Profile
+              {user.displayName}
             </Typography>
           </ListItemButton>
         </Link>
@@ -126,7 +127,7 @@ const UserLogo = ({ size, setIsLoggedin }) => {
   );
 };
 
-export default function Navbar() {
+export default function Navbar({ user }) {
   const [menuOpen, setMenuOpen] = React.useState(false);
   const [navbarElevation, setNavbarElevation] = React.useState(false);
   const [showTopBar, setShowTopBar] = React.useState(true);
@@ -183,6 +184,10 @@ export default function Navbar() {
     };
   });
 
+  const logout = () => {
+    window.open("http://localhost:5000/auth/logout", "_blank");
+  };
+
   return (
     <React.Fragment>
       <AppBar color="inherit" elevation={navbarElevation ? 1 : 0} id="navbar">
@@ -212,9 +217,13 @@ export default function Navbar() {
                 </>
               ) : null}
             </Hidden>
-            {isLoggedin ? (
+            {user ? (
               <li>
-                <UserLogo size="small" setIsLoggedin={setIsLoggedin} />
+                <UserLogo
+                  user={user}
+                  size="small"
+                  setIsLoggedin={setIsLoggedin}
+                />
               </li>
             ) : (
               <Link className="Link" to="/login">
