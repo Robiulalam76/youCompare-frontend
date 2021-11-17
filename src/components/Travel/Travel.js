@@ -64,7 +64,7 @@ export default function Travel() {
   const renderStepper = (title) => {
     switch (title) {
       case "Single Trip":
-        return <MuiStepper steps={singleTripSteps} />;
+        return <MuiStepper steps={singleTripSteps} link="/travel/compare" />;
       case "Multi Trip":
         return <MuiStepper steps={multiTripSteps} />;
       default:

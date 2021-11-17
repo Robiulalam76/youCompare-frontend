@@ -20,44 +20,46 @@ function Insurance() {
   };
 
   return (
-    <Grid container spacing={2} style={{ marginTop: "4%" }}>
-      <Grid item xs={12} sm={6}>
-        <InputBox label="Full Name">
-          <TextField
-            placeholder="John Doe"
-            type="text"
-            name="fullName"
-            fullWidth
-            value={lifeQuery.fullName}
-            onChange={handleChange}
-          />
-        </InputBox>
+    <div style={{ marginTop: "4%" }}>
+      <Grid container spacing={2}>
+        <Grid item xs={12} sm={6}>
+          <InputBox label="Full Name">
+            <TextField
+              placeholder="John Doe"
+              type="text"
+              name="fullName"
+              fullWidth
+              value={lifeQuery.fullName}
+              onChange={handleChange}
+            />
+          </InputBox>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <InputBox label="Email ID">
+            <TextField
+              placeholder="Enter email address"
+              type="email"
+              name="email"
+              fullWidth
+              value={lifeQuery.email}
+              onChange={handleChange}
+            />
+          </InputBox>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <InputBox label="Mobile Number">
+            <TextField
+              type="number"
+              name="mobile"
+              fullWidth
+              placeholder="Enter Mobile Number"
+              value={lifeQuery.mobile}
+              onChange={handleChange}
+            />
+          </InputBox>
+        </Grid>
       </Grid>
-      <Grid item xs={12} sm={6}>
-        <InputBox label="Email ID">
-          <TextField
-            placeholder="Enter email address"
-            type="email"
-            name="email"
-            fullWidth
-            value={lifeQuery.email}
-            onChange={handleChange}
-          />
-        </InputBox>
-      </Grid>
-      <Grid item xs={12} sm={6}>
-        <InputBox label="Mobile Number">
-          <TextField
-            type="number"
-            name="mobile"
-            fullWidth
-            placeholder="Enter Mobile Number"
-            value={lifeQuery.mobile}
-            onChange={handleChange}
-          />
-        </InputBox>
-      </Grid>
-    </Grid>
+    </div>
   );
 }
 

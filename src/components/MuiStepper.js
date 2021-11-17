@@ -1,4 +1,5 @@
 import * as React from "react";
+import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
@@ -15,7 +16,9 @@ import { useTheme } from "@mui/material/styles";
 
 import { Link } from "react-router-dom";
 
-export default function MuiStepper({ steps }) {
+// link -> compare page link
+// array of object
+export default function MuiStepper({ steps, link }) {
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
   const maxSteps = steps.length;
@@ -51,6 +54,7 @@ export default function MuiStepper({ steps }) {
                 handleNext={handleNext}
                 theme={theme}
                 stepsLength={steps.length}
+                link={link}
               />
             }
             backButton={
@@ -95,6 +99,7 @@ export default function MuiStepper({ steps }) {
               handleNext={handleNext}
               theme={theme}
               stepsLength={steps.length}
+              link={link}
             />
           </Box>
         </Box>
@@ -102,6 +107,11 @@ export default function MuiStepper({ steps }) {
     </React.Fragment>
   );
 }
+
+MuiStepper.propTypes = {
+  steps: PropTypes.array,
+  link: PropTypes.string,
+};
 
 const BackButton = ({ activeStep, handleBack, theme, stepsLength }) => {
   return (
@@ -118,7 +128,7 @@ const BackButton = ({ activeStep, handleBack, theme, stepsLength }) => {
   );
 };
 
-const NextButton = ({ activeStep, handleNext, theme, stepsLength }) => {
+const NextButton = ({ activeStep, handleNext, theme, stepsLength, link }) => {
   return (
     <React.Fragment>
       {activeStep !== stepsLength - 2 ? (
@@ -131,7 +141,7 @@ const NextButton = ({ activeStep, handleNext, theme, stepsLength }) => {
           )}
         </Button>
       ) : (
-        <Link className="Link" to="/life/compare">
+        <Link className="Link" to={link}>
           <Button variant={"contained"}>Compare</Button>
         </Link>
       )}
