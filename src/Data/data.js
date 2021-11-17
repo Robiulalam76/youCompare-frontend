@@ -21,32 +21,32 @@ import poinOfService from "../accets/37520.png";
 
 export const subInsurances = [
   {
-    title: "Commercial",
+    title: "Commercial Vehicle",
     url: "commercial",
     image: commercial,
     description:
-      "Auto insurance is designed to protect yourself and others agains many various risks",
+      "Auto insurance is designed to protect yourself and others against many various risks.",
   },
   {
-    title: "Private Auto",
+    title: "Private Vehicle",
     url: "private",
     image: privateAuto,
     description:
-      "Prepare for your family's future in the case of an unexpected tragedy. Insurance helps you.",
+      "Auto insurance is designed to protect yourself and others against many various risks.",
   },
   {
-    title: "Three wheeler",
+    title: "Three Wheeler",
     url: "three-wheeler",
     image: threeWheel,
     description:
-      "Insurance plans that cover trip cancellation, travel medicines and many more from your loss.",
+      "Auto insurance is designed to protect yourself and others against many various risks.",
   },
   {
-    title: "Two wheeler",
+    title: "Two Wheeler",
     url: "two-wheeler",
     image: twowheeler,
     description:
-      "Health is the most important thing that we should protect. Health insurance will take care of medical expenses.",
+      "Auto insurance is designed to protect yourself and others against many various risks.",
   },
 ];
 

@@ -31,9 +31,10 @@ const ResponsiveButton = styled(Button)(({ theme }) => ({
 }));
 
 const Heading = styled(Typography)(({ theme }) => ({
-  fontSize: "4rem",
+  fontSize: "3.5rem",
   fontWeight: "bold",
-  lineHeight: "4.5rem",
+  lineHeight: "3rem",
+  marginBottom: "1rem",
   textAlign: "left",
   [theme.breakpoints.only("xs")]: {
     fontSize: "2.5rem",

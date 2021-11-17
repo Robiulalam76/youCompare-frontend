@@ -101,6 +101,7 @@ export default function MenuItems({ isLoggedin }) {
   );
 }
 
+// Nav Items for mobile app
 const Navigation = ({ item, selectedNavItem, setSelectedNavItem }) => {
   const [showChildren, setShowChildren] = React.useState(false);
   const rootItem = item.depth === 0;
