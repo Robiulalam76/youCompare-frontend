@@ -2,20 +2,17 @@ import { GROUP_LIFE_QUERY_FIELD_CHANGE } from "../constants/life.constants";
 
 const queryState = {
   coverAmount: "",
-  coverFor: {
-    relationship: "",
-    gender: "",
-    smoke: "",
-    employment: "",
-    age: "",
-  },
+  coverFor: "",
+  gender: "",
+  smoke: "",
+  employment: "",
+  age: "",
   termLength: "",
   healthIssue: "",
   healthIssue_father: "",
   healthIssue_mother: "",
-  fullName: "",
-  email: "",
-  mobile: "",
+  ageOfFather: "",
+  ageOfMother: "",
 };
 
 export const lifeQueryReducer = (state = queryState, action) => {
@@ -38,14 +35,10 @@ export const lifeQueryReducer = (state = queryState, action) => {
     case "LIFE_QUERY_RESET": {
       return {
         ...state,
-        coverAmount: "",
-        coverFor: {
-          ...state.coverFor,
-          gender: "",
-          smoke: "",
-          employment: "",
-          age: "",
-        },
+        gender: "",
+        smoke: "",
+        employment: "",
+        age: "",
         termLength: "",
         healthIssue: "",
         healthIssue_father: "",
@@ -60,7 +53,7 @@ export const lifeQueryReducer = (state = queryState, action) => {
 const groupQueryState = {
   coverAmount: "",
   organizationName: "",
-  numberofEmployees: "",
+  totalEmployees: "",
 };
 
 export const groupLifeQueryReducer = (state = groupQueryState, action) => {

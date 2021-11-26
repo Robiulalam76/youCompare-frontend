@@ -17,42 +17,14 @@ import AutoCard from "../Card/Card";
 import Banner from "../Banner";
 
 // steppers
-import MuiStepper from "../MuiStepper";
+// import MuiStepper from "../MuiStepper";
 
 // travel forms
-import Cover from "../Forms/Travel/Cover";
-import TripDetail from "../Forms/Travel/TripDetail";
-import TravelCover from "../Forms/Travel/TravelCover";
+// import TripDetail from "../Forms/Travel/TripDetail";
+// import TravelCover from "../Forms/Travel/TravelCover";
 
 import { subTravelInsurances } from "../../Data/data";
-
-const singleTripSteps = [
-  {
-    label: "Traveller Details",
-    component: <TravelCover />,
-  },
-  {
-    label: "Trip Details",
-    component: <TripDetail trip="single" />,
-  },
-  {
-    label: "Compare",
-  },
-];
-
-const multiTripSteps = [
-  {
-    label: "Traveller Details",
-    component: <TravelCover multi={false} />,
-  },
-  {
-    label: "Trip Details",
-    component: <TripDetail multi={true} />,
-  },
-  {
-    label: "Compare",
-  },
-];
+import SingleTrip from "./SingleTrip";
 
 export default function Travel() {
   const { path, url } = useRouteMatch();
@@ -61,12 +33,12 @@ export default function Travel() {
   const commercialDescription =
     "Insurance that plans cover trip cancellation, travel medical & many more from your loss.";
 
-  const renderStepper = (title) => {
+  const renderComponent = (title) => {
     switch (title) {
       case "Single Trip":
-        return <MuiStepper steps={singleTripSteps} link="/travel/compare" />;
+        return <SingleTrip multi={false} />;
       case "Multi Trip":
-        return <MuiStepper steps={multiTripSteps} />;
+        return <SingleTrip multi={true} />;
       default:
         return;
     }
@@ -89,8 +61,11 @@ export default function Travel() {
               title={insurance.title}
               description={insurance.description}
               imageSrc={insurance.image}
-              stepper={renderStepper(insurance.title)}
-            />
+            >
+              <div className="SteeperDiv">
+                {renderComponent(insurance.title)}
+              </div>
+            </Banner>
           </Route>
         ))}
       </Switch>

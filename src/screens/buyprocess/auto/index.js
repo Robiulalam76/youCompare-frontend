@@ -23,7 +23,7 @@ const StyledBox = styled(Box)(({ theme }) => ({
   boxShadow: "0px 0px 63px #F0F0F0",
   borderRadius: theme.spacing(2),
   padding: theme.spacing(2, 3),
-  marginBottom: "3rem",
+  marginBottom: "2rem",
   [theme.breakpoints.only("sm")]: {
     padding: theme.spacing(3, 4),
     width: "450px",
@@ -37,16 +37,67 @@ const StyledBox = styled(Box)(({ theme }) => ({
     width: "500px",
   },
 }));
+const StyledButton = (props) => (
+  <Button
+    {...props}
+    variant="contained"
+    style={{ ...props.style, height: "42px" }}
+    sx={{ mt: 2 }}
+  />
+);
+
+const StepperLayout = (props) => {
+  return (
+    <StyledBox>
+      <Formstepper currentStep={props.currentStep} steps={props.steps} />
+      {props.children || null}
+    </StyledBox>
+  );
+};
 
 export default function AutoBuyNow() {
   const [currentStep, setCurrentStep] = React.useState(0);
   const steps = ["Your Details", "Car Details", "Buy Now"];
-  const [showHolderForm, setShowHolderForm] = React.useState(false);
-  const [showVehicleForm, setShowVehicleForm] = React.useState(false);
 
-  const handleStepChange = (action) => {
-    if (currentStep > steps.length - 2) return;
-    if (action === "stepUp") setCurrentStep(currentStep + 1);
+  // const handleStepChange = (action) => {
+  //   if (currentStep > steps.length - 2) return;
+  //   if (action === "stepUp") setCurrentStep(currentStep + 1);
+  // };
+
+  const handleNext = () => {
+    if (currentStep === 2) return;
+    setCurrentStep(currentStep + 1);
+  };
+
+  const renderComponents = () => {
+    switch (currentStep) {
+      case 0:
+        return (
+          <StepperLayout currentStep={currentStep} steps={steps}>
+            <PolicyHolderDetailsForm />
+            <StyledButton onClick={handleNext}>Next</StyledButton>
+          </StepperLayout>
+        );
+      case 1:
+        return (
+          <StepperLayout currentStep={currentStep} steps={steps}>
+            <CarDetailsForm />
+            <StyledButton onClick={handleNext}>Next</StyledButton>
+          </StepperLayout>
+        );
+      case 2:
+        return (
+          <div style={{ margin: "0 auto" }}>
+            <StyledBox>
+              <Formstepper currentStep={currentStep} steps={steps} />
+            </StyledBox>
+            <PolicyHolder />
+            <CarDetails />
+          </div>
+        );
+      default:
+        return;
+    }
   };
 
   return (
@@ -55,88 +106,13 @@ export default function AutoBuyNow() {
         <Grid item container xs={12} md={6} sx={{ width: 1 }}>
           <div style={{ margin: "0 auto" }}>
             <Title>Comprehensive</Title>
-            {currentStep < 2 ? (
+            {renderComponents()}
+            <Hidden mdUp>
+              <Title>Plan Details</Title>
               <StyledBox>
-                <Formstepper currentStep={currentStep} steps={steps} />
-                {currentStep === 0 ? (
-                  <>
-                    <PolicyHolderDetailsForm />
-                    <Button
-                      variant="contained"
-                      style={{ height: "42px" }}
-                      onClick={() => handleStepChange("stepUp")}
-                      sx={{ mt: 2 }}
-                    >
-                      Next
-                    </Button>
-                  </>
-                ) : currentStep === 1 ? (
-                  <>
-                    <CarDetailsForm />
-                    <Button
-                      variant="contained"
-                      style={{ height: "42px" }}
-                      onClick={() => handleStepChange("stepUp")}
-                      sx={{ mt: 2 }}
-                    >
-                      Next
-                    </Button>
-                  </>
-                ) : null}
+                <PlanDetails currentStep={currentStep} />
               </StyledBox>
-            ) : (
-              <div style={{ margin: "0 auto" }}>
-                <StyledBox>
-                  <Formstepper currentStep={currentStep} steps={steps} />
-                </StyledBox>
-
-                <StyledBox>
-                  {showHolderForm ? (
-                    <>
-                      <Typography variant="h5">
-                        Policy Holder Details
-                      </Typography>
-                      <PolicyHolderDetailsForm />
-                    </>
-                  ) : (
-                    <PolicyHolderDisplay />
-                  )}
-                  <Button
-                    variant="contained"
-                    sx={{ mt: 2 }}
-                    onClick={() => setShowHolderForm(true)}
-                  >
-                    Update
-                  </Button>
-                </StyledBox>
-
-                {/** Vehicle Details */}
-                <StyledBox>
-                  {showVehicleForm ? (
-                    <>
-                      <Typography variant="h5">Vehicle Details</Typography>
-                      <CarDetailsForm />
-                    </>
-                  ) : (
-                    <CarDetailsDisplay />
-                  )}
-                  <Button
-                    variant="contained"
-                    sx={{ mt: 2 }}
-                    onClick={() => setShowVehicleForm(true)}
-                  >
-                    Update
-                  </Button>
-                </StyledBox>
-
-                <Hidden mdUp>
-                  <Title>Plan Details</Title>
-                  <StyledBox>
-                    <PlanDetails currentStep={currentStep} />
-                  </StyledBox>
-                </Hidden>
-              </div>
-            )}
+            </Hidden>
           </div>
         </Grid>
 
@@ -153,6 +129,97 @@ export default function AutoBuyNow() {
     </MinimalLayout>
   );
 }
+
+const CarDetails = () => {
+  const [showVehicleForm, setShowVehicleForm] = React.useState(false);
+  return (
+    <StyledBox>
+      <Typography variant="h5">Vehicle Details</Typography>
+      <br />
+      {showVehicleForm ? (
+        <CarDetailsForm />
+      ) : (
+        <React.Fragment>
+          {[
+            { title: "Brand Name", value: "Honda" },
+            { title: "Model", value: "M300" },
+            { title: "Launch Year", value: "2020" },
+            { title: "Car No", value: "TH8798JK" },
+            { title: "Chassis No", value: "3984792837" },
+            { title: "IDV", value: "Nira 456000" },
+            { title: "Registration Date", value: "12 April 2021" },
+            { title: "Existing Policy Expires Date", value: "12 June 2022" },
+            { title: "Ownership Change is Last 12 months", value: "No" },
+            { title: "Owned by", value: "Company" },
+          ].map((elem, i) => (
+            <ItemDisplay title={elem.title} value={elem.value} />
+          ))}
+        </React.Fragment>
+      )}
+      <br />
+      {showVehicleForm ? (
+        <StyledButton onClick={() => setShowVehicleForm(false)}>
+          Confirm
+        </StyledButton>
+      ) : (
+        <StyledButton onClick={() => setShowVehicleForm(true)}>
+          Update
+        </StyledButton>
+      )}
+      <br />
+    </StyledBox>
+  );
+};
+
+const PolicyHolder = () => {
+  const [showHolderForm, setShowHolderForm] = React.useState(false);
+
+  return (
+    <StyledBox>
+      <Typography variant="h5">Policy Holder Details</Typography>
+      <br />
+      {showHolderForm ? (
+        <PolicyHolderDetailsForm />
+      ) : (
+        <React.Fragment>
+          {[
+            { title: "Full Name", value: "John Doe" },
+            { title: "Email ID", value: "john@gmail.com" },
+            { title: "Mobile", value: "+234 XXXXXX" },
+            { title: "Date of Birth", value: "12 April 1998" },
+            { title: "Marital Status", value: "Single" },
+            { title: "Address", value: "Street No 12, Bazar Road" },
+            { title: "City", value: "Abuja" },
+            { title: "State/Country", value: "Nigeria" },
+          ].map((elem, i) => (
+            <ItemDisplay title={elem.title} value={elem.value} />
+          ))}
+          <Box
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              paddingTop: "4px",
+            }}
+          >
+            <Typography variant="body1">Driver's License:</Typography>
+            <input />
+          </Box>
+        </React.Fragment>
+      )}
+      <br />
+      {showHolderForm ? (
+        <StyledButton onClick={() => setShowHolderForm(false)}>
+          Confirm
+        </StyledButton>
+      ) : (
+        <StyledButton onClick={() => setShowHolderForm(true)}>
+          Update
+        </StyledButton>
+      )}
+      <br />
+    </StyledBox>
+  );
+};
 
 /* ################# DETAILS DISPLAY ###################### */
 const ItemDisplay = ({ title, value }) => {
@@ -171,61 +238,5 @@ const ItemDisplay = ({ title, value }) => {
         {value}
       </Typography>
     </Box>
-  );
-};
-
-const PolicyHolderDisplay = () => {
-  return (
-    <>
-      <Typography variant="h5">Policy Holder Details</Typography>
-      <Divider sx={{ my: 1 }} />
-      {[
-        { title: "Full Name", value: "John Doe" },
-        { title: "Email ID", value: "john@gmail.com" },
-        { title: "Mobile", value: "+234 XXXXXX" },
-        { title: "Date of Birth", value: "12 April 1998" },
-        { title: "Marital Status", value: "Single" },
-        { title: "Address", value: "Street No 12, Bazar Road" },
-        { title: "City", value: "Abuja" },
-        { title: "State/Country", value: "Nigeria" },
-      ].map((elem, i) => (
-        <ItemDisplay title={elem.title} value={elem.value} />
-      ))}
-      <Box
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          paddingTop: "4px",
-        }}
-      >
-        <Typography variant="body1">Driver's License:</Typography>
-        <input />
-      </Box>
-      <br />
-    </>
-  );
-};
-
-const CarDetailsDisplay = () => {
-  return (
-    <>
-      <Typography variant="h5">Vehicle Details</Typography>
-      <Divider sx={{ my: 1 }} />
-      {[
-        { title: "Brand Name", value: "Honda" },
-        { title: "Model", value: "M300" },
-        { title: "Launch Year", value: "2020" },
-        { title: "Car No", value: "TH8798JK" },
-        { title: "Chassis No", value: "3984792837" },
-        { title: "IDV", value: "Nira 456000" },
-        { title: "Registration Date", value: "12 April 2021" },
-        { title: "Existing Policy Expires Date", value: "12 June 2022" },
-        { title: "Ownership Change is Last 12 months", value: "No" },
-        { title: "Owned by", value: "Company" },
-      ].map((elem, i) => (
-        <ItemDisplay title={elem.title} value={elem.value} />
-      ))}
-      <br />
-    </>
   );
 };

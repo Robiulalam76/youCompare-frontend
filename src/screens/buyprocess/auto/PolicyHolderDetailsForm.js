@@ -1,29 +1,32 @@
-import React from 'react'
+import React from "react";
 
 // mui components
-import {
-  Box, InputAdornment, Typography, TextField,
-} from '@mui/material'
-import TodayIcon from '@mui/icons-material/Today';
-import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined';
-import Popover from '@mui/material/Popover';
+import { Box, InputAdornment, Typography, TextField } from "@mui/material";
+import TodayIcon from "@mui/icons-material/Today";
+import FileUploadOutlinedIcon from "@mui/icons-material/FileUploadOutlined";
+import Popover from "@mui/material/Popover";
 
 // date picker utils from mui
-import AdapterDateFns from '@mui/lab/AdapterDateFns';
-import LocalizationProvider from '@mui/lab/LocalizationProvider';
-import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
+import AdapterDateFns from "@mui/lab/AdapterDateFns";
+import LocalizationProvider from "@mui/lab/LocalizationProvider";
+import DesktopDatePicker from "@mui/lab/DesktopDatePicker";
 
 // customized components
-import { textfieldStyle } from './utils'
-import InputBox from '../../../components/customStyledComponents/InputBox'
-import { useForm } from '../../../components/customHooks/useForm'
-import Calender from '../../../components/Calender'
+import { textfieldStyle } from "./utils";
+import InputBox from "../../../components/customStyledComponents/InputBox";
+import { useForm } from "../../../components/customHooks/useForm";
+import Calender from "../../../components/Calender";
 import {
   CustomTextField as Input,
-  CustomAutocomplete as Autocomplete
-} from '../../../components/customStyledComponents/inputs'
+  CustomAutocomplete as Autocomplete,
+} from "../../../components/customStyledComponents/inputs";
 
-import { State, City } from 'country-state-city';
+import { State, City } from "country-state-city";
+import {
+  useEmailValidation,
+  useNameValidation,
+  usePhoneValidation,
+} from "../../../components/customHooks/validationHooks";
 
 export default function PolicyHolderDetailsForm({ handleStepChange }) {
   const [policyHolder, handleChange] = useForm({
@@ -32,45 +35,68 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
     mobile: "",
     address: "",
     pincode: "",
-  })
-  const [dob, setDob] = React.useState("")
-  const [maritalStatus, setMaritalStatus] = React.useState("")
+  });
 
-  const [calenderElem, setCalenderElem] = React.useState(null)
-  const calenderRef = React.useRef(null)
+  const [dob, setDob] = React.useState("");
+  const [maritalStatus, setMaritalStatus] = React.useState("");
+
+  const [calenderElem, setCalenderElem] = React.useState(null);
+
+  const calenderRef = React.useRef(null);
+  const inputRef = React.useRef(null);
 
   // states are 36 states of Nigeria
-  const [states, setStates] = React.useState([])
-  const [cities, setCities] = React.useState([])
+  const [states, setStates] = React.useState([]);
+  const [cities, setCities] = React.useState([]);
 
-  const [selectedState, setSelectedState] = React.useState({ name: "", isoCode: "" })
-  const [selectedCity, setSelectedCity] = React.useState("")
+  const [selectedState, setSelectedState] = React.useState({
+    name: "",
+    isoCode: "",
+  });
+  const [selectedCity, setSelectedCity] = React.useState("");
 
-  const [date, setDate] = React.useState(new Date('2014-08-18T21:11:54'));
+  const [date, setDate] = React.useState(new Date("2014-08-18T21:11:54"));
 
   const handleDateChange = (d) => {
     setDate(d);
   };
 
+  // Error Handling
+  const [nameValidity, checkNameError] = useNameValidation(
+    policyHolder.fullName
+  );
+  const [emailValidity, checkEmailError] = useEmailValidation(
+    policyHolder.email
+  );
+  const [phoneValidity, checkPhoneError] = usePhoneValidation(
+    policyHolder.mobile
+  );
+
   React.useEffect(() => {
-    const _states = State.getStatesOfCountry('NG').map(state => {
-      if (state.name.slice(-5) === 'State')
-        state.name = state.name.slice(0, -6)
-      return { name: state.name, isoCode: state.isoCode }
-    })
-    setStates(_states)
-  }, [])
+    inputRef.current.focus();
+    console.log(inputRef.current);
+  }, []);
+
+  React.useEffect(() => {
+    const _states = State.getStatesOfCountry("NG").map((state) => {
+      if (state.name.slice(-5) === "State")
+        state.name = state.name.slice(0, -6);
+      return { name: state.name, isoCode: state.isoCode };
+    });
+    setStates(_states);
+  }, []);
 
   React.useEffect(() => {
     if (!selectedState) return;
-    const _cities = City.getCitiesOfState('NG', selectedState.isoCode)
-      .map(city => city.name)
+    const _cities = City.getCitiesOfState("NG", selectedState.isoCode).map(
+      (city) => city.name
+    );
 
-    setCities(_cities)
-  }, [selectedState])
+    setCities(_cities);
+  }, [selectedState]);
 
   return (
-    <div>
+    <React.Fragment>
       <InputBox label="Full Name">
         <Input
           fullWidth
@@ -78,7 +104,13 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
           name="fullName"
           value={policyHolder.fullName}
           onChange={handleChange}
+          error={!nameValidity.valid}
+          onBlur={() => checkNameError()}
           placeholder="Enter Full Name"
+          helperText={nameValidity.error}
+          inputProps={{
+            ref: inputRef,
+          }}
         />
       </InputBox>
       <InputBox label="Email ID">
@@ -89,6 +121,9 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
           value={policyHolder.email}
           onChange={handleChange}
           placeholder="Enter Email ID"
+          onBlur={checkEmailError}
+          error={!emailValidity.valid}
+          helperText={emailValidity.error}
         />
       </InputBox>
       <InputBox label="Mobile Number">
@@ -100,20 +135,29 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
           value={policyHolder.mobile}
           onChange={handleChange}
           placeholder="Mobile Number"
+          error={!phoneValidity.valid}
+          helperText={phoneValidity.error}
           inputProps={{
-            sx: textfieldStyle
+            sx: textfieldStyle,
           }}
           InputProps={{
-            startAdornment:
+            startAdornment: (
               <InputAdornment position="start">
                 <Typography variant="body2">+234</Typography>
               </InputAdornment>
+            ),
           }}
         />
       </InputBox>
-      
+
       {/** DATE OF BIRTH AND MARITAL STATUS */}
-      <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
         {/** Date of Birth */}
         <InputBox label="Date of Birth" style={{ width: "48%" }}>
           <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -122,42 +166,47 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
               value={date}
               onChange={handleDateChange}
               renderInput={(params) => (
-                <Input {...params}
+                <Input
+                  {...params}
                   placeholder="Select Gender"
                   inputProps={{
                     ...params.inputProps,
                     style: { padding: ".75rem 1rem" },
-                    autoComplete: 'new-password', // disable autocomplete and autofill
-                  }} />
+                    autoComplete: "new-password", // disable autocomplete and autofill
+                  }}
+                />
               )}
             />
           </LocalizationProvider>
         </InputBox>
 
         {/* **** marital status ***** */}
-        <InputBox label="Marital Status" style={{ width: "48%", paddingTop: "4px" }}>
+        <InputBox
+          label="Marital Status"
+          style={{ width: "48%", paddingTop: "4px" }}
+        >
           <Autocomplete
             fullWidth
-            options={['Married', 'Single', 'Divorced']}
+            options={["Married", "Single", "Divorced"]}
             onChange={(e, value) => setMaritalStatus(value)}
             renderOption={(props, option) => (
-              <Typography
-                {...props}
-                variant="body2"
-                color="text.secondary">
+              <Typography {...props} variant="body2" color="text.secondary">
                 {option}
               </Typography>
             )}
-            sx={{ mb: .75 }}
+            sx={{ mb: 0.75 }}
             renderInput={(params) => (
-              <Input {...params}
+              <Input
+                {...params}
                 placeholder="Select Gender"
                 inputProps={{
                   ...params.inputProps,
                   style: { padding: ".75rem 1rem" },
-                  autoComplete: 'new-password', // disable autocomplete and autofill
-                }} />
-            )} />
+                  autoComplete: "new-password", // disable autocomplete and autofill
+                }}
+              />
+            )}
+          />
         </InputBox>
       </Box>
 
@@ -173,31 +222,37 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
         />
       </InputBox>
 
-      <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
         {/* ######################## STATE ################## */}
         <InputBox label="State" style={{ width: "48%" }}>
           <Autocomplete
             fullWidth
             options={states}
             onChange={(e, value) => setSelectedState(value)}
-            getOptionLabel={option => option.name}
+            getOptionLabel={(option) => option.name}
             renderOption={(props, option) => (
-              <Typography
-                {...props} variant="body2"
-                color="text.secondary">
+              <Typography {...props} variant="body2" color="text.secondary">
                 {option.name}
               </Typography>
             )}
             renderInput={(params) => (
-              <Input {...params}
+              <Input
+                {...params}
                 placeholder="Select State"
                 inputProps={{
                   ...params.inputProps,
                   style: { padding: ".75rem 1rem" },
-                  autoComplete: 'new-password', // disable autocomplete and autofill
-                }} />
-            )} />
+                  autoComplete: "new-password", // disable autocomplete and autofill
+                }}
+              />
+            )}
+          />
         </InputBox>
 
         {/* ######################## CITY ################## */}
@@ -208,23 +263,24 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
             disableClearable
             autoHighlight
             onChange={(e, value) => setSelectedCity(value)}
-            getOptionLabel={option => option}
+            getOptionLabel={(option) => option}
             renderOption={(props, option) => (
-              <Typography
-                {...props} variant="body2"
-                color="text.secondary">
+              <Typography {...props} variant="body2" color="text.secondary">
                 {option}
               </Typography>
             )}
             renderInput={(params) => (
-              <Input {...params}
+              <Input
+                {...params}
                 placeholder="Select City"
                 inputProps={{
                   ...params.inputProps,
                   style: { padding: ".75rem 1rem" },
-                  autoComplete: 'new-password',
-                }} />
-            )} />
+                  autoComplete: "new-password",
+                }}
+              />
+            )}
+          />
         </InputBox>
       </Box>
 
@@ -244,15 +300,15 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
             fullWidth
             placeholder="Upload"
             InputProps={{
-              startAdornment:
+              startAdornment: (
                 <InputAdornment position="start">
-                  <FileUploadOutlinedIcon
-                    fontSize="small" />
-                </InputAdornment>,
+                  <FileUploadOutlinedIcon fontSize="small" />
+                </InputAdornment>
+              ),
             }}
           />
         </InputBox>
       </Box>
-    </div>
-  )
+    </React.Fragment>
+  );
 }

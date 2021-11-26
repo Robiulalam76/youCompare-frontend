@@ -25,7 +25,7 @@ function Cover() {
   console.log(healthQuery);
 
   return (
-    <div style={{ marginTop: "4%" }}>
+    <React.Fragment>
       {/* Model Selection */}
       <form style={{ textAlignLast: "left", marginBottom: "6%" }}>
         <Grid container spacing={2}>
@@ -83,7 +83,7 @@ function Cover() {
           ) : null}
         </Grid>
       </form>
-    </div>
+    </React.Fragment>
   );
 }
 

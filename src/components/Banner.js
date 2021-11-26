@@ -43,7 +43,15 @@ export default function Banner({
   const dynamicClass = title.toLowerCase().split(" ").join("-");
   return (
     <Grid container spacing={2}>
-      <Grid item lg={5} md={5} xl={5} sm={12} xs={12}>
+      <Grid
+        item
+        lg={5}
+        md={5}
+        xl={5}
+        sm={12}
+        xs={12}
+        className="banner-showcase"
+      >
         <div>
           <BannerHeader className={dynamicClass + "-header"}>
             {title}

@@ -23,7 +23,7 @@ export default function TripDatePicker() {
   const { tripStartDate, tripEndDate } = travelQuery;
 
   const handleChange = (field, value) => {
-    console.log(value)
+
     dispatch({
       type: TRAVEL_FIELD_CHANGE,
       payload: { field, value },

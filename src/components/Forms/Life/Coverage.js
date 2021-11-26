@@ -1,7 +1,10 @@
 import React from "react";
-import { Grid, Button, Box } from "@mui/material";
+import { Grid, Button, Box, Typography, Chip } from "@mui/material";
 
-import { CustomTextField as Input } from "../../customStyledComponents/inputs";
+import {
+  CustomTextField as Input,
+  CustomAutocomplete as Autocomplete,
+} from "../../customStyledComponents/inputs";
 import InputBox from "../../customStyledComponents/InputBox";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -12,12 +15,19 @@ import {
   renderEmploymentLabel,
 } from "./renderLabels";
 
-const buttonSxProp = { mr: 1, fontSize: ".8rem", py: 0.5, mb: 1 };
-
-function Coverage() {
+function Coverage(props) {
   const dispatch = useDispatch();
-  const coverAmount = useSelector((state) => state.lifeQuery.coverAmount);
-  const coverFor = useSelector((state) => state.lifeQuery.coverFor);
+  const lifeQuery = useSelector((state) => state.lifeQuery);
+  const {
+    coverAmount,
+    coverFor,
+    gender,
+    smoke,
+    employment,
+    age,
+    ageOfFather,
+    ageOfMother,
+  } = lifeQuery;
 
   const [employmentOptions, setEmploymentOptions] = React.useState([
     "Slaried",
@@ -26,113 +36,100 @@ function Coverage() {
   const [smokeOptions, setSmokeOptions] = React.useState(["Yes", "No"]);
 
   React.useEffect(() => {
-    if (coverFor.relationship === "Parents") {
+    // dispatch({
+    //   type: "LIFE_QUERY_RESET",
+    // });
+
+    if (coverFor === "Parents") {
       setSmokeOptions(["Father", "Mother", "Both", "None"]);
     } else {
       setSmokeOptions(["Yes", "No"]);
     }
-  }, [coverFor.relationship]);
-
-  // const [hideGender, setHideGender] = React.useState(false);
+  }, [coverFor]);
 
   const hideGender =
-    coverFor.relationship === "Father" ||
-    coverFor.relationship === "Mother" ||
-    coverFor.relationship === "Parents";
+    coverFor === "Father" || coverFor === "Mother" || coverFor === "Parents";
 
-  const handleCoverAmountChange = (e) => {
+  const handleChange = (field, value) => {
+    if (
+      (field === "age" || field === "ageOfFather" || field === "ageOfMother") &&
+      value < 0
+    ) {
+      value = 0;
+    }
     dispatch({
       type: "LIFE_QUERY_FIELD_CHANGE",
-      payload: { field: e.target.name, value: e.target.value },
+      payload: { field, value },
     });
   };
+  console.log(lifeQuery);
 
-  const handleCoverForChanges = (e) => {
-    dispatch({
-      type: "COVER_FOR_FIELD_CHANGE",
-      payload: { field: e.target.name, value: e.target.value },
-    });
-  };
+  const buttonSxProp = { mr: 1, fontSize: ".8rem", py: 0.5, mb: 1 };
 
   return (
-    <div style={{ marginTop: "4%" }}>
+    <React.Fragment>
       <Grid
         container
         style={{ textAlignLast: "left", marginBottom: "6%" }}
         spacing={2}
       >
-        <Grid item container spacing={2}>
-          <Grid item xs={12} md={6}>
-            <InputBox label="Amount of Cover">
-              <Input
-                fullWidth
-                type="number"
-                name="coverAmount"
-                value={coverAmount}
-                onChange={handleCoverAmountChange}
-                placeholder="Cover amount"
-              />
-            </InputBox>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <InputBox label="Who is cover for?">
-              <div style={{ textAlign: "left" }}>
-                {["Myself", "My Partner", "Father", "Mother", "Parents"].map(
-                  (elem, i) => (
-                    <Button
-                      sx={buttonSxProp}
-                      key={i}
-                      variant="round"
-                      color={
-                        elem === coverFor.relationship ? "primary" : "text"
-                      }
-                      value={elem}
-                      name="relationship"
-                      onClick={handleCoverForChanges}
-                    >
-                      {elem}
-                    </Button>
-                  )
-                )}
-              </div>
-            </InputBox>
-          </Grid>
+        {/** Amount of Cover */}
+        <Grid item xs={12} md={6}>
+          <InputBox label="Amount of Cover">
+            <Input
+              fullWidth
+              type="number"
+              // size="small"
+              // name="coverAmount"
+              value={coverAmount}
+              onChange={(e) => handleChange("coverAmount", e.target.value)}
+              placeholder="Cover amount"
+            />
+          </InputBox>
         </Grid>
 
-        <Grid item container spacing={2} sx={{ textAlign: "left" }}>
-          {!hideGender ? (
-            <Grid item xs={12} md={6}>
-              <InputBox label={renderGenderLabel(coverFor.relationship)}>
-                <div>
-                  {["Male", "Female"].map((elem, i) => (
-                    <Button
-                      sx={buttonSxProp}
-                      key={i}
-                      variant="round"
-                      color={coverFor.gender === elem ? "primary" : "text"}
-                      value={elem}
-                      name="gender"
-                      onClick={handleCoverForChanges}
-                    >
-                      {elem}
-                    </Button>
-                  ))}
-                </div>
-              </InputBox>
-            </Grid>
-          ) : null}
-          <Grid item xs={12} md={6}>
-            <InputBox label={renderSmokeLabel(coverFor.relationship)}>
-              <div>
-                {smokeOptions.map((elem, i) => (
+        {/** Relationship with cover for */}
+        <Grid item xs={12} md={6}>
+          <InputBox label="Who is cover for?">
+            <div style={{ textAlign: "left" }}>
+              {["Myself", "My Partner", "Father", "Mother", "Parents"].map(
+                (elem, i) => (
                   <Button
                     sx={buttonSxProp}
                     key={i}
                     variant="round"
-                    color={coverFor.smoke === elem ? "primary" : "text"}
-                    name="smoke"
-                    onClick={handleCoverForChanges}
+                    color={elem === coverFor ? "primary" : "text"}
                     value={elem}
+                    onClick={(e) => handleChange("coverFor", e.target.value)}
+                  >
+                    {elem}
+                  </Button>
+                  // <Chip
+                  //   label={elem}
+                  //   key={i}
+                  //   sx={{ px: 0.25, m: 0.5 }}
+                  //   color={elem === coverFor ? "primary" : "default"}
+                  //   onClick={() => handleChange("coverFor", elem)}
+                  // />
+                )
+              )}
+            </div>
+          </InputBox>
+        </Grid>
+
+        {/** Gender Selection */}
+        {!hideGender ? (
+          <Grid item xs={12} md={6} sx={{ textAlign: "left" }}>
+            <InputBox label={renderGenderLabel(coverFor)}>
+              <div>
+                {["Male", "Female"].map((elem, i) => (
+                  <Button
+                    sx={buttonSxProp}
+                    key={i}
+                    variant="round"
+                    color={gender === elem ? "primary" : "text"}
+                    name="gender"
+                    onClick={(e) => handleChange("gender", elem)}
                   >
                     {elem}
                   </Button>
@@ -140,67 +137,121 @@ function Coverage() {
               </div>
             </InputBox>
           </Grid>
-          <Grid item xs={12} md={6}>
-            <InputBox label={renderEmploymentLabel(coverFor.relationship)}>
-              <div>
-                {employmentOptions.map((elem, i) => (
-                  <Button
-                    sx={buttonSxProp}
-                    key={i}
-                    variant="round"
-                    color={coverFor.employment === elem ? "primary" : "text"}
-                    name="employment"
-                    onClick={handleCoverForChanges}
-                    value={elem}
-                  >
-                    {elem}
-                  </Button>
-                ))}
-              </div>
-            </InputBox>
-          </Grid>
-          {coverFor.relationship === "Parents" ? (
-            <>
-              <Grid item xs={12} md={6}>
-                <InputBox label="Your father's age (years)">
-                  <Input
-                    fullWidth
-                    type="number"
-                    value={coverFor.ageOfFather}
-                    name="ageOfFather"
-                    onChange={handleCoverForChanges}
-                  />
-                </InputBox>
-              </Grid>
-              <Grid item xs={12} md={6}>
-                <InputBox label="Your mother's age (years)">
-                  <Input
-                    fullWidth
-                    type="number"
-                    value={coverFor.ageOfMother}
-                    name="ageOfMother"
-                    onChange={handleCoverForChanges}
-                  />
-                </InputBox>
-              </Grid>
-            </>
-          ) : (
+        ) : null}
+
+        {/** Smoke Habit */}
+        <Grid item xs={12} md={6}>
+          <InputBox label={renderSmokeLabel(coverFor)}>
+            <div style={{ textAlign: "left" }}>
+              {smokeOptions.map((elem, i) => (
+                <Button
+                  sx={buttonSxProp}
+                  key={i}
+                  variant="round"
+                  color={smoke === elem ? "primary" : "text"}
+                  name="smoke"
+                  value={elem}
+                  onClick={(e) => handleChange("smoke", e.target.value)}
+                >
+                  {elem}
+                </Button>
+              ))}
+            </div>
+          </InputBox>
+        </Grid>
+
+        {/** Employment Input */}
+        <Grid item xs={12} md={6}>
+          <InputBox label={renderEmploymentLabel(coverFor)}>
+            <div>
+              {employmentOptions.map((elem, i) => (
+                <Button
+                  sx={buttonSxProp}
+                  key={i}
+                  variant="round"
+                  color={employment === elem ? "primary" : "text"}
+                  name="employment"
+                  onClick={() => handleChange("employment", elem)}
+                  value={elem}
+                >
+                  {elem}
+                </Button>
+              ))}
+            </div>
+          </InputBox>
+        </Grid>
+
+        {/** Age Input */}
+        {coverFor === "Parents" ? (
+          <>
             <Grid item xs={12} md={6}>
-              <InputBox label={renderAgeLabel(coverFor.relationship)}>
+              <InputBox label="Your father's age (years)">
                 <Input
                   fullWidth
                   type="number"
-                  value={coverFor.age}
-                  name="age"
-                  onChange={handleCoverForChanges}
+                  value={ageOfFather}
+                  name="ageOfFather"
+                  onChange={(e) => handleChange("ageOfFather", e.target.value)}
                 />
               </InputBox>
             </Grid>
-          )}
-        </Grid>
+            <Grid item xs={12} md={6}>
+              <InputBox label="Your mother's age (years)">
+                <Input
+                  fullWidth
+                  type="number"
+                  value={ageOfMother}
+                  name="ageOfMother"
+                  onChange={(e) => handleChange("ageOfMother", e.target.value)}
+                />
+              </InputBox>
+            </Grid>
+          </>
+        ) : (
+          <Grid item xs={12} md={6}>
+            <InputBox label={renderAgeLabel(coverFor)}>
+              <Input
+                fullWidth
+                type="number"
+                value={age}
+                name="age"
+                onChange={(e) => handleChange("age", e.target.value)}
+              />
+            </InputBox>
+          </Grid>
+        )}
       </Grid>
-    </div>
+    </React.Fragment>
   );
 }
 
 export default Coverage;
+
+const MyAutocomplete = ({ options, onChange, value }) => {
+  return (
+    <Autocomplete
+      fullWidth
+      options={options}
+      value={value}
+      autoHighlight
+      onChange={onChange}
+      getOptionLabel={(option) => option}
+      renderOption={(props, option) => (
+        <Typography {...props} variant="body2" color="text.secondary">
+          {option}
+        </Typography>
+      )}
+      renderInput={(params) => (
+        <Input
+          {...params}
+          placeholder="Select Option"
+          inputProps={{
+            ...params.inputProps,
+            style: { padding: ".75rem 1rem" },
+            autoComplete: "new-password",
+          }}
+        />
+      )}
+    />
+  );
+};

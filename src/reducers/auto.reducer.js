@@ -1,4 +1,8 @@
-import { FIELD_CHANGE, INITIAL_POPULATION } from "../constants/autoCompare.constant"
+import {
+  FIELD_CHANGE,
+  INITIAL_POPULATION,
+  AUTO_POLICY_HOLDER_FIELD_CHANGE,
+} from "../constants/autoCompare.constant";
 
 const query = {
   typeofInsurance: "",
@@ -7,38 +11,21 @@ const query = {
   carNo: "",
   model: "",
   brand: "",
-  year: ""
-}
+  year: "",
+  idv: "",
+};
 
 export const autoQueryReducer = (state = query, action) => {
   switch (action.type) {
     case FIELD_CHANGE:
       return {
         ...state,
-        [action.payload.field]: action.payload.value
-      }
+        [action.payload.field]: action.payload.value,
+      };
     default:
-      return state
+      return state;
   }
-}
-
-const searcher = {
-  fullName: "",
-  email: "",
-  phone: ""
-}
-
-export const searcherReducer = (state = searcher, action) => {
-  switch (action.type) {
-    case 'FIELD_CHANGE':
-      return {
-        ...state,
-        [action.payload.field]: action.payload.value
-      }
-    default:
-      return state
-  }
-}
+};
 
 const policyHolder = {
   fullName: "",
@@ -48,12 +35,18 @@ const policyHolder = {
   maritalStatus: "",
   address: "",
   state: "",
-  city: ""
-}
+  city: "",
+  pincode: "",
+};
 
-export const policyHolderReducer = (state = policyHolder, action) => {
+export const autoPolicyHolderReducer = (state = policyHolder, action) => {
   switch (action.type) {
+    case AUTO_POLICY_HOLDER_FIELD_CHANGE:
+      return {
+        ...state,
+        [action.payload.field]: action.payload.value,
+      };
     default:
-      return state
+      return state;
   }
-}
+};

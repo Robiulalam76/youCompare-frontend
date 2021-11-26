@@ -1,12 +1,5 @@
-import { Grid } from "@mui/material";
 import React from "react";
-import {
-  BrowserRouter as Router,
-  useRouteMatch,
-  Route,
-  Switch,
-  Link,
-} from "react-router-dom";
+import { useRouteMatch, Route, Switch } from "react-router-dom";
 import "./Life.css";
 
 // images
@@ -16,59 +9,12 @@ import life from "../../accets/life.svg";
 import AutoCard from "../Card/Card";
 import Banner from "../Banner";
 
-// Steppers
-import MuiStepper from "../MuiStepper";
-
 // data
 import { subLifeInsurances } from "../../Data/data";
 
-// steped forms
-import Insurance from "../../components/Forms/Life/Insurance";
-import Coverage from "../../components/Forms/Life/Coverage";
-import TermLifeCoverage from "../Forms/Life/TermLifeCoverage";
-import GroupLifeCover from "../Forms/Life/GroupLifeCover";
-
-const steps = [
-  {
-    label: "Cover",
-    component: <Coverage />,
-  },
-  {
-    label: "Insurance",
-    component: <Insurance />,
-  },
-  {
-    label: "Compare",
-  },
-];
-
-const stepsForTerm = [
-  {
-    label: "Cover",
-    component: <TermLifeCoverage />,
-  },
-  {
-    label: "Insurance",
-    component: <Insurance />,
-  },
-  {
-    label: "Compare",
-  },
-];
-
-const stepsForGroup = [
-  {
-    label: "Cover",
-    component: <GroupLifeCover />,
-  },
-  {
-    label: "Insurance",
-    component: <Insurance />,
-  },
-  {
-    label: "Compare",
-  },
-];
+import TermLife from "./TermLife";
+import GroupLife from "./GroupLife";
+import PermanentLife from "./PermanentLife";
 
 export default function Life() {
   const { path, url } = useRouteMatch();
@@ -77,14 +23,14 @@ export default function Life() {
   const description =
     "Prepare for your family's future in the case of an unexpected tragedy. Insurance Helps you.";
 
-  const renderStepper = (title) => {
+  const renderComponent = (title) => {
     switch (title) {
       case "Permanent Life":
-        return <MuiStepper steps={steps} link="/life/compare" />;
+        return <PermanentLife />;
       case "Term Life":
-        return <MuiStepper steps={stepsForTerm} link="/life/compare" />;
+        return <TermLife />;
       case "Group Life":
-        return <MuiStepper steps={stepsForGroup} link="/life/compare" />;
+        return <GroupLife />;
       default:
         return;
     }
@@ -109,8 +55,11 @@ export default function Life() {
               title={insurance.title}
               description={insurance.description}
               imageSrc={insurance.image}
-              stepper={renderStepper(insurance.title)}
-            />
+            >
+              <div className="SteeperDiv">
+                {renderComponent(insurance.title)}
+              </div>
+            </Banner>
           </Route>
         ))}
       </Switch>

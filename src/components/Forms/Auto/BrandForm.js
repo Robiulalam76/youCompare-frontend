@@ -1,4 +1,4 @@
-import { Grid, InputBase, Typography } from "@mui/material";
+import { Grid, InputBase, Typography, Box } from "@mui/material";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FIELD_CHANGE } from "../../../constants/autoCompare.constant";
@@ -7,6 +7,18 @@ import "../style.css";
 
 import InputBox from "../../customStyledComponents/InputBox";
 import { CustomTextField as TextField } from "../../customStyledComponents/inputs";
+import { styled } from "@mui/system";
+
+const ResponsiveBox = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "space-between",
+  padding: theme.spacing(1, 0),
+  [theme.breakpoints.only("xs")]: {
+    display: "flex",
+    flexDirection: "column-reverse",
+  },
+}));
 
 const brands = [
   "BMW",
@@ -25,12 +37,12 @@ function BrandForm() {
   const { brand, carNo } = autoQuery;
 
   // Default Brand Selection during initial rendering
-  React.useEffect(() => {
-    dispatch({
-      type: FIELD_CHANGE,
-      payload: { field: "brand", value: "BMW" },
-    });
-  }, []);
+  // React.useEffect(() => {
+  //   dispatch({
+  //     type: FIELD_CHANGE,
+  //     payload: { field: "brand", value: "BMW" },
+  //   });
+  // }, []);
 
   // form field change (controlled input)
   const handleChange = (e) => {
@@ -45,30 +57,34 @@ function BrandForm() {
 
   return (
     <div>
-      <form style={{ padding: "1rem 0", display: "flex" }}>
-        <InputBox label="Select Brand">
-          <TextField
-            type="text"
-            size="small"
-            name="brand"
-            value={brand}
-            onChange={handleChange}
-            placeholder="Brand Name"
-          />
-        </InputBox>
-        <Typography variant="body2" color="text.hover" sx={{ px: 2, mt: 6 }}>
+      <form>
+        <ResponsiveBox>
+          <InputBox label="Select Brand">
+            <TextField
+              type="text"
+              fullWidth
+              name="brand"
+              value={brand}
+              onChange={handleChange}
+              placeholder="Brand Name"
+            />
+          </InputBox>
+
+          <InputBox label="Enter Number Plate">
+            <TextField
+              type="text"
+              fullWidth
+              value={carNo}
+              name="carNo"
+              placeholder="e.g. DH897KL788"
+              onChange={handleChange}
+            />
+          </InputBox>
+        </ResponsiveBox>
+
+        {/* <Typography variant="body2" color="text.hover" sx={{ px: 2, mt: 6 }}>
           OR
-        </Typography>
-        <InputBox label="Enter Number Plate">
-          <TextField
-            type="text"
-            size="small"
-            value={carNo}
-            name="carNo"
-            placeholder="e.g. DH897KL788"
-            onChange={handleChange}
-          />
-        </InputBox>
+        </Typography> */}
       </form>
 
       <Grid container>

@@ -18,17 +18,33 @@ import {
 } from "../../customStyledComponents/inputs";
 import InputBox from "../../customStyledComponents/InputBox";
 import { nanoid } from "nanoid";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  DELETE_TRAVELLER,
+  TRAVEL_FIELD_CHANGE,
+  UPDATE_TRAVELLERS,
+} from "../../../constants/travel.constant";
 
 const buttonSxProp = { mr: 1, fontSize: ".8rem", py: 0.5, mb: 1 };
 
 export default function TravelCover() {
-  const [travellerStatus, setTravellerStatus] = React.useState("One");
-  const [totalTravellers, setTotalTravellers] = React.useState(1);
-  const [travellers, setTravellers] = React.useState([
-    { id: nanoid(10), age: "", gender: "", preCondition: "" },
-  ]);
+  const dispatch = useDispatch();
+  const { travellers, travellerStatus, totalTravellers } = useSelector(
+    (state) => state.travelQuery
+  );
+
   const hideAddButton =
     travellerStatus === "One" || travellerStatus === "Couple";
+
+  const updateTravelQuery = (field, value) => {
+    dispatch({
+      type: TRAVEL_FIELD_CHANGE,
+      payload: {
+        field,
+        value,
+      },
+    });
+  };
 
   React.useEffect(() => {
     const travellerObject = {
@@ -38,9 +54,10 @@ export default function TravelCover() {
     };
     if (totalTravellers == travellers.length) return;
     if (travellerStatus === "One") {
-      setTravellers([{ ...travellerObject, id: nanoid(10) }]);
+      if (totalTravellers == travellers.length) return;
+      updateTravelQuery("travellers", [{ ...travellerObject, id: nanoid(10) }]);
     } else if (travellerStatus === "Couple") {
-      setTravellers([
+      updateTravelQuery("travellers", [
         { ...travellerObject, id: nanoid(10) },
         { ...travellerObject, id: nanoid(10) },
       ]);
@@ -49,40 +66,41 @@ export default function TravelCover() {
       for (let i = 0; i < totalTravellers; i++) {
         temp.push({ ...travellerObject, id: nanoid(10) });
       }
-      setTravellers(temp);
+      updateTravelQuery("travellers", temp);
     } else {
-      setTravellers([...travellers, { ...travellerObject, id: nanoid(10) }]);
+      updateTravelQuery("travellers", [
+        ...travellers,
+        { ...travellerObject, id: nanoid(10) },
+      ]);
     }
   }, [totalTravellers]);
 
   React.useEffect(() => {
-    if (travellerStatus === "One") setTotalTravellers(1);
-    else if (travellerStatus === "Couple") setTotalTravellers(2);
-    else setTotalTravellers(totalTravellers);
+    if (travellerStatus === "One") updateTravelQuery("totalTravellers", 1);
+    else if (travellerStatus === "Couple")
+      updateTravelQuery("totalTravellers", 2);
+    else updateTravelQuery("totalTravellers", totalTravellers);
   }, [travellerStatus]);
 
   const handleTravellerChange = (e, traveller) => {
-    setTravellers([
-      ...travellers.map((elem) => {
-        if (elem.id == traveller.id)
-          return { ...elem, [e.target.name]: e.target.value };
-        return elem;
-      }),
-    ]);
+    dispatch({
+      type: UPDATE_TRAVELLERS,
+      payload: {
+        id: traveller.id,
+        field: e.target.name,
+        value: e.target.value,
+      },
+    });
   };
-
-  const handleTravellerStatus = (e) => {
-    setTravellerStatus(e.target.value);
-  };
-  const handleAddTraveller = () => setTotalTravellers(totalTravellers + 1);
 
   const handleTravellerClose = (traveller) => {
     if (travellers.length <= 2) return;
-    setTravellers([...travellers.filter((t) => t.id !== traveller.id)]);
+    dispatch({
+      type: DELETE_TRAVELLER,
+      payload: { id: traveller.id },
+    });
   };
 
-  console.log(travellers, "Travellers");
-  console.log(totalTravellers, "Total Travellers");
   return (
     <React.Fragment>
       <Grid container>
@@ -96,7 +114,9 @@ export default function TravelCover() {
                   variant="round"
                   value={elem}
                   color={elem === travellerStatus ? "primary" : "text"}
-                  onClick={handleTravellerStatus}
+                  onClick={(e) =>
+                    updateTravelQuery("travellerStatus", e.target.value)
+                  }
                 >
                   {elem}
                 </Button>
@@ -202,14 +222,16 @@ export default function TravelCover() {
       })}
 
       {hideAddButton ? null : (
-        <Button onClick={handleAddTraveller} size="small" sx={{ mt: 2 }}>
+        <Button
+          onClick={() =>
+            updateTravelQuery("totalTravellers", totalTravellers + 1)
+          }
+          size="small"
+          sx={{ mt: 2 }}
+        >
           <AddIcon fontSize="small" /> Add Traveller
         </Button>
       )}
     </React.Fragment>
   );
 }
-
-const OneTravellerInput = () => {
-  return <div></div>;
-};

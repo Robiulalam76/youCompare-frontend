@@ -21,16 +21,16 @@ function ModelNYearsForm() {
 
   // Default model & year selection during initial rendering
   // Value should come from local storage(if exist)
-  React.useEffect(() => {
-    dispatch({
-      type: FIELD_CHANGE,
-      payload: { field: "model", value: "190" },
-    });
-    dispatch({
-      type: FIELD_CHANGE,
-      payload: { field: "year", value: "2021" },
-    });
-  }, []);
+  // React.useEffect(() => {
+  //   dispatch({
+  //     type: FIELD_CHANGE,
+  //     payload: { field: "model", value: "190" },
+  //   });
+  //   dispatch({
+  //     type: FIELD_CHANGE,
+  //     payload: { field: "year", value: "2021" },
+  //   });
+  // }, []);
 
   // form field change (controlled input)
   const handleChange = (e) => {
@@ -44,7 +44,7 @@ function ModelNYearsForm() {
   };
 
   return (
-    <div style={{ marginTop: "4%", textAlignLast: "start" }}>
+    <div style={{ marginTop: "2%", textAlignLast: "start" }}>
       {/* <p>Model and Year</p> */}
       <div
         // className="brandname"

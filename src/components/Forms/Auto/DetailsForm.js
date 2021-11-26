@@ -2,36 +2,30 @@ import React from "react";
 import { Grid, Button, TextField } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import { FIELD_CHANGE } from "../../../constants/autoCompare.constant";
+import { SEARCHER_FIELD_CHANGE } from "../../../constants/searcher.constant";
 
 import { CustomTextField as Input } from "../../customStyledComponents/inputs";
 import InputBox from "../../customStyledComponents/InputBox";
 
-function DetailsForm() {
+function DetailsForm({ title }) {
   const dispatch = useDispatch();
   const autoQuery = useSelector((state) => state.autoQuery);
-  const {
-    brand,
-    model,
-    year,
-    typeofUse,
-    typeofInsurance,
-    value,
-    fullName,
-    email,
-    phone,
-  } = autoQuery;
+  const { brand, model, year, typeofUse, typeofInsurance, idv } = autoQuery;
+  const { fullName, email, phone } = useSelector((state) => state.searcher);
+
+  console.log(title);
 
   // Default selection during initial rendering
-  React.useEffect(() => {
-    dispatch({
-      type: FIELD_CHANGE,
-      payload: { field: "typeofInsurance", value: "comprehensive" },
-    });
-    dispatch({
-      type: FIELD_CHANGE,
-      payload: { field: "typeofUse", value: "private" },
-    });
-  }, []);
+  // React.useEffect(() => {
+  //   dispatch({
+  //     type: FIELD_CHANGE,
+  //     payload: { field: "typeofInsurance", value: "comprehensive" },
+  //   });
+  //   dispatch({
+  //     type: FIELD_CHANGE,
+  //     payload: { field: "typeofUse", value: "private" },
+  //   });
+  // }, []);
 
   // form field change (controlled input)
   const handleChange = (e) => {
@@ -44,8 +38,18 @@ function DetailsForm() {
     });
   };
 
+  const handleSearcherChange = (e) => {
+    dispatch({
+      type: SEARCHER_FIELD_CHANGE,
+      payload: {
+        field: e.target.name,
+        value: e.target.value,
+      },
+    });
+  };
+
   return (
-    <div style={{ marginTop: "4%" }}>
+    <div style={{ marginTop: "2%" }}>
       <div
         style={{
           display: "flex",
@@ -144,19 +148,40 @@ function DetailsForm() {
                   name="typeofInsurance"
                   onClick={handleChange}
                 >
-                  Compremsive
+                  Comprehensive
                 </Button>
               </div>
             </InputBox>
           </Grid>
+          {title === "Two Wheeler" || title == "Three Wheeler" ? (
+            <Grid item sm={6} xs={12}>
+              <InputBox label="Type of Use">
+                <div style={{ textAlign: "left" }}>
+                  {["Commercial", "Private"].map((elem, i) => (
+                    <Button
+                      sx={{ mr: 1, fontSize: ".8rem", py: 0.5 }}
+                      variant="round"
+                      key={i}
+                      color={typeofUse === elem ? "primary" : "text"}
+                      value={elem}
+                      name="typeofUse"
+                      onClick={handleChange}
+                    >
+                      {elem}
+                    </Button>
+                  ))}
+                </div>
+              </InputBox>
+            </Grid>
+          ) : null}
           <Grid item lg={6} sm={6} xs={12}>
-            <InputBox label="IDB">
+            <InputBox label="Value">
               <Input
                 fullWidth
-                value={value}
+                value={idv}
                 placeholder="Value"
                 onChange={handleChange}
-                name="value"
+                name="idv"
               />
             </InputBox>
           </Grid>
@@ -174,7 +199,7 @@ function DetailsForm() {
                 fullWidth
                 value={fullName}
                 placeholder="John Doe"
-                onChange={handleChange}
+                onChange={handleSearcherChange}
                 name="fullName"
               />
             </InputBox>
@@ -185,7 +210,7 @@ function DetailsForm() {
                 fullWidth
                 value={email}
                 placeholder="john@domain.com"
-                onChange={handleChange}
+                onChange={handleSearcherChange}
                 name="Email"
               />
             </InputBox>
@@ -196,7 +221,7 @@ function DetailsForm() {
                 fullWidth
                 value={phone}
                 placeholder="94092300293"
-                onChange={handleChange}
+                onChange={handleSearcherChange}
                 name="phone"
               />
             </InputBox>

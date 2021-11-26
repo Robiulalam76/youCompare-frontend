@@ -24,6 +24,7 @@ export default function MuiStepper({ steps, link }) {
   const maxSteps = steps.length;
 
   const handleNext = () => {
+    const currentStep = steps[activeStep];
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
 
@@ -81,7 +82,8 @@ export default function MuiStepper({ steps, link }) {
           </Stepper>
 
           {steps.map((step, i) => {
-            if (i === activeStep) return step.component;
+            if (i === activeStep)
+              return <React.Fragment key={i}>{step.component}</React.Fragment>;
           })}
 
           <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>

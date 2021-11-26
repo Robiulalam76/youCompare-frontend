@@ -14,7 +14,7 @@ import TripDatePicker from "./TripDatePicker";
 
 import { useSelector, useDispatch } from "react-redux";
 import { TRAVEL_FIELD_CHANGE } from "../../../constants/travel.constant";
-import { CustomTextField as TextField } from "../../customStyledComponents/inputs";
+import { SEARCHER_FIELD_CHANGE } from "../../../constants/searcher.constant";
 
 import { states } from "../../../Data/state.js";
 import { countries } from "../../../Data/countries.js";
@@ -23,15 +23,23 @@ export default function TripDetail({ multi }) {
   const dispatch = useDispatch();
   const travelQuery = useSelector((state) => state.travelQuery);
   const [locations, setLocations] = React.useState(states);
-  const { location, destination, transport, fullName, email, phone } =
-    travelQuery;
+  const { location, destination, transport } = travelQuery;
 
-  console.log(locations);
-  // form field change (controlled input)
+  const { fullName, email, phone } = useSelector((state) => state.searcher);
 
   const handleChange = (e) => {
     dispatch({
       type: TRAVEL_FIELD_CHANGE,
+      payload: {
+        field: e.target.name,
+        value: e.target.value,
+      },
+    });
+  };
+
+  const handleSearcherChange = (e) => {
+    dispatch({
+      type: SEARCHER_FIELD_CHANGE,
       payload: {
         field: e.target.name,
         value: e.target.value,
@@ -56,7 +64,7 @@ export default function TripDetail({ multi }) {
   }, [destination]);
 
   return (
-    <div style={{ marginTop: "4%" }}>
+    <React.Fragment>
       <Grid container spacing={2} sx={{ mb: "2%" }}>
         <Grid item sm={6} xs={12}>
           <InputBox label="Destination">
@@ -140,7 +148,7 @@ export default function TripDetail({ multi }) {
               type="text"
               name="fullName"
               value={fullName}
-              onChange={handleChange}
+              onChange={handleSearcherChange}
               placeholder="Enter Full Name"
             />
           </InputBox>
@@ -152,7 +160,7 @@ export default function TripDetail({ multi }) {
               type="email"
               name="email"
               value={email}
-              onChange={handleChange}
+              onChange={handleSearcherChange}
               placeholder="Enter Email Address"
             />
           </InputBox>
@@ -164,13 +172,13 @@ export default function TripDetail({ multi }) {
               type="number"
               name="phone"
               value={phone}
-              onChange={handleChange}
+              onChange={handleSearcherChange}
               placeholder="Enter Mobile Number"
             />
           </InputBox>
         </Grid>
       </Grid>
-    </div>
+    </React.Fragment>
   );
 }
 

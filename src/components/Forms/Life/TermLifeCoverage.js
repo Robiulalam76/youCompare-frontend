@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Button, Box, Typography } from "@mui/material";
+import { Grid, Button, Box, Typography, Chip } from "@mui/material";
 
 import {
   CustomTextField as Input,
@@ -15,11 +15,23 @@ import {
   renderEmploymentLabel,
 } from "./renderLabels";
 
-function TermLifeCoverage() {
+function TermLifeCoverage(props) {
   const dispatch = useDispatch();
-  const coverAmount = useSelector((state) => state.lifeQuery.coverAmount);
-  const coverFor = useSelector((state) => state.lifeQuery.coverFor);
   const lifeQuery = useSelector((state) => state.lifeQuery);
+  const {
+    coverAmount,
+    coverFor,
+    gender,
+    smoke,
+    employment,
+    age,
+    termLength,
+    healthIssue,
+    healthIssue_father,
+    healthIssue_mother,
+    ageOfFather,
+    ageOfMother,
+  } = lifeQuery;
 
   const [employmentOptions, setEmploymentOptions] = React.useState([
     "Slaried",
@@ -28,48 +40,38 @@ function TermLifeCoverage() {
   const [smokeOptions, setSmokeOptions] = React.useState(["Yes", "No"]);
 
   React.useEffect(() => {
-    dispatch({
-      type: "LIFE_QUERY_RESET",
-    });
+    // dispatch({
+    //   type: "LIFE_QUERY_RESET",
+    // });
 
-    if (coverFor.relationship === "Parents") {
+    if (coverFor === "Parents") {
       setSmokeOptions(["Father", "Mother", "Both", "None"]);
     } else {
       setSmokeOptions(["Yes", "No"]);
     }
-  }, [coverFor.relationship]);
+  }, [coverFor]);
 
   const hideGender =
-    coverFor.relationship === "Father" ||
-    coverFor.relationship === "Mother" ||
-    coverFor.relationship === "Parents";
+    coverFor === "Father" || coverFor === "Mother" || coverFor === "Parents";
 
-  const handleCoverChange = (e) => {
-    dispatch({
-      type: "LIFE_QUERY_FIELD_CHANGE",
-      payload: { field: e.target.name, value: e.target.value },
-    });
-  };
-
-  const handleCoverForChanges = (e) => {
-    dispatch({
-      type: "COVER_FOR_FIELD_CHANGE",
-      payload: { field: e.target.name, value: e.target.value },
-    });
-  };
-
-  const handleChangeFromAutocomplete = (field, value) => {
+  const handleChange = (field, value) => {
+    if (
+      (field === "age" || field === "ageOfFather" || field === "ageOfMother") &&
+      value < 0
+    ) {
+      value = 0;
+    }
     dispatch({
       type: "LIFE_QUERY_FIELD_CHANGE",
       payload: { field, value },
     });
   };
+  console.log(lifeQuery);
 
-  console.log(coverFor);
   const buttonSxProp = { mr: 1, fontSize: ".8rem", py: 0.5, mb: 1 };
 
   return (
-    <div style={{ marginTop: "4%" }}>
+    <React.Fragment>
       <Grid
         container
         style={{ textAlignLast: "left", marginBottom: "6%" }}
@@ -81,10 +83,10 @@ function TermLifeCoverage() {
             <Input
               fullWidth
               type="number"
-              size="small"
-              name="coverAmount"
+              // size="small"
+              // name="coverAmount"
               value={coverAmount}
-              onChange={handleCoverChange}
+              onChange={(e) => handleChange("coverAmount", e.target.value)}
               placeholder="Cover amount"
             />
           </InputBox>
@@ -100,13 +102,19 @@ function TermLifeCoverage() {
                     sx={buttonSxProp}
                     key={i}
                     variant="round"
-                    color={elem === coverFor.relationship ? "primary" : "text"}
+                    color={elem === coverFor ? "primary" : "text"}
                     value={elem}
-                    name="relationship"
-                    onClick={handleCoverForChanges}
+                    onClick={(e) => handleChange("coverFor", e.target.value)}
                   >
                     {elem}
                   </Button>
+                  // <Chip
+                  //   label={elem}
+                  //   key={i}
+                  //   sx={{ px: 0.25, m: 0.5 }}
+                  //   color={elem === coverFor ? "primary" : "default"}
+                  //   onClick={() => handleChange("coverFor", elem)}
+                  // />
                 )
               )}
             </div>
@@ -116,51 +124,38 @@ function TermLifeCoverage() {
         {/** Length of Term */}
         <Grid item xs={12} md={6}>
           <InputBox label="Length of Term">
-            <Autocomplete
-              fullWidth
-              options={["20", "30", "40", "50", "60"]}
-              autoHighlight
-              onChange={(e, value) =>
-                handleChangeFromAutocomplete("termLength", value)
-              }
-              getOptionLabel={(option) => option}
-              renderOption={(props, option) => (
-                <Typography {...props} variant="body2" color="text.secondary">
-                  {option} years
-                </Typography>
-              )}
-              renderInput={(params) => (
-                <Input
-                  {...params}
-                  placeholder="Select Option"
-                  inputProps={{
-                    ...params.inputProps,
-                    style: { padding: ".75rem 1rem" },
-                    autoComplete: "new-password",
-                  }}
-                />
-              )}
+            <MyAutocomplete
+              options={[
+                "20 Years",
+                "30 Years",
+                "40 Years",
+                "50 Years",
+                "60 Years",
+              ]}
+              onChange={(e, value) => handleChange("termLength", value)}
+              value={termLength}
             />
           </InputBox>
         </Grid>
 
         {/** Underline Health Issue */}
-        {coverFor.relationship === "Parents" ? (
+        {coverFor === "Parents" ? (
           <>
             <Grid item xs={12} md={6}>
               <InputBox label="Underline Health Issue (Father)">
-                <HealthIssueAutocomplete
+                <MyAutocomplete
                   options={["Option One", "Option Two", "Option Three"]}
                   onChange={(e, value) =>
-                    handleChangeFromAutocomplete("healthIssue_father", value)
+                    handleChange("healthIssue_father", value)
                   }
+                  value={healthIssue_father}
                 />
               </InputBox>
             </Grid>
 
             <Grid item xs={12} md={6}>
               <InputBox label="Underline Health Issue (Mother)">
-                <HealthIssueAutocomplete
+                <MyAutocomplete
                   options={[
                     "Option One",
                     "Option Two",
@@ -168,8 +163,9 @@ function TermLifeCoverage() {
                     "Option Three",
                   ]}
                   onChange={(e, value) =>
-                    handleChangeFromAutocomplete("healthIssue_mother", value)
+                    handleChange("healthIssue_mother", value)
                   }
+                  value={healthIssue_mother}
                 />
               </InputBox>
             </Grid>
@@ -177,11 +173,10 @@ function TermLifeCoverage() {
         ) : (
           <Grid item xs={12} md={6}>
             <InputBox label="Underline Health Issue">
-              <HealthIssueAutocomplete
+              <MyAutocomplete
                 options={["Option One", "Option Two", "Option Three"]}
-                onChange={(e, value) =>
-                  handleChangeFromAutocomplete("healthIssue", value)
-                }
+                onChange={(e, value) => handleChange("healthIssue", value)}
+                value={healthIssue}
               />
             </InputBox>
           </Grid>
@@ -189,17 +184,16 @@ function TermLifeCoverage() {
         {/** Gender Selection, Toggle Hide & Show */}
         {!hideGender ? (
           <Grid item xs={12} md={6} sx={{ textAlign: "left" }}>
-            <InputBox label={renderGenderLabel(coverFor.relationship)}>
+            <InputBox label={renderGenderLabel(coverFor)}>
               <div>
                 {["Male", "Female"].map((elem, i) => (
                   <Button
                     sx={buttonSxProp}
                     key={i}
                     variant="round"
-                    color={coverFor.gender === elem ? "primary" : "text"}
-                    value={elem}
+                    color={gender === elem ? "primary" : "text"}
                     name="gender"
-                    onClick={handleCoverForChanges}
+                    onClick={(e) => handleChange("gender", elem)}
                   >
                     {elem}
                   </Button>
@@ -211,17 +205,17 @@ function TermLifeCoverage() {
 
         {/** Smoke Habit */}
         <Grid item xs={12} md={6}>
-          <InputBox label={renderSmokeLabel(coverFor.relationship)}>
-            <div>
+          <InputBox label={renderSmokeLabel(coverFor)}>
+            <div style={{ textAlign: "left" }}>
               {smokeOptions.map((elem, i) => (
                 <Button
                   sx={buttonSxProp}
                   key={i}
                   variant="round"
-                  color={coverFor.smoke === elem ? "primary" : "text"}
+                  color={smoke === elem ? "primary" : "text"}
                   name="smoke"
-                  onClick={handleCoverForChanges}
                   value={elem}
+                  onClick={(e) => handleChange("smoke", e.target.value)}
                 >
                   {elem}
                 </Button>
@@ -232,16 +226,16 @@ function TermLifeCoverage() {
 
         {/** Employment Input */}
         <Grid item xs={12} md={6}>
-          <InputBox label={renderEmploymentLabel(coverFor.relationship)}>
+          <InputBox label={renderEmploymentLabel(coverFor)}>
             <div>
               {employmentOptions.map((elem, i) => (
                 <Button
                   sx={buttonSxProp}
                   key={i}
                   variant="round"
-                  color={coverFor.employment === elem ? "primary" : "text"}
+                  color={employment === elem ? "primary" : "text"}
                   name="employment"
-                  onClick={handleCoverForChanges}
+                  onClick={() => handleChange("employment", elem)}
                   value={elem}
                 >
                   {elem}
@@ -252,16 +246,16 @@ function TermLifeCoverage() {
         </Grid>
 
         {/** Age Input */}
-        {coverFor.relationship === "Parents" ? (
+        {coverFor === "Parents" ? (
           <>
             <Grid item xs={12} md={6}>
               <InputBox label="Your father's age (years)">
                 <Input
                   fullWidth
                   type="number"
-                  value={coverFor.ageOfFather}
+                  value={ageOfFather}
                   name="ageOfFather"
-                  onChange={handleCoverForChanges}
+                  onChange={(e) => handleChange("ageOfFather", e.target.value)}
                 />
               </InputBox>
             </Grid>
@@ -270,38 +264,39 @@ function TermLifeCoverage() {
                 <Input
                   fullWidth
                   type="number"
-                  value={coverFor.ageOfMother}
+                  value={ageOfMother}
                   name="ageOfMother"
-                  onChange={handleCoverForChanges}
+                  onChange={(e) => handleChange("ageOfMother", e.target.value)}
                 />
               </InputBox>
             </Grid>
           </>
         ) : (
           <Grid item xs={12} md={6}>
-            <InputBox label={renderAgeLabel(coverFor.relationship)}>
+            <InputBox label={renderAgeLabel(coverFor)}>
               <Input
                 fullWidth
                 type="number"
-                value={coverFor.age}
+                value={age}
                 name="age"
-                onChange={handleCoverForChanges}
+                onChange={(e) => handleChange("age", e.target.value)}
               />
             </InputBox>
           </Grid>
         )}
       </Grid>
-    </div>
+    </React.Fragment>
   );
 }
 
 export default TermLifeCoverage;
 
-const HealthIssueAutocomplete = ({ options, onChange }) => {
+const MyAutocomplete = ({ options, onChange, value }) => {
   return (
     <Autocomplete
       fullWidth
       options={options}
+      value={value}
       autoHighlight
       onChange={onChange}
       getOptionLabel={(option) => option}

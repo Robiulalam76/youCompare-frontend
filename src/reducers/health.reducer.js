@@ -3,9 +3,6 @@ import { HEALTH_QUERY_FIELD_CHANGE } from "../constants/health.constant"
 const queryState = {
   insuranceType: "",
   coverFor: "",
-  fullName: "",
-  email: "",
-  mobile: "",
   organizationName: "",
 }
 

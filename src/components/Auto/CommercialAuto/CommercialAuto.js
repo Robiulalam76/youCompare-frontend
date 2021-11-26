@@ -47,7 +47,7 @@ const ImageBox = styled(Box)(({ theme }) => ({
   },
 }));
 
-function CommercialAuto({ commercial, steps }) {
+function CommercialAuto({ commercial, children }) {
   const { path, url } = useRouteMatch();
   return (
     <Grid container spacing={2}>
@@ -76,9 +76,7 @@ function CommercialAuto({ commercial, steps }) {
           <Route path={`${path}`} exact>
             <CommerialCard />
           </Route>
-          <Route path={`${path}/:commercialCar`}>
-            <MuiStepper steps={steps} link="/auto/compare" />
-          </Route>
+          <Route path={`${path}/:commercialCar`}>{children}</Route>
         </Switch>
       </Grid>
     </Grid>

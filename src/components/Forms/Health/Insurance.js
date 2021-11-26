@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
-import { HEALTH_QUERY_FIELD_CHANGE } from "../../../constants/health.constant";
+import { SEARCHER_FIELD_CHANGE } from "../../../constants/searcher.constant";
 import InputBox from "../../customStyledComponents/InputBox";
 import {
   CustomAutocomplete as Autocomplete,
@@ -10,13 +10,12 @@ import {
 
 function Insurance() {
   const dispatch = useDispatch();
-  const healthQuery = useSelector((state) => state.healthQuery);
-  const { fullName, email, mobile } = healthQuery;
+  const { fullName, email, phone } = useSelector((state) => state.searcher);
 
   // form field change (controlled input)
   const handleChange = (e) => {
     dispatch({
-      type: HEALTH_QUERY_FIELD_CHANGE,
+      type: SEARCHER_FIELD_CHANGE,
       payload: {
         field: e.target.name,
         value: e.target.value,
@@ -25,48 +24,47 @@ function Insurance() {
   };
 
   return (
-    <div style={{ marginTop: "4%" }}>
-      <Grid container spacing={2}>
-        <Grid item container spacing={2}>
-          <Grid item md={6} sm={6} xs={12}>
-            <InputBox label="Full Name ">
-              <Input
-                fullWidth
-                placeholder="Enter Full Name"
-                type="text"
-                name="fullName"
-                value={fullName}
-                onChange={handleChange}
-              />
-            </InputBox>
-          </Grid>
-          <Grid item md={6} sm={6} xs={12}>
-            <InputBox label="Email ID">
-              <Input
-                fullWidth
-                placeholder="john@domain.com"
-                type="text"
-                name="email"
-                value={email}
-                onChange={handleChange}
-              />
-            </InputBox>
-          </Grid>
-          <Grid item md={6} sm={6} xs={12}>
-            <InputBox label="Mobile">
-              <Input
-                fullWidth
-                type="text"
-                name="mobile"
-                placeholder="Enter Mobile Number"
-                value={mobile}
-                onChange={handleChange}
-              />
-            </InputBox>
-          </Grid>
+    <Grid container spacing={2}>
+      <Grid item container spacing={2}>
+        <Grid item md={6} sm={6} xs={12}>
+          <InputBox label="Full Name ">
+            <Input
+              fullWidth
+              placeholder="Enter Full Name"
+              type="text"
+              name="fullName"
+              value={fullName}
+              onChange={handleChange}
+            />
+          </InputBox>
         </Grid>
+        <Grid item md={6} sm={6} xs={12}>
+          <InputBox label="Email ID">
+            <Input
+              fullWidth
+              placeholder="john@domain.com"
+              type="text"
+              name="email"
+              value={email}
+              onChange={handleChange}
+            />
+          </InputBox>
+        </Grid>
+        <Grid item md={6} sm={6} xs={12}>
+          <InputBox label="Mobile">
+            <Input
+              fullWidth
+              type="text"
+              name="phone"
+              placeholder="Enter Mobile Number"
+              value={phone}
+              onChange={handleChange}
+            />
+          </InputBox>
+        </Grid>
+      </Grid>
 
-        {/* <Grid item container spacing={2}>
+      {/* <Grid item container spacing={2}>
           <Grid item md={4} sm={6} xs={12}>
      
             <InputBox label="Age">
@@ -111,8 +109,7 @@ function Insurance() {
             </InputBox>
           </Grid>
         </Grid> */}
-      </Grid>
-    </div>
+    </Grid>
   );
 }
 

@@ -31,12 +31,12 @@ export const Navtext = (props) => (
 export const BannerHeader = styled(Typography)(({ theme }) => ({
   fontSize: "4rem",
   fontWeight: "bold",
-  lineHeight: "3.5rem",
+  lineHeight: "4rem",
   textAlign: "left",
   [theme.breakpoints.only("lg")]: {
     fontSize: "3rem",
     fontWeight: "bold",
-    lineHeight: "3.25rem",
+    lineHeight: "3.75rem",
     textAlign: "left",
   },
   [theme.breakpoints.only("md")]: {
