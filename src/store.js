@@ -5,7 +5,10 @@ import { userLoginReducer, userRegisterReducer } from "./reducers/userReducer";
 import { autoQueryReducer } from "./reducers/auto.reducer";
 import { travelQueryReducer } from "./reducers/travel.reducer";
 import { healthQueryReducer } from "./reducers/health.reducer";
-import { lifeQueryReducer } from "./reducers/life.reducer";
+import {
+  lifeQueryReducer,
+  groupLifeQueryReducer,
+} from "./reducers/life.reducer";
 
 // import {
 //   userLoginReducer,
@@ -22,6 +25,7 @@ const rootReducer = combineReducers({
   travelQuery: travelQueryReducer,
   healthQuery: healthQueryReducer,
   lifeQuery: lifeQueryReducer,
+  groupLifeQuery: groupLifeQueryReducer,
   // userLogout: userLogoutReducer,
 });
 

@@ -1,37 +1,22 @@
 import React from "react";
-import { Grid, Button, Typography, TextField, Stack } from "@mui/material";
-import { Box } from "@mui/material";
+import { Grid } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
-import { FIELD_CHANGE } from "../../../constants/autoCompare.constant";
+import { HEALTH_QUERY_FIELD_CHANGE } from "../../../constants/health.constant";
 import InputBox from "../../customStyledComponents/InputBox";
 import {
   CustomAutocomplete as Autocomplete,
   CustomTextField as Input,
 } from "../../../components/customStyledComponents/inputs";
-// import { FIELD_CHANGE } from "../../constants/autoCompare.constant";
 
 function Insurance() {
   const dispatch = useDispatch();
-  const autoQuery = useSelector((state) => state.autoQuery);
-  const { brand, model, year } = autoQuery;
-
-  // Default model & year selection during initial rendering
-  // Value should come from local storage(if exist)
-  React.useEffect(() => {
-    dispatch({
-      type: FIELD_CHANGE,
-      payload: { field: "model", value: "190" },
-    });
-    dispatch({
-      type: FIELD_CHANGE,
-      payload: { field: "year", value: "2021" },
-    });
-  }, []);
+  const healthQuery = useSelector((state) => state.healthQuery);
+  const { fullName, email, mobile } = healthQuery;
 
   // form field change (controlled input)
   const handleChange = (e) => {
     dispatch({
-      type: FIELD_CHANGE,
+      type: HEALTH_QUERY_FIELD_CHANGE,
       payload: {
         field: e.target.name,
         value: e.target.value,
@@ -41,53 +26,49 @@ function Insurance() {
 
   return (
     <div style={{ marginTop: "4%" }}>
-      {/* Model Selection */}
       <Grid container spacing={2}>
         <Grid item container spacing={2}>
-          <Grid item md={4} sm={6} xs={12}>
-            {/* <label for="html">Full Name </label> */}
+          <Grid item md={6} sm={6} xs={12}>
             <InputBox label="Full Name ">
-              <TextField
+              <Input
                 fullWidth
-                placeholder="John Doe"
+                placeholder="Enter Full Name"
                 type="text"
-                name="brand"
-                //   value={brand}
-                //   onChange={handleChange}
+                name="fullName"
+                value={fullName}
+                onChange={handleChange}
               />
             </InputBox>
           </Grid>
-          <Grid item md={4} sm={6} xs={12}>
-            {/* <label for="html">Email ID</label> */}
+          <Grid item md={6} sm={6} xs={12}>
             <InputBox label="Email ID">
-              <TextField
+              <Input
                 fullWidth
                 placeholder="john@domain.com"
                 type="text"
-                name="brand"
-                //   value={brand}
-                //   onChange={handleChange}
+                name="email"
+                value={email}
+                onChange={handleChange}
               />
             </InputBox>
           </Grid>
-          <Grid item md={4} sm={6} xs={12}>
-            {/* <label for="html">Mobile</label> */}
+          <Grid item md={6} sm={6} xs={12}>
             <InputBox label="Mobile">
-              <TextField
+              <Input
                 fullWidth
                 type="text"
-                name="brand"
-                placeholder="94092300293"
-                //   value={brand}
-                //   onChange={handleChange}
+                name="mobile"
+                placeholder="Enter Mobile Number"
+                value={mobile}
+                onChange={handleChange}
               />
             </InputBox>
           </Grid>
         </Grid>
 
-        <Grid item container spacing={2}>
+        {/* <Grid item container spacing={2}>
           <Grid item md={4} sm={6} xs={12}>
-            {/* <label for="html">Age</label> */}
+     
             <InputBox label="Age">
               <Input
                 fullWidth
@@ -100,9 +81,9 @@ function Insurance() {
             </InputBox>
           </Grid>
           <Grid item md={4} sm={6} xs={12}>
-            {/* <label for="html">Gender</label> */}
+   
             <InputBox label="Gender">
-              {/* <div> */}
+      
               <Autocomplete
                 fullWidth
                 options={["Male", "Female", "Others"]}
@@ -127,10 +108,9 @@ function Insurance() {
                   />
                 )}
               />
-              {/* </div> */}
             </InputBox>
           </Grid>
-        </Grid>
+        </Grid> */}
       </Grid>
     </div>
   );

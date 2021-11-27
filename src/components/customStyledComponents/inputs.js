@@ -1,9 +1,11 @@
 import { Autocomplete, TextField } from "@mui/material";
 import { styled } from "@mui/system";
 
+export const inputPropStyle = { padding: ".75rem 1rem" }
+
 export const CustomTextField = styled(TextField)(({ theme }) => ({
   "& .MuiInputBase-input": {
-    padding: ".75rem 1rem",
+    ...inputPropStyle,
     fontSize: ".85rem",
     color: theme.palette.text.primary,
     fontWeight: "normal",

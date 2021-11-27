@@ -1,58 +1,60 @@
-import { Grid } from "@mui/material";
 import React from "react";
-import {
-  BrowserRouter as Router,
-  useRouteMatch,
-  Route,
-  Switch,
-  Link,
-} from "react-router-dom";
-import InsuranceStepper from "../StepperInsuranceHealth";
+import { useRouteMatch, Route, Switch } from "react-router-dom";
 import "./Health.css";
 
 // image
 import health from "../../accets/health.svg";
 
-import ppo from "../../accets/Group 3044.svg";
-import hmo from "../../accets/health (2).svg";
-import healthService from "../../accets/Group 3231.svg";
-import poinOfService from "../../accets/37520.png";
+// import ppo from "../../accets/Group 3044.svg";
+// import hmo from "../../accets/health (2).svg";
+// import healthService from "../../accets/Group 3231.svg";
+// import poinOfService from "../../accets/37520.png";
 
-// import CommercialAuto from "./CommercialAuto/CommercialAuto";
-// import PrivateAuto from "./PrivateAuto/PrivateAuto";
-// import ThreeWheeler from "./ThreeWheeler/ThreeWheeler";
-// import TwoWheeler from "./TwoWheeler/TwoWheeler";
 import AutoCard from "../Card/Card";
+import Banner from "../Banner";
+import MuiStepper from "../MuiStepper";
+import { subHealthInsurances } from "../../Data/data";
 
-import {
-  subHealthInsurances,
-  subInsurances,
-  subLifeInsurances,
-  subTravelInsurances,
-} from "../../Data/data";
-import PPO from "./PPO/PPO";
-import HMO from "./HMO/HMO";
-import PointOfService from "./PoinOfService/PointOfService";
-import HealthSaving from "./HealthSaving/HealthSaving";
+// stepped forms
+import Cover from "../Forms/Health/Cover";
+import Insurance from "../Forms/Health/Insurance";
 
-const insuranceDiv = {
-  display: "inline-grid",
-  width: "90%",
-  border: "1px solid lightgray",
-  margin: "1rem 1%",
-  padding: "2%",
-  height: "250px",
-  cursor: "pointer",
-  borderRadius: "5px",
-  backgroundColor: "white",
-};
+const steps = [
+  {
+    label: "Cover",
+    component: <Cover />,
+  },
+  {
+    label: "Insurance",
+    component: <Insurance />,
+  },
+  {
+    label: "Compare",
+  },
+];
 
-function Travel() {
+export default function Travel() {
   const { path, url } = useRouteMatch();
 
-  const commercialTitle = "Health Insurance";
+  const commercialTitle = "Health";
   const commercialDescription =
     "Health is the most important thing we should protect, when we can't take care of ourselves, then insurance will help.";
+
+  const renderSteps = (title) => {
+    switch (title) {
+      case "PPO":
+        return steps;
+      case "HMO":
+        return steps;
+      case "Point Of Service":
+        return steps;
+      case "Health Saving":
+        return steps;
+      default:
+        return;
+    }
+  };
+
   return (
     <div style={{ marginTop: "2%" }}>
       <Switch>
@@ -65,21 +67,22 @@ function Travel() {
             sideBanner={health}
           />
         </Route>
-        <Route path={`${path}/PPO`}>
-          <PPO Health={ppo} />
-        </Route>
-        <Route path={`${path}/HMO`}>
-          <HMO Health={hmo} />
-        </Route>
-        <Route path={`${path}/point-of-service`}>
-          <PointOfService Health={poinOfService} />
-        </Route>
-        <Route path={`${path}/health-saving`}>
-          <HealthSaving Health={healthService} />
-        </Route>
+        {subHealthInsurances.map((insurance) => (
+          <Route path={`${path}/${insurance.url}`} key={insurance.title}>
+            <Banner
+              title={insurance.title}
+              description={insurance.description}
+              imageSrc={insurance.image}
+              stepper={
+                <MuiStepper
+                  steps={renderSteps(insurance.title)}
+                  link="/health/compare"
+                />
+              }
+            />
+          </Route>
+        ))}
       </Switch>
     </div>
   );
 }
-
-export default Travel;

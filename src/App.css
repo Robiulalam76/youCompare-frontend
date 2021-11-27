@@ -125,6 +125,23 @@ img {
   border-width: 1px !important;
 }
 
+/* Image Styling */
+
+#auto-image-div {
+  height: 200px;
+}
+#auto-image {
+  transform: scaleX(-1);
+}
+
+@media only screen and (min-width: 1280px) {
+  #auto-image-div {
+    width: 90%;
+    height: 200px;
+    margin-top: 5vw;
+  }
+}
+
 /* variables  */
 /* color:  */
 /* primary-color: #000000

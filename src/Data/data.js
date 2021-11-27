@@ -6,7 +6,7 @@ import twowheeler from "../accets/twowheeler.svg";
 import Truck from "../accets/truck.svg";
 import Bus from "../accets/Bus.svg";
 // life
-import privateLife from "../accets/40781.png";
+import permanentLife from "../accets/40781.png";
 import term from "../accets/37226@2x.png";
 import group from "../accets/Group 2943.svg";
 // travel
@@ -19,7 +19,7 @@ import hmo from "../accets/health (2).svg";
 import healthService from "../accets/Group 3231.svg";
 import poinOfService from "../accets/37520.png";
 
-export const subInsurances = [
+export const subAutoInsurances = [
   {
     title: "Commercial Vehicle",
     url: "commercial",
@@ -52,25 +52,25 @@ export const subInsurances = [
 
 export const subLifeInsurances = [
   {
-    title: "Private",
+    title: "Permanent Life",
     url: "permanent",
-    image: privateLife,
+    image: permanentLife,
     description:
-      "Private insurance is designed to protect yourself and others agains many various risks",
+      "Prepare for your family's future in the case of an unexpected tragedy. Insurance Helps you.",
   },
   {
-    title: "Term",
+    title: "Term Life",
     url: "term",
     image: term,
     description:
-      "Private for your family's future in the case of an unexpected tragedy. Insurance helps you.",
+      "Prepare for your family's future in the case of an unexpected tragedy. Insurance Helps you.",
   },
   {
-    title: "Group",
+    title: "Group Life",
     url: "group",
     image: group,
     description:
-      "Group life Insurance plans that cover trip cancellation, travel medicines and many more from your loss.",
+      "Prepare for your family's future in the case of an unexpected tragedy. Insurance Helps you.",
   },
 ];
 
@@ -104,20 +104,21 @@ export const subHealthInsurances = [
       "Point-of-service life Insurance plans that cover trip cancellation, travel medicines and many more from your loss.",
   },
 ];
+
 export const subTravelInsurances = [
   {
     title: "Single Trip",
     url: "single-trip",
     image: single,
     description:
-      "PPO insurance is designed to protect yourself and others agains many various risks",
+      "Insurance that plans cover trip cancellation, travel medical and many more from your loss.",
   },
   {
     title: "Multi Trip",
     url: "multi-trip",
     image: multi,
     description:
-      "HMO for your family's future in the case of an unexpected tragedy. Insurance helps you.",
+      "Insurance that plans cover trip cancellation, travel medical and many more from your loss.",
   },
 ];
 

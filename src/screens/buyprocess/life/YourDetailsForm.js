@@ -1,28 +1,26 @@
-import React from 'react'
+import React from "react";
 
-import { Box, Typography } from '@mui/material'
-import { styled } from '@mui/system';
-import InputBox from '../../../components/customStyledComponents/InputBox'
+import { Box, Typography } from "@mui/material";
+import { styled } from "@mui/system";
+import InputBox from "../../../components/customStyledComponents/InputBox";
 
 import {
   CustomTextField as Input,
-  CustomAutocomplete as Autocomplete
-} from '../../../components/customStyledComponents/inputs';
+  CustomAutocomplete as Autocomplete,
+} from "../../../components/customStyledComponents/inputs";
 
 const FlexedBox = styled(Box)(({ theme }) => ({
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
-  marginTop: theme.spacing(2)
-}))
+  marginTop: theme.spacing(2),
+}));
 
 export default function YourDetailsForm(props) {
-
   return (
     <form>
       <InputBox label="Full Name as per your PAN Card">
-        <Input
-          fullWidth />
+        <Input fullWidth />
       </InputBox>
 
       <InputBox label="Email ID">
@@ -42,7 +40,6 @@ export default function YourDetailsForm(props) {
       </InputBox>
 
       <FlexedBox>
-
         <InputBox label="State" sx={{ width: "48%" }}>
           <Input fullWidth />
         </InputBox>
@@ -54,12 +51,11 @@ export default function YourDetailsForm(props) {
 
       <FlexedBox>
         <InputBox label="Nationality" sx={{ width: "48%" }}>
-          <Input
-            fullWidth
-            type="text" />
+          <Input fullWidth type="text" />
         </InputBox>
         <InputBox label="PAN Number" sx={{ width: "48%" }}>
-          <Autocomplete
+          <Input fullWidth type="number" />
+          {/* <Autocomplete
             options={['Married', 'Single', 'Diverced']}
 
             renderOption={(props, option) => (
@@ -78,9 +74,9 @@ export default function YourDetailsForm(props) {
                   style: { padding: ".75rem 1rem" },
                   autoComplete: 'new-password', // disable autocomplete and autofill
                 }} />
-            )} />
+            )} /> */}
         </InputBox>
       </FlexedBox>
     </form>
-  )
+  );
 }

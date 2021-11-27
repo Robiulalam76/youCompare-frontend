@@ -79,7 +79,15 @@ export default function LandingPage({ user }) {
       </div>
       <Grid container>
         {insurances.map((insurance, i) => (
-          <Grid style={{ marginTop: "1%" }} lg={3} xs={12} md={6} sm={6}>
+          <Grid
+            item
+            style={{ marginTop: "1%" }}
+            lg={3}
+            xs={12}
+            md={6}
+            sm={6}
+            key={i}
+          >
             <div style={{ padding: "0px 5px" }}>
               <Link className="Link" to={`${url}/${insurance.url}`}>
                 <Button
@@ -91,7 +99,7 @@ export default function LandingPage({ user }) {
                   }}
                   variant="text"
                 >
-                  <div className="insuranceDiv" key={i}>
+                  <div className="insuranceDiv">
                     <img
                       style={{ height: "150px" }}
                       src={insurance.image}

@@ -1,33 +1,17 @@
 import React from "react";
-import { Grid, Button, Input, Autocomplete, Typography } from "@mui/material";
-import { TextField, Box } from "@mui/material";
+import { Grid } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
-import { FIELD_CHANGE } from "../../../constants/autoCompare.constant";
 import InputBox from "../../customStyledComponents/InputBox";
-// import { FIELD_CHANGE } from "../../constants/autoCompare.constant";
+import { CustomTextField as TextField } from "../../customStyledComponents/inputs";
 
 function Insurance() {
   const dispatch = useDispatch();
-  const autoQuery = useSelector((state) => state.autoQuery);
-  const { brand, model, year } = autoQuery;
-
-  // Default model & year selection during initial rendering
-  // Value should come from local storage(if exist)
-  React.useEffect(() => {
-    dispatch({
-      type: FIELD_CHANGE,
-      payload: { field: "model", value: "190" },
-    });
-    dispatch({
-      type: FIELD_CHANGE,
-      payload: { field: "year", value: "2021" },
-    });
-  }, []);
+  const lifeQuery = useSelector((state) => state.lifeQuery);
 
   // form field change (controlled input)
   const handleChange = (e) => {
     dispatch({
-      type: FIELD_CHANGE,
+      type: "LIFE_QUERY_FIELD_CHANGE",
       payload: {
         field: e.target.name,
         value: e.target.value,
@@ -36,94 +20,46 @@ function Insurance() {
   };
 
   return (
-    <Grid container style={{ marginTop: "4%" }}>
-      {/* Model Selection */}
-      <Grid item style={{ textAlignLast: "left" }}>
-        <Grid container style={{ display: "" }}>
-          <Grid md={4} style={{ padding: "0% 1%" }}>
-            <InputBox label="Full Name">
-              <TextField
-                placeholder="John Doe"
-                type="text"
-                size="small"
-                name="brand"
-                //   value={brand}
-                //   onChange={handleChange}
-              />
-            </InputBox>
-          </Grid>
-          <Grid md={4} style={{ padding: "0% 3%" }}>
-            <InputBox label="Email ID">
-              <TextField
-                placeholder="john@domain.com"
-                type="text"
-                size="small"
-                name="brand"
-              />
-            </InputBox>
-          </Grid>
-          <Grid md={4} style={{ padding: "0% 1%" }}>
-            <InputBox label="Mobile">
-              <TextField
-                type="text"
-                size="small"
-                name="brand"
-                placeholder="94092300293"
-                //   value={brand}
-                //   onChange={handleChange}
-              />
-            </InputBox>
-          </Grid>
-        </Grid>
-      </Grid>
-
-      {/* Year Selection */}
-
-      <Grid item container style={{ display: "" }}>
-        <Grid md={4} style={{ padding: "0% 1%" }}>
-          <InputBox label="Age">
+    <div style={{ marginTop: "4%" }}>
+      <Grid container spacing={2}>
+        <Grid item xs={12} sm={6}>
+          <InputBox label="Full Name">
             <TextField
-              placeholder="Age "
+              placeholder="John Doe"
               type="text"
-              size="small"
-              name="brand"
+              name="fullName"
+              fullWidth
+              value={lifeQuery.fullName}
+              onChange={handleChange}
             />
           </InputBox>
         </Grid>
-        <Grid md={4} style={{ padding: "0% 3%" }}>
-          {/* <InputBox label="Marital Status"> */}
-
-          {/* <label for="html">Gender </label> */}
-          <InputBox label="Gender">
-            <Autocomplete
+        <Grid item xs={12} sm={6}>
+          <InputBox label="Email ID">
+            <TextField
+              placeholder="Enter email address"
+              type="email"
+              name="email"
               fullWidth
-              options={["Married", "Single", "Diverced"]}
-              // autoSelect={true}
-              // onChange={(e, value) => setMaritalStatus(value)}
-              renderOption={(props, option) => (
-                <Typography {...props} variant="body2" color="text.secondary">
-                  {option}
-                </Typography>
-              )}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  size="small"
-                  fullWidth
-                  placeholder="Select Gender"
-                  inputProps={{
-                    ...params.inputProps,
-                    style: { padding: ".2rem 1rem" },
-                    autoComplete: "new-password", // disable autocomplete and autofill
-                  }}
-                />
-              )}
+              value={lifeQuery.email}
+              onChange={handleChange}
             />
           </InputBox>
-          {/* </InputBox> */}
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <InputBox label="Mobile Number">
+            <TextField
+              type="number"
+              name="mobile"
+              fullWidth
+              placeholder="Enter Mobile Number"
+              value={lifeQuery.mobile}
+              onChange={handleChange}
+            />
+          </InputBox>
         </Grid>
       </Grid>
-    </Grid>
+    </div>
   );
 }
 

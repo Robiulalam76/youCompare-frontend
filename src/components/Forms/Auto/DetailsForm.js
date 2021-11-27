@@ -1,10 +1,10 @@
 import React from "react";
 import { Grid, Button, TextField } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
-import { FIELD_CHANGE } from "../../constants/autoCompare.constant";
+import { FIELD_CHANGE } from "../../../constants/autoCompare.constant";
 
-import { CustomTextField as Input } from "../customStyledComponents/inputs";
-import InputBox from "../customStyledComponents/InputBox";
+import { CustomTextField as Input } from "../../customStyledComponents/inputs";
+import InputBox from "../../customStyledComponents/InputBox";
 
 function DetailsForm() {
   const dispatch = useDispatch();

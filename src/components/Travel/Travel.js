@@ -7,49 +7,70 @@ import {
   Switch,
   Link,
 } from "react-router-dom";
-import InsuranceStepper from "../StepperInsuranceTravel";
 import "./Travel.css";
 
 // image
 import travel from "../../accets/driver.svg";
 
-import single from "../../accets/Group 3347.svg";
-import multi from "../../accets/Group 3437.svg";
-
-// import CommercialAuto from "./CommercialAuto/CommercialAuto";
-// import PrivateAuto from "./PrivateAuto/PrivateAuto";
-// import ThreeWheeler from "./ThreeWheeler/ThreeWheeler";
-// import TwoWheeler from "./TwoWheeler/TwoWheeler";
+// card & banner
 import AutoCard from "../Card/Card";
+import Banner from "../Banner";
 
-import {
-  subInsurances,
-  subLifeInsurances,
-  subTravelInsurances,
-} from "../../Data/data";
-import PPO from "./SingleTrip/SingleTrip";
-import HMO from "./MuliTrip/MuliTrip";
-import SingleTrip from "./SingleTrip/SingleTrip";
-import MuliTrip from "./MuliTrip/MuliTrip";
+// steppers
+import MuiStepper from "../MuiStepper";
 
-const insuranceDiv = {
-  display: "inline-grid",
-  width: "90%",
-  border: "1px solid lightgray",
-  margin: "1rem 1%",
-  padding: "2%",
-  height: "250px",
-  cursor: "pointer",
-  borderRadius: "5px",
-  backgroundColor: "white",
-};
+// travel forms
+import Cover from "../Forms/Travel/Cover";
+import TripDetail from "../Forms/Travel/TripDetail";
+import TravelCover from "../Forms/Travel/TravelCover";
 
-function Travel() {
+import { subTravelInsurances } from "../../Data/data";
+
+const singleTripSteps = [
+  {
+    label: "Traveller Details",
+    component: <TravelCover />,
+  },
+  {
+    label: "Trip Details",
+    component: <TripDetail trip="single" />,
+  },
+  {
+    label: "Compare",
+  },
+];
+
+const multiTripSteps = [
+  {
+    label: "Traveller Details",
+    component: <TravelCover multi={false} />,
+  },
+  {
+    label: "Trip Details",
+    component: <TripDetail multi={true} />,
+  },
+  {
+    label: "Compare",
+  },
+];
+
+export default function Travel() {
   const { path, url } = useRouteMatch();
 
-  const commercialTitle = "Travel Insurance";
+  const commercialTitle = "Travel";
   const commercialDescription =
     "Insurance that plans cover trip cancellation, travel medical & many more from your loss.";
+
+  const renderStepper = (title) => {
+    switch (title) {
+      case "Single Trip":
+        return <MuiStepper steps={singleTripSteps} link="/travel/compare" />;
+      case "Multi Trip":
+        return <MuiStepper steps={multiTripSteps} />;
+      default:
+        return;
+    }
+  };
   return (
     <div style={{ marginTop: "2%" }}>
       <Switch>
@@ -62,15 +83,17 @@ function Travel() {
             sideBanner={travel}
           />
         </Route>
-        <Route path={`${path}/single-trip`}>
-          <SingleTrip Travel={single} />
-        </Route>
-        <Route path={`${path}/multi-trip`}>
-          <MuliTrip Travel={multi} />
-        </Route>
+        {subTravelInsurances.map((insurance) => (
+          <Route path={`${path}/${insurance.url}`} key={insurance.title}>
+            <Banner
+              title={insurance.title}
+              description={insurance.description}
+              imageSrc={insurance.image}
+              stepper={renderStepper(insurance.title)}
+            />
+          </Route>
+        ))}
       </Switch>
     </div>
   );
 }
-
-export default Travel;

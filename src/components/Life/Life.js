@@ -7,70 +7,113 @@ import {
   Switch,
   Link,
 } from "react-router-dom";
-import InsuranceStepper from "../StepperInsuranceLife";
 import "./Life.css";
 
-// image
-import permanentLife from "../../accets/40781@2x.png";
+// images
 import life from "../../accets/life.svg";
-import term from "../../accets/40781@2x.png";
-import group from "../../accets/Group 2943.svg";
-import twowheeler from "../../accets/twowheeler.svg";
 
-// import CommercialAuto from "./CommercialAuto/CommercialAuto";
-// import PrivateAuto from "./PrivateAuto/PrivateAuto";
-// import ThreeWheeler from "./ThreeWheeler/ThreeWheeler";
-// import TwoWheeler from "./TwoWheeler/TwoWheeler";
+// card & banner
 import AutoCard from "../Card/Card";
-import PermanentLife from "./PermanentLife/PermanentLife";
-import TempLife from "./TempLife/TempLife";
-import GroupLife from "./GroupLife/GroupLife";
-import { subInsurances, subLifeInsurances } from "../../Data/data";
+import Banner from "../Banner";
 
-const insuranceDiv = {
-  display: "inline-grid",
-  width: "90%",
-  border: "1px solid lightgray",
-  margin: "1rem 1%",
-  padding: "2%",
-  height: "250px",
-  cursor: "pointer",
-  borderRadius: "5px",
-  backgroundColor: "white",
-};
+// Steppers
+import MuiStepper from "../MuiStepper";
 
-function Life() {
+// data
+import { subLifeInsurances } from "../../Data/data";
+
+// steped forms
+import Insurance from "../../components/Forms/Life/Insurance";
+import Coverage from "../../components/Forms/Life/Coverage";
+import TermLifeCoverage from "../Forms/Life/TermLifeCoverage";
+import GroupLifeCover from "../Forms/Life/GroupLifeCover";
+
+const steps = [
+  {
+    label: "Cover",
+    component: <Coverage />,
+  },
+  {
+    label: "Insurance",
+    component: <Insurance />,
+  },
+  {
+    label: "Compare",
+  },
+];
+
+const stepsForTerm = [
+  {
+    label: "Cover",
+    component: <TermLifeCoverage />,
+  },
+  {
+    label: "Insurance",
+    component: <Insurance />,
+  },
+  {
+    label: "Compare",
+  },
+];
+
+const stepsForGroup = [
+  {
+    label: "Cover",
+    component: <GroupLifeCover />,
+  },
+  {
+    label: "Insurance",
+    component: <Insurance />,
+  },
+  {
+    label: "Compare",
+  },
+];
+
+export default function Life() {
   const { path, url } = useRouteMatch();
 
-  const commercialTitle = "Life Insurance";
-  const commercialDescription =
+  const title = "Life";
+  const description =
     "Prepare for your family's future in the case of an unexpected tragedy. Insurance Helps you.";
+
+  const renderStepper = (title) => {
+    switch (title) {
+      case "Permanent Life":
+        return <MuiStepper steps={steps} link="/life/compare" />;
+      case "Term Life":
+        return <MuiStepper steps={stepsForTerm} link="/life/compare" />;
+      case "Group Life":
+        return <MuiStepper steps={stepsForGroup} link="/life/compare" />;
+      default:
+        return;
+    }
+  };
 
   return (
     <div style={{ marginTop: "2%" }}>
       <Switch>
         <Route path={`${path}`} exact>
           <AutoCard
-            title={commercialTitle}
-            description={commercialDescription}
+            title={title}
+            description={description}
             url={url}
             subInsuranceArray={subLifeInsurances}
             sideBanner={life}
             rowNumber={4}
           />
         </Route>
-        <Route path={`${path}/permanent`}>
-          <PermanentLife permanentLife={permanentLife} />
-        </Route>
-        <Route path={`${path}/term`}>
-          <TempLife Life={term} />
-        </Route>
-        <Route path={`${path}/group`}>
-          <GroupLife Life={group} />
-        </Route>
+        {subLifeInsurances.map((insurance) => (
+          <Route path={`${path}/${insurance.url}`} key={insurance.title}>
+            <Banner
+              title={insurance.title}
+              description={insurance.description}
+              imageSrc={insurance.image}
+              stepper={renderStepper(insurance.title)}
+            />
+          </Route>
+        ))}
       </Switch>
     </div>
   );
 }
-
-export default Life;

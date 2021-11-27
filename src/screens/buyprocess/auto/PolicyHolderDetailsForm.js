@@ -138,7 +138,7 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
         <InputBox label="Marital Status" style={{ width: "48%", paddingTop: "4px" }}>
           <Autocomplete
             fullWidth
-            options={['Married', 'Single', 'Diverced']}
+            options={['Married', 'Single', 'Divorced']}
             onChange={(e, value) => setMaritalStatus(value)}
             renderOption={(props, option) => (
               <Typography
