@@ -21,7 +21,7 @@ const rootReducer = combineReducers({
   autoQuery: autoQueryReducer,
   travelQuery: travelQueryReducer,
   healthQuery: healthQueryReducer,
-  lifeQuery: lifeQueryReducer
+  lifeQuery: lifeQueryReducer,
   // userLogout: userLogoutReducer,
 });
 
@@ -39,10 +39,11 @@ const middleware = [thunk];
 if (process.env.MODE === "development") {
   store = createStore(
     rootReducer,
+    initalState,
     composeEnhancers(applyMiddleware(...middleware))
   );
 } else {
-  store = createStore(rootReducer, applyMiddleware(...middleware));
+  store = createStore(rootReducer, initalState, applyMiddleware(...middleware));
 }
 
 export default store;
