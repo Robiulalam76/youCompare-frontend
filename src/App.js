@@ -61,7 +61,7 @@ function App() {
     };
     getUser();
   }, []);
-  console.log("user", user?.photos[0]?.value);
+  console.log("user", user);
 
   return (
     <React.Fragment>

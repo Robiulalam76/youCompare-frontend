@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import {
   Container,
@@ -34,6 +34,7 @@ import MenuItems from "./MenuItems";
 import TopBar from "./TopBar";
 import styles from "./styles.module.css";
 import { Navtext } from "../../customStyledComponents/texts";
+import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from "react-dom/cjs/react-dom.development";
 
 const BrandLogoBox = styled(Box)(({ theme }) => ({
   width: "200px",
@@ -65,6 +66,14 @@ const UserLogo = ({ user, size, setIsLoggedin }) => {
   const open = Boolean(anchorEl);
   const id = open ? "profile-popover" : undefined;
 
+  function logoutHandler() {
+    localStorage.removeItem("userInfo");
+  }
+
+  useEffect(() => {
+    localStorage.removeItem("userInfo");
+  }, [logoutHandler]);
+
   return (
     <React.Fragment>
       <Box
@@ -78,13 +87,21 @@ const UserLogo = ({ user, size, setIsLoggedin }) => {
           cursor: "pointer",
         }}
       >
-        <img
-          src={
-            user?._json.picture ? user?._json.picture : user?.photos[0]?.value
-          }
-          alt={user.displayName}
-          style={{ height: "100%", width: "100%", objectFit: "cover" }}
-        />
+        {user.image ? (
+          <img
+            src={
+              user?._json.picture ? user?._json.picture : user?.photos[0]?.value
+            }
+            alt={user.displayName}
+            style={{ height: "100%", width: "100%", objectFit: "cover" }}
+          />
+        ) : (
+          <img
+            src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+            alt={user.displayName}
+            style={{ height: "100%", width: "100%", objectFit: "cover" }}
+          />
+        )}
       </Box>
       <Popover
         id={id}
@@ -105,7 +122,7 @@ const UserLogo = ({ user, size, setIsLoggedin }) => {
           <ListItemButton sx={{ width: "200px", m: 1 }}>
             <ImProfile className={styles.icon} />
             <Typography sx={{ fontSize: ".9rem", lineHeight: "27px" }}>
-              {user.displayName}
+              {user.displayName ? user.displayName : user.email}
             </Typography>
           </ListItemButton>
         </Link>
@@ -117,7 +134,10 @@ const UserLogo = ({ user, size, setIsLoggedin }) => {
             }}
           >
             <FiLogOut className={styles.icon} />
-            <Typography sx={{ fontSize: ".9rem", lineHeight: "27px" }}>
+            <Typography
+              onClick={logoutHandler}
+              sx={{ fontSize: ".9rem", lineHeight: "27px" }}
+            >
               Logout
             </Typography>
           </ListItemButton>
@@ -127,7 +147,7 @@ const UserLogo = ({ user, size, setIsLoggedin }) => {
   );
 };
 
-export default function Navbar({ user }) {
+export default function Navbar({}) {
   const [menuOpen, setMenuOpen] = React.useState(false);
   const [navbarElevation, setNavbarElevation] = React.useState(false);
   const [showTopBar, setShowTopBar] = React.useState(true);
@@ -189,6 +209,9 @@ export default function Navbar({ user }) {
     };
   });
 
+  // user come from local storage
+  const user = JSON.parse(localStorage.getItem("userInfo"));
+
   const logout = () => {
     window.open("http://localhost:5000/auth/logout", "_blank");
   };
@@ -207,7 +230,7 @@ export default function Navbar({ user }) {
               <li className={styles.navlistItem}>
                 <Navtext>Get a Quote</Navtext>
               </li>
-              {isLoggedin ? (
+              {user?.success && (
                 <>
                   <Link to="/profile/mypolicies">
                     <li className={styles.navlistItem}>
@@ -220,7 +243,7 @@ export default function Navbar({ user }) {
                     </li>
                   </Link>
                 </>
-              ) : null}
+              )}
             </Hidden>
             {user ? (
               <li>

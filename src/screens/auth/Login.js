@@ -35,12 +35,13 @@ export default function Login({ location, setIsLoggedin }) {
   const userLogin = useSelector((state) => state.userLogin);
   const { loading, error, userInfo } = userLogin;
 
-  const redirect = "/";
+  const redirect = location?.search ? location?.search.split("=")[1] : "/";
 
   useEffect(() => {
     if (userInfo) {
+      history.push(redirect);
     }
-  }, [userInfo, redirect]);
+  }, [userInfo, history, redirect]);
 
   // console.log("email password", email, password);
   const submitHandler = (e) => {
@@ -48,9 +49,9 @@ export default function Login({ location, setIsLoggedin }) {
     console.log("email password", email, password);
     dispatch(login(email, password));
 
-    localStorage.setItem("login", true);
+    // localStorage.setItem("login", true);
 
-    history.push("/");
+    // history.push("/");
   };
 
   const google = () => {
@@ -65,6 +66,8 @@ export default function Login({ location, setIsLoggedin }) {
   return (
     <AuthLayout>
       <Container>
+        {error && <p>{error}</p>}
+        {loading && <p>Loading...</p>}
         <Box style={formDiv}>
           <form>
             <Typography variant="h3" gutterBottom>
@@ -97,24 +100,22 @@ export default function Login({ location, setIsLoggedin }) {
                     onChange={(e) => elem.onChange(e.target.value)}
                     placeholder={elem.placeholder}
                     InputProps={
-                      elem.name === "password"
-                        ? {
-                            endAdornment: (
-                              <InputAdornment
-                                position="end"
-                                onClick={() => setShowPassword(!showPassword)}
-                              >
-                                {showPassword ? (
-                                  <AiOutlineEye style={{ cursor: "pointer" }} />
-                                ) : (
-                                  <AiOutlineEyeInvisible
-                                    style={{ cursor: "pointer" }}
-                                  />
-                                )}
-                              </InputAdornment>
-                            ),
-                          }
-                        : null
+                      elem.name === "password" && {
+                        endAdornment: (
+                          <InputAdornment
+                            position="end"
+                            onClick={() => setShowPassword(!showPassword)}
+                          >
+                            {showPassword ? (
+                              <AiOutlineEye style={{ cursor: "pointer" }} />
+                            ) : (
+                              <AiOutlineEyeInvisible
+                                style={{ cursor: "pointer" }}
+                              />
+                            )}
+                          </InputAdornment>
+                        ),
+                      }
                     }
                   />
                 </InputBox>

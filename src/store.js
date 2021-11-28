@@ -66,10 +66,11 @@ const middleware = [thunk];
 if (process.env.MODE === "development") {
   store = createStore(
     rootReducer,
+    initalState,
     composeEnhancers(applyMiddleware(...middleware))
   );
 } else {
-  store = createStore(rootReducer, applyMiddleware(...middleware));
+  store = createStore(rootReducer, initalState, applyMiddleware(...middleware));
 }
 
 export default store;
