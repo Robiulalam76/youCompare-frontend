@@ -156,25 +156,30 @@ export default function Navbar({ user }) {
   };
 
   var prevPos = window.scrollY;
+
   const handleScroll = () => {
-    if (window.scrollY > 100) {
-      setNavbarElevation(true);
-      setShowTopBar(false);
-    } else {
-      setShowTopBar(true);
-      setNavbarElevation(false);
-    }
+    try {
+      if (window.scrollY > 100) {
+        setNavbarElevation(true);
+        setShowTopBar(false);
+      } else {
+        setShowTopBar(true);
+        setNavbarElevation(false);
+      }
 
-    let currentPos = window.scrollY;
-    let navbar = document.getElementById("navbar");
-    let navHeight = navbar.clientHeight;
+      let currentPos = window.scrollY;
+      let navbar = document.getElementById("navbar");
+      let navHeight = navbar.clientHeight;
 
-    if (prevPos > currentPos) {
-      navbar.style.top = "0px";
-    } else if (currentPos > 200) {
-      navbar.style.top = `-${navHeight}px`;
+      if (prevPos > currentPos) {
+        navbar.style.top = "0px";
+      } else if (currentPos > 200) {
+        navbar.style.top = `-${navHeight}px`;
+      }
+      prevPos = currentPos;
+    } catch (error) {
+      console.log("ERROR FROM NAVBAR COMPONENT", error);
     }
-    prevPos = currentPos;
   };
 
   React.useEffect(() => {

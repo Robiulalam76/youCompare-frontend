@@ -3,9 +3,19 @@ import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { userLoginReducer, userRegisterReducer } from "./reducers/userReducer";
 import { searcherReducer } from "./reducers/searcher.reducer";
-import { autoQueryReducer } from "./reducers/auto.reducer";
+import {
+  autoBuyStepperReducer,
+  autoPolicyHolderReducer,
+  autoQueryReducer,
+  vehicleDetailsReducer,
+} from "./reducers/auto.reducer";
 import { travelQueryReducer } from "./reducers/travel.reducer";
-import { healthQueryReducer } from "./reducers/health.reducer";
+import {
+  healthProposerReducer,
+  healthQueryReducer,
+  healthBuyStepperReducer,
+  healthMembersReducer,
+} from "./reducers/health.reducer";
 import {
   lifeQueryReducer,
   groupLifeQueryReducer,
@@ -23,9 +33,20 @@ const rootReducer = combineReducers({
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
   searcher: searcherReducer,
+
+  // auto
   autoQuery: autoQueryReducer,
+  autoPolicyHolder: autoPolicyHolderReducer,
+  autoBuyStepper: autoBuyStepperReducer,
+  vehicleDetails: vehicleDetailsReducer,
+
   travelQuery: travelQueryReducer,
+
   healthQuery: healthQueryReducer,
+  healthProposer: healthProposerReducer,
+  healthMember: healthMembersReducer,
+  healthBuyStepper: healthBuyStepperReducer,
+
   lifeQuery: lifeQueryReducer,
   groupLifeQuery: groupLifeQueryReducer,
   // userLogout: userLogoutReducer,

@@ -1,11 +1,5 @@
-import * as React from "react";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Grid from "@mui/material/Grid";
-import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
-import Hidden from "@mui/material/Hidden";
-
+import React from "react";
+import { Box, Button, Grid, Typography, Hidden } from "@mui/material";
 import { Title } from "../../../components/customStyledComponents/texts";
 
 // components
@@ -15,36 +9,8 @@ import CarDetailsForm from "./CarDetailsForm";
 import PlanDetails from "./PlanDetails";
 // import DetailsDisplay from "./DetailsDisplay";
 import Formstepper from "../../../components/Formstepper";
-
-import { styled } from "@mui/material/styles";
-
-const StyledBox = styled(Box)(({ theme }) => ({
-  background: "#FFFFFF 0% 0% no-repeat padding-box",
-  boxShadow: "0px 0px 63px #F0F0F0",
-  borderRadius: theme.spacing(2),
-  padding: theme.spacing(2, 3),
-  marginBottom: "2rem",
-  [theme.breakpoints.only("sm")]: {
-    padding: theme.spacing(3, 4),
-    width: "450px",
-  },
-  [theme.breakpoints.only("md")]: {
-    padding: theme.spacing(3, 4),
-    width: "420px",
-  },
-  [theme.breakpoints.up("lg")]: {
-    padding: theme.spacing(3, 4),
-    width: "500px",
-  },
-}));
-const StyledButton = (props) => (
-  <Button
-    {...props}
-    variant="contained"
-    style={{ ...props.style, height: "42px" }}
-    sx={{ mt: 2 }}
-  />
-);
+import { StyledBox, StyledButton } from "./styledComponents";
+import { useSelector } from "react-redux";
 
 const StepperLayout = (props) => {
   return (
@@ -55,8 +21,13 @@ const StepperLayout = (props) => {
   );
 };
 
+const formatDate = (date) => {
+  let arr = new Date(date).toDateString().slice(4).split(" ");
+  return arr[1] + " " + arr[0] + " " + arr[2];
+};
+
 export default function AutoBuyNow() {
-  const [currentStep, setCurrentStep] = React.useState(0);
+  const currentStep = useSelector((state) => state.autoBuyStepper.currentStep);
   const steps = ["Your Details", "Car Details", "Buy Now"];
 
   // const handleStepChange = (action) => {
@@ -64,25 +35,18 @@ export default function AutoBuyNow() {
   //   if (action === "stepUp") setCurrentStep(currentStep + 1);
   // };
 
-  const handleNext = () => {
-    if (currentStep === 2) return;
-    setCurrentStep(currentStep + 1);
-  };
-
   const renderComponents = () => {
     switch (currentStep) {
       case 0:
         return (
           <StepperLayout currentStep={currentStep} steps={steps}>
             <PolicyHolderDetailsForm />
-            <StyledButton onClick={handleNext}>Next</StyledButton>
           </StepperLayout>
         );
       case 1:
         return (
           <StepperLayout currentStep={currentStep} steps={steps}>
             <CarDetailsForm />
-            <StyledButton onClick={handleNext}>Next</StyledButton>
           </StepperLayout>
         );
       case 2:
@@ -132,6 +96,15 @@ export default function AutoBuyNow() {
 
 const CarDetails = () => {
   const [showVehicleForm, setShowVehicleForm] = React.useState(false);
+  const { carNo, model, brand, year } = useSelector((state) => state.autoQuery);
+  const {
+    idv,
+    carRegDate,
+    policyExpireDate,
+    ownershipChanged,
+    owner,
+    chassisNo,
+  } = useSelector((state) => state.vehicleDetails);
   return (
     <StyledBox>
       <Typography variant="h5">Vehicle Details</Typography>
@@ -141,16 +114,25 @@ const CarDetails = () => {
       ) : (
         <React.Fragment>
           {[
-            { title: "Brand Name", value: "Honda" },
-            { title: "Model", value: "M300" },
-            { title: "Launch Year", value: "2020" },
-            { title: "Car No", value: "TH8798JK" },
-            { title: "Chassis No", value: "3984792837" },
-            { title: "IDV", value: "Nira 456000" },
-            { title: "Registration Date", value: "12 April 2021" },
-            { title: "Existing Policy Expires Date", value: "12 June 2022" },
-            { title: "Ownership Change is Last 12 months", value: "No" },
-            { title: "Owned by", value: "Company" },
+            { title: "Brand Name", value: brand },
+            { title: "Model", value: model },
+            { title: "Launch Year", value: year },
+            { title: "Car No", value: carNo },
+            { title: "Chassis No", value: chassisNo },
+            { title: "IDV", value: `Nira ${idv}` },
+            {
+              title: "Registration Date",
+              value: formatDate(carRegDate),
+            },
+            {
+              title: "Existing Policy Expires Date",
+              value: formatDate(policyExpireDate),
+            },
+            {
+              title: "Ownership Change is Last 12 months",
+              value: ownershipChanged,
+            },
+            { title: "Owned by", value: owner },
           ].map((elem, i) => (
             <ItemDisplay title={elem.title} value={elem.value} />
           ))}
@@ -173,7 +155,17 @@ const CarDetails = () => {
 
 const PolicyHolder = () => {
   const [showHolderForm, setShowHolderForm] = React.useState(false);
-
+  const {
+    fullName,
+    email,
+    phone,
+    dob,
+    maritalStatus,
+    address,
+    state,
+    city,
+    pincode,
+  } = useSelector((state) => state.autoPolicyHolder);
   return (
     <StyledBox>
       <Typography variant="h5">Policy Holder Details</Typography>
@@ -183,14 +175,17 @@ const PolicyHolder = () => {
       ) : (
         <React.Fragment>
           {[
-            { title: "Full Name", value: "John Doe" },
-            { title: "Email ID", value: "john@gmail.com" },
-            { title: "Mobile", value: "+234 XXXXXX" },
-            { title: "Date of Birth", value: "12 April 1998" },
-            { title: "Marital Status", value: "Single" },
-            { title: "Address", value: "Street No 12, Bazar Road" },
-            { title: "City", value: "Abuja" },
-            { title: "State/Country", value: "Nigeria" },
+            { title: "Full Name", value: fullName },
+            { title: "Email ID", value: email },
+            { title: "Mobile", value: phone },
+            {
+              title: "Date of Birth",
+              value: formatDate(dob),
+            },
+            { title: "Marital Status", value: maritalStatus },
+            { title: "Address", value: address },
+            { title: "City", value: city },
+            { title: "State/Country", value: state },
           ].map((elem, i) => (
             <ItemDisplay title={elem.title} value={elem.value} />
           ))}
@@ -201,7 +196,9 @@ const PolicyHolder = () => {
               paddingTop: "4px",
             }}
           >
-            <Typography variant="body1">Driver's License:</Typography>
+            <Typography variant="body2" color="text.secondary">
+              Driver's License:
+            </Typography>
             <input />
           </Box>
         </React.Fragment>

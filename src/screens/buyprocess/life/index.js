@@ -38,14 +38,6 @@ export default function LifeBuyNow() {
             <Title>Your Details</Title>
             <StyledBox>
               <YourDetailsForm />
-              <Link to="/auto/payment-success">
-                <Button
-                  variant="contained"
-                  sx={{ textTransform: "none", mt: 3 }}
-                >
-                  Proceed
-                </Button>
-              </Link>
             </StyledBox>
           </div>
         </Grid>

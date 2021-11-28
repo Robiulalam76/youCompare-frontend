@@ -1,313 +1,313 @@
-import React from 'react'
-import { useForm } from '../../../components/customHooks/useForm';
-import { Box, Typography, Button } from '@mui/material';
-import { SelectInput, InputBox } from './utils';
-
+import React from "react";
+import { useForm } from "../../../components/customHooks/useForm";
+import { Box, Typography, Button, Grid, Alert } from "@mui/material";
+import { SelectInput } from "./utils";
+import InputBox from "../../../components/customStyledComponents/InputBox";
 import {
   CustomTextField as Input,
-  CustomAutocomplete as Autocomplete
-} from '../../../components/customStyledComponents/inputs'
+  CustomAutocomplete as Autocomplete,
+  inputPropStyle,
+} from "../../../components/customStyledComponents/inputs";
 
-import styles from './styles.module.css'
+// date picker utils from mui
+import AdapterDateFns from "@mui/lab/AdapterDateFns";
+import LocalizationProvider from "@mui/lab/LocalizationProvider";
+import DesktopDatePicker from "@mui/lab/DesktopDatePicker";
 
-export default function CarDetailsForm({ handleStepChange }) {
+import styles from "./styles.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  AUTO_BUY_STEP_CHANGE,
+  UPDATE_VEHICLE_DETAILS,
+} from "../../../constants/autoCompare.constant";
 
-  const [brand, setBrand] = React.useState("")
-  const [model, setModel] = React.useState("")
-  const [year, setYear] = React.useState("")
-  const [carNo, setCarNo] = React.useState("")
-  const [chassisNo, setChassisNo] = React.useState("")
-  const [idv, setIdv] = React.useState("45000")
-  const [ownershipChanged, setOwnershipChanged] = React.useState("No")
-  const [externalKit, setExternalKit] = React.useState("No")
-  const [owner, setOwner] = React.useState("individual")
-  const [carRegDate, handleCarRegDate] = useForm({ date: "", month: "", year: "" })
-  const [policyExpireDate, handlePolicyExpireDate] = useForm({ date: "", month: "", year: "" })
+import {
+  useDateValidation,
+  useInputValidation,
+} from "../../../components/customHooks/validationHooks";
+import { scrollToTop } from "../../../utils/scrolling";
 
-  const handleChange = (e) => {
+export default function CarDetailsForm({}) {
+  const dispatch = useDispatch();
+  const currentStep = useSelector((state) => state.autoBuyStepper.currentStep);
+  const { brand, model, year, carNo } = useSelector(
+    (state) => state.autoQuery
+  );
 
-  }
+  const {
+    chassisNo,
+    ownershipChanged,
+    externalKit,
+    owner,
+    carRegDate,
+    policyExpireDate,
+    idv
+  } = useSelector((state) => state.vehicleDetails);
 
-  console.log(brand)
+  const [error, setError] = React.useState("");
+
+  const [chassisError, checkChassisError] = useInputValidation(chassisNo);
+  const [carRegDateError, checkCarRegDateError] = useDateValidation(carRegDate);
+  const [policyExpireDateError, checkPolicyExpireDateError] =
+    useDateValidation(policyExpireDate);
+
+  const handleChange = (field, value) => {
+    dispatch({
+      type: UPDATE_VEHICLE_DETAILS,
+      payload: { field, value },
+    });
+  };
+
+  const stepChange = () => {
+    if (
+      !chassisError &&
+      !carRegDateError &&
+      !policyExpireDateError &&
+      ownershipChanged &&
+      externalKit &&
+      owner
+    ) {
+      dispatch({
+        type: AUTO_BUY_STEP_CHANGE,
+        payload: currentStep + 1,
+      });
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (
+      !chassisNo ||
+      !ownershipChanged ||
+      !externalKit ||
+      !owner ||
+      !carRegDate ||
+      !policyExpireDate
+    ) {
+      setError("Please provide all necessary data.");
+      scrollToTop();
+      return;
+    }
+    stepChange();
+  };
+
+  // const [chassisNo, setChassisNo] = React.useState("");
+  // const [ownershipChanged, setOwnershipChanged] = React.useState("No");
+  // const [externalKit, setExternalKit] = React.useState("No");
+  // const [owner, setOwner] = React.useState("individual");
+  // const [carRegDate, handleCarRegDate] = useForm({
+  //   date: "",
+  //   month: "",
+  //   year: "",
+  // });
+  // const [policyExpireDate, handlePolicyExpireDate] =
 
   return (
-    <div>
-      {/* ******** BRAND NAME & MODEL ************ */}
-      <Box sx={{ display: "flex", alignItems: "center" }}>
-        <InputBox label="Brand Name" style={{ width: "50%", marginRight: "16px" }}>
+    <React.Fragment>
+      {error ? (
+        <Alert severity="error" sx={{ mt: 2 }}>
+          {error}
+        </Alert>
+      ) : null}
+      <form onSubmit={handleSubmit}>
+        <Grid container spacing={2}>
+          <Grid item xs={6}>
+            <InputBox label="Brand">
+              <Input fullWidth value={brand} />
+            </InputBox>
+          </Grid>
 
-          <Autocomplete
-            fullWidth
-            options={['BMW', 'Honda', 'Tesla']}
-            autoHighlight
-            onChange={(e, value) => setBrand(value)}
-            getOptionLabel={option => option}
-            renderOption={(props, option) => (
-              <Typography
-                {...props}
-                variant="body2"
-                color="text.secondary">
-                {option}
-              </Typography>
-            )}
-            renderInput={(params) => (
-              <Input {...params}
-                placeholder="Brand Name"
-                inputProps={{
-                  ...params.inputProps,
-                  style: { padding: ".75rem 1rem" },
-                  autoComplete: 'new-password',
-                }} />
-            )} />
+          <Grid item xs={6}>
+            <InputBox label="Model">
+              <Input fullWidth value={model} />
+            </InputBox>
+          </Grid>
 
-        </InputBox>
+          <Grid item xs={6}>
+            <InputBox label="Year">
+              <Input fullWidth value={year} />
+            </InputBox>
+          </Grid>
 
-        <InputBox label="Model" style={{ width: "50%" }}>
-          <Autocomplete
-            fullWidth
-            options={['M34', 'U76', 'T56']}
-            autoHighlight
-            onChange={(e, value) => setModel(value)}
-            getOptionLabel={option => option}
-            renderOption={(props, option) => (
-              <Typography
-                {...props}
-                variant="body2"
-                color="text.secondary">
-                {option}
-              </Typography>
-            )}
-            renderInput={(params) => (
-              <Input {...params}
-                placeholder="Car Model"
-                inputProps={{
-                  ...params.inputProps,
-                  style: { padding: ".75rem 1rem" },
-                  autoComplete: 'new-password',
-                }} />
-            )} />
-        </InputBox>
-      </Box>
+          <Grid item xs={6}>
+            <InputBox label="Car Number">
+              <Input fullWidth value={carNo} />
+            </InputBox>
+          </Grid>
 
-      {/* *********** YEAR & CAR NO ***************** */}
-      <Box sx={{ display: "flex", alignItems: "center" }}>
-        <InputBox label="Year" style={{ width: "50%", marginRight: "16px" }}>
+          <Grid item xs={6}>
+            <InputBox label="Chassis No">
+              <Input
+                fullWidth
+                value={chassisNo}
+                onChange={(e) => handleChange("chassisNo", e.target.value)}
+                error={chassisError}
+                helperText={chassisError}
+                onBlur={checkChassisError}
+              />
+            </InputBox>
+          </Grid>
 
-          <Autocomplete
-            fullWidth
-            options={['2021', '2020', '2019', '2018', '2017', '2016']}
-            autoHighlight
-            onChange={(e, value) => setYear(value)}
-            getOptionLabel={option => option}
-            renderOption={(props, option) => (
-              <Typography
-                {...props}
-                variant="body2"
-                color="text.secondary">
-                {option}
-              </Typography>
-            )}
-            renderInput={(params) => (
-              <Input {...params}
-                placeholder="Launch Year"
-                inputProps={{
-                  ...params.inputProps,
-                  style: { padding: ".75rem 1rem" },
-                  autoComplete: 'new-password',
-                }} />
-            )} />
-        </InputBox>
+          <Grid item xs={6}>
+            <InputBox label="IDV">
+              <Input fullWidth value={idv} />
+            </InputBox>
+          </Grid>
 
-        <InputBox label="Car Number" style={{ width: "50%" }}>
-          <Input
-            type="text"
-            value={carNo}
-            onChange={(e) => setCarNo(e.target.value)}
-            placeholder="E.g. HR26DQ555"
-          />
-        </InputBox>
-      </Box>
+          <Grid item xs={12}>
+            <InputBox label="Existing Third Party Policy Expires Date">
+              <LocalizationProvider dateAdapter={AdapterDateFns}>
+                <DesktopDatePicker
+                  inputFormat="dd/MM/yyyy"
+                  value={policyExpireDate}
+                  onChange={(newVal) => {
+                    handleChange("policyExpireDate", newVal);
+                  }}
+                  renderInput={(params) => (
+                    <Input
+                      {...params}
+                      fullWidth
+                      placeholder="Policy expires date"
+                      error={policyExpireDateError}
+                      onKeyUp={checkPolicyExpireDateError}
+                      helperText={policyExpireDateError}
+                      inputProps={{
+                        ...params.inputProps,
+                        style: inputPropStyle,
+                        autoComplete: "new-password", // disable autocomplete and autofill
+                      }}
+                    />
+                  )}
+                />
+              </LocalizationProvider>
+            </InputBox>
+          </Grid>
 
-      {/* *************** CHASSIS NO & VALUE ******************* */}
-      <Box sx={{ display: "flex", alignItems: "center" }}>
-        <InputBox label="Chassis No" style={{ width: "50%", marginRight: "16px" }}>
-          <Input
-            type="text"
-            name="chassisNo"
-            value={chassisNo}
-            onChange={(e) => setChassisNo(e.target.value)}
-            placeholder="E.g. HR26DQ555"
-          />
-        </InputBox>
-        <InputBox label="IDV" style={{ width: "50%" }}>
-          <Input
-            type="text"
-            value={idv}
-            onChange={(e) => setIdv(e.target.value)}
-            name="idv"
-          />
-        </InputBox>
-      </Box>
+          <Grid item xs={12}>
+            <InputBox label="Car Registration Date">
+              <LocalizationProvider dateAdapter={AdapterDateFns}>
+                <DesktopDatePicker
+                  inputFormat="dd/MM/yyyy"
+                  value={carRegDate}
+                  onChange={(newVal) => {
+                    handleChange("carRegDate", newVal);
+                  }}
+                  renderInput={(params) => (
+                    <Input
+                      {...params}
+                      fullWidth
+                      placeholder="Car Registration Date"
+                      error={carRegDateError}
+                      onBlur={checkCarRegDateError}
+                      helperText={carRegDateError}
+                      inputProps={{
+                        ...params.inputProps,
+                        style: inputPropStyle,
+                        autoComplete: "new-password", // disable autocomplete and autofill
+                      }}
+                    />
+                  )}
+                />
+              </LocalizationProvider>
+            </InputBox>
+          </Grid>
 
-      {/*****************  POLICY EXPIRE DATE ****************** */}
-      <InputBox label="Existing Third Party Policy Expire Date">
-        <Box sx={{ display: "flex" }}>
-          <SelectInput
-            name="year"
-            value={policyExpireDate.year}
-            onChange={handlePolicyExpireDate}
-            style={{ marginRight: 8, width: "25%" }}
-          >
-            {['2021', '2020', '2019', '2018'].map((elem) => (
-              <option key={elem} value={elem}>
-                {elem}
-              </option>
-            ))}
-          </SelectInput>
+          <Grid item xs={12}>
+            <InputBox label="Did Car's ownership change in the last 12 months?">
+              <Box className={styles.questionContainer}>
+                <input
+                  type="radio"
+                  checked={ownershipChanged === "Yes"}
+                  onChange={(e) =>
+                    handleChange("ownershipChanged", e.target.value)
+                  }
+                  value="Yes"
+                  style={{ cursor: "pointer" }}
+                />
+                <RadioButtonLabel>Yes</RadioButtonLabel>
+                <input
+                  type="radio"
+                  checked={ownershipChanged === "No"}
+                  onChange={(e) =>
+                    handleChange("ownershipChanged", e.target.value)
+                  }
+                  value="No"
+                  style={{ cursor: "pointer", marginLeft: "16px" }}
+                />
+                <RadioButtonLabel>No</RadioButtonLabel>
+              </Box>
+            </InputBox>
+          </Grid>
 
-          <SelectInput
-            name="month"
-            value={policyExpireDate.month}
-            onChange={handlePolicyExpireDate}
-            style={{ marginRight: 8, width: "50%" }}
-          >
-            {['January', 'February', 'March'].map((elem) => (
-              <option key={elem} value={elem}>
-                {elem}
-              </option>
-            ))}
-          </SelectInput>
+          <Grid item xs={12}>
+            <InputBox label="Does this car has an external CNG/LPG kit?">
+              <Box className={styles.questionContainer}>
+                <input
+                  type="radio"
+                  checked={externalKit === "Yes"}
+                  onChange={(e) => handleChange("externalKit", e.target.value)}
+                  value="Yes"
+                  style={{ cursor: "pointer" }}
+                />
+                <RadioButtonLabel>Yes</RadioButtonLabel>
+                <input
+                  type="radio"
+                  checked={externalKit === "No"}
+                  onChange={(e) => handleChange("externalKit", e.target.value)}
+                  value="No"
+                  style={{ cursor: "pointer", marginLeft: "16px" }}
+                />
+                <RadioButtonLabel>No</RadioButtonLabel>
+              </Box>
+            </InputBox>
+          </Grid>
 
-          <SelectInput
-            name="date"
-            value={policyExpireDate.date}
-            onChange={handlePolicyExpireDate}
-            style={{ width: "25%" }}
-          >
-            {['1', '2', '3', '4', '5', '6', '7'].map((elem) => (
-              <option key={elem} value={elem}>
-                {elem}
-              </option>
-            ))}
-          </SelectInput>
-        </Box>
-      </InputBox>
-
-      {/*****************  CAR REGISTRATION DATE ****************** */}
-      <InputBox label="Car Registration Date">
-        <Box sx={{ display: "flex" }}>
-          <SelectInput
-            name="year"
-            value={carRegDate.year}
-            onChange={handleCarRegDate}
-            style={{ marginRight: 8, width: "25%" }}
-          >
-            {['2021', '2020', '2019', '2018'].map((elem) => (
-              <option key={elem} value={elem}>
-                {elem}
-              </option>
-            ))}
-          </SelectInput>
-
-          <SelectInput
-            name="month"
-            value={carRegDate.month}
-            onChange={handleCarRegDate}
-            style={{ marginRight: 8, width: "50%" }}
-          >
-            {['January', 'February', 'March'].map((elem) => (
-              <option key={elem} value={elem}>
-                {elem}
-              </option>
-            ))}
-          </SelectInput>
-
-          <SelectInput
-            name="date"
-            value={carRegDate.date}
-            onChange={handleCarRegDate}
-            style={{ width: "25%" }}
-          >
-            {['1', '2', '3', '4', '5', '6', '7'].map((elem) => (
-              <option key={elem} value={elem}>
-                {elem}
-              </option>
-            ))}
-          </SelectInput>
-        </Box>
-      </InputBox>
-
-      {/* *********8 QUESTION'S SECTION ***************** */}
-      <InputBox label="Did Car's ownership change in the last 12 months?">
-        <Box className={styles.questionContainer}>
-          <input
-            type="radio"
-            checked={ownershipChanged === "Yes"}
-            onChange={(e) => setOwnershipChanged(e.target.value)}
-            value="Yes"
-            style={{ cursor: "pointer" }}
-          />
-          <RadioButtonLabel>Yes</RadioButtonLabel>
-          <input
-            type="radio"
-            checked={ownershipChanged === "No"}
-            onChange={(e) => setOwnershipChanged(e.target.value)}
-            value="No"
-            style={{ cursor: "pointer", marginLeft: "16px" }}
-          />
-          <RadioButtonLabel>No</RadioButtonLabel>
-        </Box>
-      </InputBox>
-
-      <InputBox label="Does this car has an external CNG/LPG kit?">
-        <Box className={styles.questionContainer}>
-          <input
-            type="radio"
-            checked={externalKit === "Yes"}
-            onChange={(e) => setExternalKit(e.target.value)}
-            value="Yes"
-            style={{ cursor: "pointer" }}
-          />
-          <RadioButtonLabel>Yes</RadioButtonLabel>
-          <input
-            type="radio"
-            checked={externalKit === "No"}
-            onChange={(e) => setExternalKit(e.target.value)}
-            value="No"
-            style={{ cursor: "pointer", marginLeft: "16px" }}
-          />
-          <RadioButtonLabel>No</RadioButtonLabel>
-        </Box>
-      </InputBox>
-
-      <InputBox label="Car is owned by">
-        <Box className={styles.questionContainer}>
-          <input
-            type="radio"
-            checked={owner === "individual"}
-            onChange={(e) => setOwner(e.target.value)}
-            value="individual"
-            style={{ cursor: "pointer" }}
-          />
-          <RadioButtonLabel>Individual</RadioButtonLabel>
-          <input
-            type="radio"
-            checked={owner === "commercial"}
-            onChange={(e) => setOwner(e.target.value)}
-            value="commercial"
-            style={{ cursor: "pointer", marginLeft: "16px" }}
-          />
-          <RadioButtonLabel>Company</RadioButtonLabel>
-        </Box>
-      </InputBox>
-    </div >
-  )
+          <Grid item xs={12}>
+            <InputBox label="Car is owned by">
+              <Box className={styles.questionContainer}>
+                <input
+                  type="radio"
+                  checked={owner === "individual"}
+                  onChange={(e) => handleChange("owner", e.target.value)}
+                  value="individual"
+                  style={{ cursor: "pointer" }}
+                />
+                <RadioButtonLabel>Individual</RadioButtonLabel>
+                <input
+                  type="radio"
+                  checked={owner === "commercial"}
+                  onChange={(e) => handleChange("owner", e.target.value)}
+                  value="commercial"
+                  style={{ cursor: "pointer", marginLeft: "16px" }}
+                />
+                <RadioButtonLabel>Company</RadioButtonLabel>
+              </Box>
+            </InputBox>
+          </Grid>
+        </Grid>
+        {currentStep == 2 ? null : (
+          <StyledButton type="submit">Next</StyledButton>
+        )}
+      </form>
+    </React.Fragment>
+  );
 }
 
-const RadioButtonLabel = (props) =>
+const RadioButtonLabel = (props) => (
   <Typography
     {...props}
-    sx={{ ml: .5 }}
+    sx={{ ml: 0.5 }}
     variant="body2"
-    color="text.secondary">
-  </Typography>
+    color="text.secondary"
+  ></Typography>
+);
+
+const StyledButton = (props) => (
+  <Button
+    {...props}
+    variant="contained"
+    style={{ ...props.style, height: "42px" }}
+    sx={{ mt: 2 }}
+  />
+);

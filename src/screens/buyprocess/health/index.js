@@ -17,6 +17,7 @@ import ReviewAndPay from "./ReviewAndPay";
 
 import { styled } from "@mui/material/styles";
 import PlanDetails from "./PlanDetails";
+import { useSelector } from "react-redux";
 
 const StyledBox = styled(Box)(({ theme }) => ({
   background: "#FFFFFF 0% 0% no-repeat padding-box",
@@ -32,11 +33,17 @@ const StyledBox = styled(Box)(({ theme }) => ({
 }));
 
 const StyledButton = (props) => (
-  <Button {...props} variant="contained" sx={{ ...props.sx, mt: 2, textTransform: "none" }} />
+  <Button
+    {...props}
+    variant="contained"
+    sx={{ ...props.sx, mt: 2, textTransform: "none" }}
+  />
 );
 
 export default function HealthBuyNow() {
-  const [currentStep, setCurrentStep] = React.useState(0);
+  const currentStep = useSelector(
+    (state) => state.healthBuyStepper.currentStep
+  );
   const steps = ["Proposer", "Members", "Review & Pay", "Proposal"];
 
   // const handleStepChange = (action) => {
@@ -44,10 +51,12 @@ export default function HealthBuyNow() {
   //   if (action === "stepUp") setCurrentStep(currentStep + 1);
   // };
 
-  const handleStepUp = () => {
-    if (currentStep > steps.length - 2) return;
-    setCurrentStep(currentStep + 1);
-  };
+  // const handleStepUp = () => {
+  //   if (currentStep > steps.length - 2) return;
+  //   setCurrentStep(currentStep + 1);
+  // };
+
+  console.log(currentStep);
 
   const renderSteppedForm = (step) => {
     switch (step) {
@@ -67,19 +76,13 @@ export default function HealthBuyNow() {
   const renderButton = (step) => {
     switch (step) {
       case 0:
-        return (
-          <StyledButton onClick={handleStepUp}>
-            Continue to Member Section
-          </StyledButton>
-        );
+        return <StyledButton>Continue to Member Section</StyledButton>;
       case 1:
-        return (
-          <StyledButton onClick={handleStepUp}>Continue to Pay</StyledButton>
-        );
+        return <StyledButton>Continue to Pay</StyledButton>;
       case 2:
-        return <StyledButton onClick={handleStepUp}>Next</StyledButton>;
+        return <StyledButton>Next</StyledButton>;
       case 3:
-        return <StyledButton onClick={handleStepUp}>Next</StyledButton>;
+        return <StyledButton>Next</StyledButton>;
       default:
         return;
     }
@@ -93,10 +96,7 @@ export default function HealthBuyNow() {
           <StyledBox>
             <Formstepper currentStep={currentStep} steps={steps} />
             <br />
-
             {renderSteppedForm(currentStep)}
-
-            {renderButton(currentStep)}
           </StyledBox>
 
           {/** Plan Details on Mobile Screen */}

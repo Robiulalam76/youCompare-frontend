@@ -1,7 +1,7 @@
 import React from "react";
 
 // mui components
-import { Box, InputAdornment, Typography, TextField } from "@mui/material";
+import { Box, InputAdornment, Typography, Button, Alert } from "@mui/material";
 import TodayIcon from "@mui/icons-material/Today";
 import FileUploadOutlinedIcon from "@mui/icons-material/FileUploadOutlined";
 import Popover from "@mui/material/Popover";
@@ -14,8 +14,8 @@ import DesktopDatePicker from "@mui/lab/DesktopDatePicker";
 // customized components
 import { textfieldStyle } from "./utils";
 import InputBox from "../../../components/customStyledComponents/InputBox";
-import { useForm } from "../../../components/customHooks/useForm";
-import Calender from "../../../components/Calender";
+// import { useForm } from "../../../components/customHooks/useForm";
+// import Calender from "../../../components/Calender";
 import {
   CustomTextField as Input,
   CustomAutocomplete as Autocomplete,
@@ -24,58 +24,115 @@ import {
 import { State, City } from "country-state-city";
 import {
   useEmailValidation,
+  useInputValidation,
   useNameValidation,
   usePhoneValidation,
+  useDateOfBirthValidation,
 } from "../../../components/customHooks/validationHooks";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  AUTO_BUY_STEP_CHANGE,
+  AUTO_POLICY_HOLDER_FIELD_CHANGE,
+} from "../../../constants/autoCompare.constant";
 
-export default function PolicyHolderDetailsForm({ handleStepChange }) {
-  const [policyHolder, handleChange] = useForm({
-    fullName: "",
-    email: "",
-    mobile: "",
-    address: "",
-    pincode: "",
-  });
+import { scrollToTop } from "../../../utils/scrolling";
 
-  const [dob, setDob] = React.useState("");
-  const [maritalStatus, setMaritalStatus] = React.useState("");
+export default function PolicyHolderDetailsForm() {
+  const {
+    fullName,
+    email,
+    phone,
+    dob,
+    maritalStatus,
+    address,
+    state,
+    city,
+    pincode,
+  } = useSelector((state) => state.autoPolicyHolder);
+  const [error, setError] = React.useState("");
 
-  const [calenderElem, setCalenderElem] = React.useState(null);
+  const currentStep = useSelector((state) => state.autoBuyStepper.currentStep);
 
-  const calenderRef = React.useRef(null);
-  const inputRef = React.useRef(null);
+  // Error Handling
+  const [nameError, checkNameError] = useNameValidation(fullName);
+  const [emailError, checkEmailError] = useEmailValidation(email);
+  const [phoneError, checkPhoneError] = usePhoneValidation(phone);
+  const [dobError, checkDobError] = useDateOfBirthValidation(dob);
+  const [maritalStatusError, checkMaritalStatusError] =
+    useInputValidation(maritalStatus);
+  const [addressError, checkAddressError] = useInputValidation(address);
+  const [stateError, checkStateError] = useInputValidation(state);
+  const [cityError, checkCityError] = useInputValidation(city);
+  const [pinError, checkPincodeError] = useInputValidation(pincode);
+
+  const disableNextButton =
+    !fullName ||
+    !email ||
+    !phone ||
+    !dob ||
+    !maritalStatus ||
+    !address ||
+    !state ||
+    !city ||
+    !pincode;
+
+  const stepChange = () => {
+    if (
+      !nameError &&
+      !emailError &&
+      !phoneError &&
+      !dobError &&
+      !maritalStatusError &&
+      !addressError &&
+      !stateError &&
+      !cityError &&
+      !pinError
+    ) {
+      dispatch({
+        type: AUTO_BUY_STEP_CHANGE,
+        payload: currentStep + 1,
+      });
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (disableNextButton) {
+      setError("Please provide all required information.");
+      scrollToTop();
+      return;
+    }
+    stepChange();
+
+    setError("");
+  };
+
+  const dispatch = useDispatch();
+
+  const handleChange = (field, value) => {
+    dispatch({
+      type: AUTO_POLICY_HOLDER_FIELD_CHANGE,
+      payload: { field, value },
+    });
+  };
+
+  const handleChangeWrapper = (e) => {
+    handleChange(e.target.name, e.target.value);
+  };
+
+  const handleStateSelection = (value) => {
+    let isoCode = value ? value.isoCode : "";
+    let stateName = value ? value.name : "";
+    setStateIsoCode(isoCode);
+    handleChange("state", stateName);
+  };
 
   // states are 36 states of Nigeria
   const [states, setStates] = React.useState([]);
   const [cities, setCities] = React.useState([]);
-
-  const [selectedState, setSelectedState] = React.useState({
-    name: "",
-    isoCode: "",
-  });
-  const [selectedCity, setSelectedCity] = React.useState("");
-
-  const [date, setDate] = React.useState(new Date("2014-08-18T21:11:54"));
-
-  const handleDateChange = (d) => {
-    setDate(d);
-  };
-
-  // Error Handling
-  const [nameValidity, checkNameError] = useNameValidation(
-    policyHolder.fullName
-  );
-  const [emailValidity, checkEmailError] = useEmailValidation(
-    policyHolder.email
-  );
-  const [phoneValidity, checkPhoneError] = usePhoneValidation(
-    policyHolder.mobile
-  );
-
-  React.useEffect(() => {
-    inputRef.current.focus();
-    console.log(inputRef.current);
-  }, []);
+  const [stateIsoCode, setStateIsoCode] = React.useState("");
+  const inputRef = React.useRef(null);
 
   React.useEffect(() => {
     const _states = State.getStatesOfCountry("NG").map((state) => {
@@ -87,88 +144,128 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
   }, []);
 
   React.useEffect(() => {
-    if (!selectedState) return;
-    const _cities = City.getCitiesOfState("NG", selectedState.isoCode).map(
+    if (!stateIsoCode) return;
+    const _cities = City.getCitiesOfState("NG", stateIsoCode).map(
       (city) => city.name
     );
-
     setCities(_cities);
-  }, [selectedState]);
+  }, [stateIsoCode]);
 
   return (
     <React.Fragment>
-      <InputBox label="Full Name">
-        <Input
-          fullWidth
-          type="text"
-          name="fullName"
-          value={policyHolder.fullName}
-          onChange={handleChange}
-          error={!nameValidity.valid}
-          onBlur={() => checkNameError()}
-          placeholder="Enter Full Name"
-          helperText={nameValidity.error}
-          inputProps={{
-            ref: inputRef,
-          }}
-        />
-      </InputBox>
-      <InputBox label="Email ID">
-        <Input
-          fullWidth
-          type="email"
-          name="email"
-          value={policyHolder.email}
-          onChange={handleChange}
-          placeholder="Enter Email ID"
-          onBlur={checkEmailError}
-          error={!emailValidity.valid}
-          helperText={emailValidity.error}
-        />
-      </InputBox>
-      <InputBox label="Mobile Number">
-        <Input
-          fullWidth
-          type="number"
-          inputMode="tel"
-          name="mobile"
-          value={policyHolder.mobile}
-          onChange={handleChange}
-          placeholder="Mobile Number"
-          error={!phoneValidity.valid}
-          helperText={phoneValidity.error}
-          inputProps={{
-            sx: textfieldStyle,
-          }}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <Typography variant="body2">+234</Typography>
-              </InputAdornment>
-            ),
-          }}
-        />
-      </InputBox>
+      {error ? (
+        <Alert severity="error" sx={{ mt: 2 }}>
+          {error}
+        </Alert>
+      ) : null}
+      <form onSubmit={handleSubmit}>
+        <InputBox label="Full Name">
+          <Input
+            fullWidth
+            type="text"
+            name="fullName"
+            value={fullName}
+            onChange={handleChangeWrapper}
+            error={nameError}
+            onBlur={checkNameError}
+            placeholder="Enter Full Name"
+            helperText={nameError}
+          />
+        </InputBox>
+        <InputBox label="Email ID">
+          <Input
+            fullWidth
+            type="email"
+            name="email"
+            value={email}
+            onChange={handleChangeWrapper}
+            placeholder="Enter Email ID"
+            onBlur={checkEmailError}
+            error={emailError}
+            helperText={emailError}
+          />
+        </InputBox>
+        <InputBox label="Mobile Number">
+          <Input
+            fullWidth
+            type="number"
+            inputMode="tel"
+            name="phone"
+            value={phone}
+            onChange={handleChangeWrapper}
+            placeholder="Mobile Number"
+            onBlur={checkPhoneError}
+            error={phoneError}
+            helperText={phoneError}
+            inputProps={{
+              sx: textfieldStyle,
+            }}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <Typography variant="body2">+234</Typography>
+                </InputAdornment>
+              ),
+            }}
+          />
+        </InputBox>
 
-      {/** DATE OF BIRTH AND MARITAL STATUS */}
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
-      >
-        {/** Date of Birth */}
-        <InputBox label="Date of Birth" style={{ width: "48%" }}>
-          <LocalizationProvider dateAdapter={AdapterDateFns}>
-            <DesktopDatePicker
-              inputFormat="MM/dd/yyyy"
-              value={date}
-              onChange={handleDateChange}
+        {/** DATE OF BIRTH AND MARITAL STATUS */}
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "flex-start",
+            justifyContent: "space-between",
+          }}
+        >
+          {/** Date of Birth */}
+          <InputBox label="Date of Birth" style={{ width: "48%" }}>
+            <LocalizationProvider dateAdapter={AdapterDateFns}>
+              <DesktopDatePicker
+                inputFormat="dd/MM/yyyy"
+                value={dob}
+                name="dob"
+                disableFuture
+                onChange={(newVal) => {
+                  handleChange("dob", newVal);
+                }}
+                renderInput={(params) => (
+                  <Input
+                    {...params}
+                    placeholder="Date of Birth"
+                    error={dobError}
+                    onBlur={checkDobError}
+                    helperText={dobError}
+                    inputProps={{
+                      ...params.inputProps,
+                      style: { padding: ".75rem 1rem" },
+                      autoComplete: "new-password", // disable autocomplete and autofill
+                    }}
+                  />
+                )}
+              />
+            </LocalizationProvider>
+          </InputBox>
+
+          {/* **** marital status ***** */}
+          <InputBox label="Marital Status" style={{ width: "48%" }}>
+            <Autocomplete
+              fullWidth
+              options={["Married", "Single", "Divorced"]}
+              onChange={(e, value) => handleChange("maritalStatus", value)}
+              renderOption={(props, option) => (
+                <Typography {...props} variant="body2" color="text.secondary">
+                  {option}
+                </Typography>
+              )}
+              sx={{ mb: 0.75 }}
               renderInput={(params) => (
                 <Input
                   {...params}
-                  placeholder="Select Gender"
+                  placeholder="Select Option"
+                  error={maritalStatusError}
+                  helperText={maritalStatusError}
+                  onBlur={checkMaritalStatusError}
                   inputProps={{
                     ...params.inputProps,
                     style: { padding: ".75rem 1rem" },
@@ -177,138 +274,137 @@ export default function PolicyHolderDetailsForm({ handleStepChange }) {
                 />
               )}
             />
-          </LocalizationProvider>
-        </InputBox>
+          </InputBox>
+        </Box>
 
-        {/* **** marital status ***** */}
-        <InputBox
-          label="Marital Status"
-          style={{ width: "48%", paddingTop: "4px" }}
-        >
-          <Autocomplete
-            fullWidth
-            options={["Married", "Single", "Divorced"]}
-            onChange={(e, value) => setMaritalStatus(value)}
-            renderOption={(props, option) => (
-              <Typography {...props} variant="body2" color="text.secondary">
-                {option}
-              </Typography>
-            )}
-            sx={{ mb: 0.75 }}
-            renderInput={(params) => (
-              <Input
-                {...params}
-                placeholder="Select Gender"
-                inputProps={{
-                  ...params.inputProps,
-                  style: { padding: ".75rem 1rem" },
-                  autoComplete: "new-password", // disable autocomplete and autofill
-                }}
-              />
-            )}
-          />
-        </InputBox>
-      </Box>
-
-      {/* ******************* ADDRESS ***************** */}
-      <InputBox label="Address">
-        <Input
-          fullWidth
-          type="text"
-          name="address"
-          value={policyHolder.address}
-          onChange={handleChange}
-          placeholder="Enter Address"
-        />
-      </InputBox>
-
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
-      >
-        {/* ######################## STATE ################## */}
-        <InputBox label="State" style={{ width: "48%" }}>
-          <Autocomplete
-            fullWidth
-            options={states}
-            onChange={(e, value) => setSelectedState(value)}
-            getOptionLabel={(option) => option.name}
-            renderOption={(props, option) => (
-              <Typography {...props} variant="body2" color="text.secondary">
-                {option.name}
-              </Typography>
-            )}
-            renderInput={(params) => (
-              <Input
-                {...params}
-                placeholder="Select State"
-                inputProps={{
-                  ...params.inputProps,
-                  style: { padding: ".75rem 1rem" },
-                  autoComplete: "new-password", // disable autocomplete and autofill
-                }}
-              />
-            )}
-          />
-        </InputBox>
-
-        {/* ######################## CITY ################## */}
-        <InputBox label="City" style={{ width: "48%" }}>
-          <Autocomplete
-            fullWidth
-            options={cities}
-            disableClearable
-            autoHighlight
-            onChange={(e, value) => setSelectedCity(value)}
-            getOptionLabel={(option) => option}
-            renderOption={(props, option) => (
-              <Typography {...props} variant="body2" color="text.secondary">
-                {option}
-              </Typography>
-            )}
-            renderInput={(params) => (
-              <Input
-                {...params}
-                placeholder="Select City"
-                inputProps={{
-                  ...params.inputProps,
-                  style: { padding: ".75rem 1rem" },
-                  autoComplete: "new-password",
-                }}
-              />
-            )}
-          />
-        </InputBox>
-      </Box>
-
-      <Box sx={{ display: "flex", alignItems: "center" }}>
-        <InputBox label="Pincode" style={{ marginRight: "16px", width: "50%" }}>
+        {/* ******************* ADDRESS ***************** */}
+        <InputBox label="Address">
           <Input
             fullWidth
             type="text"
-            name="pincode"
-            value={policyHolder.pincode}
-            onChange={handleChange}
-            placeholder="Enter Pincode"
+            name="address"
+            value={address}
+            onChange={handleChangeWrapper}
+            placeholder="Enter Address"
+            error={addressError}
+            helperText={addressError}
+            onBlur={checkAddressError}
           />
         </InputBox>
-        <InputBox label="Driver's License Image" style={{ width: "50%" }}>
-          <Input
-            fullWidth
-            placeholder="Upload"
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <FileUploadOutlinedIcon fontSize="small" />
-                </InputAdornment>
-              ),
-            }}
-          />
-        </InputBox>
-      </Box>
+
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "flex-start",
+            justifyContent: "space-between",
+          }}
+        >
+          {/* ######################## STATE ################## */}
+          <InputBox label="State" style={{ width: "48%" }}>
+            <Autocomplete
+              fullWidth
+              options={states}
+              onChange={(e, value) => handleStateSelection(value)}
+              getOptionLabel={(option) => option.name}
+              renderOption={(props, option) => (
+                <Typography {...props} variant="body2" color="text.secondary">
+                  {option.name}
+                </Typography>
+              )}
+              renderInput={(params) => (
+                <Input
+                  {...params}
+                  placeholder="Select State"
+                  error={stateError}
+                  onBlur={checkStateError}
+                  helperText={stateError}
+                  inputProps={{
+                    ...params.inputProps,
+                    style: { padding: ".75rem 1rem" },
+                    autoComplete: "new-password", // disable autocomplete and autofill
+                  }}
+                />
+              )}
+            />
+          </InputBox>
+
+          {/* ######################## CITY ################## */}
+          <InputBox label="City" style={{ width: "48%" }}>
+            <Autocomplete
+              fullWidth
+              options={cities}
+              disableClearable
+              autoHighlight
+              onChange={(e, value) => handleChange("city", value)}
+              getOptionLabel={(option) => option}
+              renderOption={(props, option) => (
+                <Typography {...props} variant="body2" color="text.secondary">
+                  {option}
+                </Typography>
+              )}
+              renderInput={(params) => (
+                <Input
+                  {...params}
+                  placeholder="Select City"
+                  error={cityError}
+                  onBlur={checkCityError}
+                  helperText={cityError}
+                  inputProps={{
+                    ...params.inputProps,
+                    style: { padding: ".75rem 1rem" },
+                    autoComplete: "new-password",
+                  }}
+                />
+              )}
+            />
+          </InputBox>
+        </Box>
+
+        <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+          <InputBox
+            label="Pincode"
+            style={{ marginRight: "16px", width: "50%" }}
+          >
+            <Input
+              fullWidth
+              type="text"
+              name="pincode"
+              value={pincode}
+              onChange={handleChangeWrapper}
+              placeholder="Enter Pincode"
+              error={pinError}
+              onBlur={checkPincodeError}
+              helperText={pinError}
+            />
+          </InputBox>
+          <InputBox label="Driver's License Image" style={{ width: "50%" }}>
+            <Input
+              fullWidth
+              placeholder="Upload"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <FileUploadOutlinedIcon fontSize="small" />
+                  </InputAdornment>
+                ),
+              }}
+            />
+          </InputBox>
+        </Box>
+
+        {currentStep == 2 ? null : (
+          <StyledButton type="submit">Next</StyledButton>
+        )}
+      </form>
     </React.Fragment>
   );
 }
+
+const StyledButton = (props) => (
+  <Button
+    {...props}
+    variant="contained"
+    style={{ ...props.style, height: "42px" }}
+    sx={{ mt: 2 }}
+  />
+);

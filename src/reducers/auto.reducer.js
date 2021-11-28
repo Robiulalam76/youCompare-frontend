@@ -2,6 +2,8 @@ import {
   FIELD_CHANGE,
   INITIAL_POPULATION,
   AUTO_POLICY_HOLDER_FIELD_CHANGE,
+  AUTO_BUY_STEP_CHANGE,
+  UPDATE_VEHICLE_DETAILS,
 } from "../constants/autoCompare.constant";
 
 const query = {
@@ -45,6 +47,40 @@ export const autoPolicyHolderReducer = (state = policyHolder, action) => {
       return {
         ...state,
         [action.payload.field]: action.payload.value,
+      };
+    default:
+      return state;
+  }
+};
+
+const vehicleDetails = {
+  chassisNo: "",
+  ownershipChanged: "",
+  externalKit: "",
+  owner: "",
+  carRegDate: "",
+  policyExpireDate: "",
+  idv: "",
+};
+
+export const vehicleDetailsReducer = (state = vehicleDetails, action) => {
+  switch (action.type) {
+    case UPDATE_VEHICLE_DETAILS:
+      return {
+        ...state,
+        [action.payload.field]: action.payload.value,
+      };
+    default:
+      return state;
+  }
+};
+
+export const autoBuyStepperReducer = (state = { currentStep: 0 }, action) => {
+  switch (action.type) {
+    case AUTO_BUY_STEP_CHANGE:
+      return {
+        ...state,
+        currentStep: action.payload,
       };
     default:
       return state;
