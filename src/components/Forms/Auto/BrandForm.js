@@ -5,6 +5,16 @@ import { FIELD_CHANGE } from "../../../constants/autoCompare.constant";
 import { BiCheck } from "react-icons/bi";
 import "../style.css";
 
+// images
+import BMW from "../../../accets/brandLogo/bmw.png";
+import Honda from "../../../accets/brandLogo/honda.png";
+import Audi from "../../../accets/brandLogo/Audi.png";
+import Mercedes from "../../../accets/brandLogo/Mercedes-Benz.png";
+import Ford from "../../../accets/brandLogo/ford.png";
+import Mini from "../../../accets/brandLogo/Mini.png";
+import Volvo from "../../../accets/brandLogo/Volvo.png";
+import Chevrolet from "../../../accets/brandLogo/Chevrolet.png";
+
 import InputBox from "../../customStyledComponents/InputBox";
 import { CustomTextField as TextField } from "../../customStyledComponents/inputs";
 import { styled } from "@mui/system";
@@ -21,14 +31,38 @@ const ResponsiveBox = styled(Box)(({ theme }) => ({
 }));
 
 const brands = [
-  "BMW",
-  "Honda",
-  "Mercedes",
-  "Audi",
-  "Tesla",
-  "Lambo",
-  "Ferrari",
-  "Bugatti",
+  {
+    name: "BMW",
+    image: BMW,
+  },
+  {
+    name: "Honda",
+    image: Honda,
+  },
+  {
+    name: "Audi",
+    image: Audi,
+  },
+  {
+    name: "Mercedes",
+    image: Mercedes,
+  },
+  {
+    name: "Ford",
+    image: Ford,
+  },
+  {
+    name: "Mini",
+    image: Mini,
+  },
+  {
+    name: "Chevrolet",
+    image: Chevrolet,
+  },
+  {
+    name: "Volvo",
+    image: Volvo,
+  },
 ];
 
 function BrandForm() {
@@ -102,7 +136,7 @@ function BrandForm() {
                 type: FIELD_CHANGE,
                 payload: {
                   field: "brand",
-                  value: elem,
+                  value: elem.name,
                 },
               });
             }}
@@ -110,12 +144,16 @@ function BrandForm() {
             <div
               className="brandname"
               style={{
-                border: brand === elem && "1px solid #6094f3",
+                border: brand === elem.name && "1px solid #6094f3",
                 position: "relative",
               }}
             >
-              <p>{elem}</p>
-              {brand === elem && (
+              {/* <p>{elem.name}</p> */}
+              <img
+                style={{ height: "15vh", objectFit: "contain" }}
+                src={elem.image}
+              />
+              {brand === elem.name && (
                 <span className="right">
                   <BiCheck />{" "}
                 </span>
