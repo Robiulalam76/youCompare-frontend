@@ -103,6 +103,7 @@ const SteppedForms = ({ title }) => {
   const steps = ["Brand Selection", "Model and Year", "Details", "Compare"];
   const [activeStep, setActiveStep] = React.useState(0);
   const [error, setError] = React.useState("");
+  const [brand, setBrand] = React.useState("");
 
   const validation = (step) => {
     switch (step) {
@@ -161,7 +162,7 @@ const SteppedForms = ({ title }) => {
       </div>
       <Box sx={{ mt: 2 }}>
         {activeStep === 0 ? (
-          <BrandForm />
+          <BrandForm brand={setBrand} />
         ) : activeStep === 1 ? (
           <ModelNYearsForm />
         ) : activeStep === 2 ? (

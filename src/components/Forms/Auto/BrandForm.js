@@ -65,7 +65,7 @@ const brands = [
   },
 ];
 
-function BrandForm() {
+function BrandForm({setBrand}) {
   const dispatch = useDispatch();
   const autoQuery = useSelector((state) => state.autoQuery);
   const { brand, carNo } = autoQuery;

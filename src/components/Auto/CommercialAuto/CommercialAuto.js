@@ -90,7 +90,7 @@ const CommerialCard = () => {
   return (
     <ShadowedBox>
       <Typography sx={{ textAlign: "left", pl: 2, pb: 2 }}>
-        <BsArrowLeft /> Types of Vahical
+        <BsArrowLeft /> Types of Vehicle
       </Typography>
       <Grid container spacing={2}>
         {subCommercial.map((insurance, i) => (

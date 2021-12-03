@@ -83,7 +83,7 @@ function DetailsForm({ title }) {
           }}
         >
           {" "}
-          <span>Model </span>
+          {/* <span>Model </span> */}
           {model}
         </div>
         <div
@@ -98,7 +98,7 @@ function DetailsForm({ title }) {
             alignItems: "center",
           }}
         >
-          <span style={{ padding: "0px 5px" }}>Year </span>
+          {/* <span style={{ padding: "0px 5px" }}>Year </span> */}
           {year}
         </div>
       </div>
@@ -174,17 +174,20 @@ function DetailsForm({ title }) {
               </InputBox>
             </Grid>
           ) : null}
-          <Grid item lg={6} sm={6} xs={12}>
-            <InputBox label="Value">
-              <Input
-                fullWidth
-                value={idv}
-                placeholder="Value"
-                onChange={handleChange}
-                name="idv"
-              />
-            </InputBox>
-          </Grid>
+          {typeofInsurance !== "thirdparty" && ( //only for auto insurance
+            <Grid item lg={6} sm={6} xs={12}>
+              <InputBox label="Value">
+                <Input
+                  fullWidth
+                  type="number"
+                  value={idv}
+                  placeholder="Value"
+                  onChange={handleChange}
+                  name="idv"
+                />
+              </InputBox>
+            </Grid>
+          )}
         </Grid>
 
         <Grid
