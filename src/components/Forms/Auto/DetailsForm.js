@@ -211,9 +211,9 @@ function DetailsForm({ title }) {
             <InputBox label="Email Address">
               <Input
                 fullWidth
-                value={email}
+                // value={email} 
                 placeholder="john@domain.com"
-                onChange={handleSearcherChange}
+                // onChange={handleSearcherChange}
                 name="Email"
               />
             </InputBox>

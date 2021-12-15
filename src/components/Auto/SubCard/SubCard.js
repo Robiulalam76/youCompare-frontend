@@ -1,6 +1,7 @@
 import React from "react";
 import { Typography } from "@mui/material";
 import { styled } from "@mui/system";
+import { useRouteMatch } from "react-router-dom";
 
 const InsuranceBox = styled("div")(({ theme }) => ({
   borderRadius: theme.spacing(1),
@@ -18,6 +19,10 @@ const ImageBox = styled("div")(({ theme }) => ({
 }));
 
 function SubCard({ insurance }) {
+  const { path, url } = useRouteMatch();
+
+  console.log("path SubCard card", path);
+
   return (
     <InsuranceBox>
       <Typography

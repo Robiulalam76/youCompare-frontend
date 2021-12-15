@@ -18,6 +18,9 @@ import {
 
 import SubCard from "../SubCard/SubCard";
 import MuiStepper from "../../MuiStepper";
+import truck from "../../../accets/truck.svg";
+import bus from "../../../accets/Bus.svg";
+import car from "../../../accets/private.svg";
 
 const ResponsiveButton = styled(Button)(({ theme }) => ({
   width: "100%",
@@ -49,6 +52,9 @@ const ImageBox = styled(Box)(({ theme }) => ({
 
 function CommercialAuto({ commercial, children }) {
   const { path, url } = useRouteMatch();
+
+  console.log(`url`, window.location.pathname);
+
   return (
     <Grid container spacing={2}>
       <Grid item lg={5} md={5} xl={5} sm={12} xs={12}>
@@ -65,7 +71,15 @@ function CommercialAuto({ commercial, children }) {
 
         <ImageBox>
           <img
-            src={commercial}
+            src={
+              window.location.pathname === "/home/auto/commercial"
+                ? commercial
+                : window.location.pathname === "/home/auto/commercial/truck"
+                ? truck
+                : window.location.pathname === "/home/auto/commercial/car"
+                ? car
+                : bus
+            }
             style={{ height: "100%", width: "100%" }}
             alt=""
           />
@@ -87,6 +101,9 @@ export default CommercialAuto;
 
 const CommerialCard = () => {
   const { path, url } = useRouteMatch();
+
+  // console.log("path commercial card", path);
+
   return (
     <ShadowedBox>
       <Typography sx={{ textAlign: "left", pl: 2, pb: 2 }}>

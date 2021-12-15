@@ -14,7 +14,9 @@ import logo3 from "../../accets/logo1/NoPath - Copy (2).png";
 import logo4 from "../../accets/logo1/NoPath - Copy (3).png";
 import logo5 from "../../accets/logo1/NoPath - Copy (4).png";
 
-import { Grid, TextField } from "@mui/material";
+import { Grid, Box } from "@mui/material";
+import { styled } from "@mui/system";
+import reviewBanner from "../../accets/reviewBanner.PNG";
 
 const methodology = {
   // margin: "3rem 0 0rem 0rem",
@@ -45,6 +47,16 @@ const steps = [
     image: group3,
   },
 ];
+
+const ImageBox = styled(Box)(({ theme }) => ({
+  height: "200px",
+  marginTop: "5vw",
+  [theme.breakpoints.up("md")]: {
+    width: "70%",
+    marginRight: "auto",
+    marginTop: "5vw",
+  },
+}));
 
 export default function Showcase() {
   return (
@@ -134,6 +146,14 @@ export default function Showcase() {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
           finibus sapien lorem, molestie dictum urna accumsan sit amet.
         </p>
+
+        <div>
+          <img
+            src={reviewBanner}
+            style={{ height: "100%", width: "100%", objectFit: "cover" }}
+            alt=""
+          />
+        </div>
       </div>
 
       {/* Get the app */}

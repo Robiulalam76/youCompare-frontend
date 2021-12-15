@@ -54,7 +54,8 @@ export default function Auto() {
   const title = "Auto";
   const description =
     "Auto insurance is designed to protect yourself and others against many various risks.";
-  console.log(`path auto er main page`, path);
+
+  // console.log(`path auto er main page`, path);
 
   return (
     <div style={{ marginTop: "2%" }}>
