@@ -211,10 +211,10 @@ function DetailsForm({ title }) {
             <InputBox label="Email Address">
               <Input
                 fullWidth
-                // value={email} 
+                value={email}
                 placeholder="john@domain.com"
-                // onChange={handleSearcherChange}
-                name="Email"
+                onChange={handleSearcherChange}
+                name="email"
               />
             </InputBox>
           </Grid>
