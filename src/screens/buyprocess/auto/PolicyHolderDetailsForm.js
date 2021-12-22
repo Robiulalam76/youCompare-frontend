@@ -197,16 +197,16 @@ export default function PolicyHolderDetailsForm() {
             onBlur={checkPhoneError}
             error={phoneError}
             helperText={phoneError}
-            inputProps={{
-              sx: textfieldStyle,
-            }}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <Typography variant="body2">+234</Typography>
-                </InputAdornment>
-              ),
-            }}
+            // inputProps={{
+            //   sx: textfieldStyle,
+            // }}
+            // InputProps={{
+            //   startAdornment: (
+            //     <InputAdornment position="start">
+            //       <Typography variant="body2">+234</Typography>
+            //     </InputAdornment>
+            //   ),
+            // }}
           />
         </InputBox>
 

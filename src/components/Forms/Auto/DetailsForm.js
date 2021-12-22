@@ -223,7 +223,7 @@ function DetailsForm({ title }) {
               <Input
                 fullWidth
                 value={phone}
-                placeholder="94092300293"
+                placeholder="Enter phone number"
                 onChange={handleSearcherChange}
                 name="phone"
               />
