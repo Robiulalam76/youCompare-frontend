@@ -3,23 +3,19 @@ import React, { useEffect } from "react";
 import {
   Container,
   Box,
-  List,
-  Toolbar,
   AppBar,
   Typography,
   Button,
   Drawer,
   Hidden,
-  ListItem,
-  Paper,
   ListItemButton,
 } from "@mui/material";
 import Popover from "@mui/material/Popover";
 import IconButton from "@mui/material/IconButton";
 
-import { style, styled } from "@mui/system";
+import { styled } from "@mui/system";
 import logo from "../../../accets/logo.png";
-import profile from "../../../accets/profile.jpg";
+// import profile from "../../../accets/profile.jpg";
 import { Link, useLocation } from "react-router-dom";
 
 // mui and react icons
@@ -31,7 +27,7 @@ import { ImProfile } from "react-icons/im";
 //components
 import ProductsMenu from "./ProductsMenu";
 import MenuItems from "./MenuItems";
-import TopBar from "./TopBar";
+// import TopBar from "./TopBar";
 import styles from "./styles.module.css";
 import { Navtext } from "../../customStyledComponents/texts";
 import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from "react-dom/cjs/react-dom.development";

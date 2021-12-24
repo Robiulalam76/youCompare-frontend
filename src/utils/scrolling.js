@@ -8,7 +8,7 @@ export const scrollToTop = (top = 0) => {
 
 export const scrollToError = () => {
   if (window.innerWidth < 900) {
-    let top = document.querySelector(".banner-showcase").clientHeight;
+    let top = document.querySelector(".banner-showcase")?.clientHeight;
     scrollToTop(top);
   } else {
     scrollToTop();

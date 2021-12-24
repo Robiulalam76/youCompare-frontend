@@ -2,20 +2,14 @@ import React from "react";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import ListItemText from "@mui/material/ListItemText";
-import { Divider, ListItemButton, Typography } from "@mui/material";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
+import { ListItemButton, Typography } from "@mui/material";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { navdata } from "./navdata";
-import { ArrowRight } from "@mui/icons-material";
-import { display, fontSize } from "@mui/system";
+
 import { BsCircleFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
 import { styled } from "@mui/material/styles";
-import styles from "./styles.module.css";
 
 const NavSideBar = styled(Box)(({ theme }) => ({
   height: "inherit",

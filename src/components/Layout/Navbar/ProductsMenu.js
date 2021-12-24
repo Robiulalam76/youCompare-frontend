@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Popover, Typography, Box, Grid, Stack, Divider } from "@mui/material";
+import { Popover, Typography, Box, Stack } from "@mui/material";
 import { Navtext } from "../../customStyledComponents/texts";
 import { Link, useLocation } from "react-router-dom";
 
@@ -10,17 +10,10 @@ import {
   healthInsuranceRoutes,
   lifeInsuranceRoutes,
 } from "./productsRoutes";
-import { spacing, styled } from "@mui/system";
+import { styled } from "@mui/system";
 
-import { AiOutlineCloseCircle } from "react-icons/ai";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
-const LineBar = styled("div")(({ theme }) => ({
-  margin: theme.spacing(0, 1),
-  height: "inherit",
-  width: "1px",
-  backgroundColor: theme.palette.text.disabled,
-}));
 
 const LeftBorderedBox = styled("div")(({ theme }) => ({
   borderLeft: "1px solid",

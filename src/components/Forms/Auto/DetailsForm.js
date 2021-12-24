@@ -13,8 +13,6 @@ function DetailsForm({ title }) {
   const { brand, model, year, typeofUse, typeofInsurance, idv } = autoQuery;
   const { fullName, email, phone } = useSelector((state) => state.searcher);
 
-  console.log(title);
-
   // Default selection during initial rendering
   // React.useEffect(() => {
   //   dispatch({

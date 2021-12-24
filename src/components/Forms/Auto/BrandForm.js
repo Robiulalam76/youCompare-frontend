@@ -26,7 +26,7 @@ const ResponsiveBox = styled(Box)(({ theme }) => ({
   padding: theme.spacing(1, 0),
   [theme.breakpoints.only("xs")]: {
     display: "flex",
-    flexDirection: "column-reverse",
+    flexDirection: "column",
   },
 }));
 
@@ -65,7 +65,7 @@ const brands = [
   },
 ];
 
-function BrandForm({setBrand}) {
+function BrandForm() {
   const dispatch = useDispatch();
   const autoQuery = useSelector((state) => state.autoQuery);
   const { brand, carNo } = autoQuery;

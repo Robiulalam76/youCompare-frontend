@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import { Grid, Button, Typography } from "@mui/material";
-import { Box } from "@mui/material";
 import {
   CustomTextField as Input,
   CustomAutocomplete as Autocomplete,
@@ -23,7 +22,7 @@ export default function TripDetail({ multi }) {
   const dispatch = useDispatch();
   const travelQuery = useSelector((state) => state.travelQuery);
   const [locations, setLocations] = React.useState(states);
-  const { location, destination, transport } = travelQuery;
+  const { destination, transport } = travelQuery;
 
   const { fullName, email, phone } = useSelector((state) => state.searcher);
 

@@ -1,18 +1,15 @@
 import * as React from "react";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
-import Box from "@mui/material/Box";
 import { Grid } from "@mui/material";
-import MobileDateRangePicker from "@mui/lab/MobileDateRangePicker";
 import EventIcon from "@mui/icons-material/Event";
 
 import {
   CustomTextField as Input,
-  inputPropStyle,
 } from "../../customStyledComponents/inputs";
 import InputBox from "../../customStyledComponents/InputBox";
 import { MobileDatePicker } from "@mui/lab";
-import { InputBase, InputAdornment, Typography } from "@mui/material";
+import { InputAdornment, } from "@mui/material";
 
 import { useDispatch, useSelector } from "react-redux";
 import { TRAVEL_FIELD_CHANGE } from "../../../constants/travel.constant";

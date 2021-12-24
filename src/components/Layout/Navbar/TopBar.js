@@ -4,7 +4,6 @@ import { Container, Typography } from "@mui/material";
 import { MdEmail } from "react-icons/md";
 import { AiTwotonePhone } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import { Box } from "@mui/system";
 
 export default function TopBar() {
   const insurances = [

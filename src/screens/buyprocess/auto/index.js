@@ -30,11 +30,6 @@ export default function AutoBuyNow() {
   const currentStep = useSelector((state) => state.autoBuyStepper.currentStep);
   const steps = ["Your Details", "Car Details", "Buy Now"];
 
-  // const handleStepChange = (action) => {
-  //   if (currentStep > steps.length - 2) return;
-  //   if (action === "stepUp") setCurrentStep(currentStep + 1);
-  // };
-
   const renderComponents = () => {
     switch (currentStep) {
       case 0:

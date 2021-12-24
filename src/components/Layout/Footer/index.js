@@ -1,5 +1,5 @@
-import { Typography, Box, Container, Divider, Grid } from "@mui/material";
-import CopyrightText from "./CopyrightText";
+import { Typography, Box, Container, Grid } from "@mui/material";
+// import CopyrightText from "./CopyrightText";
 import React from "react";
 
 export default function Footer() {
@@ -36,7 +36,7 @@ export default function Footer() {
       <Container>
         <Grid container sx={{ px: 2 }}>
           {Object.keys(items).map((elem, i) => (
-            <Grid item xs={6} sm={4} md={3} sx={{ py: 4 }}>
+            <Grid item xs={6} sm={4} md={3} sx={{ py: 4 }} key={i}>
               <Typography
                 sx={{
                   color: "#eeeeee",
@@ -55,6 +55,7 @@ export default function Footer() {
                     fontSize: "13px",
                     lineHeight: "24px",
                   }}
+                  key={i}
                 >
                   {child.item}
                 </Typography>

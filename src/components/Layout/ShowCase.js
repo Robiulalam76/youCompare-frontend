@@ -63,6 +63,7 @@ export default function Showcase() {
     <React.Fragment>
       {/* logo's of sponsore */}
       <Grid
+        container
         style={{
           margin: "7% 0% 4% 0%",
           padding: "0px 1%",
@@ -71,10 +72,10 @@ export default function Showcase() {
           alignItems: "cente",
         }}
       >
-        <Grid xs={2}>
+        <Grid item xs={2}>
           <img style={{ height: "55%" }} src={logo1} alt="" />
         </Grid>
-        <Grid xs={2}>
+        <Grid item xs={2}>
           <div
             style={{
               width: "100%",
@@ -86,13 +87,13 @@ export default function Showcase() {
             <img style={{ height: "55%", width: "60%" }} src={logo2} alt="" />
           </div>
         </Grid>
-        <Grid xs={2}>
+        <Grid item xs={2}>
           <img style={{ height: "55%" }} src={logo3} alt="" />
         </Grid>
-        <Grid xs={2}>
+        <Grid item xs={2}>
           <img style={{ height: "55%" }} src={logo4} alt="" />
         </Grid>
-        <Grid xs={2}>
+        <Grid item xs={2}>
           <img style={{ height: "55%" }} src={logo5} alt="" />
         </Grid>
       </Grid>
@@ -107,6 +108,7 @@ export default function Showcase() {
         <Grid container style={methodStyle}>
           {steps.map((step, i) => (
             <Grid
+              item
               xl={4}
               lg={4}
               md={6}
@@ -115,7 +117,6 @@ export default function Showcase() {
               className="step"
               style={(stepStyle, { padding: "2%" })}
               key={i}
-              item
             >
               <div style={{ height: "300px" }}>
                 <img
@@ -159,6 +160,7 @@ export default function Showcase() {
       {/* Get the app */}
       <Grid container className="store">
         <Grid
+          item
           lg={6}
           xl={6}
           md={6}
@@ -177,7 +179,7 @@ export default function Showcase() {
             finibus sapien lorem, molestie dictum urna accumsan sit amet.
           </p>
         </Grid>
-        <Grid lg={6} md={6} xl={6} sm={6} xs={12} style={{ width: "50%" }}>
+        <Grid item lg={6} md={6} xl={6} sm={6} xs={12} style={{ width: "50%" }}>
           <img className="SubAuto appImage" src={store} alt="" />
         </Grid>
       </Grid>
