@@ -1,34 +1,34 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 
 import NavigationScroll from "./components/HOC/NavigationScroll";
 
 //screens
-import LandingPage from "./screens/LangingPage";
 import Login from "./screens/auth/Login";
 import Signup from "./screens/auth/Signup";
 
-//compare pages
-import AutoCompare from "./screens/compare/auto";
-import LifeCompare from "./screens/compare/life";
-import HealthCompare from "./screens/compare/health";
-import TravelCompare from "./screens/compare/travel";
-
-import AutoBuyNow from "./screens/buyprocess/auto";
-import LifeBuyNow from "./screens/buyprocess/life";
-import HealthBuyNow from "./screens/buyprocess/health";
-
 import PaymentSuccessfull from "./screens/paymentSuccessfull";
-
-import MyDocs from "./screens/profile/MyDocs";
-import MyPolicies from "./screens/profile/MyPolicies";
 
 import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "./themes/index";
-
 import "./App.css";
 
-function App() {
+const LandingPage = React.lazy(() => import("./screens/LangingPage"));
+
+//compare pages
+const AutoCompare = React.lazy(() => import("./screens/compare/auto"));
+const LifeCompare = React.lazy(() => import("./screens/compare/life"));
+const HealthCompare = React.lazy(() => import("./screens/compare/health"));
+const TravelCompare = React.lazy(() => import("./screens/compare/travel"));
+
+const AutoBuyNow = React.lazy(() => import("./screens/buyprocess/auto"));
+const LifeBuyNow = React.lazy(() => import("./screens/buyprocess/life"));
+const HealthBuyNow = React.lazy(() => import("./screens/buyprocess/health"));
+
+const MyDocs = React.lazy(() => import("./screens/profile/MyDocs"));
+const MyPolicies = React.lazy(() => import("./screens/profile/MyPolicies"));
+
+export default function App() {
   const [customvariables, setCustomvariables] = React.useState({
     bg: "#454545",
   });
@@ -70,36 +70,56 @@ function App() {
           <NavigationScroll>
             <Switch>
               <Route path="/home">
-                <LandingPage user={user} />
+                <Suspense fallback={<div>Loading....</div>}>
+                  <LandingPage user={user} />
+                </Suspense>
               </Route>
               <Redirect exact from="/" to="/home" />
 
               <Route exact path="/auto/compare">
-                <AutoCompare />
+                <Suspense fallback={ComparepageFallback}>
+                  <AutoCompare />
+                </Suspense>
               </Route>
 
               <Route exact path="/life/compare">
-                <LifeCompare />
+                <Suspense fallback={ComparepageFallback}>
+                  <LifeCompare />
+                </Suspense>
               </Route>
+
               <Route exact path="/health/compare">
-                <HealthCompare />
+                <Suspense fallback={ComparepageFallback}>
+                  <HealthCompare />
+                </Suspense>
               </Route>
+
               <Route exact path="/travel/compare">
-                <TravelCompare />
+                <Suspense fallback={ComparepageFallback}>
+                  <TravelCompare />
+                </Suspense>
               </Route>
 
               {/** Buy Now Pages */}
               <Route exact path="/auto/buynow">
-                <AutoBuyNow />
+                <Suspense fallback={BuypageFallback}>
+                  <AutoBuyNow />
+                </Suspense>
               </Route>
               <Route exact path="/life/buynow">
-                <LifeBuyNow />
+                <Suspense fallback={BuypageFallback}>
+                  <LifeBuyNow />
+                </Suspense>
               </Route>
               <Route exact path="/health/buynow">
-                <HealthBuyNow />
+                <Suspense fallback={BuypageFallback}>
+                  <HealthBuyNow />
+                </Suspense>
               </Route>
               <Route path="/travel/buynow">
-                <AutoBuyNow />
+                <Suspense fallback={BuypageFallback}>
+                  <AutoBuyNow />
+                </Suspense>
               </Route>
 
               {/** Payment */}
@@ -109,10 +129,14 @@ function App() {
 
               {/** Profile */}
               <Route exact path="/profile/mydocs">
-                <MyDocs />
+                <Suspense fallback={ProfilepageFallback}>
+                  <MyDocs />
+                </Suspense>
               </Route>
               <Route exact path="/profile/mypolicies">
-                <MyPolicies />
+                <Suspense fallback={ProfilepageFallback}>
+                  <MyPolicies />
+                </Suspense>
               </Route>
 
               {/**Auth pages */}
@@ -131,4 +155,15 @@ function App() {
     </React.Fragment>
   );
 }
-export default App;
+
+const ComparepageFallback = () => {
+  return <div>Compare Page Fallback: Loading... </div>;
+};
+
+const BuypageFallback = () => {
+  return <div>Buy Page Fallback: Loading... </div>;
+};
+
+const ProfilepageFallback = () => {
+  return <div>Profile Page Fallback: Loading... </div>;
+};

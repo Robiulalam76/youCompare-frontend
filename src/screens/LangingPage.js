@@ -1,26 +1,27 @@
 import React, { Suspense, useState } from "react";
-import { BrowserRouter, Link } from "react-router-dom";
-import Auto from "../components/Auto/Auto";
 import "./landingpage.css";
 
-import {
-  BrowserRouter as Router,
-  useRouteMatch,
-  Route,
-  Switch,
-} from "react-router-dom";
+import { useRouteMatch, Route, Switch, Link } from "react-router-dom";
 import Layout from "../components/Layout/index";
-import SingleInsurance from "../components/SingleInsurance";
-import Spinner from "../components/Spinner";
-import car from "../accets/car-image.svg";
-import Login from "./auth/Login";
+//import SingleInsurance from "../components/SingleInsurance";
+//import Spinner from "../components/Spinner";
+//import Login from "./auth/Login";
 import LifePic from "../accets/life.svg";
 import TravelPic from "../accets/driver.svg";
-import Life from "../components/Life/Life";
-import Travel from "../components/Travel/Travel";
-import Health from "../components/Health/Health";
+import car from "../accets/car-image.svg";
 import HealthPic from "../accets/health.svg";
+
 import { Button, Grid } from "@mui/material";
+
+// components
+const Life = React.lazy(() => import("../components/Life/Life"));
+const Travel = React.lazy(() => import("../components/Travel/Travel"));
+const Health = React.lazy(() => import("../components/Health/Health"));
+const Auto = React.lazy(() => import("../components/Auto/Auto"));
+// import Life from "../components/Life/Life";
+// import Travel from "../components/Travel/Travel";
+// import Health from "../components/Health/Health";
+// import Auto from "../components/Auto/Auto";
 
 const rootStyle = {
   textAlign: "center",
@@ -63,6 +64,8 @@ const insurances = [
 
 export default function LandingPage({ user }) {
   const { path, url } = useRouteMatch();
+
+  console.log(path, "PATH")
 
   const Card = () => (
     //landing page er main div
@@ -134,15 +137,25 @@ export default function LandingPage({ user }) {
           <div className="tabs">
             <Switch>
               <Route path={`${path}`} exact component={Card} />
-              <Route path={`${path}/auto`} component={Auto} />
+              <Route path={`${path}/auto`}>
+                <Suspense fallback={<div>Auto Component Loading...</div>}>
+                  <Auto />
+                </Suspense>
+              </Route>
               <Route path={`${path}/life`}>
-                <Life />
+                <Suspense fallback={<div>Life Component Loading...</div>}>
+                  <Life />
+                </Suspense>
               </Route>
               <Route path={`${path}/health`}>
-                <Health />
+                <Suspense fallback={<div>Health Component Loading...</div>}>
+                  <Health />
+                </Suspense>
               </Route>
               <Route path={`${path}/travel`}>
-                <Travel />
+                <Suspense fallback={<div>Travel Component Loading...</div>}>
+                  <Travel />
+                </Suspense>
               </Route>
             </Switch>
           </div>
