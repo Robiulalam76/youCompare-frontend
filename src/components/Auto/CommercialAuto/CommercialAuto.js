@@ -53,7 +53,7 @@ const ImageBox = styled(Box)(({ theme }) => ({
 function CommercialAuto({ commercial, children }) {
   const { path, url } = useRouteMatch();
 
-  console.log(`url`, window.location.pathname);
+  console.log(`URL from CommercialAuto: `, window.location.pathname);
 
   return (
     <Grid container spacing={2}>

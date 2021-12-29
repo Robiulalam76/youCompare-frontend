@@ -18,6 +18,7 @@ function ModelNYearsForm() {
   const dispatch = useDispatch();
   const autoQuery = useSelector((state) => state.autoQuery);
   const { brand, model, year } = autoQuery;
+  console.log("brand secelted name", brand);
 
   // Default model & year selection during initial rendering
   // Value should come from local storage(if exist)

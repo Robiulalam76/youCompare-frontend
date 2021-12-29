@@ -19,7 +19,7 @@ export default function Footer() {
       { item: "About" },
       { item: "What We Do" },
       { item: "Blog" },
-      { item: "Contanct" },
+      { item: "Contact" },
     ],
     contact: [
       { item: "Road 7, Sector 11, Uttara, Dhaka, Bangladesh" },
