@@ -306,12 +306,12 @@ function BrandForm() {
 
   return (
     <div
-      style={{
-        border:
-          window.location.pathname === "/home/auto/commercial/car"
-            ? "1px solid red "
-            : "1px solid blue",
-      }}
+    // style={{
+    //   border:
+    //     window.location.pathname === "/home/auto/commercial/car"
+    //       ? "1px solid red "
+    //       : "1px solid blue",
+    // }}
     >
       <form>
         <ResponsiveBox>
