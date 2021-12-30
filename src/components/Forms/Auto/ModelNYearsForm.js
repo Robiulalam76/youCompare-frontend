@@ -23,7 +23,7 @@ function ModelNYearsForm() {
   console.log("dataModel", dataModel[1]);
 
   const allBrandCar = dataModel.filter(
-    (item) => item.Brand.toLowerCase() === brand.toLowerCase()
+    (item) => item.Brand.toLowerCase().trim() === brand.toLowerCase().trim()
   );
 
   console.log("allBrandCar", allBrandCar);

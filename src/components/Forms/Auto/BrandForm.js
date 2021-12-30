@@ -12,7 +12,6 @@ import Audi from "../../../accets/brandLogo/Audi.png";
 import Mercedes from "../../../accets/brandLogo/Mercedes-Benz.png";
 import Ford from "../../../accets/brandLogo/ford.png";
 import Mini from "../../../accets/brandLogo/Mini.png";
-import Volvo from "../../../accets/brandLogo/Volvo.png";
 import Chevrolet from "../../../accets/brandLogo/Chevrolet.png";
 
 // truck images
@@ -22,7 +21,6 @@ import IvecoLogo from "../../../accets/truck/Iveco-logo.png";
 import man from "../../../accets/truck/man.jpg";
 import MercedesT from "../../../accets/truck/Mercedes-Benz.png";
 import Renault from "../../../accets/truck/Renault-logo.png";
-import VolvoT from "../../../accets/truck/Volvo.png";
 import Scania from "../../../accets/truck/Scania-logo.png";
 
 // Van images
@@ -112,7 +110,7 @@ function BrandForm() {
         image: Audi,
       },
       {
-        name: "Mercedes",
+        name: "Mercedes-Benz",
         image: Mercedes,
       },
       {
@@ -126,10 +124,6 @@ function BrandForm() {
       {
         name: "Chevrolet",
         image: Chevrolet,
-      },
-      {
-        name: "Volvo",
-        image: Volvo,
       },
     ];
   }
@@ -152,16 +146,12 @@ function BrandForm() {
         image: man,
       },
       {
-        name: "Mercedes",
+        name: "Mercedes-Benz",
         image: MercedesT,
       },
       {
         name: "Renault",
         image: Renault,
-      },
-      {
-        name: "Volvo",
-        image: VolvoT,
       },
       {
         name: "Scania",
@@ -184,7 +174,7 @@ function BrandForm() {
         image: IvecoLogoV,
       },
       {
-        name: "Mercedes",
+        name: "Mercedes-Benz",
         image: MercedesV,
       },
       {
@@ -220,7 +210,7 @@ function BrandForm() {
         image: Audi,
       },
       {
-        name: "Mercedes",
+        name: "Mercedes-Benz",
         image: Mercedes,
       },
       {
@@ -234,10 +224,6 @@ function BrandForm() {
       {
         name: "Chevrolet",
         image: Chevrolet,
-      },
-      {
-        name: "Volvo",
-        image: Volvo,
       },
     ];
   }
