@@ -5,6 +5,7 @@ import { FIELD_CHANGE } from "../../../constants/autoCompare.constant";
 
 import { CustomTextField as Input } from "../../customStyledComponents/inputs";
 import InputBox from "../../customStyledComponents/InputBox";
+import dataModel from "./allModelData";
 import { styled } from "@mui/system";
 
 const RoundPrimaryBtn = styled(ButtonBase)(({ theme }) => ({
@@ -19,6 +20,13 @@ function ModelNYearsForm() {
   const autoQuery = useSelector((state) => state.autoQuery);
   const { brand, model, year } = autoQuery;
   console.log("brand secelted name", brand);
+  console.log("dataModel", dataModel[1]);
+
+  const allBrandCar = dataModel.filter(
+    (item) => item.Brand.toLowerCase() === brand.toLowerCase()
+  );
+
+  console.log("allBrandCar", allBrandCar);
 
   // Default model & year selection during initial rendering
   // Value should come from local storage(if exist)
@@ -72,22 +80,23 @@ function ModelNYearsForm() {
             />
           </InputBox>
 
-          {["190", "220", "290", "150", "157", "134"].map((elem, i) => (
+          {/* {["190", "220", "290", "150", "157", "134"].map((elem, i) => ( */}
+          {allBrandCar.map((elem, i) => (
             <Button
               sx={{ mr: 1, fontSize: ".8rem", py: 0.5 }}
               key={i}
               variant="round"
-              color={elem === model ? "primary" : "text"}
+              color={elem.Model === model ? "primary" : "text"}
               name="model"
-              value={elem}
+              value={elem.Model}
               onClick={() =>
                 dispatch({
                   type: FIELD_CHANGE,
-                  payload: { field: "model", value: elem },
+                  payload: { field: "model", value: elem.Model },
                 })
               }
             >
-              {elem}
+              {elem.Model}
             </Button>
           ))}
         </form>
@@ -98,7 +107,7 @@ function ModelNYearsForm() {
             <Input name="year" fullWidth value={year} onChange={handleChange} />
           </InputBox>
 
-          {[
+          {/* {[
             "2021",
             "2020",
             "2011",
@@ -109,16 +118,18 @@ function ModelNYearsForm() {
             "2028",
             "2037",
           ].map((elem, i) => (
+             */}
+          {allBrandCar.map((elem, i) => (
             <Button
               sx={{ mr: 1, my: 0.5, fontSize: ".8rem", py: 0.5 }}
               key={i}
               name="year"
-              value={elem}
+              value={elem.Year}
               variant="round"
-              color={elem === year ? "primary" : "text"}
+              color={elem.Year === year ? "primary" : "text"}
               onClick={handleChange}
             >
-              {elem}
+              {elem.Year}
             </Button>
           ))}
         </form>
