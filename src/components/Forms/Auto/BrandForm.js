@@ -352,7 +352,9 @@ function BrandForm() {
             <div
               className="brandname"
               style={{
-                border: brand === elem.name && "1px solid #6094f3",
+                border:
+                  brand.toLowerCase() === elem.name.toLowerCase() &&
+                  "1px solid #6094f3",
                 position: "relative",
               }}
             >
@@ -361,7 +363,7 @@ function BrandForm() {
                 style={{ height: "15vh", objectFit: "contain" }}
                 src={elem.image}
               />
-              {brand === elem.name && (
+              {brand.toLowerCase() === elem.name.toLowerCase() && (
                 <span className="right">
                   <BiCheck />
                 </span>

@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Button, ButtonBase, Stack } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
+import Grid from "@mui/material/Grid";
 import { FIELD_CHANGE } from "../../../constants/autoCompare.constant";
 
 import { CustomTextField as Input } from "../../customStyledComponents/inputs";
@@ -80,25 +81,50 @@ function ModelNYearsForm() {
             />
           </InputBox>
 
+          {/* model section  */}
           {/* {["190", "220", "290", "150", "157", "134"].map((elem, i) => ( */}
-          {allBrandCar.map((elem, i) => (
-            <Button
-              sx={{ mr: 1, fontSize: ".8rem", py: 0.5 }}
-              key={i}
-              variant="round"
-              color={elem.Model === model ? "primary" : "text"}
-              name="model"
-              value={elem.Model}
-              onClick={() =>
-                dispatch({
-                  type: FIELD_CHANGE,
-                  payload: { field: "model", value: elem.Model },
-                })
-              }
-            >
-              {elem.Model}
-            </Button>
-          ))}
+          <Grid container spacing={2}>
+            {allBrandCar.map(
+              (elem, i) =>
+                elem?.Model?.length > 0 && (
+                  <Grid item md={3}>
+                    <div
+                      className="scroll"
+                      style={{
+                        width: "100%",
+                        padding: "10px",
+                        color: elem.Model === model ? "#1482d2" : "#B6B6B6",
+                        border:
+                          elem.Model === model
+                            ? "1px solid #1482d2"
+                            : "1px solid #B6B6B6",
+                        // margin: "10px",
+                        maxHeight: "40px",
+                        overflowY: "scroll",
+                      }}
+                      sx={{
+                        // mr: 1,
+                        fontSize: ".8rem",
+                        // py: 0.5,
+                      }}
+                      key={i}
+                      variant="round"
+                      color={elem.Model === model ? "primary" : "text"}
+                      name="model"
+                      value={elem.Model}
+                      onClick={() =>
+                        dispatch({
+                          type: FIELD_CHANGE,
+                          payload: { field: "model", value: elem.Model },
+                        })
+                      }
+                    >
+                      {elem?.Model}
+                    </div>
+                  </Grid>
+                )
+            )}
+          </Grid>
         </form>
 
         {/* Year Selection */}
@@ -119,6 +145,8 @@ function ModelNYearsForm() {
             "2037",
           ].map((elem, i) => (
              */}
+
+          {/* year section start  */}
           {allBrandCar.map((elem, i) => (
             <Button
               sx={{ mr: 1, my: 0.5, fontSize: ".8rem", py: 0.5 }}
