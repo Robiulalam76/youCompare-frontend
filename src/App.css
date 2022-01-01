@@ -173,10 +173,10 @@ primary-font-family:Poppins */
 /* font-family */
 /* variables  */
 
-::-webkit-scrollbar {
+.modelBrand ::-webkit-scrollbar {
   width: 0.1px;
   border-left: 1px solid #e6ecf8;
 }
-::-webkit-scrollbar-thumb {
+.modelBrand ::-webkit-scrollbar-thumb {
   background-color: #d6872c00;
 }
