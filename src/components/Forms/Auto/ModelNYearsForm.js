@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Button, ButtonBase, Stack } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import Grid from "@mui/material/Grid";
@@ -20,12 +20,18 @@ function ModelNYearsForm() {
   const dispatch = useDispatch();
   const autoQuery = useSelector((state) => state.autoQuery);
   const { brand, model, year } = autoQuery;
+
   console.log("brand secelted name", brand);
   console.log("dataModel", dataModel[1]);
 
   const allBrandCar = dataModel.filter(
     (item) => item.Brand.toLowerCase().trim() === brand.toLowerCase().trim()
   );
+  const [totalBrands, setTotalBrands] = useState(allBrandCar.length);
+  const [more, setMore] = useState(true);
+
+  const [totalYears, setTotalYears] = useState(allBrandCar.length);
+  const [moreYear, setMoreYear] = useState(true);
 
   console.log("allBrandCar", allBrandCar);
 
@@ -54,7 +60,10 @@ function ModelNYearsForm() {
   };
 
   return (
-    <div className="modelBrand" style={{ marginTop: "2%", textAlignLast: "start" }}>
+    <div
+      className="modelBrand"
+      style={{ marginTop: "2%", textAlignLast: "start" }}
+    >
       {/* <p>Model and Year</p> */}
       <div
         // className="brandname"
@@ -84,7 +93,7 @@ function ModelNYearsForm() {
           {/* model section  */}
           {/* {["190", "220", "290", "150", "157", "134"].map((elem, i) => ( */}
           <Grid container spacing={2}>
-            {allBrandCar.map(
+            {allBrandCar.slice(0, more ? 10 : totalBrands).map(
               (elem, i) =>
                 elem?.Model?.length > 0 && (
                   <Grid item md={4}>
@@ -125,6 +134,19 @@ function ModelNYearsForm() {
                 )
             )}
           </Grid>
+          <p
+            style={{
+              border: "1px solid #0048ba",
+              color: "#0048ba",
+              borderRadius: "5px",
+              display: "inline-block",
+              margin: "10px 0px",
+              padding: "5px",
+            }}
+            onClick={() => setMore(!more)}
+          >
+            {more ? <p> See More</p> : <p> See Less</p>}
+          </p>
         </form>
 
         {/* Year Selection */}
@@ -132,7 +154,6 @@ function ModelNYearsForm() {
           <InputBox label="Select Year" sx={{ py: 1 }}>
             <Input name="year" fullWidth value={year} onChange={handleChange} />
           </InputBox>
-
           {/* {[
             "2021",
             "2020",
@@ -145,9 +166,8 @@ function ModelNYearsForm() {
             "2037",
           ].map((elem, i) => (
              */}
-
           {/* year section start  */}
-          {allBrandCar.map((elem, i) => (
+          {allBrandCar.slice(0, moreYear ? 10 : totalYears).map((elem, i) => (
             <Button
               sx={{ mr: 1, my: 0.5, fontSize: ".8rem", py: 0.5 }}
               key={i}
@@ -160,6 +180,20 @@ function ModelNYearsForm() {
               {elem.Year}
             </Button>
           ))}
+          <br />
+          <p
+            style={{
+              border: "1px solid #0048ba",
+              color: "#0048ba",
+              borderRadius: "5px",
+              display: "inline-block",
+              margin: "10px 0px",
+              padding: "5px",
+            }}
+            onClick={() => setMoreYear(!moreYear)}
+          >
+            {moreYear ? <p> See More</p> : <p> See Less</p>}
+          </p>
         </form>
       </Stack>
     </div>
