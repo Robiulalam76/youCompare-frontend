@@ -96,7 +96,7 @@ function ModelNYearsForm() {
             {allBrandCar.slice(0, more ? 10 : totalBrands).map(
               (elem, i) =>
                 elem?.Model?.length > 0 && (
-                  <Grid item md={4}>
+                  <Grid item xl={2} lg={3} md={4} sm={6} xs={12}>
                     <div
                       className="scroll"
                       style={{
