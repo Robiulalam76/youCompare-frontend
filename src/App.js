@@ -28,6 +28,8 @@ const HealthBuyNow = React.lazy(() => import("./screens/buyprocess/health"));
 const MyDocs = React.lazy(() => import("./screens/profile/MyDocs"));
 const MyPolicies = React.lazy(() => import("./screens/profile/MyPolicies"));
 
+const AutoClaim = React.lazy(() => import("./screens/claim/auto"))
+
 export default function App() {
   const [customvariables, setCustomvariables] = React.useState({
     bg: "#454545",
@@ -104,7 +106,7 @@ export default function App() {
               {/* claim */}
               <Route path="/claim/auto">
                 <Suspense fallback={<div>Loading....</div>}>
-                  <LandingPage user={user} />
+                  <AutoClaim />
                 </Suspense>
               </Route>
 

@@ -1,0 +1,38 @@
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+  border: 1px solid lightgray;
+  padding: 16px 32px;
+  border-radius: 8px;
+  margin-bottom: 3rem;
+}
+
+.headerText{
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 1.5rem;
+  line-height: 3rem;
+  color: #212121;
+}
+
+.label {
+  color: black;
+  font-weight: 400;
+}
+
+.input{
+  padding: 0px 8px;
+  font-size: 14px;
+}
+
+@media only screen and (max-width: 550px) {
+  .container {
+    padding: 16px 0;
+    border: none;
+  }
+  .headerText{
+    font-size: 1.2rem;
+    background-color: #D4E5FB;
+  }
+}
