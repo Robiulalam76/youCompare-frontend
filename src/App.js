@@ -74,6 +74,7 @@ export default function App() {
                   <LandingPage user={user} />
                 </Suspense>
               </Route>
+
               <Redirect exact from="/" to="/home" />
 
               <Route exact path="/auto/compare">
@@ -97,6 +98,31 @@ export default function App() {
               <Route exact path="/travel/compare">
                 <Suspense fallback={ComparepageFallback}>
                   <TravelCompare />
+                </Suspense>
+              </Route>
+
+              {/* claim */}
+              <Route path="/claim/auto">
+                <Suspense fallback={<div>Loading....</div>}>
+                  <LandingPage user={user} />
+                </Suspense>
+              </Route>
+
+              <Route path="/claim/life">
+                <Suspense fallback={<div>Loading....</div>}>
+                  <LandingPage user={user} />
+                </Suspense>
+              </Route>
+
+              <Route path="/claim/travel">
+                <Suspense fallback={<div>Loading....</div>}>
+                  <LandingPage user={user} />
+                </Suspense>
+              </Route>
+
+              <Route path="/claim/health">
+                <Suspense fallback={<div>Loading....</div>}>
+                  <AutoBuyNow />
                 </Suspense>
               </Route>
 
