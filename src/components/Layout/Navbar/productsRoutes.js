@@ -5,6 +5,7 @@ import { MdHealthAndSafety } from "react-icons/md";
 
 export const autoInsuranceRoutes = {
   id: 1,
+  claimLink: "/claim/auto",
   category: "Auto Insurance",
   icon: <AiFillCar style={{ color: "gray" }} />,
   subcat: [
@@ -37,12 +38,13 @@ export const autoInsuranceRoutes = {
       id: 6,
       category: "Commercial Car Insurance",
       link: "/home/auto/commercial/car",
-    }
+    },
   ],
 };
 
 export const lifeInsuranceRoutes = {
   id: 2,
+  claimLink: "/claim/life",
   category: "Life Insurance",
   icon: <BsLifePreserver style={{ color: "gray" }} />,
   subcat: [
@@ -66,6 +68,7 @@ export const lifeInsuranceRoutes = {
 
 export const travelInsuranceRoutes = {
   id: 3,
+  claimLink: "/claim/travel",
   category: "Travel Insurance",
   icon: <GiCommercialAirplane style={{ color: "gray" }} />,
   subcat: [
@@ -83,6 +86,7 @@ export const travelInsuranceRoutes = {
 };
 export const healthInsuranceRoutes = {
   id: 4,
+  claimLink: "/claim/health",
   category: "Health Insurace",
   icon: <MdHealthAndSafety style={{ color: "gray" }} />,
   subcat: [

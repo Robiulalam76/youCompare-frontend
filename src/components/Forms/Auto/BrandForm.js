@@ -98,12 +98,12 @@ function BrandForm() {
   if (window.location.pathname === "/home/auto/commercial/car") {
     brands = [
       {
-        name: "BMW",
-        image: BMW,
-      },
-      {
         name: "Honda",
         image: Honda,
+      },
+      {
+        name: "BMW",
+        image: BMW,
       },
       {
         name: "Audi",

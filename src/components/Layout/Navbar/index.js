@@ -31,6 +31,7 @@ import MenuItems from "./MenuItems";
 import styles from "./styles.module.css";
 import { Navtext } from "../../customStyledComponents/texts";
 import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from "react-dom/cjs/react-dom.development";
+import ClainMenu from "./ClainMenu";
 
 const BrandLogoBox = styled(Box)(({ theme }) => ({
   width: "200px",
@@ -222,6 +223,9 @@ export default function Navbar({}) {
             <Hidden mdDown>
               <li className={styles.navlistItem}>
                 <ProductsMenu />
+              </li>
+              <li className={styles.navlistItem}>
+                <ClainMenu />
               </li>
               <li className={styles.navlistItem}>
                 <Navtext>Get a Quote</Navtext>
