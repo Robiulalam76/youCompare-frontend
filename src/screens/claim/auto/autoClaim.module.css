@@ -1,10 +1,21 @@
 .container {
   max-width: 700px;
   margin: 0 auto;
-  border: 1px solid lightgray;
   padding: 16px 32px;
   border-radius: 8px;
-  margin-bottom: 3rem;
+  background-color: white;
+  box-shadow: 0px 3px 5px -1px rgba(180, 180, 180, 0.2), 0px 5px 8px 0px rgba(71, 71, 71, 0.14), 0px 1px 14px 0px rgba(71, 71, 71, 0.12);;
+}
+
+.icondiv{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #ecf0f3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
 
 .headerText{
@@ -26,13 +37,13 @@
   font-size: 14px;
 }
 
-@media only screen and (max-width: 550px) {
+@media only screen and (max-width: 600px) {
   .container {
-    padding: 16px 0;
     border: none;
+    box-shadow: none;
+    border-radius: 0;
   }
   .headerText{
     font-size: 1.2rem;
-    background-color: #D4E5FB;
   }
 }

@@ -7,14 +7,20 @@ import Impact from './Impact'
 import Injured from './Injured';
 import Witness from './Witness';
 import styles from '../autoClaim.module.css'
-import { Box } from '@mui/material';
+import { Box, Button } from '@mui/material';
+import { BiArrowBack } from 'react-icons/bi';
 
-const ClaimForm = () => {
+const ClaimForm = ({ setShowForm }) => {
   const [state, setState] = React.useState({});
 
   return (
-    <Box>
+    <Box sx={{ pt: 3, pb: 3 }}>
       <div className={styles.container}>
+        <div 
+          className={styles.icondiv} 
+          onClick={() => setShowForm(false)}>
+          <BiArrowBack />
+        </div>
         <h1 className={styles.headerText}>
           Automobile Claim
         </h1>
@@ -28,6 +34,7 @@ const ClaimForm = () => {
           <Injured />
           <Witness />
           <Impact />
+          <Button type='submit' variant='contained' sx={{ mt: 2 }}>Submit</Button>
         </form>
       </div>
     </Box>
