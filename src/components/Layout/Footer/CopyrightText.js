@@ -12,7 +12,7 @@ const CopyrightText = () => {
         textAlign: "center",
       }}
     >
-      Copyright <span style={{ fontSize: "14px" }}>&copy;</span> 2021, All
+      Copyright <span style={{ fontSize: "14px" }}>&copy;</span> {new Date().getFullYear()}, All
       rights reserved by YouCompare
     </Typography>
   );

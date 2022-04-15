@@ -29,6 +29,7 @@ const MyDocs = React.lazy(() => import("./screens/profile/MyDocs"));
 const MyPolicies = React.lazy(() => import("./screens/profile/MyPolicies"));
 
 const AutoClaim = React.lazy(() => import("./screens/claim/auto"))
+const Claim = React.lazy(() => import("./screens/claim/Claim"))
 
 export default function App() {
   const [customvariables, setCustomvariables] = React.useState({
@@ -104,6 +105,12 @@ export default function App() {
               </Route>
 
               {/* claim */}
+              <Route exact path="/claim">
+                <Suspense fallback={<div>Loading....</div>}>
+                  <Claim />
+                </Suspense>
+              </Route>
+
               <Route path="/claim/auto">
                 <Suspense fallback={<div>Loading....</div>}>
                   <AutoClaim />
