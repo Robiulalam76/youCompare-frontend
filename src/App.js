@@ -195,13 +195,13 @@ export default function App() {
 }
 
 const ComparepageFallback = () => {
-  return <div>Compare Page Fallback: Loading... </div>;
+  return <SelectionFallback />;
 };
 
 const BuypageFallback = () => {
-  return <div>Buy Page Fallback: Loading... </div>;
+  return <SelectionFallback />
 };
 
 const ProfilepageFallback = () => {
-  return <div>Profile Page Fallback: Loading... </div>;
+  return <SelectionFallback />;
 };
