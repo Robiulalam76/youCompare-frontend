@@ -13,6 +13,9 @@ import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "./themes/index";
 import "./App.css";
 
+
+import SelectionFallback from "./screens/fallbackPages/SelectionFallback";
+
 const LandingPage = React.lazy(() => import("./screens/LangingPage"));
 
 //compare pages
@@ -27,6 +30,9 @@ const HealthBuyNow = React.lazy(() => import("./screens/buyprocess/health"));
 
 const MyDocs = React.lazy(() => import("./screens/profile/MyDocs"));
 const MyPolicies = React.lazy(() => import("./screens/profile/MyPolicies"));
+
+const AutoClaim = React.lazy(() => import("./screens/claim/auto"))
+const Claim = React.lazy(() => import("./screens/claim/Claim"))
 
 export default function App() {
   const [customvariables, setCustomvariables] = React.useState({
@@ -70,7 +76,7 @@ export default function App() {
           <NavigationScroll>
             <Switch>
               <Route path="/home">
-                <Suspense fallback={<div>Loading....</div>}>
+                <Suspense fallback={<SelectionFallback />}>
                   <LandingPage user={user} />
                 </Suspense>
               </Route>
@@ -102,9 +108,15 @@ export default function App() {
               </Route>
 
               {/* claim */}
+              <Route exact path="/claim">
+                <Suspense fallback={<div>Loading....</div>}>
+                  <Claim />
+                </Suspense>
+              </Route>
+
               <Route path="/claim/auto">
                 <Suspense fallback={<div>Loading....</div>}>
-                  <LandingPage user={user} />
+                  <AutoClaim />
                 </Suspense>
               </Route>
 
@@ -183,13 +195,13 @@ export default function App() {
 }
 
 const ComparepageFallback = () => {
-  return <div>Compare Page Fallback: Loading... </div>;
+  return <SelectionFallback />;
 };
 
 const BuypageFallback = () => {
-  return <div>Buy Page Fallback: Loading... </div>;
+  return <SelectionFallback />
 };
 
 const ProfilepageFallback = () => {
-  return <div>Profile Page Fallback: Loading... </div>;
+  return <SelectionFallback />;
 };

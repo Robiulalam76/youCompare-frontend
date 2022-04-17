@@ -55,7 +55,7 @@ export default function MenuItems({ isLoggedin }) {
               },
               { title: "My Quotes", link: "/" },
             ].map((item, i) => (
-              <Link to={item.link} kxey={i}>
+              <Link to={item.link} key={i}>
                 <ListItem sx={{ py: 0, px: 2 }}>
                   <ListItemButton
                     onClick={() => setSelectedNavItem(item.title)}
@@ -107,8 +107,8 @@ const Navigation = ({ item, selectedNavItem, setSelectedNavItem }) => {
     }
   };
 
-  console.log(selectedNavItem, "Selected");
-  console.log(item.category, "item");
+  // console.log(selectedNavItem, "Selected");
+  // console.log(item.category, "item");
 
   return (
     <React.Fragment>

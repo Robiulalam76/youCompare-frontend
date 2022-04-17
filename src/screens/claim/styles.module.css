@@ -1,0 +1,36 @@
+:root {
+  --boxShadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 5px 8px 0px rgba(153, 153, 153, 0.14), 0px 1px 14px 0px rgba(151, 151, 151, 0.12);
+}
+
+.title{
+  font-family: 'Open Sans';
+  font-size: 1.75rem;
+  line-height: 2.5rem;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+}
+
+.text{
+  font-weight: 400;
+  font-family: 'Open Sans';
+  font-size: 16px;
+  color: #2e3235;;
+}
+
+.iconJar {
+  display: inline-block;
+  padding: 1rem;
+  margin: 1rem 2rem 1rem 0;
+  background: white;
+  border-radius: 8px;
+  width: 120px;
+  box-shadow: var(--boxShadow);
+  cursor: pointer;
+}
+
+.icons {
+  font-size: 48px;
+  margin: 0 auto;
+  color: #606970;
+}
