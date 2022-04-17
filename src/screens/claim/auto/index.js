@@ -31,7 +31,7 @@ const AutoClaim = () => {
   return (
     <React.Fragment>
       <Navbar />
-      <Box sx={{ backgroundColor: "background.life" }}>
+      <Box sx={{ backgroundColor: "background.lifeLight" }}>
         <StyledContainer>
           {
             showForm ?

@@ -8,7 +8,7 @@ import Injured from './Injured';
 import Witness from './Witness';
 import styles from '../autoClaim.module.css'
 import { Box, Button } from '@mui/material';
-import { BiArrowBack } from 'react-icons/bi';
+import { HiOutlineArrowLeft } from 'react-icons/hi';
 
 const ClaimForm = ({ setShowForm }) => {
   const [state, setState] = React.useState({});
@@ -19,7 +19,7 @@ const ClaimForm = ({ setShowForm }) => {
         <div 
           className={styles.icondiv} 
           onClick={() => setShowForm(false)}>
-          <BiArrowBack />
+          <HiOutlineArrowLeft />
         </div>
         <h1 className={styles.headerText}>
           Automobile Claim

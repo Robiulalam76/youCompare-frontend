@@ -13,6 +13,9 @@ import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "./themes/index";
 import "./App.css";
 
+
+import SelectionFallback from "./screens/fallbackPages/SelectionFallback";
+
 const LandingPage = React.lazy(() => import("./screens/LangingPage"));
 
 //compare pages
@@ -73,7 +76,7 @@ export default function App() {
           <NavigationScroll>
             <Switch>
               <Route path="/home">
-                <Suspense fallback={<div>Loading....</div>}>
+                <Suspense fallback={<SelectionFallback />}>
                   <LandingPage user={user} />
                 </Suspense>
               </Route>

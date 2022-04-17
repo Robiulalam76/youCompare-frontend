@@ -1,26 +1,35 @@
-import { Stepper, Step, StepLabel, StepContent, Grid, Button, Collapse } from '@mui/material';
+import { Stepper, Step, StepLabel, StepContent, Grid, Button, Collapse, ButtonBase } from '@mui/material';
 import React from 'react';
 import styles from "./styles.module.css";
 import { claimSteps, docsChecklist, questions } from './data';
 import { BsFileEarmarkCheck, BsArrowDownCircle } from 'react-icons/bs';
+import { AiOutlineArrowLeft } from 'react-icons/ai';
+import { HiOutlineArrowLeft } from 'react-icons/hi';
 // import { Rotate90DegreesCcw } from '@mui/icons-material';
 
 //components
 import DisplayCard from './DisplayCard'
 import Assistance from './Assistance'
+import { Link } from 'react-router-dom';
 
 export default function Instructions({ setShowForm }) {
-  
+
   const onShowForm = () => {
     setShowForm(true)
   }
-  
+
   return (
     <Grid container>
       <Grid item xs={12} md={6}>
         <Grid container justifyContent="center">
+
           {/* Claim Process Section */}
           <DisplayCard>
+            <Link to="/claim">
+              <button className={styles.iconButton}>
+                <HiOutlineArrowLeft style={{ fontSize: "16px" }} />
+              </button>
+            </Link>
             <h2 className={styles.title}>Claim Process</h2>
             <p className={styles.subtitle}>Auto Insurance</p>
             <Stepper orientation='vertical' sx={{ mt: 2 }}>

@@ -15,6 +15,7 @@ import { BsUmbrellaFill } from 'react-icons/bs'
 import styles from './styles.module.css';
 import { Link } from 'react-router-dom';
 
+
 const StyledContainer = styled(Container)(({ theme }) => ({
   marginTop: "10vh",
   [theme.breakpoints.down('md')]: {
