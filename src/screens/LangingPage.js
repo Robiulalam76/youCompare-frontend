@@ -65,7 +65,7 @@ const insurances = [
 export default function LandingPage({ user }) {
   const { path, url } = useRouteMatch();
 
-  console.log(path, "PATH")
+  console.log(path, "PATH");
 
   const Card = () => (
     //landing page er main div

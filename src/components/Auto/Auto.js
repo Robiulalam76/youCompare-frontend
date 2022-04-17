@@ -12,7 +12,6 @@ import AutoCard from "../Card/Card";
 import { subAutoInsurances } from "../../Data/data";
 import Banner from "../Banner";
 
-
 // components
 import ThreeWheeler from "./ThreeWheeler";
 
