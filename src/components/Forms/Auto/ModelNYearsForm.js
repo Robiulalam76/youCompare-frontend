@@ -6,7 +6,7 @@ import { FIELD_CHANGE } from "../../../constants/autoCompare.constant";
 
 import { CustomTextField as Input } from "../../customStyledComponents/inputs";
 import InputBox from "../../customStyledComponents/InputBox";
-import dataModel from "./allModelData";
+// import dataModel from "./allModelData";
 import car from "./car";
 import truck from "./truck";
 import van from "./van";
@@ -36,10 +36,20 @@ function ModelNYearsForm() {
   if (window.location.pathname === "/home/auto/commercial/car") {
     dataModel = car;
   }
+
+  if (window.location.pathname === "/home/auto/three-wheeler") {
+    dataModel = car;
+  }
+  if (window.location.pathname === "/home/auto/private") {
+    dataModel = car;
+  }
+  if (window.location.pathname === "/home/auto/two-wheeler") {
+    dataModel = van;
+  }
   // "/home/auto/commercial/truck"
 
-  console.log("brand secelted name", brand);
-  console.log("dataModel", dataModel.length);
+  // console.log("brand secelted name", brand);
+  // console.log("dataModel", dataModel.length);
 
   const allBrandCar = dataModel.filter(
     (item) => item.Brand?.toLowerCase().trim() === brand.toLowerCase().trim()

@@ -13,7 +13,6 @@ import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "./themes/index";
 import "./App.css";
 
-
 import SelectionFallback from "./screens/fallbackPages/SelectionFallback";
 
 const LandingPage = React.lazy(() => import("./screens/LangingPage"));
@@ -31,8 +30,8 @@ const HealthBuyNow = React.lazy(() => import("./screens/buyprocess/health"));
 const MyDocs = React.lazy(() => import("./screens/profile/MyDocs"));
 const MyPolicies = React.lazy(() => import("./screens/profile/MyPolicies"));
 
-const AutoClaim = React.lazy(() => import("./screens/claim/auto"))
-const Claim = React.lazy(() => import("./screens/claim/Claim"))
+const AutoClaim = React.lazy(() => import("./screens/Claim/auto"));
+const Claim = React.lazy(() => import("./screens/Claim/Claim"));
 
 export default function App() {
   const [customvariables, setCustomvariables] = React.useState({
@@ -199,7 +198,7 @@ const ComparepageFallback = () => {
 };
 
 const BuypageFallback = () => {
-  return <SelectionFallback />
+  return <SelectionFallback />;
 };
 
 const ProfilepageFallback = () => {
