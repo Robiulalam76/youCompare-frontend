@@ -7,7 +7,8 @@ import { Label, Title } from "./styledComponents";
 const Declaration = () => {
   return (
     <React.Fragment>
-      <Title>Declaration </Title>
+      <Title>Declaration</Title>
+
       <Grid container>
         <Grid item xs={12}>
           <Label>Signature 1</Label>

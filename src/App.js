@@ -14,6 +14,7 @@ import { theme } from "./themes/index";
 import "./App.css";
 
 import SelectionFallback from "./screens/fallbackPages/SelectionFallback";
+import LifeClaim from "./screens/Claim/life";
 
 const LandingPage = React.lazy(() => import("./screens/LangingPage"));
 
@@ -121,7 +122,7 @@ export default function App() {
 
               <Route path="/claim/life">
                 <Suspense fallback={<div>Loading....</div>}>
-                  <LandingPage user={user} />
+                  <LifeClaim />
                 </Suspense>
               </Route>
 

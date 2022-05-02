@@ -4,8 +4,10 @@ import styles from './autoClaim.module.css'
 
 import Navbar from '../../../components/Layout/Navbar';
 import Footer from '../../../components/Layout/Footer';
+
 import ClaimForm from './ClaimForm/ClaimForm';
 import Instructions from './Instructions/Instructions';
+
 import { Box } from '@mui/material';
 
 import { Container } from "@mui/material";
