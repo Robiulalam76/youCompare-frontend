@@ -14,7 +14,6 @@ import { theme } from "./themes/index";
 import "./App.css";
 
 import SelectionFallback from "./screens/fallbackPages/SelectionFallback";
-import LifeClaim from "./screens/Claim/life";
 
 const LandingPage = React.lazy(() => import("./screens/LangingPage"));
 
@@ -33,6 +32,7 @@ const MyPolicies = React.lazy(() => import("./screens/profile/MyPolicies"));
 
 const AutoClaim = React.lazy(() => import("./screens/Claim/auto"));
 const Claim = React.lazy(() => import("./screens/Claim/Claim"));
+const LifeClaim = React.lazy(() => import("./screens/Claim/life"));
 
 export default function App() {
   const [customvariables, setCustomvariables] = React.useState({
