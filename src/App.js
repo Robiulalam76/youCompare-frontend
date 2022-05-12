@@ -30,9 +30,11 @@ const HealthBuyNow = React.lazy(() => import("./screens/buyprocess/health"));
 const MyDocs = React.lazy(() => import("./screens/profile/MyDocs"));
 const MyPolicies = React.lazy(() => import("./screens/profile/MyPolicies"));
 
-const AutoClaim = React.lazy(() => import("./screens/Claim/auto"));
-const Claim = React.lazy(() => import("./screens/Claim/Claim"));
-const LifeClaim = React.lazy(() => import("./screens/Claim/life"));
+const AutoClaim = React.lazy(() => import("./screens/claim/auto"));
+const Claim = React.lazy(() => import("./screens/claim/Claim"));
+const LifeClaim = React.lazy(() => import("./screens/claim/life"));
+const HealthClaim = React.lazy(() => import("./screens/claim/health"));
+const TravelClaim = React.lazy(() => import("./screens/claim/travel"));
 
 export default function App() {
   const [customvariables, setCustomvariables] = React.useState({
@@ -128,13 +130,13 @@ export default function App() {
 
               <Route path="/claim/travel">
                 <Suspense fallback={<div>Loading....</div>}>
-                  <LandingPage user={user} />
+                  <TravelClaim />
                 </Suspense>
               </Route>
 
               <Route path="/claim/health">
                 <Suspense fallback={<div>Loading....</div>}>
-                  <AutoBuyNow />
+                  <HealthClaim />
                 </Suspense>
               </Route>
 
