@@ -22,7 +22,7 @@ const StyledContainer = styled(Container)(({ theme }) => ({
   },
 }));
 
-const AutoClaim = () => {
+const TravelClaim = () => {
   const [state, setState] = React.useState({});
   const [showForm, setShowForm] = React.useState(false)
 
@@ -43,4 +43,4 @@ const AutoClaim = () => {
   )
 }
 
-export default AutoClaim;
+export default TravelClaim;

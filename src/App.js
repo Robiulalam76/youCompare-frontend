@@ -128,7 +128,7 @@ export default function App() {
                 </Suspense>
               </Route>
 
-              <Route path="/claim/travel">
+              <Route exact path="/claim/travel">
                 <Suspense fallback={<div>Loading....</div>}>
                   <TravelClaim />
                 </Suspense>
