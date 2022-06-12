@@ -24,12 +24,12 @@ export default function ThreeWheeler() {
   const validation = (step) => {
     switch (step) {
       case 0:
-        if (!autoQuery.brand || !autoQuery.carNo) return false;
+        if (!autoQuery.brand || !autoQuery.carNo) return true;
         return true;
+      // case 1:
+      //   if (!autoQuery.model || !autoQuery.year) return true;
+      //   return true;
       case 1:
-        if (!autoQuery.model || !autoQuery.year) return false;
-        return true;
-      case 2:
         if (!fullName || !email || !phone || !autoQuery.typeofInsurance)
           return false;
         if (autoQuery.typeofInsurance === "comprehensive" && !autoQuery.idv)

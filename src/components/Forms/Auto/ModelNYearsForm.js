@@ -11,6 +11,8 @@ import car from "./car";
 import truck from "./truck";
 import van from "./van";
 import { styled } from "@mui/system";
+import MultipleSelectCompare from "../../../utils/Selectorcompare";
+import MultipleSelectCompareYear from "../../../utils/SelectorcompareYear";
 
 const RoundPrimaryBtn = styled(ButtonBase)(({ theme }) => ({
   backgroundColor: theme.palette.primary.main,
@@ -93,18 +95,19 @@ function ModelNYearsForm() {
       {/* Model Selection */}
       <Stack spacing={2} sx={{ textAlign: "left" }}>
         <form>
-          <InputBox label="Select Model" sx={{ py: 1 }}>
-            <Input
+          {/* <InputBox label="Select Model" sx={{ py: 1 }}> */}
+          {/* <Input
               fullWidth
               name="model"
               type="search"
               value={model}
               onChange={handleChange}
-            />
-          </InputBox>
+            /> */}
+          {/* </InputBox> */}
+          <MultipleSelectCompare alldatas={allBrandCar} />
 
           {/* model section  */}
-          <Grid container spacing={2}>
+          {/* <Grid container spacing={2}>
             {allBrandCar.slice(0, more ? 10 : totalBrands).map(
               (elem, i) =>
                 elem?.Model?.length > 0 && (
@@ -151,8 +154,8 @@ function ModelNYearsForm() {
                   </Grid>
                 )
             )}
-          </Grid>
-          <p
+          </Grid> */}
+          {/* <p
             style={{
               border: "1px solid #0048ba",
               color: "#0048ba",
@@ -164,17 +167,18 @@ function ModelNYearsForm() {
             onClick={() => setMore(!more)}
           >
             {more ? <p> See More</p> : <p> See Less</p>}
-          </p>
+          </p> */}
         </form>
 
         {/* Year Selection */}
         <form>
-          <InputBox label="Select Year" sx={{ py: 1 }}>
+          {/* <InputBox label="Select Year" sx={{ py: 1 }}>
             <Input name="year" fullWidth value={year} onChange={handleChange} />
-          </InputBox>
+          </InputBox> */}
 
           {/* year section start  */}
-          {allBrandCar.slice(0, moreYear ? 10 : totalYears).map((elem, i) => (
+          <MultipleSelectCompareYear alldatas={allBrandCar} />
+          {/* {allBrandCar.slice(0, moreYear ? 10 : totalYears).map((elem, i) => (
             <Button
               sx={{ mr: 1, my: 0.5, fontSize: ".8rem", py: 0.5 }}
               key={i}
@@ -186,7 +190,7 @@ function ModelNYearsForm() {
             >
               {elem.Year}
             </Button>
-          ))}
+          ))} */}
           <br />
           <p
             style={{
