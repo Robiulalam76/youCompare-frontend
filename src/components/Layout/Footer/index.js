@@ -1,17 +1,18 @@
 import { Typography, Box, Container, Grid } from "@mui/material";
 // import CopyrightText from "./CopyrightText";
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   const items = {
     insurances: [
-      { item: "Auto Insurance" },
-      { item: "Life Insurance" },
-      { item: "Travel Insurance" },
-      { item: "Health Insurance" },
+      { item: "Auto Insurance", links: "/home/auto" },
+      { item: "Life Insurance", links: "/home/life" },
+      { item: "Travel Insurance", links: "/home/travel" },
+      { item: "Health Insurance", links: "/home/health" },
     ],
     support: [
-      { item: "Claims" },
+      { item: "Claims", links: "/claim" },
       { item: "Manage Policy" },
       { item: "Renew Policy" },
     ],
@@ -48,17 +49,19 @@ export default function Footer() {
                 {elem.toUpperCase()}
               </Typography>
               {items[elem].map((child, i) => (
-                <Typography
-                  sx={{
-                    color: "#eeeeee",
-                    fontWeight: "normal",
-                    fontSize: "13px",
-                    lineHeight: "24px",
-                  }}
-                  key={i}
-                >
-                  {child.item}
-                </Typography>
+                <Link to={child?.links}>
+                  <Typography
+                    sx={{
+                      color: "#eeeeee",
+                      fontWeight: "normal",
+                      fontSize: "13px",
+                      lineHeight: "24px",
+                    }}
+                    key={i}
+                  >
+                    {child.item}
+                  </Typography>
+                </Link>
               ))}
             </Grid>
           ))}
@@ -82,8 +85,8 @@ export default function Footer() {
             textAlign: "center",
           }}
         >
-          Copyright <span style={{ fontSize: "14px" }}>&copy;</span> {new Date().getFullYear()}, All
-          rights reserved by YouCompare
+          Copyright <span style={{ fontSize: "14px" }}>&copy;</span>{" "}
+          {new Date().getFullYear()}, All rights reserved by YouCompare
         </Typography>
       </Container>
     </Box>

@@ -53,6 +53,7 @@ import InputBox from "../../customStyledComponents/InputBox";
 import { CustomTextField as TextField } from "../../customStyledComponents/inputs";
 import { styled } from "@mui/system";
 import { useEffect } from "react";
+import ModelNYearsForm from "./ModelNYearsForm";
 
 const ResponsiveBox = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -198,7 +199,7 @@ function BrandForm() {
   if (window.location.pathname === "/home/auto/private") {
     brands = [
       {
-        name: "Private",
+        name: "BMW",
         image: BMW,
       },
       {
@@ -358,11 +359,11 @@ function BrandForm() {
                 position: "relative",
               }}
             >
-              {/* <p>{elem.name}</p> */}
-              <img
+              <p style={{ height: "5vh", objectFit: "contain" }}>{elem.name}</p>
+              {/* <img
                 style={{ height: "15vh", objectFit: "contain" }}
                 src={elem.image}
-              />
+              /> */}
               {brand.toLowerCase() === elem.name.toLowerCase() && (
                 <span className="right">
                   <BiCheck />

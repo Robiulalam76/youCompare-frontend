@@ -108,7 +108,7 @@ function ModelNYearsForm() {
             {allBrandCar.slice(0, more ? 10 : totalBrands).map(
               (elem, i) =>
                 elem?.Model?.length > 0 && (
-                  <Grid item xl={2} lg={3} md={4} sm={6} xs={12}>
+                  <Grid item xl={4} lg={4} md={4} sm={6} xs={12}>
                     <div
                       className="scroll"
                       style={{
@@ -121,11 +121,12 @@ function ModelNYearsForm() {
                           elem.Model === model
                             ? "1px solid #1482d2"
                             : "1px solid #B6B6B6",
-                        maxHeight: "40px",
+                        height: "80px",
                         overflowY: "scroll",
                       }}
                       sx={{
                         fontSize: ".8rem",
+                        py: 2,
                       }}
                       key={i}
                       variant="round"
@@ -139,7 +140,13 @@ function ModelNYearsForm() {
                         })
                       }
                     >
-                      {elem?.Model}
+                      <p
+                        style={{
+                          padding: "10px",
+                        }}
+                      >
+                        {elem?.Model}
+                      </p>
                     </div>
                   </Grid>
                 )

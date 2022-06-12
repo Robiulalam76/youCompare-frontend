@@ -16,7 +16,7 @@ export default function ThreeWheeler() {
   const autoQuery = useSelector((state) => state.autoQuery);
   const { fullName, phone, email } = useSelector((state) => state.searcher);
 
-  const steps = ["Brand Selection", "Model and Year", "Details", "Compare"];
+  const steps = ["Brand Selection", "Details", "Compare"];
   const [activeStep, setActiveStep] = React.useState(0);
   const [error, setError] = React.useState("");
   console.log(autoQuery);
@@ -75,14 +75,20 @@ export default function ThreeWheeler() {
       </div>
       <Box sx={{ mt: 2 }}>
         {activeStep === 0 ? (
-          <BrandForm />
+          <>
+            <BrandForm />
+            <ModelNYearsForm />
+          </>
         ) : activeStep === 1 ? (
-          <ModelNYearsForm />
-        ) : activeStep === 2 ? (
+          // <ModelNYearsForm />
           <DetailsForm title="Three Wheeler" />
-        ) : activeStep === 3 ? (
+        ) : activeStep === 2 ? (
           <Redirect to="/auto/compare" />
         ) : null}
+        {/* <DetailsForm title="Three Wheeler" />
+        activeStep === 3 ? (
+          <Redirect to="/auto/compare" />
+        ) : null} */}
       </Box>
     </StepperHelper>
   );
