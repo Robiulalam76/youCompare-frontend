@@ -1,4 +1,7 @@
 /* @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"); */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 .poppinFont {
   font-family: "Poppins", sans-serif;
@@ -10,6 +13,7 @@
 .MuiTypography-root {
   font-family: "Poppins", sans-serif;
 }
+
 .p5 {
   padding: 50px 0px;
 }
@@ -20,6 +24,7 @@
   border-radius: 4px;
   transition: 0.2s ease-in-out;
 }
+
 .mainBtn:hover {
   color: rgb(255, 255, 255);
   background-color: rgb(4, 54, 102);
@@ -31,26 +36,32 @@
   width: 60%;
   margin: 7% auto 5%;
 }
+
 img {
   width: 100%;
 }
+
 .BannerHeader {
   font-size: 70px;
   margin: 0px;
   line-height: 70px;
 }
+
 .BannerHeaderSmall {
   font-size: 60px;
   margin: 0px;
 }
+
 .BannerPera {
   font-size: 20px;
   color: #74769e;
 }
+
 .Link {
   text-decoration: none;
   color: black;
 }
+
 .SteeperDiv {
   padding: 3%;
   border-radius: 20px;

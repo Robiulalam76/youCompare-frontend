@@ -12,6 +12,9 @@ import { ThemeProvider } from '@mui/material/styles';
 import { theme } from './themes/index'
 
 import "./App.css";
+import Qoute from "./Pages/DriverPage/Driver";
+import Driver from "./Pages/DriverPage/Driver";
+import Qoutes from "./Pages/QoutesPage/Qoutes";
 
 function App() {
 
@@ -39,6 +42,17 @@ function App() {
             <Route exact path="/signup">
               <Signup />
             </Route>
+
+
+            <Route exact path="/driver">
+              <Driver />
+            </Route>
+
+            <Route exact path="/qoutes">
+              <Qoutes />
+            </Route>
+
+
           </Switch>
         </BrowserRouter>
       </ThemeProvider>
