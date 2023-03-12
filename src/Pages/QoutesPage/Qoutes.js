@@ -31,7 +31,8 @@ const Qoutes = () => {
                     <button className=' text-blue-600 underline'>Vehcile></button>
                     <Link to='/driver' className=' text-blue-600 underline'>Driver></Link>
                     <Link to='/qoutes' className=' text-blue-600 underline'>Qoutes></Link>
-                    <button className=' text-gray-500'>Buy Payment</button>
+                    <Link to='/buy' className=' text-gray-500'>Buy></Link>
+                    <Link to='/payment' className=' text-gray-500'>Payment</Link>
                 </div>
 
 
@@ -112,8 +113,8 @@ const Qoutes = () => {
                         </div>
                     </div>
 
-                    <div className='grid md:grid-cols-5 gap-4 mt-6'>
-                        <div className='col-span-2 flex flex-col md:flex-row justify-center md:justify-start items-center gap-4'>
+                    <div className='grid lg:grid-cols-7 gap-4 mt-6'>
+                        <div className='lg:col-span-3 flex flex-col md:flex-row justify-center md:justify-start items-center gap-4'>
                             <img className='w-24 h-full' src={img2} alt="" />
                             <div>
                                 <h1 className='text-xl text-center md:text-left font-bold'>Shop with Confidence</h1>
@@ -121,7 +122,7 @@ const Qoutes = () => {
                                 <p className='text-center md:text-left'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur cum eius sit doloribus. Error, ut, explicabo dicta sit reprehenderit vero quae aspernatur quod beatae exercitationem et! Minima itaque consectetur dicta.</p>
                             </div>
                         </div>
-                        <div className='col-span-3 w-full'>
+                        <div className='lg:col-span-4 w-full'>
                             <h1 className='text-xl font-bold'>What Happens Next?</h1>
                             <p className='text-gray-500'>You Have Decide that this policy is for you. here are the next steps.</p>
                             <div className='mt-4'>
@@ -207,7 +208,7 @@ const Qoutes = () => {
                                 </div>
 
                             </div>
-                            <div className='flex flex-col justify-start items-end gap-1'>
+                            <div className='flex flex-col justify-start items-start md:items-end gap-1'>
                                 <h1>Annual Premium <span className=' line-through'>750-AED</span></h1>
                                 <h1 className='text-green-600'>Total Discount: 40 AED</h1>
                                 <h1 className='text-green-600'>Total Amount Due:</h1>
@@ -223,7 +224,7 @@ const Qoutes = () => {
                     <img className='w-24 md:w-48' src={img1} alt="" />
                 </div>
                 <hr className='my-6' />
-                <h1 className='md:text-xl font-bold text-rose-700 text-center md:text-left uppercase'>valuation you have provided is subject to approval from your chosen Insurance Company if the insurance does not accept your valuation your premium may need to be at the state</h1>
+                <h1 className='text-sm md:text-xl font-bold text-rose-700 text-left uppercase'>valuation you have provided is subject to approval from your chosen Insurance Company if the insurance does not accept your valuation your premium may need to be at the state</h1>
 
                 <div className='flex items-center gap-2 cursor-pointer mb-4 mt-4'>
                     <input onClick={() => setTermsCondition(!termsCondition)} type="checkbox" checked={termsCondition ? true : false} name="terms" id="terms" />

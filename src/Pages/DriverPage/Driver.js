@@ -23,7 +23,8 @@ const Driver = () => {
                     <button className=' text-blue-600 underline'>Vehcile></button>
                     <Link to='/driver' className=' text-blue-600 underline'>Driver></Link>
                     <Link to='/qoutes' className=' text-gray-500'>Qoutes></Link>
-                    <button className=' text-gray-500'>Buy Payment</button>
+                    <Link to='/buy' className=' text-gray-500'>Buy></Link>
+                    <Link to='/payment' className=' text-gray-500'>Payment</Link>
                 </div>
                 <div className='flex flex-col md:flex-row md:items-center gap-4 mt-4'>
                     <h1 className='text-3xl font-bold text-black'>Hi Nahid!</h1>
@@ -32,23 +33,23 @@ const Driver = () => {
 
                 <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-8'>
                     <div className='border rounded-md shadow py-6 px-6 md:px-12 hover:border-rose-400 hover:shadow-rose-200 hover:shadow-md duration-150'>
-                        <h1 className='text-gray-900 font-bold text-center text-2xl'>Cheapset Thart Perty Only</h1>
+                        <h1 className='text-gray-900 font-bold text-center text-xl'>Cheapset Thart Perty Only</h1>
                         <div className='my-4'>
                             <div className='flex justify-between items-center gap-2 mb-4'>
-                                <h1 className='text-gray-700 font-bold'>Price...................................</h1>
-                                <h1 className='text-yellow-500 text-3xl font-bold'>750 AED</h1>
+                                <h1 className='text-gray-700 font-semibold'>Price...................................</h1>
+                                <h1 className='text-yellow-500 text-xl font-bold'>750 AED</h1>
                             </div>
                             <div className='flex justify-between items-center gap-2 mb-4'>
-                                <h1 className='text-gray-700 font-bold'>Axcess...................................</h1>
-                                <h1 className='text-gray-900 font-bold'>N/A</h1>
+                                <h1 className='text-gray-700 font-semibold'>Axcess...................................</h1>
+                                <h1 className='text-gray-900 font-semibold'>N/A</h1>
                             </div>
                             <div className='flex justify-between items-center gap-2 mb-4'>
-                                <h1 className='text-gray-700 font-bold'>Roadside...................................</h1>
-                                <h1 className='text-gray-900 font-bold'>GOLD</h1>
+                                <h1 className='text-gray-700 font-semibold'>Roadside...................................</h1>
+                                <h1 className='text-gray-900 font-semibold'>GOLD</h1>
                             </div>
                             <div className='flex justify-between items-center gap-2 mb-4'>
-                                <h1 className='text-gray-700 font-bold'>Insurer...................................</h1>
-                                <h1 className='text-gray-900 font-bold'>Salama</h1>
+                                <h1 className='text-gray-700 font-semibold'>Insurer...................................</h1>
+                                <h1 className='text-gray-900 font-semibold'>Salama</h1>
                             </div>
                             <button onClick={() => setOpenModal(!openModal)} className='w-56 h-12 rounded-3xl bg-rose-600 text-white font-bold flex justify-center items-center text-xl mx-auto mt-6'>
                                 <h1>View Details</h1>
@@ -60,23 +61,23 @@ const Driver = () => {
                         }
                     </div>
                     <div className='border rounded-md shadow py-6 px-6 md:px-12 hover:border-rose-400 hover:shadow-rose-200 hover:shadow-md duration-150'>
-                        <h1 className='text-gray-900 font-bold text-center text-2xl'>Cheapset Fully Comprehensive</h1>
+                        <h1 className='text-gray-900 font-bold text-center text-xl'>Cheapset Fully Comprehensive</h1>
                         <div className='my-4'>
                             <div className='flex justify-between items-center gap-2 mb-4'>
-                                <h1 className='text-gray-700 font-bold'>Price......................</h1>
-                                <h1 className='text-yellow-500 text-3xl font-bold'>N/A</h1>
+                                <h1 className='text-gray-700 font-semibold'>Price......................</h1>
+                                <h1 className='text-yellow-500 text-xl font-bold'>N/A</h1>
                             </div>
                             <div className='flex justify-between items-center gap-2 mb-4'>
-                                <h1 className='text-gray-700 font-bold'>Axcess...................................</h1>
-                                <h1 className='text-gray-900 font-bold'>N/A</h1>
+                                <h1 className='text-gray-700 font-semibold'>Axcess...................................</h1>
+                                <h1 className='text-gray-900 font-semibold'>N/A</h1>
                             </div>
                             <div className='flex justify-between items-center gap-2 mb-4'>
-                                <h1 className='text-gray-700 font-bold'>Roadside...................................</h1>
-                                <h1 className='text-gray-900 font-bold'>N/A</h1>
+                                <h1 className='text-gray-700 font-semibold'>Roadside...................................</h1>
+                                <h1 className='text-gray-900 font-semibold'>N/A</h1>
                             </div>
                             <div className='flex justify-between items-center gap-2 mb-4'>
-                                <h1 className='text-gray-700 font-bold'>Insurer...................................</h1>
-                                <h1 className='text-gray-900 font-bold'>N/A</h1>
+                                <h1 className='text-gray-700 font-semibold'>Insurer...................................</h1>
+                                <h1 className='text-gray-900 font-semibold'>N/A</h1>
                             </div>
                             <button className='w-56 h-12 rounded-3xl bg-rose-300 text-white font-bold flex justify-center items-center text-xl mx-auto mt-6'>
                                 <h1>Not Availabe</h1>
@@ -84,23 +85,23 @@ const Driver = () => {
                         </div>
                     </div>
                     <div className='border rounded-md shadow py-6 px-6 md:px-12 hover:border-rose-400 hover:shadow-rose-200 hover:shadow-md duration-150'>
-                        <h1 className='text-gray-900 font-bold text-center text-2xl'>Cheapset Agency Repaire</h1>
+                        <h1 className='text-gray-900 font-bold text-center text-xl'>Cheapset Agency Repaire</h1>
                         <div className='my-4'>
                             <div className='flex justify-between items-center gap-2 mb-4'>
-                                <h1 className='text-gray-700 font-bold'>Price......................</h1>
-                                <h1 className='text-yellow-500 text-3xl font-bold'>N/A</h1>
+                                <h1 className='text-gray-700 font-semibold'>Price......................</h1>
+                                <h1 className='text-yellow-500 text-xl font-bold'>N/A</h1>
                             </div>
                             <div className='flex justify-between items-center gap-2 mb-4'>
-                                <h1 className='text-gray-700 font-bold'>Axcess...................................</h1>
-                                <h1 className='text-gray-900 font-bold'>N/A</h1>
+                                <h1 className='text-gray-700 font-semibold'>Axcess...................................</h1>
+                                <h1 className='text-gray-900 font-semibold'>N/A</h1>
                             </div>
                             <div className='flex justify-between items-center gap-2 mb-4'>
-                                <h1 className='text-gray-700 font-bold'>Roadside...................................</h1>
-                                <h1 className='text-gray-900 font-bold'>N/A</h1>
+                                <h1 className='text-gray-700 font-semibold'>Roadside...................................</h1>
+                                <h1 className='text-gray-900 font-semibold'>N/A</h1>
                             </div>
                             <div className='flex justify-between items-center gap-2 mb-4'>
-                                <h1 className='text-gray-700 font-bold'>Insurer...................................</h1>
-                                <h1 className='text-gray-900 font-bold'>N/A</h1>
+                                <h1 className='text-gray-700 font-semibold'>Insurer...................................</h1>
+                                <h1 className='text-gray-900 font-semibold'>N/A</h1>
                             </div>
                             <button className='w-56 h-12 rounded-3xl bg-rose-300 text-white font-bold flex justify-center items-center text-xl mx-auto mt-6'>
                                 <h1>Not Availabe</h1>
@@ -184,50 +185,50 @@ const Driver = () => {
                             {/* cart number ===>1 */}
                             <div className=' w-full h-fit border hover:border-rose-100 shadow-md hover:shadow-xl hover:shadow-rose-200 duration-300 rounded-xl p-2 md:py-8 md:px-8'>
                                 <div className='flex flex-col md:flex-row md:justify-between md:items-center'>
-                                    <div className='flex items-center gap-4'>
-                                        <img className='max-w-60' src={img1} alt="" />
-                                        <h1 className='text-xl font-bold text-blue-900'>Salama Insurance Thirt Perty Only</h1>
+                                    <div className='flex flex-col md:flex-row md:items-center md:gap-4'>
+                                        <img className='w-44 mx-auto ml-0 md:m-0' src={img1} alt="" />
+                                        <h1 className='text-xl text-left md:text-right font-bold text-blue-900'>Salama Insurance Thirt Perty Only</h1>
                                     </div>
-                                    <div className='flex flex-col justify-end items-end gap-2 mr-6 md:m-0'>
+                                    <div className='flex flex-col md:justify-end items-start md:items-end gap-2 mr-6 md:m-0'>
                                         <h1 className='text-xl font-extrabold text-gray-300'>AED 790</h1>
                                         <h1 className='text-3xl font-bold text-yellow-500'>AED 770</h1>
                                     </div>
                                 </div>
                                 <hr className='border-gray-400 my-4' />
                                 <div className='w-full flex flex-col md:flex-row md:justify-between md:items-center gap-4'>
-                                    <div className='w-full flex-grow flex flex-wrap items-center gap-x-6 gap-y-12 mb-6'>
-                                        <div className='flex flex-col justify-center items-center gap-4'>
-                                            <h1 className='text-gray-700 text-center font-semibold'>What is The Excess?</h1>
-                                            <img className='w-5' src={close} alt="" />
-                                            <h1 className='text-gray-700 text-center font-semibold'>No Repairs</h1>
+                                    <div className='w-full flex-grow flex flex-wrap items-start gap-x-2 md:gap-x-6 gap-y-12 mb-6'>
+                                        <div className='w-40 h-32 flex flex-col justify-between items-center gap-y-4'>
+                                            <h1 className='text-gray-700 text-center'>What is The Excess?</h1>
+                                            <img className='w-4' src={close} alt="" />
+                                            <h1 className='text-gray-700 text-center'>No Repairs</h1>
                                         </div>
-                                        <div className='flex flex-col justify-center items-center gap-4'>
-                                            <h1 className='text-gray-700 text-center font-semibold'>Who Will Repaire My Car?</h1>
-                                            <img className='w-5' src={close} alt="" />
-                                            <h1 className='text-gray-700 text-center font-semibold'>No Repairs</h1>
+                                        <div className='w-40 h-32 flex flex-col justify-between items-center gap-y-4'>
+                                            <h1 className='text-gray-700 text-center'>Who Will Repaire My Car?</h1>
+                                            <img className='w-4' src={close} alt="" />
+                                            <h1 className='text-gray-700 text-center'>No Repairs</h1>
                                         </div>
-                                        <div className='flex flex-col justify-center items-center gap-4'>
-                                            <h1 className='text-gray-700 text-center font-semibold'>Fre Registration Service</h1>
-                                            <img className='w-5' src={close} alt="" />
-                                            <h1 className='text-gray-700 text-center font-semibold'>Not Available</h1>
+                                        <div className='w-40 h-32 flex flex-col justify-between items-center gap-y-4'>
+                                            <h1 className='text-gray-700 text-center'>Fre Registration Service</h1>
+                                            <img className='w-4' src={close} alt="" />
+                                            <h1 className='text-gray-700 text-center'>Not Available</h1>
                                         </div>
-                                        <div className='flex flex-col justify-center items-center gap-4'>
-                                            <h1 className='text-gray-700 text-center font-semibold'>Thirt Perty Demage Limit</h1>
+                                        <div className='w-40 h-32 flex flex-col justify-between items-center gap-y-4'>
+                                            <h1 className='text-gray-700 text-center'>Thirt Perty Demage Limit</h1>
                                             <h1 className='text-blue-900 text-center font-bold'>2 Million</h1>
-                                            <h1 className='text-gray-700 text-center font-semibold'>AED</h1>
+                                            <h1 className='text-gray-700 text-center'>AED</h1>
                                         </div>
-                                        <div className='flex flex-col justify-center items-center gap-4'>
-                                            <h1 className='text-gray-700 text-center font-semibold'>Roadside Assistance</h1>
+                                        <div className='w-40 h-32 flex flex-col justify-between items-center gap-y-4'>
+                                            <h1 className='text-gray-700 text-center'>Roadside Assistance</h1>
                                             <img className='w-5' src={right} alt="" />
-                                            <h1 className='text-gray-700 text-center font-semibold'>G0LD</h1>
+                                            <h1 className='text-gray-700 text-center'>G0LD</h1>
                                         </div>
 
                                     </div>
                                     <div className='relative flex flex-col justify-center items-center gap-4 py-6 px-6 md:p-0'>
-                                        <div className='absolute md:-right-16 -right-6 top-0 flex justify-center items-center bg-yellow-500 h-12 w-fit md:w-full px-6 md:p-0 rounded-l-3xl border shadow-xl'>
+                                        <div className='absolute md:-right-10 -right-6 top-0 flex justify-center items-center bg-yellow-500 h-12 w-fit md:w-full px-6 md:p-0 rounded-l-3xl border shadow-xl'>
                                             <h1 className='text-gray-900 text-center font-semibold'>AED 40.00 Discoount!</h1>
                                         </div>
-                                        <button className='w-44 h-12 bg-rose-600 rounded-3xl text-white flex justify-center items-center mt-14 mx-auto mr-0 font-bold'>
+                                        <button className='w-72 md:w-44 h-12 bg-rose-600 rounded-3xl text-white flex justify-center items-center mt-14 mx-auto md:mr-0 font-bold'>
                                             <span>View Details</span>
                                         </button>
                                         <p className='text-blue-900 underline text-center'>Terms & Conditions</p>
@@ -244,46 +245,46 @@ const Driver = () => {
                             {/* cart number ===>2 */}
                             <div className=' w-full h-fit border hover:border-rose-100 shadow-md hover:shadow-xl hover:shadow-rose-200 duration-300 rounded-xl p-2 md:py-8 md:px-8'>
                                 <div className='flex flex-col md:flex-row md:justify-between md:items-center'>
-                                    <div className='flex items-center gap-4'>
-                                        <img className='max-w-60' src={img2} alt="" />
-                                        <h1 className='text-xl font-bold text-blue-900'>Salama Insurance Thirt Perty Only</h1>
+                                    <div className='flex flex-col md:flex-row md:items-center md:gap-4'>
+                                        <img className='w-44 mx-auto ml-0 md:m-0' src={img2} alt="" />
+                                        <h1 className='text-xl text-left md:text-right font-bold text-blue-900'>Salama Insurance Thirt Perty Only</h1>
                                     </div>
-                                    <div className='flex flex-col justify-end items-end gap-2 mr-6 md:m-0'>
+                                    <div className='flex flex-col md:justify-end items-start md:items-end gap-2 mr-6 md:m-0'>
                                         <h1 className='text-3xl font-bold text-yellow-500'>AED 770</h1>
                                     </div>
                                 </div>
                                 <hr className='border-gray-400 my-4' />
                                 <div className='w-full flex flex-col md:flex-row md:justify-between md:items-center gap-4'>
-                                    <div className='w-full flex-grow flex flex-wrap items-center gap-x-6 gap-y-12 mb-6'>
-                                        <div className='flex flex-col justify-center items-center gap-4'>
-                                            <h1 className='text-gray-700 text-center font-semibold'>What is The Excess?</h1>
-                                            <img className='w-5' src={close} alt="" />
-                                            <h1 className='text-gray-700 text-center font-semibold'>No Repairs</h1>
+                                    <div className='w-full flex-grow flex flex-wrap items-start gap-x-2 md:gap-x-6 gap-y-12 mb-6'>
+                                        <div className='w-40 h-32 flex flex-col justify-between items-center gap-y-4'>
+                                            <h1 className='text-gray-700 text-center'>What is The Excess?</h1>
+                                            <img className='w-4' src={close} alt="" />
+                                            <h1 className='text-gray-700 text-center'>No Repairs</h1>
                                         </div>
-                                        <div className='flex flex-col justify-center items-center gap-4'>
-                                            <h1 className='text-gray-700 text-center font-semibold'>Who Will Repaire My Car?</h1>
-                                            <img className='w-5' src={close} alt="" />
-                                            <h1 className='text-gray-700 text-center font-semibold'>No Repairs</h1>
+                                        <div className='w-40 h-32 flex flex-col justify-between items-center gap-y-4'>
+                                            <h1 className='text-gray-700 text-center'>Who Will Repaire My Car?</h1>
+                                            <img className='w-4' src={close} alt="" />
+                                            <h1 className='text-gray-700 text-center'>No Repairs</h1>
                                         </div>
-                                        <div className='flex flex-col justify-center items-center gap-4'>
-                                            <h1 className='text-gray-700 text-center font-semibold'>Fre Registration Service</h1>
-                                            <img className='w-5' src={close} alt="" />
-                                            <h1 className='text-gray-700 text-center font-semibold'>Not Available</h1>
+                                        <div className='w-40 h-32 flex flex-col justify-between items-center gap-y-4'>
+                                            <h1 className='text-gray-700 text-center'>Fre Registration Service</h1>
+                                            <img className='w-4' src={close} alt="" />
+                                            <h1 className='text-gray-700 text-center'>Not Available</h1>
                                         </div>
-                                        <div className='flex flex-col justify-center items-center gap-4'>
-                                            <h1 className='text-gray-700 text-center font-semibold'>Thirt Perty Demage Limit</h1>
+                                        <div className='w-40 h-32 flex flex-col justify-between items-center gap-y-4'>
+                                            <h1 className='text-gray-700 text-center'>Thirt Perty Demage Limit</h1>
                                             <h1 className='text-blue-900 text-center font-bold'>2 Million</h1>
-                                            <h1 className='text-gray-700 text-center font-semibold'>AED</h1>
+                                            <h1 className='text-gray-700 text-center'>AED</h1>
                                         </div>
-                                        <div className='flex flex-col justify-center items-center gap-4'>
-                                            <h1 className='text-gray-700 text-center font-semibold'>Roadside Assistance</h1>
+                                        <div className='w-40 h-32 flex flex-col justify-between items-center gap-y-4'>
+                                            <h1 className='text-gray-700 text-center'>Roadside Assistance</h1>
                                             <img className='w-5' src={right} alt="" />
-                                            <h1 className='text-gray-700 text-center font-semibold'>G0LD</h1>
+                                            <h1 className='text-gray-700 text-center'>G0LD</h1>
                                         </div>
 
                                     </div>
                                     <div className='relative flex flex-col justify-center items-center gap-4 py-6 px-6 md:p-0'>
-                                        <button className='w-44 h-12 bg-rose-600 rounded-3xl text-white flex justify-center items-center mt-14 mx-auto mr-0 font-bold'>
+                                        <button className='w-72 md:w-44 h-12 bg-rose-600 rounded-3xl text-white flex justify-center items-center mt-14 mx-auto md:mr-0 font-bold'>
                                             <span>View Details</span>
                                         </button>
                                         <p className='text-blue-900 underline text-center'>Terms & Conditions</p>

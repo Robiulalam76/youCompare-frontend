@@ -15,6 +15,7 @@ import "./App.css";
 import Qoute from "./Pages/DriverPage/Driver";
 import Driver from "./Pages/DriverPage/Driver";
 import Qoutes from "./Pages/QoutesPage/Qoutes";
+import BuyPage from "./Pages/Buypage/BuyPage";
 
 function App() {
 
@@ -50,6 +51,9 @@ function App() {
 
             <Route exact path="/qoutes">
               <Qoutes />
+            </Route>
+            <Route exact path="/buy">
+              <BuyPage />
             </Route>
 
 
