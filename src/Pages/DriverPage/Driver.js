@@ -7,7 +7,7 @@ import close from '../../accets/icons/close.png'
 import right from '../../accets/icons/right.png'
 import img1 from '../../accets/logo1/NoPath - Copy (2).png'
 import img2 from '../../accets/logo1/NoPath - Copy (3).png'
-import { Link } from 'react-router-dom';
+import SmallTabs from '../../components/SmallTabs/SmallTabs';
 
 const Driver = () => {
     const [openModal, setOpenModal] = useState(false)
@@ -19,13 +19,14 @@ const Driver = () => {
         <section className='relative bg-whtie px-4 min-h-screen'>
             <div className='max-w-[1440px] mx-auto py-12'>
                 <p className='text-left text-xl font-semibold text-black'>*These Pices Includes VAT</p>
-                <div className='flex items-center gap-2 mt-2'>
+                <SmallTabs />
+                {/* <div className='flex items-center gap-2 mt-2'>
                     <button className=' text-blue-600 underline'>Vehcile></button>
                     <Link to='/driver' className=' text-blue-600 underline'>Driver></Link>
                     <Link to='/qoutes' className=' text-gray-500'>Qoutes></Link>
                     <Link to='/buy' className=' text-gray-500'>Buy></Link>
                     <Link to='/payment' className=' text-gray-500'>Payment</Link>
-                </div>
+                </div> */}
                 <div className='flex flex-col md:flex-row md:items-center gap-4 mt-4'>
                     <h1 className='text-3xl font-bold text-black'>Hi Nahid!</h1>
                     <p className='text-gray-900 font-semibold text-xl'>We Found 2 Qoutes for Your Toyota Acura 1.6 Limited</p>

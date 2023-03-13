@@ -4,6 +4,7 @@ import img1 from '../../accets/logo1/NoPath - Copy (3).png'
 import img2 from '../../accets/logo1/NoPath - Copy (4).png'
 import right from '../../accets/icons/right.png'
 import arrowDown from '../../accets/icons/arrow-down.svg'
+import SmallTabs from '../../components/SmallTabs/SmallTabs';
 
 const warrantyDatas = [
     { id: '1', title: '3 Months' },
@@ -27,13 +28,7 @@ const Qoutes = () => {
     return (
         <section className='bg-white min-h-screen'>
             <div className='max-w-[1440px] mx-auto px-4 pb-32 pt-8'>
-                <div className='flex items-center gap-2 mt-2'>
-                    <button className=' text-blue-600 underline'>Vehcile></button>
-                    <Link to='/driver' className=' text-blue-600 underline'>Driver></Link>
-                    <Link to='/qoutes' className=' text-blue-600 underline'>Qoutes></Link>
-                    <Link to='/buy' className=' text-gray-500'>Buy></Link>
-                    <Link to='/payment' className=' text-gray-500'>Payment</Link>
-                </div>
+                <SmallTabs />
 
 
                 <div className='mt-12'>

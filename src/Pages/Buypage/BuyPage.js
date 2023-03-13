@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import img1 from '../../accets/logo1/NoPath@2x.png'
 import img2 from '../../accets/logo1/NoPath - Copy.png'
+import SmallTabs from '../../components/SmallTabs/SmallTabs';
 
 const BuyPage = () => {
     const [selectCash, setSelectCash] = useState(false)
@@ -12,13 +13,7 @@ const BuyPage = () => {
     return (
         <section className='bg-white min-h-screen py-8'>
             <div className='max-w-[1440px] mx-auto px-4'>
-                <div className='flex items-center gap-2 mt-2'>
-                    <button className=' text-blue-600 underline'>Vehcile></button>
-                    <Link to='/driver' className=' text-blue-600 underline'>Driver></Link>
-                    <Link to='/qoutes' className=' text-blue-600 underline'>Qoutes></Link>
-                    <Link to='/buy' className=' text-blue-600 underline'>Buy></Link>
-                    <Link to='/payment' className=' text-gray-500'>Payment</Link>
-                </div>
+                <SmallTabs />
 
                 <div className='mt-12'>
                     <h1 className='font-bold text-blue-900 text-xl mb-2'>Pay For Your Policy</h1>
