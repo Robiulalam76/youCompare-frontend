@@ -18,6 +18,7 @@ import Qoutes from "./Pages/QoutesPage/Qoutes";
 import BuyPage from "./Pages/Buypage/BuyPage";
 import Health from "./Pages/Health/Health";
 import Vehicle from "./Pages/Vehicle/Vehicle";
+import TravelPage from "./Pages/TravelPage/TravelPage";
 
 function App() {
 
@@ -62,6 +63,9 @@ function App() {
             </Route>
             <Route exact path="/vehicle">
               <Vehicle />
+            </Route>
+            <Route exact path="/travel">
+              <TravelPage />
             </Route>
 
 
