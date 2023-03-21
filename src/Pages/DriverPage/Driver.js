@@ -8,6 +8,7 @@ import right from '../../accets/icons/right.png'
 import img1 from '../../accets/logo1/NoPath - Copy (2).png'
 import img2 from '../../accets/logo1/NoPath - Copy (3).png'
 import SmallTabs from '../../components/SmallTabs/SmallTabs';
+import { Link } from 'react-router-dom';
 
 const Driver = () => {
     const [openModal, setOpenModal] = useState(false)
@@ -20,13 +21,6 @@ const Driver = () => {
             <div className='max-w-[1440px] mx-auto py-12'>
                 <p className='text-left text-xl font-semibold text-black'>*These Pices Includes VAT</p>
                 <SmallTabs />
-                {/* <div className='flex items-center gap-2 mt-2'>
-                    <button className=' text-blue-600 underline'>Vehcile></button>
-                    <Link to='/driver' className=' text-blue-600 underline'>Driver></Link>
-                    <Link to='/qoutes' className=' text-gray-500'>Qoutes></Link>
-                    <Link to='/buy' className=' text-gray-500'>Buy></Link>
-                    <Link to='/payment' className=' text-gray-500'>Payment</Link>
-                </div> */}
                 <div className='flex flex-col md:flex-row md:items-center gap-4 mt-4'>
                     <h1 className='text-3xl font-bold text-black'>Hi Nahid!</h1>
                     <p className='text-gray-900 font-semibold text-xl'>We Found 2 Qoutes for Your Toyota Acura 1.6 Limited</p>
@@ -229,9 +223,9 @@ const Driver = () => {
                                         <div className='absolute md:-right-10 -right-6 top-0 flex justify-center items-center bg-yellow-500 h-12 w-fit md:w-full px-6 md:p-0 rounded-l-3xl border shadow-xl'>
                                             <h1 className='text-gray-900 text-center font-semibold'>AED 40.00 Discoount!</h1>
                                         </div>
-                                        <button className='w-72 md:w-44 h-12 bg-rose-600 rounded-3xl text-white flex justify-center items-center mt-14 mx-auto md:mr-0 font-bold'>
+                                        <Link to='/qoutes' className='w-72 md:w-44 h-12 bg-rose-600 rounded-3xl text-white flex justify-center items-center mt-14 mx-auto md:mr-0 font-bold'>
                                             <span>View Details</span>
-                                        </button>
+                                        </Link>
                                         <p className='text-blue-900 underline text-center'>Terms & Conditions</p>
                                     </div>
 
@@ -285,9 +279,9 @@ const Driver = () => {
 
                                     </div>
                                     <div className='relative flex flex-col justify-center items-center gap-4 py-6 px-6 md:p-0'>
-                                        <button className='w-72 md:w-44 h-12 bg-rose-600 rounded-3xl text-white flex justify-center items-center mt-14 mx-auto md:mr-0 font-bold'>
+                                        <Link to='/qoutes' className='w-72 md:w-44 h-12 bg-rose-600 rounded-3xl text-white flex justify-center items-center mt-14 mx-auto md:mr-0 font-bold'>
                                             <span>View Details</span>
-                                        </button>
+                                        </Link>
                                         <p className='text-blue-900 underline text-center'>Terms & Conditions</p>
                                     </div>
 

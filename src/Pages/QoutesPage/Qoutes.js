@@ -226,9 +226,9 @@ const Qoutes = () => {
                     <button onClick={() => setTermsCondition(!termsCondition)} className='text-[16px] text-gray-600' htmlFor="terms"><p>I Agree <strong>Terms & Conditions</strong></p></button>
                 </div>
                 {
-                    termsCondition ? <button className='w-56 h-12 bg-rose-600 text-white flex justify-center items-center font-bold border border-b-4 border-rose-800'>
+                    termsCondition ? <Link to='/buy' className='w-56 h-12 bg-rose-600 text-white flex justify-center items-center font-bold border border-b-4 border-rose-800'>
                         <p>Proceed To Payment</p>
-                    </button>
+                    </Link>
                         :
                         <button disabled className='w-56 h-12 bg-gray-400 text-white flex justify-center items-center font-bold border-b-2 border-gray-800'>
                             <p>Proceed To Payment</p>

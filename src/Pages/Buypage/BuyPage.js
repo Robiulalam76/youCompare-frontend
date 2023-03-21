@@ -42,9 +42,9 @@ const BuyPage = () => {
                                 <button onClick={() => setSelectCash(!selectCash)} className='text-[16px] text-gray-600' htmlFor="cash"><img src="" alt="" />Cash</button>
                             </div>
                             {
-                                selectCash ? <button type='submit' className='w-full cursor-pointer h-12 bg-rose-600 text-white flex justify-center items-center font-bold border border-b-4 border-rose-800'>
+                                selectCash ? <Link to='/payment' type='submit' className='w-full cursor-pointer h-12 bg-rose-600 text-white flex justify-center items-center font-bold border border-b-4 border-rose-800'>
                                     <p>Pay Now (788 AED)</p>
-                                </button>
+                                </Link>
                                     :
                                     <button disabled className='w-full cursor-pointer h-12 bg-gray-400 text-white flex justify-center items-center font-bold border-b-2 border-gray-800'>
                                         <p>Pay Now (788 AED)</p>

@@ -6,9 +6,9 @@ const SmallTabs = () => {
     return (
         <div
             className="flex flex-wrap gap-4 mt-6">
-            <Link to='/vehcile' className={`w-fit h-7 text-left text-sm hover:bg-gray-100 flex justify-center items-center uppercase
-                ${pathname === '/vehcile' && 'border-b-2 border-rose-600 text-blue-900'}`} >
-                <p className="">Vehcile</p>
+            <Link to='/vehicle' className={`w-fit h-7 text-left text-sm hover:bg-gray-100 flex justify-center items-center uppercase
+                ${pathname === '/vehicle' && 'border-b-2 border-rose-600 text-blue-900'}`} >
+                <p className="">Vehicle</p>
             </Link>
             <Link to='/driver' className={`w-fit h-7 text-left text-sm hover:bg-gray-100 flex justify-center items-center uppercase
                 ${pathname === '/driver' && 'border-b-2 border-rose-600 text-blue-900'}`} >

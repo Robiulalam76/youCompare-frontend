@@ -28,7 +28,7 @@ const ViewDetails = ({ closeModal }) => {
                     <button className='flex justify-center items-center border shodow rounded-md w-fit px-3 md:px-6 h-12 text-white bg-white hover:bg-gray-100 duration-150'>
                         <span className='text-blue-900 font-bold'>I Want To Make Changes</span>
                     </button>
-                    <button className='flex justify-center items-center border shodow rounded-md w-fit px-3 md:px-6 h-12 text-white bg-rose-600 hover:bg-rose-700 duration-150'>
+                    <button onClick={() => closeModal(false)} className='flex justify-center items-center border shodow rounded-md w-fit px-3 md:px-6 h-12 text-white bg-rose-600 hover:bg-rose-700 duration-150'>
                         <span className='text-white font-bold'>All Good</span>
                     </button>
                 </div>

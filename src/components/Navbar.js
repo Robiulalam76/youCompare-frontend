@@ -21,7 +21,7 @@ export default function Navbar() {
   const logoutHandler = () => {
     localStorage.removeItem("userInfo");
   };
-  useEffect(() => {}, [localStorageData]);
+  useEffect(() => { }, [localStorageData]);
   return (
     <div style={navStyle}>
       <Link className="Link" to="/">
@@ -46,6 +46,20 @@ export default function Navbar() {
             </Button>
           </Link>
         )}
+
+        <li className="ml-2" to='/'>
+          <div className="group relative">
+            <button className=" w-36 h-9 flex justify-center items-center rounded bg-[#1481D0] px-4" variant="contained">
+              <li className="text-white uppercase font-semibold">Insurance</li>
+            </button>
+            <div className="grid grid-cols-1 gap-1 bg-gray-100 border rounded">
+              <Link to='/' className="font-semibold text-black uppercase hover:bg-gray-400 px-2 py-1">Car insurance</Link>
+              <Link to='/' className="font-semibold text-black uppercase hover:bg-gray-400 px-2 py-1">travel</Link>
+              <Link to='/health' className="font-semibold text-black uppercase hover:bg-gray-400 px-2 py-1">health</Link>
+              <Link to='/' className="font-semibold text-black uppercase hover:bg-gray-400 px-2 py-1">life</Link>
+            </div>
+          </div>
+        </li>
       </ul>
     </div>
   );
