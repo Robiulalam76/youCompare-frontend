@@ -8,16 +8,16 @@ const MainContactDetails = () => {
             <h1 className='text-blue-900 font-bold text-center text-3xl pb-6'>Main contact details</h1>
 
 
-            <div className='grid md:grid-cols-3 items-center gap-6 mb-6'>
+            <div className='grid md:grid-cols-3 gap-6 mb-6'>
 
                 <div className='w-full flex flex-col justify-center items-start rounded-md'>
                     <label className='text-xl font-semibold text-blue-900' htmlFor="">Name</label>
                     <input className='w-full h-14 rounded-none px-3 border-gray-400 hover:border-blue-600 focus:outline-none focus:border-green-600' type="text" placeholder='Enter Your Name' />
                 </div>
 
-                <div className='w-full'>
+                <div className=''>
                     <label className='text-xl font-semibold text-blue-900' htmlFor="">Phone Number</label>
-                    <div className='w-full flex justify-center items-center rounded-md'>
+                    <div className='w-full flex justify-center items-start rounded-md'>
 
                         <div className='border border-gray-400 hover:border-blue-600 focus:outline-none h-14 w-16 flex items-center justify-center'>
                             <img className='w-8' src="https://cdn-icons-png.flaticon.com/128/206/206626.png" alt="" />

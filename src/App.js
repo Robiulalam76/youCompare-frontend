@@ -12,14 +12,14 @@ import PaymentSuccessfull from "./screens/paymentSuccessfull";
 import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "./themes/index";
 import "./App.css";
+import Driver from "./Pages/DriverPage/Driver";
+import Qoutes from "./Pages/QoutesPage/Qoutes";
+import BuyPage from "./Pages/Buypage/BuyPage";
+import Health from "./Pages/Health/Health";
+import Vehicle from "./Pages/Vehicle/Vehicle";
+import TravelPage from "./Pages/TravelPage/TravelPage";
 
 import SelectionFallback from "./screens/fallbackPages/SelectionFallback";
-import Vehicle from "./Pages/Vehicle/Vehicle";
-import Health from "./Pages/Health/Health";
-import BuyPage from "./Pages/Buypage/BuyPage";
-import Qoutes from "./Pages/QoutesPage/Qoutes";
-import Driver from "./Pages/DriverPage/Driver";
-import TravelPage from "./Pages/TravelPage/TravelPage";
 
 const LandingPage = React.lazy(() => import("./screens/LangingPage"));
 
