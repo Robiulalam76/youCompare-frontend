@@ -14,6 +14,12 @@ import { theme } from "./themes/index";
 import "./App.css";
 
 import SelectionFallback from "./screens/fallbackPages/SelectionFallback";
+import Vehicle from "./Pages/Vehicle/Vehicle";
+import Health from "./Pages/Health/Health";
+import BuyPage from "./Pages/Buypage/BuyPage";
+import Qoutes from "./Pages/QoutesPage/Qoutes";
+import Driver from "./Pages/DriverPage/Driver";
+import TravelPage from "./Pages/TravelPage/TravelPage";
 
 const LandingPage = React.lazy(() => import("./screens/LangingPage"));
 
@@ -77,6 +83,33 @@ export default function App() {
         <BrowserRouter>
           <NavigationScroll>
             <Switch>
+
+
+// --------------------robiul alam----------------------
+
+              <Route exact path="/driver">
+                <Driver />
+              </Route>
+
+              <Route exact path="/qoutes">
+                <Qoutes />
+              </Route>
+              <Route exact path="/buy">
+                <BuyPage />
+              </Route>
+              <Route exact path="/health">
+                <Health />
+              </Route>
+              <Route exact path="/vehicle">
+                <Vehicle />
+              </Route>
+              <Route exact path="/travel">
+                <TravelPage />
+              </Route>
+
+
+              // --------------------robiul alam----------------------
+
               <Route path="/home">
                 <Suspense fallback={<SelectionFallback />}>
                   <LandingPage user={user} />

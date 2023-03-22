@@ -16,28 +16,33 @@
   border-radius: 4px;
   transition: 0.2s ease-in-out;
 }
+
 .mainBtn:hover {
   color: rgb(255, 255, 255);
   background-color: rgb(4, 54, 102);
   border-radius: 4px;
 }
+
 .googleBtn {
   color: rgb(0, 0, 0);
   background-color: #fbbd05a9;
   border-radius: 4px;
   transition: 0.2s ease-in-out;
 }
+
 .googleBtn:hover {
   color: rgb(255, 255, 255);
   background-color: rgb(184, 71, 18);
   border-radius: 4px;
 }
+
 .facebookBtn {
   color: rgb(255, 255, 255);
   background-color: #0048ba;
   border-radius: 4px;
   transition: 0.2s ease-in-out;
 }
+
 .facebookBtn:hover {
   color: rgb(255, 255, 255);
   background-color: #2a7afb;
@@ -47,14 +52,17 @@
 .autoInsurance {
   width: 97%;
 }
+
 /* bannner */
 .bannner {
   width: 60%;
   margin: 7% auto 5%;
 }
+
 img {
   width: 100%;
 }
+
 /* .BannerHeader {
   font-size: 70px;
   margin: 0px;
@@ -71,10 +79,12 @@ img {
 .borderG {
   border: 2px solid green !important;
 }
+
 .Link {
   text-decoration: none;
   color: black;
 }
+
 .SteeperDiv {
   padding: 3%;
   border-radius: 20px;
@@ -100,9 +110,11 @@ img {
 .font-500 {
   font-weight: 500;
 }
+
 .font-400 {
   font-weight: 400;
 }
+
 .font-600 {
   font-weight: 600;
 }
@@ -117,6 +129,7 @@ img {
 .flex {
   display: flex;
 }
+
 .align-center {
   align-items: center;
 }
@@ -130,6 +143,7 @@ img {
 #auto-image-div {
   height: 200px;
 }
+
 #auto-image {
   transform: scaleX(-1);
 }
@@ -177,6 +191,7 @@ primary-font-family:Poppins */
   width: 0.1px;
   border-left: 1px solid #e6ecf8;
 }
+
 .modelBrand ::-webkit-scrollbar-thumb {
   background-color: #d6872c00;
 }

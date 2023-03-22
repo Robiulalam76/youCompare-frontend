@@ -32,6 +32,7 @@ import styles from "./styles.module.css";
 import { Navtext } from "../../customStyledComponents/texts";
 import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from "react-dom/cjs/react-dom.development";
 import ClainMenu from "./ClainMenu";
+import InsuranceMenuData from "./InsuranceMenuData";
 
 const BrandLogoBox = styled(Box)(({ theme }) => ({
   width: "200px",
@@ -144,7 +145,7 @@ const UserLogo = ({ user, size, setIsLoggedin }) => {
   );
 };
 
-export default function Navbar({}) {
+export default function Navbar({ }) {
   const [menuOpen, setMenuOpen] = React.useState(false);
   const [navbarElevation, setNavbarElevation] = React.useState(false);
   const [showTopBar, setShowTopBar] = React.useState(true);
@@ -265,6 +266,12 @@ export default function Navbar({}) {
                 </li>
               </Link>
             )}
+
+
+            <li className={styles.navlistItem}>
+              <InsuranceMenuData />
+            </li>
+
           </ul>
         </NavContainer>
         {/** Drawer, displayed on small screen */}
