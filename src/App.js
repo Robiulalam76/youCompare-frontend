@@ -20,6 +20,10 @@ import Vehicle from "./Pages/Vehicle/Vehicle";
 import TravelPage from "./Pages/TravelPage/TravelPage";
 
 import SelectionFallback from "./screens/fallbackPages/SelectionFallback";
+import UserPortalLayout from "./components/Layout/UserPortalLayout/UserPortalLayout";
+import SingleQuote from "./components/DriverPageCompo/SingleQuote";
+import UserPortal from "./Pages/UserPortalMain/UserPortal";
+import AllQuotes from "./Pages/AllQuotes/AllQuotes";
 
 const LandingPage = React.lazy(() => import("./screens/LangingPage"));
 
@@ -90,6 +94,9 @@ export default function App() {
               <Route exact path="/driver">
                 <Driver />
               </Route>
+              <Route exact path="/quote-list">
+                <AllQuotes />
+              </Route>
 
               <Route exact path="/qoutes">
                 <Qoutes />
@@ -105,6 +112,18 @@ export default function App() {
               </Route>
               <Route exact path="/travel">
                 <TravelPage />
+              </Route>
+
+              //-----------------user portal-------------------
+              <Route exact path="/user-portal">
+                <UserPortalLayout>
+                  <UserPortal />
+                </UserPortalLayout>
+              </Route>
+              <Route exact path="/user-portal/get-a-quote">
+                <UserPortalLayout>
+                  <SingleQuote />
+                </UserPortalLayout>
               </Route>
 
 

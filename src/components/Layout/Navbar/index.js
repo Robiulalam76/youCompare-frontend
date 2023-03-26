@@ -272,6 +272,12 @@ export default function Navbar({ }) {
               <InsuranceMenuData />
             </li>
 
+            <Link to="/user-portal">
+              <li className={styles.navlistItem}>
+                <Navtext>USER PORTAL</Navtext>
+              </li>
+            </Link>
+
           </ul>
         </NavContainer>
         {/** Drawer, displayed on small screen */}
