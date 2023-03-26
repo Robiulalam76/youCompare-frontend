@@ -6,7 +6,11 @@ import SmallTabs from '../../SmallTabs/SmallTabs';
 import ViewDetails from '../../Modals/ViewDetailsModals/ViewDetails';
 
 const Driver = () => {
-    const [openModal, setOpenModal] = useState(false)
+    const [openModal, setOpenModal] = useState(true)
+    // const [takafullSwitch, setTakafullSwitch] = useState(false)
+    // const [openInsurer, setOpenInsurer] = useState(true)
+    // const [insurerSwitch, setInsurerSwitch] = useState(true)
+    // const [moreInfo, setMoreInfo] = useState(false)
     return (
         <section className='relative bg-[#f5f8fa] px-4 min-h-screen'>
             <div className='max-w-[1440px] mx-auto py-12'>

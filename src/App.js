@@ -26,6 +26,7 @@ import UserPortal from "./Pages/UserPortalMain/UserPortal";
 import AllQuotes from "./Pages/AllQuotes/AllQuotes";
 import HelpCenter from "./Pages/UserPortalMain/HelpCenter";
 import MyPolicy from "./Pages/UserPortalMain/MyPolicy";
+import Layout from "./components/Layout";
 
 const LandingPage = React.lazy(() => import("./screens/LangingPage"));
 
@@ -255,6 +256,45 @@ export default function App() {
               <Route exact path="/signup">
                 <Signup />
               </Route>
+
+            </Switch>
+            <Switch>
+
+
+
+
+// --------------------robiul alam----------------------
+
+              <Layout user={user}>
+
+
+                <Route exact path="/driver">
+                  <Driver />
+                </Route>
+
+                <Route exact path="/qoutes">
+                  <Qoutes />
+                </Route>
+                <Route exact path="/buy">
+                  <BuyPage />
+                </Route>
+                <Route exact path="/health">
+                  <Health />
+                </Route>
+                <Route exact path="/vehicle">
+                  <Vehicle />
+                </Route>
+                <Route exact path="/travel">
+                  <TravelPage />
+                </Route>
+                <Route exact path="/payment">
+                  <LandingPage user={user} />
+                </Route>
+
+              </Layout>
+
+
+// --------------------robiul alam----------------------
             </Switch>
           </NavigationScroll>
         </BrowserRouter>

@@ -223,7 +223,7 @@ export default function Navbar({ }) {
           <ul className={styles.navlist}>
             <Hidden mdDown>
               <li className={styles.navlistItem}>
-                <ProductsMenu />
+                {/* <ProductsMenu /> */}
               </li>
               <li className={styles.navlistItem}>
                 <ClainMenu />
@@ -246,6 +246,9 @@ export default function Navbar({ }) {
                 </>
               )}
             </Hidden>
+            <li className={styles.navlistItem}>
+              <InsuranceMenuData />
+            </li>
             {user ? (
               <li>
                 <UserLogo
@@ -268,9 +271,7 @@ export default function Navbar({ }) {
             )}
 
 
-            <li className={styles.navlistItem}>
-              <InsuranceMenuData />
-            </li>
+          
 
             <Link to="/user-portal">
               <li className={styles.navlistItem}>
