@@ -11,7 +11,7 @@ import SmallTabs from '../../SmallTabs/SmallTabs';
 import ViewDetails from '../../Modals/ViewDetailsModals/ViewDetails';
 
 const Driver = () => {
-    const [openModal, setOpenModal] = useState(false)
+    const [openModal, setOpenModal] = useState(true)
     const [takafullSwitch, setTakafullSwitch] = useState(false)
     const [openInsurer, setOpenInsurer] = useState(true)
     const [insurerSwitch, setInsurerSwitch] = useState(true)

@@ -20,6 +20,7 @@ import Vehicle from "./Pages/Vehicle/Vehicle";
 import TravelPage from "./Pages/TravelPage/TravelPage";
 
 import SelectionFallback from "./screens/fallbackPages/SelectionFallback";
+import Layout from "./components/Layout";
 
 const LandingPage = React.lazy(() => import("./screens/LangingPage"));
 
@@ -84,31 +85,6 @@ export default function App() {
           <NavigationScroll>
             <Switch>
 
-
-// --------------------robiul alam----------------------
-
-              <Route exact path="/driver">
-                <Driver />
-              </Route>
-
-              <Route exact path="/qoutes">
-                <Qoutes />
-              </Route>
-              <Route exact path="/buy">
-                <BuyPage />
-              </Route>
-              <Route exact path="/health">
-                <Health />
-              </Route>
-              <Route exact path="/vehicle">
-                <Vehicle />
-              </Route>
-              <Route exact path="/travel">
-                <TravelPage />
-              </Route>
-
-
-              // --------------------robiul alam----------------------
 
               <Route path="/home">
                 <Suspense fallback={<SelectionFallback />}>
@@ -221,6 +197,45 @@ export default function App() {
               <Route exact path="/signup">
                 <Signup />
               </Route>
+
+              </Switch>
+              <Switch>
+
+
+              
+
+// --------------------robiul alam----------------------
+
+<Layout user={user}>
+  
+
+<Route exact path="/driver">
+  <Driver/>
+</Route>
+
+<Route exact path="/qoutes">
+  <Qoutes />
+</Route>
+<Route exact path="/buy">
+  <BuyPage  />
+</Route>
+<Route exact path="/health">
+  <Health />
+</Route>
+<Route exact path="/vehicle">
+  <Vehicle  />
+</Route>
+<Route exact path="/travel">
+  <TravelPage />
+</Route>
+<Route exact path="/payment">
+  <LandingPage user={user} />
+</Route>
+
+</Layout>
+
+
+// --------------------robiul alam----------------------
             </Switch>
           </NavigationScroll>
         </BrowserRouter>

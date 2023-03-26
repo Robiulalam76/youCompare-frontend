@@ -4,12 +4,14 @@ import SmallTabs from '../../SmallTabs/SmallTabs';
 
 const Vehicle = () => {
     return (
+        
         <section className='relative bg-whtie px-4 min-h-screen'>
             <div className='max-w-[1440px] mx-auto py-12'>
                 <SmallTabs />
                 <div className='w-full md:w-[800px] mx-auto'>
-                    <h1 className='text-3xl font-bold text-rose-600 text-center mb-6'>Need health insurance for family?
-                        Great! Let's get started</h1>
+                    <h1 className='text-3xl font-bold text-rose-600 text-center mb-6 mt-6'>Need health insurance for family?
+                        Great! Let's get started
+                    </h1>
                 </div>
 
                 <form action="" className='grid grid-cols-1 gap-4 max-w-[700px] mx-auto' >
@@ -220,7 +222,7 @@ const Vehicle = () => {
                         </div>
                     </div>
 
-                    <Link to='/qoutes' className='w-full h-16 bg-rose-600 hover:bg-rose-700 duration-300 flex justify-center items-center border-b-4 border-rose-900'>
+                    <Link to='/driver' className='w-full h-16 bg-rose-600 hover:bg-rose-700 duration-300 flex justify-center items-center border-b-4 border-rose-900'>
                         <span className='text-2xl font-bold text-white'>Continue</span>
                     </Link>
 
