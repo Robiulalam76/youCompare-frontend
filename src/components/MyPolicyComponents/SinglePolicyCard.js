@@ -1,29 +1,28 @@
 import React, { useState } from 'react';
 import arrowDown from '../../accets/icons/arrow-down.svg'
 import arrowRight from '../../accets/icons/arrow-right.svg'
+import rightArrow from '../../accets/icons/right-arrow.png'
 import close from '../../accets/icons/close.png'
 import right from '../../accets/icons/right.png'
 import img1 from '../../accets/logo1/NoPath - Copy (2).png'
 import { Link } from 'react-router-dom';
 
-const SingleQuote = () => {
+const SinglePolicyCard = () => {
     const [moreInfo, setMoreInfo] = useState(false)
     return (
-        <div className='relative w-full h-fit bg-white border shadow duration-300 rounded-xl p-2 md:py-8 md:px-8'>
-            <div className='flex flex-col md:flex-row md:justify-between md:items-center'>
-                <div className='flex flex-col md:flex-row md:items-center md:gap-4'>
-                    <img className='w-44 mx-auto ml-0 md:m-0' src={img1} alt="" />
-                    <h1 className='text-xl text-left md:text-right font-bold text-sky-600'>Salama Insurance Thirt Perty Only</h1>
-                </div>
-                <div className='flex flex-col md:justify-end items-start md:items-end gap-2 mr-6 md:m-0'>
-                    <h1 className='text-xl font-extrabold text-gray-300'>AED 790</h1>
-                    <h1 className='text-3xl font-bold text-sky-500'>AED 770</h1>
-                </div>
+        <div className='relative w-full h-fit bg-violet-50 border border-sky-500 shadow duration-300 rounded-xl'>
+            <div className='flex flex-col md:flex-row justify-end md:justify-between items-start md:items-center gap-4 p-4 w-full'>
+                <p className='text-blue-900 underline text-center'>Terms & Conditions</p>
+                <Link to='/insurance' className='w-56 h-12 rounded-xl bg-sky-500 hover:bg-sky-600 cursor-pointer duration-150 text-white font-bold flex justify-center items-center gap-3 text-xl'>
+                    <h1>See All Insurance</h1>
+                    <img className='w-6' src={rightArrow} alt="" />
+                </Link>
             </div>
+
             <hr className='border-sky-500 my-4' />
 
 
-            <div className='w-full flex justify-between flex-wrap items-start gap-x-2 md:gap-x-6 gap-y-12 mb-6'>
+            <div className='w-full flex justify-between flex-wrap items-start gap-x-2 md:gap-x-6 gap-y-12 mb-6 p-4'>
                 <div className='w-36 md:w-fit h-32 flex flex-col justify-between items-center gap-y-4'>
                     <h1 className='text-gray-700 text-center'>What is The Excess?</h1>
                     <img className='w-4' src={close} alt="" />
@@ -52,23 +51,27 @@ const SingleQuote = () => {
 
             </div>
 
-            <div className='flex flex-col justify-center items-center gap-4 py-6 px-6 md:p-0'>
-                <Link to='/qoutes' className='w-56 h-12 rounded-xl bg-sky-500 hover:bg-sky-600 cursor-pointer duration-150 text-white font-bold flex justify-center items-center text-xl mx-auto mt-6'>
-                    <h1>View Details</h1>
-                </Link>
-                <p className='text-blue-900 underline text-center'>Terms & Conditions</p>
-            </div>
+
 
             <div className='flex justify-center items-center'>
                 <h1 onClick={() => setMoreInfo(!moreInfo)} className='text-black text-left font-bold'>Check Here For More Info</h1>
                 <img onClick={() => setMoreInfo(!moreInfo)} className='w-6' src={moreInfo ? arrowDown : arrowRight} alt="" />
             </div>
 
-            <div className='absolute right-0 -top-6 flex justify-center items-center bg-gradient-to-r from-orange-500 to-rose-600 h-12 w-fit px-2 animate-bounce hover:animate-none rounded-xl border shadow'>
-                <h1 className='text-white text-center font-semibold'>AED 40.00 Discoount!</h1>
+            <div className='border-t border-sky-500 bg-gradient-to-r from-blue-100 via-purple-100 to-sky-100 
+            flex flex-col lg:flex-row lg:justify-between w-full p-2 md:py-8 md:px-4'>
+                <div className='flex flex-col md:gap-4'>
+                    <img className='w-44 mx-auto ml-0 md:m-0' src={img1} alt="" />
+                    <h1 className='text-xl text-left font-bold text-sky-600'>Salama Insurance Thirt Perty Only</h1>
+                </div>
+                <div className='flex flex-row-reverse lg:flex-col items-start justify-start gap-2'>
+                    <h1 className='text-xl font-extrabold text-gray-600'>AED 790</h1>
+                    <h1 className='text-2xl font-bold text-sky-500'>AED 770</h1>
+                </div>
             </div>
+
         </div >
     );
 };
 
-export default SingleQuote;
+export default SinglePolicyCard;

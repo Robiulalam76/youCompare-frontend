@@ -24,6 +24,8 @@ import UserPortalLayout from "./components/Layout/UserPortalLayout/UserPortalLay
 import SingleQuote from "./components/DriverPageCompo/SingleQuote";
 import UserPortal from "./Pages/UserPortalMain/UserPortal";
 import AllQuotes from "./Pages/AllQuotes/AllQuotes";
+import HelpCenter from "./Pages/UserPortalMain/HelpCenter";
+import MyPolicy from "./Pages/UserPortalMain/MyPolicy";
 
 const LandingPage = React.lazy(() => import("./screens/LangingPage"));
 
@@ -120,6 +122,19 @@ export default function App() {
                   <UserPortal />
                 </UserPortalLayout>
               </Route>
+
+              <Route exact path="/user-portal/help-center">
+                <UserPortalLayout>
+                  <HelpCenter />
+                </UserPortalLayout>
+              </Route>
+
+              <Route exact path="/user-portal/my-policy">
+                <UserPortalLayout>
+                  <MyPolicy />
+                </UserPortalLayout>
+              </Route>
+
               <Route exact path="/user-portal/get-a-quote">
                 <UserPortalLayout>
                   <SingleQuote />
