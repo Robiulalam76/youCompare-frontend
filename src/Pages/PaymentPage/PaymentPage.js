@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-const SmallTabs = () => {
+const PaymentPage = () => {
     const { pathname } = useLocation()
     return (
         <div
@@ -30,4 +30,4 @@ const SmallTabs = () => {
     );
 };
 
-export default SmallTabs;
+export default PaymentPage;

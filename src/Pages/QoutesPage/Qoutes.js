@@ -27,7 +27,7 @@ const Qoutes = () => {
     }
     return (
         <section className='bg-white min-h-screen'>
-            <div className='max-w-[1440px] mx-auto px-4 pb-32 pt-8'>
+            <div className='max-w-[1440px] mx-auto px-4 pb-32'>
                 <SmallTabs />
 
 

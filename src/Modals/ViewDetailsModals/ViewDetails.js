@@ -27,12 +27,12 @@ const ViewDetails = ({ closeModal }) => {
     return (
         <div className="flex justify-center fixed z-50 w-full h-full top-0 left-0 bg-opacity-50 bg-gray-900 cursor-pointer md:py-4 p-4">
             <div ref={outSideRef}
-                className="w-full md:w-[1000px] h-full md:h-fit max-h-full overflow-y-auto bg-white duration-300 shadow border rounded-xl p-4 md:p-6">
+                className="w-full md:w-[1000px] h-full md:h-fit max-h-full overflow-y-auto bg-white duration-300 shadow border rounded-xl p-4 md:p-6 mt-6">
                 <h1 className='text-center font-bold text-blue-900 mt-6 text-2xl'>Doese Everythink Look Correct</h1>
                 <p className='text-blue-900 text-xl text-center mt-4'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus quos molestiae iusto deleniti quaerat rerum sunt ullam quam.</p>
 
                 <div className='flex justify-between items-center gap-2 mt-6'>
-                    <button  onClick={changehand}  className='flex justify-center items-center border shodow rounded-md w-fit px-3 md:px-6 h-12 text-white bg-white hover:bg-gray-100 duration-150'>
+                    <button onClick={changehand} className='flex justify-center items-center border shodow rounded-md w-fit px-3 md:px-6 h-12 text-white bg-white hover:bg-gray-100 duration-150'>
                         <span className='text-blue-900 font-bold'>I Want To Make Changes</span>
                     </button>
                     <button onClick={() => closeModal(false)} className='flex justify-center items-center border shodow rounded-md w-fit px-3 md:px-6 h-12 text-white bg-rose-600 hover:bg-rose-700 duration-150'>
