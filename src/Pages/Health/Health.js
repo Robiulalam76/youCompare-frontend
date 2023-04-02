@@ -6,7 +6,7 @@ const Health = () => {
         <section className='relative bg-whtie min-h-screen'>
             <div className='max-w-[1440px] mx-auto pb-12'>
                 <div className='w-full md:w-[800px] mx-auto mt-16'>
-                    <h1 className='text-2xl font-bold text-rose-600 text-center mb-6'>Need health insurance for family?
+                    <h1 className='font-bold text-rose-600 text-center mb-6'>Need health insurance for family?
                         Great! Let's get started</h1>
                 </div>
 

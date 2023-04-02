@@ -53,9 +53,9 @@ const Vehicle = () => {
 
         <section className='relative bg-whtie px-4 min-h-screen'>
             <div className='max-w-[1440px] mx-auto pb-12'>
-                <SmallTabs />
+                {/* <SmallTabs /> */}
                 <div className='w-full md:w-[800px] mx-auto'>
-                    <h1 className='text-2xl font-bold text-rose-600 text-center mb-6 mt-6'>Need health insurance for family?
+                    <h1 className='text-xl font-bold text-rose-600 text-center my-3'>Need Vehicle insurance for family?
                         Great! Let's get started
                     </h1>
                 </div>

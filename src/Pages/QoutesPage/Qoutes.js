@@ -26,11 +26,11 @@ const Qoutes = () => {
         <main className='relative bg-white px-4 min-h-screen'>
             <div className='max-w-[1440px] mx-auto pb-12'>
 
-                <SmallTabs />
+                {/* <SmallTabs /> */}
 
                 <div className='flex flex-col md:flex-row md:items-center gap-4 mt-6'>
                     <h1 className='text-3xl font-bold text-green-600'>Hi Nahid!</h1>
-                    <p className='text-black font-semibold text-xl'>We Found 2 Qoutes for Your Toyota Acura 1.6 Limited</p>
+                    <p className='text-black font-semibold text-xl'>We Found 4 Quotes for Your Toyota Acura 1.6 Limited</p>
                 </div>
 
                 {/* <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-8'>

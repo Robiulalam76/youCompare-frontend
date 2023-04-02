@@ -6,7 +6,7 @@ const SmallTabs = () => {
     return (
         <div
             className="flex flex-wrap gap-y-2 pt-6">
-            <Link to='/vehicle' className={`w-[70px] h-8 text-center text-sm flex justify-center items-center uppercase
+            {/* <Link to='/vehicle' className={`w-[70px] h-8 text-center text-sm flex justify-center items-center uppercase
                 ${pathname === '/vehicle' ? 'border-b-4 border-rose-600 bg-gradient-to-r from-sky-500 via-sky-600 to-sky-500 backdrop-blur text-white' : 'bg-sky-600 hover:bg-blue-500 text-white'}`} >
                 <p className="">Vehicle</p>
             </Link>
@@ -25,7 +25,7 @@ const SmallTabs = () => {
             <Link to='/payment' className={`w-[70px] h-8 text-center text-sm flex justify-center items-center uppercase
                 ${pathname === '/payment' ? 'border-b-4 border-rose-600 bg-gradient-to-r from-sky-500 via-sky-600 to-sky-500 backdrop-blur text-white' : 'bg-sky-600 hover:bg-blue-500 text-white'}`} >
                 <p className="">payment</p>
-            </Link>
+            </Link> */}
         </div>
     );
 };

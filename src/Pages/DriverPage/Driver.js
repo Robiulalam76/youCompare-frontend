@@ -9,7 +9,7 @@ const Driver = () => {
     return (
         <section className='relative bg-white px-4 min-h-screen'>
             <div className='max-w-[1440px] mx-auto'>
-                <SmallTabs />
+                {/* <SmallTabs /> */}
 
                 <form action="" className='grid grid-cols-1 gap-2 max-w-[700px] mx-auto mt-8' >
 

@@ -51,14 +51,16 @@ const insurances = [
     },
 ];
 
-const items = ["User", "broker", "Insurar"]
+
 
 const UserPortal = () => {
     const { path, url } = useRouteMatch();
     const [showItems, setShowItems] = useState(0)
     return (
         <section>
-            <div className='relative flex justify-center w-full h-96'>
+            <h1 className='text-xl text-left font-bold text-sky-600'>User Section</h1>
+
+            <div className='relative flex justify-center w-full h-96 mt-2'>
                 <img className='w-full h-96 object-fill' src={banner} alt="" />
 
                 <div className='absolute -bottom-8 flex flex-col flex-wrap md:flex-row md:justify-center md:items-center gap-4 md:gap-6' >
@@ -101,26 +103,7 @@ const UserPortal = () => {
 
             <div className='mt-16 w-full'>
 
-                <div className='relative w-full md:w-72 mb-6'>
-                    <div onClick={() => setShowItems(showItems === 1 ? 0 : 1)}
-                        className='w-full h-10 border border-gray-500 hover:border-sky-600 focus:outline-none flex justify-between px-2 items-center'>
-                        <p className='text-gray-600 text-sm'>Home</p>
-                        <img className='w-5' src={arrowDown} alt="" />
-                    </div>
-                    {
-                        showItems === 1 && <div className='absolute z-50 top-10 border-x border-b border-gray-400 hover:border-sky-600 focus:outline-none shadow w-full max-h-44 overflow-y-auto'>
-                            {
-                                items?.map(value => (
-                                    <Link to={`/user-portal/${value.toLocaleLowerCase()}`} className='w-full h-10 flex justify-start items-center bg-white hover:bg-sky-100 text-sm px-4'>
-                                        <h1>{value}</h1>
-                                    </Link>
-                                ))
-                            }
-                        </div>
-                    }
-                </div>
-
-                <h1 className='font-bold text-xl text-left text-black mb-4'>Brows our available product</h1>
+                <h1 className='font-bold text-left text-black mb-4'>Brows our available product</h1>
 
                 <div>
                     <Grid container>

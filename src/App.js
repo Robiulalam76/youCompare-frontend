@@ -29,6 +29,9 @@ import Layout from "./components/Layout";
 import PaymentPage from "./Pages/PaymentPage/PaymentPage";
 import SingleTrip from "./Pages/TravelPage/SingleTrip";
 import MultiTrip from "./Pages/TravelPage/MultiTrip";
+import User from "./Pages/UserPortalMain/User";
+import Broker from "./Pages/UserPortalMain/Broker";
+import Insurar from "./Pages/UserPortalMain/Insurar";
 
 const LandingPage = React.lazy(() => import("./screens/LangingPage"));
 
@@ -121,6 +124,24 @@ export default function App() {
               <Route exact path="/user-portal">
                 <UserPortalLayout>
                   <UserPortal />
+                </UserPortalLayout>
+              </Route>
+
+              <Route exact path="/user-portal/user">
+                <UserPortalLayout>
+                  <UserPortal />
+                </UserPortalLayout>
+              </Route>
+
+              <Route exact path="/user-portal/broker">
+                <UserPortalLayout>
+                  <Broker />
+                </UserPortalLayout>
+              </Route>
+
+              <Route exact path="/user-portal/insurar">
+                <UserPortalLayout>
+                  <Insurar />
                 </UserPortalLayout>
               </Route>
 

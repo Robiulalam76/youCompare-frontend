@@ -24,7 +24,7 @@ const MultiTrip = () => {
         <section className='relative bg-whtie px-4 min-h-screen'>
             <div className='max-w-[1440px] mx-auto py-12'>
                 <div className='w-full md:w-[800px] mx-auto'>
-                    <h1 className='text-2xl font-bold text-rose-600 text-center mb-6'>Find the right travel insurance for your needs</h1>
+                    <h1 className='text-2xl font-bold text-rose-600 text-center mb-6'>Find the Multi Trip insurance for your needs</h1>
                 </div>
 
                 <div className=' max-w-[700px] mx-auto mt-8'>
