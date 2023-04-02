@@ -8,6 +8,7 @@ import SelectCountries from '../../components/TravelPageComponents/SelectCountri
 import TripDestination from '../../components/TravelPageComponents/TripDestination';
 import TripDetailsForm from '../../components/TravelPageComponents/TripDetailsForm';
 import TripTransport from '../../components/TravelPageComponents/TripTransport';
+import { Link } from 'react-router-dom';
 
 
 // const items = [
@@ -91,6 +92,10 @@ const SingleTrip = () => {
                     }
 
                     <TripDetailsForm />
+
+                    <Link to='/quotes' className='w-full h-10 bg-rose-600 hover:bg-rose-700 duration-300 flex justify-center items-center border-b-4 border-rose-900 mt-6'>
+                        <span className='font-bold text-white'>Continue</span>
+                    </Link>
 
                 </div>
 

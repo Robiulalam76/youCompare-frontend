@@ -23,7 +23,6 @@ import SelectionFallback from "./screens/fallbackPages/SelectionFallback";
 import UserPortalLayout from "./components/Layout/UserPortalLayout/UserPortalLayout";
 import SingleQuote from "./components/DriverPageCompo/SingleQuote";
 import UserPortal from "./Pages/UserPortalMain/UserPortal";
-import AllQuotes from "./Pages/AllQuotes/AllQuotes";
 import HelpCenter from "./Pages/UserPortalMain/HelpCenter";
 import MyPolicy from "./Pages/UserPortalMain/MyPolicy";
 import Layout from "./components/Layout";
@@ -273,11 +272,7 @@ export default function App() {
                   <Driver />
                 </Route>
 
-                <Route exact path="/quote-list">
-                  <AllQuotes />
-                </Route>
-
-                <Route exact path="/qoutes">
+                <Route exact path="/quotes">
                   <Qoutes />
                 </Route>
                 <Route exact path="/buy">

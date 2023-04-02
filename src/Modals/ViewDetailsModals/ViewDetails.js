@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 
 const ViewDetails = ({ closeModal }) => {
 
@@ -41,7 +42,13 @@ const ViewDetails = ({ closeModal }) => {
                 </div>
 
                 <div className='mt-8'>
-                    <h1 className='text-left font-bold text-2xl mb-4 text-blue-900'>Your Qoute Details</h1>
+                    <div className='flex justify-between items-center py-2'>
+                        <h1 className='text-left font-bold text-2xl mb-4 text-blue-900'>Your Qoute Details</h1>
+                        <Link to="/buy" className='flex justify-center items-center border shodow rounded-md w-fit px-3 h-10 text-white bg-sky-600 hover:bg-sky-700 duration-150'>
+                            <span className='text-white font-bold'>Go To Buy</span>
+                        </Link>
+                    </div>
+
                     <div className='grid grid-cols-1 gap-6'>
                         <div className='bg-white border shadow w-full h-fit p-3 md:p-6 rounded-md'>
                             <h1 className='text-center font-bold text-xl mb-4 text-gray-900'>Vehicle Summary</h1>

@@ -1,241 +1,273 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import img1 from '../../accets/logo1/NoPath - Copy (3).png'
-import img2 from '../../accets/logo1/NoPath - Copy (4).png'
-import right from '../../accets/icons/right.png'
 import arrowDown from '../../accets/icons/arrow-down.svg'
-import SmallTabs from '../../SmallTabs/SmallTabs';
-
-const warrantyDatas = [
-    { id: '1', title: '3 Months' },
-    { id: '2', title: '8 Months' },
-    { id: '3', title: '1 Year' },
-    { id: '4', title: '2 Years' },
-    { id: '5', title: '3 Years' },
-    { id: '6', title: '5 Years' },
-    { id: '7', title: '8 Years' }
-]
+import arrowRight from '../../accets/icons/arrow-right.svg'
+import rightArrow from '../../accets/icons/right-arrow.png'
+import close from '../../accets/icons/close.png'
+import right from '../../accets/icons/right.png'
+import img1 from '../../accets/logo1/NoPath - Copy (2).png'
+import img2 from '../../accets/logo1/NoPath - Copy (3).png'
+import { Link } from 'react-router-dom';
+import ViewDetails from '../../Modals/ViewDetailsModals/ViewDetails';
+import SingleQuote from '../../components/DriverPageCompo/SingleQuote';
+import SmallTabs from '../../components/SmallTabs/SmallTabs';
 
 const Qoutes = () => {
-    const [showWarranty, setShowWarranty] = useState(false)
-    const [selectedWarranty, setSelectedWarranty] = useState({ id: '1', title: '3 Months' })
-    const [termsCondition, setTermsCondition] = useState(false)
+    const [openModal, setOpenModal] = useState(false)
+    const [takafullSwitch, setTakafullSwitch] = useState(false)
+    const [openInsurer, setOpenInsurer] = useState(true)
+    const [insurerSwitch, setInsurerSwitch] = useState(true)
+    const [moreInfo, setMoreInfo] = useState(false)
 
-    const hanldeSelectWarranty = (data) => {
-        setSelectedWarranty(data)
-        setShowWarranty(false)
-    }
+    // const [takafullSwitch, setTakafullSwitch] = useState(false)
+    // const [openInsurer, setOpenInsurer] = useState(true)
+    // const [insurerSwitch, setInsurerSwitch] = useState(true)
+    // const [moreInfo, setMoreInfo] = useState(false)
     return (
-        <section className='bg-white min-h-screen'>
-            <div className='max-w-[1440px] mx-auto px-4 pb-32'>
+        <main className='relative bg-white px-4 min-h-screen'>
+            <div className='max-w-[1440px] mx-auto pb-12'>
+
                 <SmallTabs />
 
+                <div className='flex flex-col md:flex-row md:items-center gap-4 mt-6'>
+                    <h1 className='text-3xl font-bold text-green-600'>Hi Nahid!</h1>
+                    <p className='text-black font-semibold text-xl'>We Found 2 Qoutes for Your Toyota Acura 1.6 Limited</p>
+                </div>
 
-                <div className='mt-12'>
-                    <h1 className='text-2xl font-bold text-blue-900 mb-2'>Secure Checkout</h1>
-                    <hr className='border-gray-400 mb-6' />
-
-                    <div className='flex flex-col lg:flex-row md:justify-between md:items-center gap-4 mb-5'>
-                        <div className='flex flex-col md:flex-row md:justify-between md:items-center gap-4 md:gap-8'>
-                            <img className='w-48 max-h-24' src={img1} alt="" />
-                            <div className='flex flex-col items-start justify-center gap-2' >
-                                <h1 className='text-xl font-bold text-gray-900'>Salama Insurance Thirt Perty Only</h1>
-                                <p className=' text-gray-500'>(From May 08 2023 to June 12 2023)</p>
+                {/* <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-8'>
+                    <div className='flex flex-col bg-gradient-to-r from-indigo-50 via-purple-50 to-sky-50 rounded-xl shadow-md border py-6 px-6 h-96 cursor-pointer hover:-translate-y-6 duration-500'>
+                        <h1 className='text-sky-600 uppercase font-bold text-center text-xl'>Cheapset Thart Perty Only</h1>
+                        <div className='my-4'>
+                            <div className='flex justify-between items-center gap-2 border-b border-sky-600 py-2'>
+                                <h1 className='text-gray-700 font-semibold'>Price:</h1>
+                                <h1 className='text-sky-500 text-xl font-bold'>750 AED</h1>
                             </div>
-                            <div className='flex flex-col items-start justify-center gap-2' >
-                                <h1 className='text-xl font-bold text-gray-900'>2023 Toyota Acua 1.6 Limited</h1>
-                                <p className=' text-gray-500'>(Insured Value 66.300 AED)</p>
+                            <div className='flex justify-between items-center gap-2 border-b border-sky-600 py-2'>
+                                <h1 className='text-gray-700 font-semibold'>Axcess:</h1>
+                                <h1 className='text-gray-900 font-semibold'>N/A</h1>
                             </div>
-                        </div>
-                        <div className='flex flex-col items-start md:items-end justify-center gap-2' >
-                            <h1 className='text-3xl font-bold text-gray-700'>750 AED</h1>
-                            <p className=' text-xl font-semibold text-gray-500'>Annual Premium</p>
+                            <div className='flex justify-between items-center gap-2 border-b border-sky-600 py-2'>
+                                <h1 className='text-gray-700 font-semibold'>Roadside:</h1>
+                                <h1 className='text-gray-900 font-semibold'>GOLD</h1>
+                            </div>
+                            <div className='flex justify-between items-center gap-2 border-b border-sky-600 py-2'>
+                                <h1 className='text-gray-700 font-semibold'>Insurer:</h1>
+                                <h1 className='text-gray-900 font-semibold'>Salama</h1>
+                            </div>
+                            <button onClick={() => setOpenModal(!openModal)} className='w-56 h-12 rounded-xl bg-sky-500 hover:bg-sky-600 cursor-pointer duration-150 text-white font-bold flex justify-center items-center text-xl mx-auto mt-6'>
+                                <h1>View Details</h1>
+                            </button>
+                            <p className='text-gray-600 font-semibold text-center mt-4'>Click here to see All Thirt Perty Options</p>
                         </div>
                     </div>
-                    <div className='grid lg:grid-cols-2 gap-4 border-y-4 w-full h-fit'>
-                        <div className='md:border-r p-4 md:p-6 bg-gray-50'>
-                            <div className='mb-6'>
-                                <h1 className='text-left font-bold text-gray-900 text-xl mb-2'>Policy Feature Summery</h1>
-                                <div className='flex flex-col md:flex-row md:items-center gap-x-4 mb-4'>
-                                    <h1 className='text-gray-600 font-semibold'>Third Perty Demage Limit:</h1>
-                                    <h1 className='text-gray-500'>Up to AED 2 Million</h1>
-                                </div>
-                                <div className='flex flex-col md:flex-row md:items-center gap-x-4 mb-4'>
-                                    <h1 className='text-gray-600 font-semibold'>Third Perty Lieblity:</h1>
-                                    <h1 className='text-gray-500'>UAE Only</h1>
-                                </div>
-                                <div className='flex flex-col md:flex-row md:items-center gap-x-4 mb-4'>
-                                    <h1 className='text-gray-600 font-semibold'>Demage to Your Vehcile:</h1>
-                                    <h1 className='text-gray-500'>N/A</h1>
-                                </div>
+                    {
+                        openModal && <ViewDetails closeModal={setOpenModal} />
+                    }
+
+                    <div className='flex flex-col bg-gradient-to-r from-indigo-50 via-purple-50 to-sky-50 rounded-xl shadow-md border py-6 px-6 h-96 cursor-pointer hover:-translate-y-6 duration-500'>
+                        <h1 className='text-sky-600 uppercase font-bold text-center text-xl'>Cheapset Fully Comprehensive</h1>
+                        <div className='my-4'>
+                            <div className='flex justify-between items-center gap-2 border-b border-sky-600 py-2'>
+                                <h1 className='text-gray-700 font-semibold'>Price:</h1>
+                                <h1 className='text-sky-500 text-xl font-bold'>N/A</h1>
                             </div>
-                            <div className='mb-6'>
-                                <h1 className='text-left font-bold text-gray-900 text-xl mb-2'>Other Features</h1>
-                                <div className='flex flex-col md:flex-row md:items-center gap-x-4 mb-4'>
-                                    <h1 className='text-gray-600 font-semibold'>Personal Accident for Driver:</h1>
-                                    <h1 className='text-gray-500'>(Up To AED 200.000)</h1>
-                                </div>
-                                <div className='flex flex-col md:flex-row md:items-center gap-x-4 mb-4'>
-                                    <h1 className='text-gray-600 font-semibold'>Personal Accident for Passanger:</h1>
-                                    <h1 className='text-gray-500'>(Up To AED 200.000)</h1>
-                                </div>
+                            <div className='flex justify-between items-center gap-2 border-b border-sky-600 py-2'>
+                                <h1 className='text-gray-700 font-semibold'>Axcess:</h1>
+                                <h1 className='text-gray-900 font-semibold'>N/A</h1>
                             </div>
-                        </div>
-                        <div className='p-4 md:p-6'>
-                            <div className='flex flex-col justify-center items-center mb-4'>
-                                <img className='w-8 mx-auto' src={right} alt="" />
-                                <h1 className='text-left font-bold text-gray-900 text-xl mb-2'>Whate's Includes</h1>
+                            <div className='flex justify-between items-center gap-2 border-b border-sky-600 py-2'>
+                                <h1 className='text-gray-700 font-semibold'>Roadside:</h1>
+                                <h1 className='text-gray-900 font-semibold'>N/A</h1>
                             </div>
-                            <div className='flex flex-col gap-y-4 mb-4'>
-                                <h1 className='text-gray-500 font-semibold'>Personal Accident Cover for Driver</h1>
-                                <h1 className='text-gray-500 font-semibold'>Personal Accident Cover for Passenger</h1>
-                                <h1 className='text-gray-500 font-semibold'>Machnical First Aid</h1>
-                                <h1 className='text-gray-500 font-semibold'>Machnical First Aid</h1>
-                                <h1 className='text-gray-500 font-semibold'>Machnical First Aid</h1>
-                                <h1 className='text-gray-500 font-semibold'>Machnical First Aid</h1>
+                            <div className='flex justify-between items-center gap-2 border-b border-sky-600 py-2'>
+                                <h1 className='text-gray-700 font-semibold'>Insurer:</h1>
+                                <h1 className='text-gray-900 font-semibold'>N/A</h1>
                             </div>
+                            <button disabled className='w-56 h-12 rounded-xl bg-sky-300 cursor-pointer duration-150 text-white font-bold flex justify-center items-center text-xl mx-auto mt-6'>
+                                <h1>Not Availabe</h1>
+                            </button>
                         </div>
                     </div>
 
-                    <div className='py-4 bg-gray-50'>
-                        <h1 className='font-bold text-xl text-center text-rose-600'>GET FREE VOUCHERS WITH EVERY POLICY</h1>
-                        <div className='grid grid-cols-2 md:grid-cols-5 gap-6 mt-6'>
-                            <img className='max-w-28' src={img1} alt="" />
-                            <img className='max-w-28' src={img1} alt="" />
-                            <img className='max-w-28' src={img1} alt="" />
-                            <img className='max-w-28' src={img1} alt="" />
-                            <img className='max-w-28' src={img1} alt="" />
+                    <div className='flex flex-col bg-gradient-to-r from-indigo-50 via-purple-50 to-sky-50 rounded-xl shadow-md border py-6 px-6 h-96 cursor-pointer hover:-translate-y-6 duration-500'>
+                        <h1 className='text-sky-600 uppercase font-bold text-center text-xl'>Cheapset Agency Repaire</h1>
+                        <div className='my-4'>
+                            <div className='flex justify-between items-center gap-2 border-b border-sky-600 py-2'>
+                                <h1 className='text-gray-700 font-semibold'>Price:</h1>
+                                <h1 className='text-sky-500 text-xl font-bold'>N/A</h1>
+                            </div>
+                            <div className='flex justify-between items-center gap-2 border-b border-sky-600 py-2'>
+                                <h1 className='text-gray-700 font-semibold'>Axcess:</h1>
+                                <h1 className='text-gray-900 font-semibold'>N/A</h1>
+                            </div>
+                            <div className='flex justify-between items-center gap-2 border-b border-sky-600 py-2'>
+                                <h1 className='text-gray-700 font-semibold'>Roadside:</h1>
+                                <h1 className='text-gray-900 font-semibold'>N/A</h1>
+                            </div>
+                            <div className='flex justify-between items-center gap-2 border-b border-sky-600 py-2'>
+                                <h1 className='text-gray-700 font-semibold'>Insurer:</h1>
+                                <h1 className='text-gray-900 font-semibold'>N/A</h1>
+                            </div>
+                            <button disabled className='w-56 h-12 rounded-xl bg-sky-300 cursor-pointer duration-150 text-white font-bold flex justify-center items-center text-xl mx-auto mt-6'>
+                                <h1>Not Availabe</h1>
+                            </button>
                         </div>
                     </div>
+                </div> */}
 
-                    <div className='grid lg:grid-cols-7 gap-4 mt-6'>
-                        <div className='lg:col-span-3 flex flex-col md:flex-row justify-center md:justify-start items-center gap-4'>
-                            <img className='w-24 h-full' src={img2} alt="" />
-                            <div>
-                                <h1 className='text-xl text-center md:text-left font-bold'>Shop with Confidence</h1>
-                                <h1 className='text-rose-600 font-bold text-center md:text-left text-xl'>LOWEST PRICE ONLINE GRANTEED</h1>
-                                <p className='text-center md:text-left'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur cum eius sit doloribus. Error, ut, explicabo dicta sit reprehenderit vero quae aspernatur quod beatae exercitationem et! Minima itaque consectetur dicta.</p>
-                            </div>
-                        </div>
-                        <div className='lg:col-span-4 w-full'>
-                            <h1 className='text-xl font-bold'>What Happens Next?</h1>
-                            <p className='text-gray-500'>You Have Decide that this policy is for you. here are the next steps.</p>
-                            <div className='mt-4'>
-                                <p className='text-gray-600 mb-2'>1). Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
-                                <p className='text-gray-600 mb-2'>2). Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
-                                <p className='text-gray-600 mb-2'>3). Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
 
-                            </div>
-                            <p className='text-gray-500 mt-2'>If Realy is that that this policy is for you. here are the next steps. <span className='text-rose-600 font-semibold'>65451465465</span></p>
-                        </div>
-                    </div>
-                    <div className='mt-6'>
-                        <div className='w-full h-16 flex justify-start items-center px-4 bg-gray-100 rounded-md'>
-                            <h1 className='text-gray-900 font-bold md:text-xl'>Additional Cover for Added Peace of Mind</h1>
-                        </div>
-                        <p className='text-center text-gray-500 py-2'>*the places you see here there are exclusive of 5% that weight will be added on next step</p>
 
-                        <div className='grid md:grid-cols-4 gap-6'>
-                            <div className='col-span-3 grid grid-cols-3 gap-5 mt-6 w-full'>
-                                <div className='col-span-4'>
-                                    <div className='grid md:grid-cols-2 gap-x-4 mb-4'>
-                                        <div className='flex items-center gap-2 mb-2'>
-                                            <div className='flex justify-center items-center bg-gray-600 rounded-full w-6 h-6 text-white'><span>?</span></div>
-                                            <p className='text-gray-500'>Personal Accedent 24/7</p>
-                                        </div>
-                                        <div className='flex items-center gap-2 cursor-pointer mb-4'>
-                                            <input type="checkbox" name="firstMonth" id="firstMonth" />
-                                            <label className='text-[16px] text-gray-600' htmlFor="firstMonth"><p>First Month Free!</p></label>
-                                        </div>
+                <div className='grid grid-cols-1 gap-y-4 mt-6'>
+
+                    <div className='bg-gradient-to-r from-sky-50 to-purple-50 border h-fit rounded-xl p-4'>
+                        <div className='flex justify-between items-center gap-2 mb-2'>
+                            <h1 className='text-rose-600 font-semibold'>Filter</h1>
+                            <button className='text-gray-600'>Clear Filter</button>
+                        </div>
+
+
+                        <div className='grid md:grid-cols-2 gap-4'>
+                            <div className='flex flex-col'>
+                                <div className=''>
+                                    <h1 className='text-sky-600 text-left mb-1 font-bold'>Policy Futures</h1>
+                                    <div className='grid grid-cols-2 gap-2 mb-3'>
+                                        <button className='flex justify-center items-center px-2 py-1 border'>
+                                            <span className='text-gray-600'>Fully Comprehensive</span>
+                                        </button>
+                                        <button className='flex justify-center items-center px-2 py-1 border'>
+                                            <span className='text-gray-600'>Thirt Pertu Only</span>
+                                        </button>
                                     </div>
-                                    <div className='grid md:grid-cols-2 gap-x-4 mb-4'>
-                                        <div className='flex items-start gap-2 mb-2'>
-                                            <div className='flex justify-center items-center bg-gray-600 rounded-full w-8 h-6 text-white'><span>?</span></div>
-                                            <p className='text-gray-500'>annual multi trip travel insurance (emergency travel cover included)</p>
-                                        </div>
-                                        <div className='flex items-center gap-2 cursor-pointer mb-4'>
-                                            <input type="checkbox" name="aed35" id="aed35" />
-                                            <label className='text-[16px] text-gray-600' htmlFor="aed35"><p>AED 35</p></label>
-                                        </div>
+                                </div>
+
+                                <div className=''>
+                                    <h1 className='text-sky-600 text-left mb-1 font-bold'>Repaire By</h1>
+                                    <div className='grid grid-cols-3 gap-2'>
+                                        <button className='flex flex-col justify-center items-center gap-2 p-2 rounded border'>
+                                            <img className='w-full md:w-16 h-10 object-cover rounded mx-auto' src="https://images.unsplash.com/photo-1619679505795-a4d0e6be5e02?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fHRveW90YSUyMGxvZ298ZW58MHx8MHx8&auto=format&fit=crop&w=400&q=60" alt="" />
+                                            <span className='text-gray-600 text-sm'>Agency Repaire</span>
+                                        </button>
+                                        <button className='flex flex-col justify-center items-center gap-2 p-2 rounded border'>
+                                            <img className='w-full md:w-16 h-10 object-cover rounded mx-auto' src="https://images.unsplash.com/photo-1619679505795-a4d0e6be5e02?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fHRveW90YSUyMGxvZ298ZW58MHx8MHx8&auto=format&fit=crop&w=400&q=60" alt="" />
+                                            <span className='text-gray-600 text-sm'>Premium Garage</span>
+                                        </button>
+                                        <button className='flex flex-col justify-center items-center gap-2 p-2 rounded border'>
+                                            <img className='w-full md:w-16 h-10 object-cover rounded mx-auto' src="https://images.unsplash.com/photo-1619679505795-a4d0e6be5e02?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fHRveW90YSUyMGxvZ298ZW58MHx8MHx8&auto=format&fit=crop&w=400&q=60" alt="" />
+                                            <span className='text-gray-600 text-sm'>Approved Garage</span>
+                                        </button>
                                     </div>
-                                    <div className='grid md:grid-cols-2 gap-x-4 mb-4'>
-                                        <div className='flex items-start gap-2 mb-2'>
-                                            <div className='flex justify-center items-center bg-gray-600 rounded-full w-10 h-6 text-white'><span>?</span></div>
-                                            <p className='text-gray-500'>I want <strong>AED 1000 cashback</strong> for taking out a a mushrik Crisil card request a call back.</p>
-                                        </div>
-                                        <div className='flex items-center gap-4'>
-                                            <div className='flex items-center gap-2 cursor-pointer mb-4'>
-                                                <input type="checkbox" name="free" id="free" />
-                                                <label className='text-[16px] text-gray-600' htmlFor="free"><p>Free</p></label>
+                                </div>
+                            </div>
+
+                            <div className='flex flex-col gap-4'>
+                                <div className='flex justify-between items-center'>
+                                    <h1 className='text-sky-600 text-left font-bold'>Only Takaful</h1>
+                                    <div className="flex flex-col justify-center items-center ">
+                                        <div onClick={() => setTakafullSwitch(!takafullSwitch)}
+                                            className={`w-11 h-[22px] flex items-center rounded-full p-1 cursor-pointer
+                                        ${takafullSwitch ? 'bg-red-200' : 'bg-gray-300'}`}>
+                                            <div className={`h-4 w-4 rounded-full shadow-md transform duration-300 ease-in-out
+                                        ${takafullSwitch ? 'bg-green-600 transform translate-x-5' : 'bg-gray-500'}`}>
                                             </div>
-                                            <label htmlFor="free"><img className='w-24' src={img1} alt="" /></label>
                                         </div>
                                     </div>
-
-                                    <div className='grid md:grid-cols-2 gap-x-4 mb-4'>
-                                        <div className='flex items-start gap-2 mb-2'>
-                                            <div className='flex justify-center items-center bg-gray-600 rounded-full w-6 h-6 text-white'><span>?</span></div>
-                                            <p className='text-gray-500'>warranty</p>
-                                        </div>
-                                        <div className='relative'>
-                                            <div onClick={() => setShowWarranty(!showWarranty)}
-                                                className='w-full h-14 border shadow flex justify-between px-4 items-center'>
-                                                <p className='text-gray-600'>{selectedWarranty?.title}</p>
-                                                <img className='w-6' src={arrowDown} alt="" />
-                                            </div>
-                                            {
-                                                showWarranty && <div className='absolute z-50 top-14 border shadow w-full max-h-44 overflow-y-auto'>
-                                                    {
-                                                        warrantyDatas.map(w => (
-                                                            <button onClick={() => hanldeSelectWarranty(w)} className='w-full h-12 flex justify-start items-center bg-white hover:bg-gray-100 px-4'>
-                                                                <h1>{w.title}</h1>
-                                                            </button>
-                                                        ))
-                                                    }
+                                </div>
+                                <div className='cursor-pointer'>
+                                    <div className='flex justify-between items-center mb-4'>
+                                        <h1 onClick={() => setOpenInsurer(!openInsurer)} className='text-sky-600 text-left font-bold'>Insurer</h1>
+                                        <img onClick={() => setOpenInsurer(!openInsurer)} className='w-6' src={openInsurer ? arrowDown : arrowRight} alt="" />
+                                    </div>
+                                    {
+                                        openInsurer && <div className='flex justify-between items-center gap-3 mb-4'>
+                                            <h1 className='text-gray-600 text-left font-bold'>Iriental Insurance Company</h1>
+                                            <div className="flex flex-col justify-center items-center ">
+                                                <div onClick={() => setInsurerSwitch(!insurerSwitch)}
+                                                    className={`w-11 h-[22px] flex items-center rounded-full p-1 cursor-pointer
+                                        ${insurerSwitch ? 'bg-red-200' : 'bg-gray-300'}`}>
+                                                    <div className={`h-4 w-4 rounded-full shadow-md transform duration-300 ease-in-out
+                                        ${insurerSwitch ? 'bg-green-600 transform translate-x-5' : 'bg-gray-500'}`}>
+                                                    </div>
                                                 </div>
-                                            }
+                                            </div>
+
                                         </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div className='cursor-pointer mt-4'>
+                        <h1 className='text-sky-600 font-bold text-xl mb-2 text-left'>Scroll Down To See All Qoutes</h1>
+                        <div className='grid grid-cols-1 gap-y-8'>
+
+                            {/* cart number ===>1 */}
+                            <SingleQuote />
+                            <SingleQuote />
+                            <SingleQuote />
+                            <SingleQuote />
+                            <SingleQuote />
+
+                            {/* cart number ===>2 */}
+                            {/* <div className=' w-full h-fit border hover:border-rose-100 shadow-md hover:shadow-xl hover:shadow-rose-200 duration-300 rounded-xl p-2 md:py-8 md:px-8'>
+                                <div className='flex flex-col md:flex-row md:justify-between md:items-center'>
+                                    <div className='flex flex-col md:flex-row md:items-center md:gap-4'>
+                                        <img className='w-44 mx-auto ml-0 md:m-0' src={img2} alt="" />
+                                        <h1 className='text-xl text-left md:text-right font-bold text-blue-900'>Salama Insurance Thirt Perty Only</h1>
                                     </div>
-                                    <div className='grid md:grid-cols-2 gap-x-4 mb-4'>
-                                        <p className='text-gray-500 mb-2'>charity donation (licence no 4636)</p>
-                                        <input className='w-full h-12 focus:outline-none px-4' placeholder='0' type="number" />
+                                    <div className='flex flex-col md:justify-end items-start md:items-end gap-2 mr-6 md:m-0'>
+                                        <h1 className='text-3xl font-bold text-yellow-500'>AED 770</h1>
                                     </div>
                                 </div>
+                                <hr className='border-gray-400 my-4' />
+                                <div className='w-full flex flex-col md:flex-row md:justify-between md:items-center gap-4'>
+                                    <div className='w-full flex-grow flex flex-wrap items-start gap-x-2 md:gap-x-6 gap-y-12 mb-6'>
+                                        <div className='w-36 h-32 flex flex-col justify-between items-center gap-y-4'>
+                                            <h1 className='text-gray-700 text-center'>What is The Excess?</h1>
+                                            <img className='w-4' src={close} alt="" />
+                                            <h1 className='text-gray-700 text-center'>No Repairs</h1>
+                                        </div>
+                                        <div className='w-36 h-32 flex flex-col justify-between items-center gap-y-4'>
+                                            <h1 className='text-gray-700 text-center'>Who Will Repaire My Car?</h1>
+                                            <img className='w-4' src={close} alt="" />
+                                            <h1 className='text-gray-700 text-center'>No Repairs</h1>
+                                        </div>
+                                        <div className='w-36 h-32 flex flex-col justify-between items-center gap-y-4'>
+                                            <h1 className='text-gray-700 text-center'>Fre Registration Service</h1>
+                                            <img className='w-4' src={close} alt="" />
+                                            <h1 className='text-gray-700 text-center'>Not Available</h1>
+                                        </div>
+                                        <div className='w-36 h-32 flex flex-col justify-between items-center gap-y-4'>
+                                            <h1 className='text-gray-700 text-center'>Thirt Perty Demage Limit</h1>
+                                            <h1 className='text-blue-900 text-center font-bold'>2 Million</h1>
+                                            <h1 className='text-gray-700 text-center'>AED</h1>
+                                        </div>
+                                        <div className='w-36 h-32 flex flex-col justify-between items-center gap-y-4'>
+                                            <h1 className='text-gray-700 text-center'>Roadside Assistance</h1>
+                                            <img className='w-5' src={right} alt="" />
+                                            <h1 className='text-gray-700 text-center'>G0LD</h1>
+                                        </div>
 
-                            </div>
-                            <div className='flex flex-col justify-start items-start md:items-end gap-1'>
-                                <h1>Annual Premium <span className=' line-through'>750-AED</span></h1>
-                                <h1 className='text-green-600'>Total Discount: 40 AED</h1>
-                                <h1 className='text-green-600'>Total Amount Due:</h1>
-                                <h1 className='font-bold text-black text-2xl'>750 AED</h1>
-                            </div>
+                                    </div>
+                                    <div className='relative flex flex-col justify-center items-center gap-4 py-6 px-6 md:p-0                                        <Link to='/qoutes' className='w-72 md:w-44 h-12 bg-rose-600 rounded-xl text-white flex justify-center items-center mt-14 mx-auto md:mr-0 font-bold'>
+                                            <span>View Details</span>
+                                        </Link>
+                                        <p className='text-blue-900 underline text-center'>Terms & Conditions</p>
+                                    </div>
+
+
+                                </div>
+                                <div className='flex justify-center items-center'>
+                                    <h1 onClick={() => setMoreInfo(!moreInfo)} className='text-gray-600 text-left font-bold'>Check Here For More Info</h1>
+                                    <img onClick={() => setMoreInfo(!moreInfo)} className='w-6' src={moreInfo ? arrowDown : arrowRight} alt="" />
+                                </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>
-
-                <div className='flex items-center gap-4 mt-8'>
-                    <img className='w-24 md:w-48' src={img1} alt="" />
-                    <img className='w-24 md:w-48' src={img1} alt="" />
-                    <img className='w-24 md:w-48' src={img1} alt="" />
-                </div>
-                <hr className='my-6' />
-                <h1 className='text-sm md:text-xl font-bold text-rose-700 text-left uppercase'>valuation you have provided is subject to approval from your chosen Insurance Company if the insurance does not accept your valuation your premium may need to be at the state</h1>
-
-                <div className='flex items-center gap-2 cursor-pointer mb-4 mt-4'>
-                    <input onClick={() => setTermsCondition(!termsCondition)} type="checkbox" checked={termsCondition ? true : false} name="terms" id="terms" />
-                    <button onClick={() => setTermsCondition(!termsCondition)} className='text-[16px] text-gray-600' htmlFor="terms"><p>I Agree <strong>Terms & Conditions</strong></p></button>
-                </div>
-                {
-                    termsCondition ? <Link to='/buy' className='w-56 h-12 bg-rose-600 text-white flex justify-center items-center font-bold border border-b-4 border-rose-800'>
-                        <p>Proceed To Payment</p>
-                    </Link>
-                        :
-                        <button disabled className='w-56 h-12 bg-gray-400 text-white flex justify-center items-center font-bold border-b-2 border-gray-800'>
-                            <p>Proceed To Payment</p>
-                        </button>
-                }
             </div>
-        </section>
+        </main>
     );
 };
 

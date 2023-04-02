@@ -5,10 +5,10 @@ import BrandDropdown from '../../components/Dropdowns/VehicleDropdowns/BrandDrop
 import DropdownValues from '../../components/Dropdowns/VehicleDropdowns/DropdownValues';
 import ModelDropdown from '../../components/Dropdowns/VehicleDropdowns/ModelDropdown';
 import YearDropdown from '../../components/Dropdowns/VehicleDropdowns/YearDropdown';
-import SmallTabs from '../../SmallTabs/SmallTabs';
 import { car } from '../../utils/jsonData/Car';
 import { truck } from '../../utils/jsonData/Track';
 import { Van } from '../../utils/jsonData/Van';
+import SmallTabs from '../../components/SmallTabs/SmallTabs';
 
 const vehicleItems = [
     { id: '1', title: 'Car' },
