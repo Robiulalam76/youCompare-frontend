@@ -30,7 +30,7 @@ const rootStyle = {
 const insurances = [
   {
     title: "Auto Insurance",
-    url: "auto",
+    url: "vehicle",
     color: "#FFDFD2",
     image: car,
     description:
@@ -46,7 +46,7 @@ const insurances = [
   },
   {
     title: "Travel Insurance",
-    url: "travel",
+    url: "home/travel",
     color: "#FDEDC9",
     image: TravelPic,
     description:
@@ -92,7 +92,7 @@ export default function LandingPage({ user }) {
             key={i}
           >
             <div style={{ padding: "0px 5px" }}>
-              <Link className="Link" to={`${url}/${insurance.url}`}>
+              <Link className="Link" to={`/${insurance.url}`}>
                 <Button
                   className="autoInsurance"
                   style={{

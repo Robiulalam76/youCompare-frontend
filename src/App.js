@@ -28,6 +28,8 @@ import HelpCenter from "./Pages/UserPortalMain/HelpCenter";
 import MyPolicy from "./Pages/UserPortalMain/MyPolicy";
 import Layout from "./components/Layout";
 import PaymentPage from "./Pages/PaymentPage/PaymentPage";
+import SingleTrip from "./Pages/TravelPage/SingleTrip";
+import MultiTrip from "./Pages/TravelPage/MultiTrip";
 
 const LandingPage = React.lazy(() => import("./screens/LangingPage"));
 
@@ -287,9 +289,19 @@ export default function App() {
                 <Route exact path="/vehicle">
                   <Vehicle />
                 </Route>
-                <Route exact path="/travel">
-                  <TravelPage />
+
+
+                <Route exact path="/travel/single-trip">
+                  <SingleTrip />
                 </Route>
+                <Route exact path="/travel/multi-trip">
+                  <MultiTrip />
+                </Route>
+                {/* <Route exact path="/travel">
+                  <TravelPage />
+                </Route> */}
+
+
                 <Route exact path="/payment">
                   <PaymentPage />
                   {/* <LandingPage user={user} /> */}

@@ -228,9 +228,9 @@ export default function Navbar({ }) {
               <li className={styles.navlistItem}>
                 <ClainMenu />
               </li>
-              <li className={styles.navlistItem}>
+              {/* <li className={styles.navlistItem}>
                 <Navtext>Get a Quote</Navtext>
-              </li>
+              </li> */}
               {user?.success && (
                 <>
                   <Link to="/profile/mypolicies">
@@ -249,6 +249,13 @@ export default function Navbar({ }) {
             <li className={styles.navlistItem}>
               <InsuranceMenuData />
             </li>
+
+            <Link to="/user-portal">
+              <li className={styles.navlistItem}>
+                <Navtext>USER PORTAL</Navtext>
+              </li>
+            </Link>
+
             {user ? (
               <li>
                 <UserLogo
@@ -269,15 +276,6 @@ export default function Navbar({ }) {
                 </li>
               </Link>
             )}
-
-
-          
-
-            <Link to="/user-portal">
-              <li className={styles.navlistItem}>
-                <Navtext>USER PORTAL</Navtext>
-              </li>
-            </Link>
 
           </ul>
         </NavContainer>
@@ -368,7 +366,8 @@ const BrandLogoSection = ({ setMenuOpen }) => {
       </Hidden>
       <Link to="/home">
         <BrandLogoBox>
-          <img src={logo} style={{ width: "100%", height: "100%" }} />
+          {/* <img src={logo} style={{ width: "100%", height: "100%" }} /> */}
+          <img src={logo} style={{ width: "180px", height: "90px" }} />
         </BrandLogoBox>
       </Link>
     </div>

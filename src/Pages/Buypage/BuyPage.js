@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import img1 from '../../accets/logo1/NoPath@2x.png'
 import img2 from '../../accets/logo1/NoPath - Copy.png'
+import paymentMethods from '../../accets/images/payment-methods.png'
 import SmallTabs from '../../SmallTabs/SmallTabs';
 
 const BuyPage = () => {
@@ -19,7 +20,9 @@ const BuyPage = () => {
                     <h1 className='font-bold text-blue-900 text-xl mb-2'>Pay For Your Policy</h1>
                     <div className='grid md:grid-cols-2 gap-4 mb-6'>
                         <div className='w-full h-full'>
-                            <div className='w-full h-60 bg-gray-200'></div>
+                            <div className='w-full h-60 bg-gray-200 overflow-hidden'>
+                                <img className='w-full h-full scale-105' src={paymentMethods} alt="paymentMethods" />
+                            </div>
                             <div className='grid grid-cols-4 gap-3 mt-4'>
                                 <img className='w-32' src={img1} alt="" />
                                 <img className='w-32' src={img1} alt="" />
