@@ -4,6 +4,7 @@ import PermanetInsuraceForm from '../../components/LifeInsuranceComponents/Perma
 import TermInsuranceForm from '../../components/LifeInsuranceComponents/PermanetInsuraceForm/TermInsuranceForm';
 import GroupInsuranceForm from '../../components/LifeInsuranceComponents/GroupInsuranceForm/GroupInsuranceForm';
 import arrowDown from '../../accets/icons/arrow-down.svg'
+import LifeInsuranceForm from '../../components/LifeInsuranceComponents/InsuranceCommonForm/LifeInsuranceFormInsuranceForm';
 
 const LifeInsurancePage = () => {
     const [open, setOpen] = useState(false)
@@ -56,6 +57,10 @@ const LifeInsurancePage = () => {
             {
                 selectedTab === 'Group Life' && <GroupInsuranceForm />
             }
+
+            <hr className='mt-6' />
+
+            <LifeInsuranceForm />
 
         </section>
     );

@@ -1,9 +1,85 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import arrowDown from '../../accets/icons/arrow-down.svg'
+import HealthProForm from '../../components/HealthInsuranceComponents/HealthForm';
+import HealthForm from '../../components/HealthInsuranceComponents/HealthForm';
+
+const items = [
+    { id: "1", title: "PRO" },
+    { id: "1", title: "HMO" },
+    { id: "1", title: "Point of Service" },
+    { id: "1", title: "Health Saving" },
+]
 
 const Health = () => {
+    const [open, setOpen] = useState(false)
+    const [selectedTab, setSelectedTab] = useState('PRO')
+
+    const handleSelectTab = (data) => {
+        setSelectedTab(data)
+        setOpen(false)
+    }
     return (
-        <section className='relative bg-whtie min-h-screen'>
+        <section className='max-w-[800px] mx-auto'>
+            <div className='my-6'>
+                <h1 className='text-center text-xl font-bold text-sky-600'>Health Insurance</h1>
+                <p className='text-sm text-center text-gray-600'>Health is the most important thing we should protect, when we can't take care of ourselves, then insurance will help.</p>
+            </div>
+
+
+            <div className='relative mb-2 w-full bg-sky-50 p-2 border'>
+                <span className='text-sm text-sky-600 mb-1'>Select Health Insurance Types</span>
+                <div onClick={() => setOpen(!open)}
+                    className='w-full h-8 border cursor-pointer flex justify-between px-4 items-center'>
+                    <p className='text-gray-600 text-sm'>
+                        {selectedTab ? selectedTab : 'Select Option'}
+                    </p>
+                    <img className='w-6' src={arrowDown} alt="" />
+                </div>
+                {
+                    open && <div className='absolute z-50 top-16 border w-full max-h-44 overflow-y-auto'>
+                        {
+                            items?.map(item => (
+                                <button onClick={() => handleSelectTab(item?.title)}
+                                    className='w-full h-8 flex justify-start items-center bg-white hover:bg-gray-100 px-4'>
+                                    <h1 className='text-sm'>{item?.title}</h1>
+                                </button>
+                            ))
+                        }
+                    </div>
+                }
+            </div>
+
+            <hr className='mb-4' />
+
+            {
+                selectedTab === "PRO" && <HealthForm />
+            }
+            {
+                selectedTab === "HMO" && <HealthForm />
+            }
+            {
+                selectedTab === "Point of Service" && <HealthForm />
+            }
+            {
+                selectedTab === "Health Saving" && <HealthForm />
+            }
+
+
+            <Link to='/quotes' className='w-full h-10 bg-rose-600 hover:bg-rose-700 duration-300 flex justify-center items-center border-b-4 border-rose-900 mt-6'>
+                <span className='font-bold text-white'>Continue</span>
+            </Link>
+
+        </section>
+    );
+};
+
+export default Health;
+
+
+/*
+
+<section className='relative bg-whtie min-h-screen'>
             <div className='max-w-[1440px] mx-auto pb-12'>
                 <div className='w-full md:w-[800px] mx-auto mt-16'>
                     <h1 className='font-bold text-rose-600 text-center mb-6'>Need health insurance for family?
@@ -164,15 +240,12 @@ const Health = () => {
                             <option className='' value="Rangpur">Rangpur</option>
                             <option className='' value="Chottrogram">Chottrogram</option>
                         </select>
-                    </div> */}
+                    // </div> */
 
-            {/* <div className='h-fit w-full p-2 hover:bg-sky-50 flex flex-col justify-center items-start rounded-md'>
+/* <div className='h-fit w-full p-2 hover:bg-sky-50 flex flex-col justify-center items-start rounded-md'>
                         <span className='text-sm text-sky-600 mb-1'>What's your email address?</span>
                         <input className='text-sm w-full h-8 rounded-none px-2 border-gray-300 hover:border-sky-600 focus:outline-none focus:border-green-600' type="text" placeholder='your@gmail.com' />
-                    </div> */}
+                    </div> */
 
-        </section>
-    );
-};
-
-export default Health;
+                    // </section>
+// * /
