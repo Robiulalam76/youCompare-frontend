@@ -31,7 +31,7 @@ export default function AuthLayout({ children }) {
           </BrandLogoBox>
         </Link> */}
 
-        <Box>
+        {/* <Box>
           <Link to="/login">
             <ButtonBase
               disableRipple
@@ -50,7 +50,7 @@ export default function AuthLayout({ children }) {
               Signup
             </ButtonBase>
           </Link>
-        </Box>
+        </Box> */}
       </Container>
       {children}
       <Box sx={{ margin: "0 auto", maxWidth: "400px", textAlign: "center" }}>

@@ -8,18 +8,15 @@ import YearDropdown from '../../components/Dropdowns/VehicleDropdowns/YearDropdo
 import { car } from '../../utils/jsonData/Car';
 import { truck } from '../../utils/jsonData/Track';
 import { Van } from '../../utils/jsonData/Van';
-import SmallTabs from '../../components/SmallTabs/SmallTabs';
 
 const vehicleItems = [
     { id: '1', title: 'Car' },
     { id: '2', title: 'Track' },
     { id: '3', title: 'Van' }
 ]
-// const vehicleItems = [
-//     { id: '1', title: 'Car' },
-//     { id: '2', title: 'Track' },
-//     { id: '3', title: 'Van' }
-// ]
+
+const types = ["Third Perty", "Comprehensive"]
+const typeOfUseItems = ["Commercial", "Private"]
 
 const Vehicle = () => {
     const carItems = car;
@@ -31,6 +28,9 @@ const Vehicle = () => {
     const [seletedModel, setSeletedModel] = useState('')
     const [selectedBrand, setSelectedBrand] = useState('')
     const [items, setItems] = useState([])
+
+    const [selectedType, setSelectedType] = useState("")
+    const [selectedTypeofUse, setSelectedTypeofUse] = useState("")
 
     const hanldeSelectWarranty = (data) => {
         setSelectedVehicle(data)
@@ -58,7 +58,7 @@ const Vehicle = () => {
 
         <section className='relative bg-whtie px-4 min-h-screen'>
             <div className='max-w-[1440px] mx-auto pb-12'>
-                {/* <SmallTabs /> */}
+
                 <div className='w-full md:w-[800px] mx-auto'>
                     <h1 className='text-xl font-bold text-rose-600 text-center my-3'>Need Vehicle insurance for family?
                         Great! Let's get started
@@ -225,6 +225,36 @@ const Vehicle = () => {
                         </select>
                     </div>
 
+                    <div className='grid md:grid-cols-2 gap-4 md:hover:bg-sky-50 md:p-2 md:rounded-md'>
+                        <div className='h-fit w-full flex flex-col justify-center items-start hover:bg-sky-50 md:bg-transparent p-2 md:p-0 rounded-md cursor-pointer'>
+                            <span className='text-sm text-sky-600 mb-1'>Type of Insurance</span>
+                            <div className='flex items-center gap-4'>
+                                {
+                                    types?.map((type, i) => (
+                                        <button key={i} onClick={() => setSelectedType(type)}
+                                            className={`text-sm flex justify-center items-center min-w-[60px] w-fit px-2 h-8 rounded-3xl ${type === selectedType ? "border border-sky-600 bg-sky-600 text-white" : "border border-gray-300 bg-white text-gray-500"}`}>
+                                            <span>{type}</span>
+                                        </button>
+                                    ))
+                                }
+                            </div>
+                        </div>
+
+                        <div className='h-fit w-full flex flex-col justify-center items-start hover:bg-sky-50 md:bg-transparent p-2 md:p-0 rounded-md cursor-pointer'>
+                            <span className='text-sm text-sky-600 mb-1'>Type of Use</span>
+                            <div className='flex items-center gap-4'>
+                                {
+                                    typeOfUseItems?.map((type, i) => (
+                                        <button key={i} onClick={() => setSelectedTypeofUse(type)}
+                                            className={`text-sm flex justify-center items-center min-w-[60px] w-fit px-2 h-8 rounded-3xl ${type === selectedTypeofUse ? "border border-sky-600 bg-sky-600 text-white" : "border border-gray-300 bg-white text-gray-500"}`}>
+                                            <span>{type}</span>
+                                        </button>
+                                    ))
+                                }
+                            </div>
+                        </div>
+                    </div>
+
                     {/* <div className='h-fit w-full p-2 hover:bg-sky-50 flex flex-col justify-center items-start rounded-md cursor-pointer'>
                         <span className='text-sm text-sky-600 mb-1'>Is this car GCC spec AND unmodified?</span>
                         <div className='flex items-center gap-5 mt-6'>
@@ -275,7 +305,7 @@ const Vehicle = () => {
                         </div>
                     </div> */}
 
-                    <Link to='/driver' className='w-full h-10 bg-rose-600 hover:bg-rose-700 duration-300 flex justify-center items-center border-b-4 border-rose-900'>
+                    <Link to='/driver' className='w-full h-10 bg-rose-600 hover:bg-rose-700 duration-300 flex justify-center items-center border-b-4 border-rose-900 mt-6'>
                         <span className='font-bold text-white'>Continue</span>
                     </Link>
 
