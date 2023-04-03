@@ -35,7 +35,7 @@ const insurances = [
     },
     {
         title: "Travel Insurance",
-        url: "home/travel",
+        url: "travel",
         color: "#FDEDC9",
         image: TravelPic,
         description:
@@ -61,7 +61,7 @@ const UserPortal = () => {
             <h1 className='text-xl text-left font-bold text-sky-600'>User Section</h1>
 
             <div className='relative flex justify-center w-full h-96 mt-2'>
-                <img className='w-full h-96 object-fill' src={banner} alt="" />
+                <img className='w-full h-96 object-cover' src={banner} alt="" />
 
                 <div className='absolute -bottom-8 flex flex-col flex-wrap md:flex-row md:justify-center md:items-center gap-4 md:gap-6' >
                     <Link to='/user-portal/get-a-quote'

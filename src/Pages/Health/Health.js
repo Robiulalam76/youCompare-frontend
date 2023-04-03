@@ -28,7 +28,7 @@ const Health = () => {
 
 
             <div className='relative mb-2 w-full bg-sky-50 p-2 border'>
-                <span className='text-sm text-sky-600 mb-1'>Select Health Insurance Types</span>
+                <span className='text-sm text-sky-600 mb-1'>Type of Health Insurance</span>
                 <div onClick={() => setOpen(!open)}
                     className='w-full h-8 border cursor-pointer flex justify-between px-4 items-center'>
                     <p className='text-gray-600 text-sm'>

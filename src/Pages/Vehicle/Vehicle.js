@@ -10,13 +10,11 @@ import { truck } from '../../utils/jsonData/Track';
 import { Van } from '../../utils/jsonData/Van';
 
 const vehicleItems = [
-    { id: '1', title: 'Car' },
-    { id: '2', title: 'Track' },
-    { id: '3', title: 'Van' }
+    { id: '1', title: 'Private Vehicle' },
+    { id: '2', title: 'Commercial Vehicle ' },
+    { id: '3', title: 'Three wheeler ' },
+    { id: '4', title: 'Two wheeler' },
 ]
-
-const types = ["Third Perty", "Comprehensive"]
-const typeOfUseItems = ["Commercial", "Private"]
 
 const Vehicle = () => {
     const carItems = car;
@@ -28,9 +26,6 @@ const Vehicle = () => {
     const [seletedModel, setSeletedModel] = useState('')
     const [selectedBrand, setSelectedBrand] = useState('')
     const [items, setItems] = useState([])
-
-    const [selectedType, setSelectedType] = useState("")
-    const [selectedTypeofUse, setSelectedTypeofUse] = useState("")
 
     const hanldeSelectWarranty = (data) => {
         setSelectedVehicle(data)
@@ -225,34 +220,51 @@ const Vehicle = () => {
                         </select>
                     </div>
 
-                    <div className='grid md:grid-cols-2 gap-4 md:hover:bg-sky-50 md:p-2 md:rounded-md'>
-                        <div className='h-fit w-full flex flex-col justify-center items-start hover:bg-sky-50 md:bg-transparent p-2 md:p-0 rounded-md cursor-pointer'>
-                            <span className='text-sm text-sky-600 mb-1'>Type of Insurance</span>
-                            <div className='flex items-center gap-4'>
-                                {
-                                    types?.map((type, i) => (
-                                        <button key={i} onClick={() => setSelectedType(type)}
-                                            className={`text-sm flex justify-center items-center min-w-[60px] w-fit px-2 h-8 rounded-3xl ${type === selectedType ? "border border-sky-600 bg-sky-600 text-white" : "border border-gray-300 bg-white text-gray-500"}`}>
-                                            <span>{type}</span>
-                                        </button>
-                                    ))
-                                }
-                            </div>
+                    <div className='h-fit w-full p-2 hover:bg-sky-50 flex flex-col justify-center items-start rounded-md cursor-pointer'>
+                        <span className='text-sm text-sky-600 mb-1'>Vehicle Reg No</span>
+                        <input className='text-sm w-full h-8 rounded-none px-2 border border-gray-300 hover:border-sky-600 focus:outline-none cursor-pointer'
+                            type='number' name="vehicle_Reg_No" placeholder="Vehicle Reg No" />
+                    </div>
+
+                    <div className='h-fit w-full p-2 hover:bg-sky-50 flex flex-col justify-center items-start rounded-md cursor-pointer'>
+                        <span className='text-sm text-sky-600 mb-1'>Engine Chasis No</span>
+                        <input className='text-sm w-full h-8 rounded-none px-2 border border-gray-300 hover:border-sky-600 focus:outline-none cursor-pointer'
+                            type='number' name="engine_Chasis_No " placeholder="Engine Chasis No" />
+                    </div>
+
+                    <div className='h-fit w-full p-2 hover:bg-sky-50 flex flex-col justify-center items-start rounded-md cursor-pointer'>
+                        <span className='text-sm text-sky-600 mb-1'>In which city do you want to register this car?</span>
+                        <select className='text-sm w-full h-8 rounded-none px-2 border border-gray-300 hover:border-sky-600 focus:outline-none' name="carYear" id="carYear" placeholder='Car Year' >
+                            <option className='' value="Dubai">Dubai</option>
+                            <option className='' value="Sharjah">Sharjah</option>
+                            <option className='' value="Abu Dhabi">Abu Dhabi</option>
+                            <option className='' value="Ajman">Ajman</option>
+                            <option className='' value="Ras Al Khaimah">Ras Al Khaimah</option>
+                            <option className='' value="Fujairah">Fujairah</option>
+                            <option className='' value="Umm Al Quwain">Umm Al Quwain</option>
+                            <option className='' value="Al Ain">Al Ain</option>
+                        </select>
+                    </div>
+
+                    <div className='grid md:grid-cols-2 gap-2 md:hover:bg-sky-50 md:p-2 md:rounded-md'>
+
+                        <div className='h-fit w-full p-2 md:p-0 hover:bg-sky-50 md:bg-transparent flex flex-col justify-center items-start rounded-md cursor-pointer'>
+                            <span className='text-sm text-sky-600 mb-1'>Insurance Type</span>
+                            <select className='text-sm w-full h-8 rounded-none px-2 border border-gray-300 hover:border-sky-600 focus:outline-none' name="carYear" id="carYear" placeholder='Car Year' >
+                                <option className='' value="Comprehensive">Comprehensive</option>
+                                <option className='' value="Third Party Fire and Theft ">Third Party Fire and Theft </option>
+                                <option className='' value="Third Party ">Third Party </option>
+                            </select>
                         </div>
 
-                        <div className='h-fit w-full flex flex-col justify-center items-start hover:bg-sky-50 md:bg-transparent p-2 md:p-0 rounded-md cursor-pointer'>
+                        <div className='h-fit w-full p-2 md:p-0 hover:bg-sky-50 md:bg-transparent flex flex-col justify-center items-start rounded-md cursor-pointer'>
                             <span className='text-sm text-sky-600 mb-1'>Type of Use</span>
-                            <div className='flex items-center gap-4'>
-                                {
-                                    typeOfUseItems?.map((type, i) => (
-                                        <button key={i} onClick={() => setSelectedTypeofUse(type)}
-                                            className={`text-sm flex justify-center items-center min-w-[60px] w-fit px-2 h-8 rounded-3xl ${type === selectedTypeofUse ? "border border-sky-600 bg-sky-600 text-white" : "border border-gray-300 bg-white text-gray-500"}`}>
-                                            <span>{type}</span>
-                                        </button>
-                                    ))
-                                }
-                            </div>
+                            <select className='text-sm w-full h-8 rounded-none px-2 border border-gray-300 hover:border-sky-600 focus:outline-none' name="carYear" id="carYear" placeholder='Car Year' >
+                                <option className='' value="Commercial">Commercial</option>
+                                <option className='' value="Private">Private</option>
+                            </select>
                         </div>
+
                     </div>
 
                     {/* <div className='h-fit w-full p-2 hover:bg-sky-50 flex flex-col justify-center items-start rounded-md cursor-pointer'>

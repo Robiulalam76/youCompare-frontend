@@ -33,6 +33,7 @@ import User from "./Pages/UserPortalMain/User";
 import Broker from "./Pages/UserPortalMain/Broker";
 import Insurar from "./Pages/UserPortalMain/Insurar";
 import LifeInsurancePage from "./Pages/LifeInsurancePage/LifeInsurancePage";
+import AgentPanel from "./Pages/UserPortalMain/AgentPanel";
 
 const LandingPage = React.lazy(() => import("./screens/LangingPage"));
 
@@ -128,19 +129,25 @@ export default function App() {
                 </UserPortalLayout>
               </Route>
 
-              <Route exact path="/user-portal/user">
+              <Route exact path="/user-portal/customer-panel">
                 <UserPortalLayout>
                   <UserPortal />
                 </UserPortalLayout>
               </Route>
 
-              <Route exact path="/user-portal/broker">
+              <Route exact path="/user-portal/broker-panel">
                 <UserPortalLayout>
                   <Broker />
                 </UserPortalLayout>
               </Route>
 
-              <Route exact path="/user-portal/insurar">
+              <Route exact path="/user-portal/agent-panel">
+                <UserPortalLayout>
+                  <AgentPanel />
+                </UserPortalLayout>
+              </Route>
+
+              <Route exact path="/user-portal/insurar-panel">
                 <UserPortalLayout>
                   <Insurar />
                 </UserPortalLayout>
