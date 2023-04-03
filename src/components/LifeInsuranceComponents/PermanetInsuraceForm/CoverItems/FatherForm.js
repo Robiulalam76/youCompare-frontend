@@ -2,14 +2,14 @@ import React from 'react';
 
 const FatherForm = () => {
     return (
-        <div className='flex flex-col md:flex-row gap-y-4 w-full'>
+        <div className='grid md:grid-cols-2 gap-4 w-full'>
 
             <div className='h-fit w-full flex flex-col justify-center items-start rounded-md'>
                 <span className='text-sm text-sky-600 mb-1'>Do your father smoke?</span>
                 <div className='flex items-center gap-4'>
                     <button className='text-sm flex justify-center items-center min-w-[60px] w-fit px-2 h-8 rounded-3xl border border-sky-600 bg-sky-600 text-white'>
                         <span>Yes</span>
-                    </button><button className='text-sm flex justify-center items-center min-w-[60px] w-fit px-2 h-8 rounded-3xl border border-sky-600 bg-white text-sky-600'>
+                    </button><button className='text-sm flex justify-center items-center min-w-[60px] w-fit px-2 h-8 rounded-3xl border border-gray-300 bg-white text-gray-500'>
                         <span>No</span>
                     </button>
                 </div>
@@ -20,7 +20,7 @@ const FatherForm = () => {
                 <div className='flex items-center gap-4'>
                     <button className='text-sm flex justify-center items-center min-w-[60px] w-fit px-2 h-8 rounded-3xl border border-sky-600 bg-sky-600 text-white'>
                         <span>Slaried</span>
-                    </button><button className='text-sm flex justify-center items-center min-w-[60px] w-fit px-2 h-8 rounded-3xl border border-sky-600 bg-white text-sky-600'>
+                    </button><button className='text-sm flex justify-center items-center min-w-[60px] w-fit px-2 h-8 rounded-3xl border border-gray-300 bg-white text-gray-500'>
                         <span>Self Employed</span>
                     </button>
                 </div>

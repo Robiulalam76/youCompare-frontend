@@ -3,38 +3,58 @@ import { lifeInsuranceItems } from '../../utils/lifeInsuranceData/lifeInsuranceI
 import PermanetInsuraceForm from '../../components/LifeInsuranceComponents/PermanetInsuraceForm/PermanetInsuraceForm';
 import TermInsuranceForm from '../../components/LifeInsuranceComponents/PermanetInsuraceForm/TermInsuranceForm';
 import GroupInsuranceForm from '../../components/LifeInsuranceComponents/GroupInsuranceForm/GroupInsuranceForm';
+import arrowDown from '../../accets/icons/arrow-down.svg'
 
 const LifeInsurancePage = () => {
-    const [selectedTab, setSelectedTab] = useState('1')
+    const [open, setOpen] = useState(false)
+    const [selectedTab, setSelectedTab] = useState('Permanent Life')
+
+    const handleSelectTab = (data) => {
+        setSelectedTab(data)
+        setOpen(false)
+    }
+
     return (
-        <section>
+        <section className='max-w-[800px] mx-auto'>
             <div className='my-12'>
                 <h1 className='text-center text-xl font-bold text-sky-600'>Life Insurance</h1>
                 <p className='text-sm text-center text-gray-600'>Prepare for your family's future in the case of an unexpected tragedy. Insurance Helps you.</p>
             </div>
 
-            <div className='flex items-center gap-4 mb-6'>
+
+            <div className='relative mb-2 w-full bg-sky-50 p-2 border'>
+                <span className='text-sm text-sky-600 mb-1'>Select Insurance</span>
+                <div onClick={() => setOpen(!open)}
+                    className='w-full h-8 border cursor-pointer flex justify-between px-4 items-center'>
+                    <p className='text-gray-600 text-sm'>
+                        {selectedTab ? selectedTab : 'Select Option'}
+                    </p>
+                    <img className='w-6' src={arrowDown} alt="" />
+                </div>
                 {
-                    lifeInsuranceItems?.map((item, i) => (
-                        <button onClick={() => setSelectedTab(item?.id)}
-                            className={`w-fit h-6  flex items-center
-                        ${selectedTab === item?.id ? 'border-b-2 border-sky-600 text-sky-600' : 'border-b-2 border-white'}`}>
-                            <span>{item?.title}</span>
-                        </button>
-                    ))
+                    open && <div className='absolute z-50 top-16 border w-full max-h-44 overflow-y-auto'>
+                        {
+                            lifeInsuranceItems?.map(item => (
+                                <button onClick={() => handleSelectTab(item?.title)}
+                                    className='w-full h-8 flex justify-start items-center bg-white hover:bg-gray-100 px-4'>
+                                    <h1 className='text-sm'>{item?.title}</h1>
+                                </button>
+                            ))
+                        }
+                    </div>
                 }
             </div>
 
-            <hr className='mb-3 border-gray-600' />
+            <hr className='mb-4' />
 
             {
-                selectedTab === '1' && <PermanetInsuraceForm formData={lifeInsuranceItems[0]} />
+                selectedTab === 'Permanent Life' && <PermanetInsuraceForm formData={lifeInsuranceItems[0]} />
             }
             {
-                selectedTab === '2' && <TermInsuranceForm formData={lifeInsuranceItems[1]} />
+                selectedTab === 'Term Life' && <TermInsuranceForm formData={lifeInsuranceItems[1]} />
             }
             {
-                selectedTab === '3' && <GroupInsuranceForm />
+                selectedTab === 'Group Life' && <GroupInsuranceForm />
             }
 
         </section>

@@ -5,7 +5,7 @@ const GroupInsuranceForm = () => {
         <div>
             <h1 className='text-left text-sky-600 mb-4'>Group Life Insurance</h1>
 
-            <div className='grid md:grid-cols-2 gap-x-6 gap-y-2'>
+            <div className='grid md:grid-cols-2 gap-4 w-full'>
 
                 <div className='flex flex-col justify-center items-start w-full'>
                     <span className='text-sm text-sky-600 mb-1'>Amount of Cover</span>
@@ -19,19 +19,19 @@ const GroupInsuranceForm = () => {
                         type='text' name="Organization_Name" placeholder="Enter Name of Your Organization" />
                 </div>
 
-                <div className='h-fit w-full flex flex-col justify-center items-start rounded-md'>
+                <div className='col-span-2 h-fit w-full flex flex-col justify-center items-start rounded-md'>
                     <span className='text-sm text-sky-600 mb-1'>Total Number of Employees</span>
-                    <div className='flex items-center gap-4'>
+                    <div className='flex items-center flex-wrap gap-4'>
                         <button className='text-sm flex justify-center items-center min-w-[60px] w-fit px-2 h-8 rounded-3xl border border-sky-600 bg-sky-600 text-white'>
                             <span>Less than 50</span>
                         </button>
-                        <button className='text-sm flex justify-center items-center min-w-[60px] w-fit px-2 h-8 rounded-3xl border border-sky-600 bg-white text-sky-600'>
+                        <button className='text-sm flex justify-center items-center min-w-[60px] w-fit px-2 h-8 rounded-3xl border border-gray-300 bg-white text-gray-500'>
                             <span>50 to 100</span>
                         </button>
-                        <button className='text-sm flex justify-center items-center min-w-[60px] w-fit px-2 h-8 rounded-3xl border border-sky-600 bg-white text-sky-600'>
+                        <button className='text-sm flex justify-center items-center min-w-[60px] w-fit px-2 h-8 rounded-3xl border border-gray-300 bg-white text-gray-500'>
                             <span>100 to 200</span>
                         </button>
-                        <button className='text-sm flex justify-center items-center min-w-[60px] w-fit px-2 h-8 rounded-3xl border border-sky-600 bg-white text-sky-600'>
+                        <button className='text-sm flex justify-center items-center min-w-[60px] w-fit px-2 h-8 rounded-3xl border border-gray-300 bg-white text-gray-500'>
                             <span>More than 200</span>
                         </button>
                     </div>
