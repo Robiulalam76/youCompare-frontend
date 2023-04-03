@@ -32,6 +32,7 @@ import MultiTrip from "./Pages/TravelPage/MultiTrip";
 import User from "./Pages/UserPortalMain/User";
 import Broker from "./Pages/UserPortalMain/Broker";
 import Insurar from "./Pages/UserPortalMain/Insurar";
+import LifeInsurancePage from "./Pages/LifeInsurancePage/LifeInsurancePage";
 
 const LandingPage = React.lazy(() => import("./screens/LangingPage"));
 
@@ -296,12 +297,19 @@ export default function App() {
                 <Route exact path="/quotes">
                   <Qoutes />
                 </Route>
+
                 <Route exact path="/buy">
                   <BuyPage />
                 </Route>
+
                 <Route exact path="/health">
                   <Health />
                 </Route>
+
+                <Route exact path="/life">
+                  <LifeInsurancePage />
+                </Route>
+
                 <Route exact path="/vehicle">
                   <Vehicle />
                 </Route>

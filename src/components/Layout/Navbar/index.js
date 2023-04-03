@@ -252,7 +252,7 @@ export default function Navbar({ }) {
 
             <Link to="/user-portal">
               <li className={styles.navlistItem}>
-                <Navtext>USER PORTAL</Navtext>
+                <Navtext>User Portal</Navtext>
               </li>
             </Link>
 

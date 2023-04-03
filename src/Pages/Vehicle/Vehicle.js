@@ -15,6 +15,11 @@ const vehicleItems = [
     { id: '2', title: 'Track' },
     { id: '3', title: 'Van' }
 ]
+// const vehicleItems = [
+//     { id: '1', title: 'Car' },
+//     { id: '2', title: 'Track' },
+//     { id: '3', title: 'Van' }
+// ]
 
 const Vehicle = () => {
     const carItems = car;

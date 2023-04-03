@@ -56,13 +56,13 @@ const InsuranceMenuData = () => {
                 <Stack
                     direction="row"
                     spacing={2}
-                    sx={{ minWidth: "full", py: 2 }}
+                    sx={{ minWidth: "full", py: 1 }}
                 >
                     <Stack spacing={1}>
-                        <Link to='/vehicle' className="block font-semibold text-black uppercase hover:bg-gray-400  hover:white  px-2">Car insurance</Link>
-                        <Link to='/home/travel' className="block font-semibold text-black uppercase hover:bg-gray-400 hover:white-400  px-2">travel</Link>
-                        <Link to='/health' className="block font-semibold text-black uppercase hover:bg-gray-400 hover:white-400  px-2">health</Link>
-                        {/* <Link to='/life' className="block font-semibold text-black uppercase hover:bg-gray-400 px-2">life</Link> */}
+                        <Link to='/vehicle' className="text-sm text-gray-900 hover:bg-gray-100  px-2 py-1">Car Insurance</Link>
+                        <Link to='/home/travel' className="text-sm text-gray-900 hover:bg-gray-100 px-2 py-1">travel insurance</Link>
+                        <Link to='/health' className="text-sm text-gray-900 hover:bg-gray-100 px-2 py-1">health insurance</Link>
+                        <Link to='/life' className="text-sm text-gray-900 hover:bg-gray-100 px-2 py-1">Life insurance</Link>
                     </Stack>
                 </Stack>
             </Popover>

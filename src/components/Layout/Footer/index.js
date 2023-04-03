@@ -24,7 +24,7 @@ export default function Footer() {
     ],
     contact: [
       { item: "Road 7, Sector 11, Uttara, Dhaka, Bangladesh" },
-      { item: "youcompare@gmail.com" },
+      { item: "hilltopcompare@gmail.com" },
     ],
   };
 
@@ -86,7 +86,7 @@ export default function Footer() {
           }}
         >
           Copyright <span style={{ fontSize: "14px" }}>&copy;</span>{" "}
-          {new Date().getFullYear()}, All rights reserved by YouCompare
+          {new Date().getFullYear()}, All rights reserved by hilltopcompare
         </Typography>
       </Container>
     </Box>

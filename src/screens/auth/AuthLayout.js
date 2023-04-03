@@ -19,16 +19,17 @@ export default function AuthLayout({ children }) {
     <>
       <Container
         style={{
+          marginTop: "100px",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
         }}
       >
-        <Link to="/home">
+        {/* <Link to="/home">
           <BrandLogoBox>
             <img src={logo} style={{ width: "100%", height: "100%" }} />
           </BrandLogoBox>
-        </Link>
+        </Link> */}
 
         <Box>
           <Link to="/login">
