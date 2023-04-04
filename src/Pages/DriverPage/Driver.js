@@ -14,21 +14,45 @@ const Driver = () => {
                 <form action="" className='grid grid-cols-1 gap-2 max-w-[700px] mx-auto mt-8' >
 
                     <div className='h-fit w-full p-2 hover:bg-sky-50 flex flex-col justify-center items-start rounded-md'>
+                        <span className='text-sm text-sky-600 mb-1'>Title (Mr etc)</span>
+                        <input className='text-sm w-full h-8 rounded-none px-2 border-gray-300 hover:border-sky-600 focus:outline-none focus:border-green-600' type="text" placeholder='eg. John Doe' />
+                    </div>
+
+
+                    <div className='h-fit w-full p-2 hover:bg-sky-50 flex flex-col justify-center items-start rounded-md'>
                         <span className='text-sm text-sky-600 mb-1'>Driver Name</span>
                         <input className='text-sm w-full h-8 rounded-none px-2 border-gray-300 hover:border-sky-600 focus:outline-none focus:border-green-600' type="text" placeholder='eg. John Doe' />
                     </div>
 
 
+                    <div className='h-fit w-full p-2 hover:bg-sky-50 flex flex-col justify-center items-start rounded-md'>
+                        <span className='text-sm text-sky-600 mb-1'>Means of ID</span>
+                        <input className='text-sm w-full h-8 rounded-none px-2 border-gray-300 hover:border-sky-600 focus:outline-none focus:border-green-600' type="text" placeholder='Enter Means of ID' />
+                    </div>
+
+
                     <div className='h-fit w-full p-2 hover:bg-blue-50 flex flex-col justify-center items-start rounded-md'>
                         <span className='text-sm text-sky-600 mb-1'>Address</span>
-                        <input className='text-sm w-full h-8 rounded-none px-2 border-gray-300 hover:border-sky-600 focus:outline-none focus:border-green-600' type="text" placeholder='Enter Your Address' />
+                        <input className='text-sm w-full h-8 rounded-none px-2 border-gray-300 hover:border-sky-600 focus:outline-none focus:border-green-600' type="text" placeholder='Enter Address' />
                     </div>
 
 
                     <div className='h-fit w-full p-2 hover:bg-blue-50 flex flex-col justify-center items-start rounded-md'>
+                        <span className='text-sm text-sky-600 mb-1'>Phone</span>
+                        <input className='text-sm w-full h-8 rounded-none px-2 border-gray-300 hover:border-sky-600 focus:outline-none focus:border-green-600' type="number" placeholder='Enter Phone Number' />
+                    </div>
+
+
+                    <div className='h-fit w-full p-2 hover:bg-blue-50 flex flex-col justify-center items-start rounded-md'>
+                        <span className='text-sm text-sky-600 mb-1'>Email</span>
+                        <input className='text-sm w-full h-8 rounded-none px-2 border-gray-300 hover:border-sky-600 focus:outline-none focus:border-green-600' type="email" placeholder='Enter Email Address' />
+                    </div>
+
+
+                    {/* <div className='h-fit w-full p-2 hover:bg-blue-50 flex flex-col justify-center items-start rounded-md'>
                         <span className='text-sm text-sky-600 mb-1'>Driving Lisence</span>
                         <input className='text-sm w-full h-8 rounded-none px-2 border-gray-300 hover:border-sky-600 focus:outline-none focus:border-green-600' type="text" placeholder='47863549564' />
-                    </div>
+                    </div> */}
 
                 </form>
 

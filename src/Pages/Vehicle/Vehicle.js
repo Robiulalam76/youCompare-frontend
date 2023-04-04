@@ -78,7 +78,7 @@ const Vehicle = () => {
                     </div>
 
 
-                    <div className='h-fit w-full p-2 hover:bg-sky-50 flex flex-col justify-center items-start rounded-md cursor-pointer'>
+                    {/* <div className='h-fit w-full p-2 hover:bg-sky-50 flex flex-col justify-center items-start rounded-md cursor-pointer'>
                         <span className='text-sm text-sky-600 mb-1'>Year</span>
                         <div className='relative w-full'>
                             <div onClick={() => setShowItems(showItems === 2 ? 0 : 2)}
@@ -93,7 +93,7 @@ const Vehicle = () => {
                                     } handleYear={setSelectedYear} />
                             }
                         </div>
-                    </div>
+                    </div> */}
 
 
                     <div className='h-fit w-full p-2 hover:bg-sky-50 flex flex-col justify-center items-start rounded-md cursor-pointer'>
@@ -130,7 +130,7 @@ const Vehicle = () => {
                         </div>
                     </div>
 
-                    <div className='h-fit w-full p-2 hover:bg-sky-50 flex flex-col justify-center items-start rounded-md cursor-pointer'>
+                    {/* <div className='h-fit w-full p-2 hover:bg-sky-50 flex flex-col justify-center items-start rounded-md cursor-pointer'>
                         <span className='text-sm text-sky-600 mb-1'>Model Details</span>
                         <select className='text-sm w-full h-8 rounded-none px-2 border border-gray-300 hover:border-sky-600 focus:outline-none' name="modelDetails" id="modelDetails" placeholder='Model Details' >
                             <option className='' value="218i Active Tourer Sedan - 4 Cylinder">218i Active Tourer Sedan - 4 Cylinder</option>
@@ -139,7 +139,7 @@ const Vehicle = () => {
                             <option className='' value="220D Sedan - 4 Cylinder">220D Sedan - 4 Cylinder</option>
                             <option className='' value="220i Convertible - 4 Cylinder">220i Convertible - 4 Cylinder</option>
                         </select>
-                    </div>
+                    </div> */}
 
                     {/* <div className='flex items-center gap-4'>
                         <input className='cursor-pointer ' type="checkbox" name="accept" id="accept" />

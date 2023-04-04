@@ -3,11 +3,11 @@ import { useLocation } from 'react-router-dom';
 import { countries } from "../../Data/countries.js";
 import arrowDown from '../../accets/icons/arrow-down.svg'
 
-const demoLocations = ["Banglades", "India", "Pakistan"]
+// const demoLocations = ["Banglades", "India", "Pakistan"]
 
 const TripDetailsForm = () => {
     const { pathname } = useLocation()
-    const [locations, setLocations] = useState(demoLocations)
+    const [locations, setLocations] = useState()
     const [showItems, setShowItems] = useState(0)
 
 
@@ -23,7 +23,7 @@ const TripDetailsForm = () => {
         <form action="" className='mt-6' >
 
             {
-                locations && <div className='flex items-center gap-3 flex-wrap'>
+                locations && pathname === "/travel/multi-trip" && <div className='flex items-center gap-3 flex-wrap'>
                     {
                         locations?.map(location => (
                             <button className='flex justify-center items-center border rounded-3xl w-fit px-2 py-1 text-black'>
@@ -87,11 +87,11 @@ const TripDetailsForm = () => {
                         <div className='flex flex-col justify-center items-start'>
                             <span className='text-sm text-sky-600 mb-1'>Location</span>
                             <select className='text-sm w-full h-8 rounded-none px-2 border border-gray-300 hover:border-sky-600 focus:outline-none cursor-pointer' name="location">
-                                <option className='' value="Afghan">Afghan</option>
-                                <option className='' value="Albanian">Albanian</option>
-                                <option className='' value="Algerian">Algerian</option>
-                                <option className='' value="American">American</option>
-                                <option className='' value="Andorran">Andorran</option>
+                                {
+                                    countries?.map((country, i) => (
+                                        <option key={i} className='' value={country?.name}>{country?.name}</option>
+                                    ))
+                                }
                             </select>
                         </div>
                     </>

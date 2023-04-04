@@ -147,7 +147,7 @@ export default function App() {
                 </UserPortalLayout>
               </Route>
 
-              <Route exact path="/user-portal/insurar-panel">
+              <Route exact path="/user-portal/insurer-panel">
                 <UserPortalLayout>
                   <Insurar />
                 </UserPortalLayout>

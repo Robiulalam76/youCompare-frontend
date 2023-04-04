@@ -13,7 +13,7 @@ const items = [
     { title: "Customer’s Panel", url: "customer-panel" },
     { title: "Broker’s Panel", url: "broker-panel" },
     { title: "Agent’s Panel", url: "agent-panel" },
-    { title: "Insurar Panel", url: "insurar-panel" },
+    { title: "Insurer Panel", url: "insurer-panel" },
 ]
 
 const UserPortalSidebar = () => {
@@ -61,7 +61,7 @@ const UserPortalSidebar = () => {
                 <div className='relative'>
                     <button onClick={() => setShowItems(showItems === 1 ? 0 : 1)}
                         className={`flex items-center gap-x-4 w-full h-10 text-black uppercase duration-150 px-3
-        ${pathname?.length === 13 || pathname?.length === 12 || pathname.includes('/user-portal/customer-panel') || pathname.includes('/user-portal/broker-panel') || pathname.includes('/user-portal/insurar-panel') || pathname.includes('/user-portal/agent-panel') ? 'bg-white' : 'hover:bg-white'}`}>
+        ${pathname?.length === 13 || pathname?.length === 12 || pathname.includes('/user-portal/customer-panel') || pathname.includes('/user-portal/broker-panel') || pathname.includes('/user-portal/insurer-panel') || pathname.includes('/user-portal/agent-panel') ? 'bg-white' : 'hover:bg-white'}`}>
                         <img className='w-5' src={img1} alt="" />
                         <span className=''>Home</span>
                         <img className='w-5 mx-auto mr-0' src={arrowDown} alt="" />

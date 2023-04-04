@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 
 const tripTransportTabs = [
-    { id: '1', title: 'Car' },
-    { id: '2', title: 'Airplane' },
-    { id: '3', title: 'Train' },
-    { id: '4', title: 'Bus' }
+    { id: '1', title: 'Aeroplane' },
+    { id: '2', title: 'Car' },
+    { id: '3', title: 'Bus' },
+    { id: '4', title: 'Boat' },
+    { id: '5', title: 'Train' }
 ]
 
 const TripTransport = () => {
