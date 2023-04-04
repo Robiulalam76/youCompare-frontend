@@ -14,7 +14,8 @@ import Popover from "@mui/material/Popover";
 import IconButton from "@mui/material/IconButton";
 
 import { styled } from "@mui/system";
-import logo from "../../../accets/logo.png";
+// import logo from "../../../accets/logo.png";
+import logo from "../../../accets/logo2.png";
 // import profile from "../../../accets/profile.jpg";
 import { Link, useLocation } from "react-router-dom";
 
@@ -367,7 +368,7 @@ const BrandLogoSection = ({ setMenuOpen }) => {
       <Link to="/home">
         <BrandLogoBox>
           {/* <img src={logo} style={{ width: "100%", height: "100%" }} /> */}
-          <img src={logo} style={{ width: "180px", height: "90px" }} />
+          <img src={logo} className="w-11 md:w-14" />
         </BrandLogoBox>
       </Link>
     </div>

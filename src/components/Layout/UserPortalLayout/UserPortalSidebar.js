@@ -23,7 +23,7 @@ const UserPortalSidebar = () => {
 
     return (
         <section>
-            <div className='relative z-50 top-0 left-0 w-16 h-full bg-white shadow border-r-4 border-sky-600'>
+            <div className='relative z-50 top-0 left-0 w-12 md:w-16 h-full bg-white shadow border-r-4 border-sky-600'>
                 <div className='flex flex-col justify-center items-center pt-24'>
 
                     <button onClick={() => setOpen(!open)}

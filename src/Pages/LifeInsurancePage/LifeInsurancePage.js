@@ -5,6 +5,7 @@ import TermInsuranceForm from '../../components/LifeInsuranceComponents/Permanet
 import GroupInsuranceForm from '../../components/LifeInsuranceComponents/GroupInsuranceForm/GroupInsuranceForm';
 import arrowDown from '../../accets/icons/arrow-down.svg'
 import LifeInsuranceForm from '../../components/LifeInsuranceComponents/InsuranceCommonForm/LifeInsuranceFormInsuranceForm';
+import { Link } from 'react-router-dom';
 
 const LifeInsurancePage = () => {
     const [open, setOpen] = useState(false)
@@ -61,6 +62,10 @@ const LifeInsurancePage = () => {
             <hr className='mt-6' />
 
             <LifeInsuranceForm />
+
+            <Link to='/quotes' className='w-full h-10 bg-rose-600 hover:bg-rose-700 duration-300 flex justify-center items-center border-b-4 border-rose-900 mt-6'>
+                <span className='font-bold text-white'>Continue</span>
+            </Link>
 
         </section>
     );
