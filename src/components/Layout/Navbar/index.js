@@ -251,7 +251,7 @@ export default function Navbar({ }) {
               <InsuranceMenuData />
             </li>
 
-            <Link to="/user-portal">
+            <Link to="/portal">
               <li className={styles.navlistItem}>
                 <Navtext>User Portal</Navtext>
               </li>

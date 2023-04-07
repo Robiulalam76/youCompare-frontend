@@ -199,14 +199,14 @@ const Vehicle = () => {
 
 
 
-                            <select className='text-sm text-sm w-full h-8 rounded-none px-2 border border-gray-300 hover:border-sky-600 focus:outline-none' name="- Please Select -" id="- Please Select -">
+                            <select className='text-sm w-full h-8 rounded-none px-2 border border-gray-300 hover:border-sky-600 focus:outline-none' name="- Please Select -" id="- Please Select -">
                                 <option className='' value="2023">2023</option>
                                 <option className='' value="2024">2024</option>
                             </select>
                         </div>
                     </div>
 
-                    <div className='h-fit w-full p-2 hover:bg-sky-50 flex flex-col justify-center items-start rounded-md cursor-pointer'>
+                    {/* <div className='h-fit w-full p-2 hover:bg-sky-50 flex flex-col justify-center items-start rounded-md cursor-pointer'>
                         <span className='text-sm text-sky-600 mb-1'>In which city do you want to register this car?</span>
                         <select className='text-sm w-full h-8 rounded-none px-2 border border-gray-300 hover:border-sky-600 focus:outline-none' name="carYear" id="carYear" placeholder='Car Year' >
                             <option className='' value="Dubai">Dubai</option>
@@ -218,7 +218,7 @@ const Vehicle = () => {
                             <option className='' value="Umm Al Quwain">Umm Al Quwain</option>
                             <option className='' value="Al Ain">Al Ain</option>
                         </select>
-                    </div>
+                    </div> */}
 
                     <div className='h-fit w-full p-2 hover:bg-sky-50 flex flex-col justify-center items-start rounded-md cursor-pointer'>
                         <span className='text-sm text-sky-600 mb-1'>Vehicle Reg No</span>
@@ -232,7 +232,7 @@ const Vehicle = () => {
                             type='number' name="engine_Chasis_No " placeholder="Engine Chasis No" />
                     </div>
 
-                    <div className='h-fit w-full p-2 hover:bg-sky-50 flex flex-col justify-center items-start rounded-md cursor-pointer'>
+                    {/* <div className='h-fit w-full p-2 hover:bg-sky-50 flex flex-col justify-center items-start rounded-md cursor-pointer'>
                         <span className='text-sm text-sky-600 mb-1'>In which city do you want to register this car?</span>
                         <select className='text-sm w-full h-8 rounded-none px-2 border border-gray-300 hover:border-sky-600 focus:outline-none' name="carYear" id="carYear" placeholder='Car Year' >
                             <option className='' value="Dubai">Dubai</option>
@@ -244,7 +244,7 @@ const Vehicle = () => {
                             <option className='' value="Umm Al Quwain">Umm Al Quwain</option>
                             <option className='' value="Al Ain">Al Ain</option>
                         </select>
-                    </div>
+                    </div> */}
 
                     <div className='grid md:grid-cols-2 gap-2 md:hover:bg-sky-50 md:p-2 md:rounded-md'>
 

@@ -34,6 +34,9 @@ import Broker from "./Pages/UserPortalMain/Broker";
 import Insurar from "./Pages/UserPortalMain/Insurar";
 import LifeInsurancePage from "./Pages/LifeInsurancePage/LifeInsurancePage";
 import AgentPanel from "./Pages/UserPortalMain/AgentPanel";
+import MyAgents from "./Pages/UserPortalMain/MyAgents/MyAgents";
+import MyQuotes from "./Pages/UserPortalMain/MyQuotes/MyQuotes";
+import AgentDetails from "./Pages/UserPortalMain/MyAgents/AgentDetails";
 
 const LandingPage = React.lazy(() => import("./screens/LangingPage"));
 
@@ -101,6 +104,9 @@ export default function App() {
 
 // --------------------robiul alam----------------------
 
+
+
+
               {/* <Route exact path="/driver">
                 <Driver />
               </Route>
@@ -123,51 +129,57 @@ export default function App() {
               </Route> */}
 
               //-----------------user portal-------------------
-              <Route exact path="/user-portal">
+              <Route exact path="/portal">
                 <UserPortalLayout>
-                  <UserPortal />
+                  <MyAgents />
                 </UserPortalLayout>
               </Route>
 
-              <Route exact path="/user-portal/customer-panel">
+              <Route exact path="/portal/my-agents">
                 <UserPortalLayout>
-                  <UserPortal />
+                  <MyAgents />
                 </UserPortalLayout>
               </Route>
 
-              <Route exact path="/user-portal/broker-panel">
+              <Route exact path="/portal/my-agents/agent-details">
+                <UserPortalLayout>
+                  <AgentDetails />
+                </UserPortalLayout>
+              </Route>
+
+              <Route exact path="/portal/my-quotes">
+                <UserPortalLayout>
+                  <MyQuotes />
+                </UserPortalLayout>
+              </Route>
+
+              {/* <Route exact path="/portal/customer-panel">
+                <UserPortalLayout>
+                  <UserPortal />
+                </UserPortalLayout>
+              </Route> */}
+
+              {/* <Route exact path="/portal/broker-panel">
                 <UserPortalLayout>
                   <Broker />
                 </UserPortalLayout>
-              </Route>
+              </Route> */}
 
-              <Route exact path="/user-portal/agent-panel">
-                <UserPortalLayout>
-                  <AgentPanel />
-                </UserPortalLayout>
-              </Route>
-
-              <Route exact path="/user-portal/insurer-panel">
+              {/* <Route exact path="/portal/insurer-panel">
                 <UserPortalLayout>
                   <Insurar />
                 </UserPortalLayout>
-              </Route>
+              </Route> */}
 
-              <Route exact path="/user-portal/help-center">
+              <Route exact path="/portal/help-center">
                 <UserPortalLayout>
                   <HelpCenter />
                 </UserPortalLayout>
               </Route>
 
-              <Route exact path="/user-portal/my-policy">
+              <Route exact path="/portal/my-policy">
                 <UserPortalLayout>
                   <MyPolicy />
-                </UserPortalLayout>
-              </Route>
-
-              <Route exact path="/user-portal/get-a-quote">
-                <UserPortalLayout>
-                  <SingleQuote />
                 </UserPortalLayout>
               </Route>
 
@@ -294,51 +306,69 @@ export default function App() {
 
 // --------------------robiul alam----------------------
 
-              <Layout user={user}>
+              {/* <Layout user={user}> */}
 
-
-                <Route exact path="/driver">
+              <Route exact path="/driver">
+                <Layout user={user}>
                   <Driver />
-                </Route>
+                </Layout>
+              </Route>
 
-                <Route exact path="/quotes">
+              <Route exact path="/quotes">
+                <Layout user={user}>
                   <Qoutes />
-                </Route>
+                </Layout>
+              </Route>
 
-                <Route exact path="/buy">
+              <Route exact path="/buy">
+                <Layout user={user}>
                   <BuyPage />
-                </Route>
+                </Layout>
+              </Route>
 
-                <Route exact path="/health">
+              <Route exact path="/health">
+                <Layout user={user}>
                   <Health />
-                </Route>
+                </Layout>
+              </Route>
 
-                <Route exact path="/life">
+              <Route exact path="/life">
+                <Layout user={user}>
                   <LifeInsurancePage />
-                </Route>
+                </Layout>
+              </Route>
 
-                <Route exact path="/vehicle">
+              <Route exact path="/vehicle">
+                <Layout user={user}>
                   <Vehicle />
-                </Route>
+                </Layout>
+              </Route>
 
 
-                <Route exact path="/travel/single-trip">
+              <Route exact path="/travel/single-trip">
+                <Layout user={user}>
                   <SingleTrip />
-                </Route>
-                <Route exact path="/travel/multi-trip">
+                </Layout>
+              </Route>
+
+              <Route exact path="/travel/multi-trip">
+                <Layout user={user}>
                   <MultiTrip />
-                </Route>
-                {/* <Route exact path="/travel">
+                </Layout>
+              </Route>
+              {/* <Route exact path="/travel">
                   <TravelPage />
                 </Route> */}
 
 
-                <Route exact path="/payment">
+              <Route exact path="/payment">
+                <Layout user={user}>
                   <PaymentPage />
-                  {/* <LandingPage user={user} /> */}
-                </Route>
+                </Layout>
+                {/* <LandingPage user={user} /> */}
+              </Route>
 
-              </Layout>
+              {/* </Layout> */}
 
 
 // --------------------robiul alam----------------------

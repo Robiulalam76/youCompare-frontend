@@ -11,6 +11,8 @@ import home from '../../accets/icons/home.png'
 import arrowDown from '../../accets/icons/arrow-down.svg'
 import { Button, Grid } from '@mui/material';
 
+
+
 import LifePic from "../../accets/life.svg";
 import TravelPic from "../../accets/driver.svg";
 import car from "../../accets/car-image.svg";
