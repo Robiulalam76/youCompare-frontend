@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import AgentsTableRow from './AgentsTableRow';
 import { AiOutlineSearch } from "react-icons/ai"
-import CreateNewQuoteSidebar from './CreateNewQuoteSidebar';
+import BrokersTableRow from './BrokersTableRow';
 
 const tabs = ["All", "Active", "Pending", "Drafts"]
 
@@ -13,9 +12,8 @@ const items = [
     { _id: "5", client: "Mr. John", bussiness_name: "Travel Insurance", coverages: "GL", expiration: "21/06/2028", premium: "54455", status: "active" },
 ]
 
-const MyAgents = () => {
+const BrokersPanel = () => {
     const [selectedTab, setSelectedTab] = useState("All")
-    const [openAddNewQoute, setOpenAddNewQoute] = useState(false)
     return (
         <section className='p-2 md:px-4 lg:px-6'>
 
@@ -30,7 +28,7 @@ const MyAgents = () => {
                 </div>
                 <div className='flex flex-col items-center md:items-start justify-center md:justify-start w-full h-16 md:h-fit bg-white shadow rounded-md p-2 md:p-4'>
                     <h1 className='font-semibold md:text-xl text-black'>6</h1>
-                    <span className='text-xs text-gray-400 text-center md:text-left'>Active Clients</span>
+                    <span className='text-xs text-gray-400 text-center md:text-left'>Active Brokers</span>
                 </div>
             </div>
 
@@ -55,9 +53,8 @@ const MyAgents = () => {
                         <AiOutlineSearch className='absolute top-2 left-2 text-xl text-gray-400' />
                     </div>
 
-                    <button onClick={() => setOpenAddNewQoute(true)}
-                        className='w-full h-10 rounded-md text-white text-sm bg-primary hover:bg-darkPrimary duration-300 flex justify-center items-center'>
-                        <span>Create New Quote</span>
+                    <button className='w-full h-10 rounded-md text-white text-sm bg-primary hover:bg-darkPrimary duration-200 flex justify-center items-center'>
+                        <span>Create New Broker</span>
                     </button>
 
                 </div>
@@ -100,7 +97,7 @@ const MyAgents = () => {
                         <tbody className='w-full'>
                             {
                                 items?.map(item => (
-                                    <AgentsTableRow key={item?._id} item={item} />
+                                    <BrokersTableRow key={item?._id} item={item} />
                                 ))
                             }
 
@@ -111,12 +108,8 @@ const MyAgents = () => {
 
             </div>
 
-            {
-                openAddNewQoute && <CreateNewQuoteSidebar openAddNewQoute={openAddNewQoute} setOpenAddNewQoute={setOpenAddNewQoute} />
-            }
-
         </section>
     );
 };
 
-export default MyAgents;
+export default BrokersPanel;

@@ -8,8 +8,8 @@ import bRight from "../../../accets/icons/blue-right.png"
 const AgentDetails = () => {
     return (
         <section className='p-2 md:px-4 lg:px-6'>
-            <div className='flex flex-col md:flex-row justify-between items-start gap-4 w-full'>
-                <div className='w-full md:w-[440px] border rounded-3xl bg-white p-4'>
+            <div className='grid lg:grid-cols-3 gap-4 w-full'>
+                <div className='lg:col-span-1 w-full border rounded-3xl bg-white p-4'>
                     <BsThreeDotsVertical className='mx-auto mr-0' />
 
                     <div>
@@ -106,7 +106,7 @@ const AgentDetails = () => {
                 </div>
 
 
-                <div className='flex-grow border rounded-3xl bg-white p-4 w-full'>
+                <div className='lg:col-span-2 flex-grow border rounded-3xl bg-white p-4 w-full'>
                     <h1 className='font-bold text-left text-sky-900'>Agent Details</h1>
                     <hr className='my-2' />
 

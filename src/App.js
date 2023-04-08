@@ -24,7 +24,6 @@ import UserPortalLayout from "./components/Layout/UserPortalLayout/UserPortalLay
 import SingleQuote from "./components/DriverPageCompo/SingleQuote";
 import UserPortal from "./Pages/UserPortalMain/UserPortal";
 import HelpCenter from "./Pages/UserPortalMain/HelpCenter";
-import MyPolicy from "./Pages/UserPortalMain/MyPolicy";
 import Layout from "./components/Layout";
 import PaymentPage from "./Pages/PaymentPage/PaymentPage";
 import SingleTrip from "./Pages/TravelPage/SingleTrip";
@@ -37,6 +36,10 @@ import AgentPanel from "./Pages/UserPortalMain/AgentPanel";
 import MyAgents from "./Pages/UserPortalMain/MyAgents/MyAgents";
 import MyQuotes from "./Pages/UserPortalMain/MyQuotes/MyQuotes";
 import AgentDetails from "./Pages/UserPortalMain/MyAgents/AgentDetails";
+import BrokersPanel from "./Pages/UserPortalMain/BrokersPanel/BrokersPanel";
+import CustomerPanel from "./Pages/UserPortalMain/CustomerPanel/CustomerPanel";
+import PolicyDetails from "./Pages/UserPortalMain/PoliciesPage/PolicyDetails";
+import PolicyDocuments from "./Pages/UserPortalMain/PoliciesPage/PolicyDocuments";
 
 const LandingPage = React.lazy(() => import("./screens/LangingPage"));
 
@@ -104,40 +107,40 @@ export default function App() {
 
 // --------------------robiul alam----------------------
 
-
-
-
-              {/* <Route exact path="/driver">
-                <Driver />
-              </Route>
-
-
-              <Route exact path="/qoutes">
-                <Qoutes />
-              </Route>
-              <Route exact path="/buy">
-                <BuyPage />
-              </Route>
-              <Route exact path="/health">
-                <Health />
-              </Route>
-              <Route exact path="/vehicle">
-                <Vehicle />
-              </Route>
-              <Route exact path="/travel">
-                <TravelPage />
-              </Route> */}
-
               //-----------------user portal-------------------
               <Route exact path="/portal">
                 <UserPortalLayout>
-                  <MyAgents />
+                  <CustomerPanel />
+                </UserPortalLayout>
+              </Route>
+
+              <Route exact path="/portal/customer-panel">
+                <UserPortalLayout>
+                  <CustomerPanel />
+                </UserPortalLayout>
+              </Route>
+
+              <Route exact path="/portal/policies/details">
+                <UserPortalLayout>
+                  <PolicyDetails />
+                </UserPortalLayout>
+              </Route>
+
+              <Route exact path="/portal/policies/documents">
+                <UserPortalLayout>
+                  <PolicyDocuments />
                 </UserPortalLayout>
               </Route>
 
               <Route exact path="/portal/my-agents">
                 <UserPortalLayout>
                   <MyAgents />
+                </UserPortalLayout>
+              </Route>
+
+              <Route exact path="/portal/brokers">
+                <UserPortalLayout>
+                  <BrokersPanel />
                 </UserPortalLayout>
               </Route>
 
@@ -174,12 +177,6 @@ export default function App() {
               <Route exact path="/portal/help-center">
                 <UserPortalLayout>
                   <HelpCenter />
-                </UserPortalLayout>
-              </Route>
-
-              <Route exact path="/portal/my-policy">
-                <UserPortalLayout>
-                  <MyPolicy />
                 </UserPortalLayout>
               </Route>
 
