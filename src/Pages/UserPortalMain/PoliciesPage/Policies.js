@@ -4,7 +4,7 @@ import PoliciesCards from './PoliciesCards';
 const Policies = () => {
     return (
         <div>
-            <h1 className='text-left text-black font-bold mb-2'>Manage and View Your Policy</h1>
+            <h1 className='font-bold text-xl text-left text-sky-900 mb-2'>Manage and View Your Policy</h1>
             <PoliciesCards />
         </div>
     );

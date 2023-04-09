@@ -34,7 +34,7 @@ const MyQuotes = () => {
     return (
         <section className=''>
             <div className='grid md:grid-cols-4 overflow-hidden'>
-                <div className={` p-2 md:px-4 lg:px-6 ${selectedQuote ? "col-span-3" : "col-span-4"}`}>
+                <div className={` p-2 md:px-4 lg:px-6 col-span-4`}>
 
                     <div className='grid md:grid-cols-2 gap-4'>
 
@@ -78,7 +78,7 @@ const MyQuotes = () => {
 
                 {
                     selectedQuote && < MyQuoteSidebar className="md:col-span-1 hidden md:block"
-                        data={selectedQuote} />
+                        data={selectedQuote} setSelectedQuote={setSelectedQuote} />
                 }
 
             </div>

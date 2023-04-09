@@ -20,23 +20,23 @@ const PolicyDocuments = () => {
                         <tr>
                             <th
                                 scope="col"
-                                className="py-1 text-xs font-normal">
+                                className="py-6 font-normal">
                                 #
                             </th>
                             <th
                                 scope="col"
-                                className="py-1 text-xs font-normal text-left">
+                                className="py-6 font-normal text-left">
                                 Document Name
                             </th>
                             <th
                                 scope="col"
-                                className="py-1 text-xs font-normal">
+                                className="py-6 font-normal">
                                 Policy NO
                             </th>
-                            <th scope="col" className="py-1 text-xs font-normal">
+                            <th scope="col" className="py-6 font-normal">
                                 Category
                             </th>
-                            <th scope="col" className="py-1 text-xs font-normal">
+                            <th scope="col" className="py-6 font-normal">
                                 Action
                             </th>
                         </tr>
@@ -44,22 +44,22 @@ const PolicyDocuments = () => {
                     <tbody>
                         <tr className="border-b text-xs bg-white">
                             <td
-                                className="whitespace-nowrap border-r px-2 py-1 font-medium">
+                                className="whitespace-nowrap border-r px-2 py-4 text-sm font-medium">
                                 1
                             </td>
                             <td
-                                className="whitespace-nowrap border-r px-2 py-1 text-left">
+                                className="whitespace-nowrap border-r px-2 py-4 text-sm text-left">
                                 new_document_name.pdf
                             </td>
                             <td
-                                className="whitespace-nowrap border-r px-2 py-1">
+                                className="whitespace-nowrap border-r px-2 py-4 text-sm">
                                 41545
                             </td>
                             <td
-                                className="whitespace-nowrap border-r px-2 py-1">
+                                className="whitespace-nowrap border-r px-2 py-4 text-sm">
                                 Health
                             </td>
-                            <td className="whitespace-nowrap px-2 py-1">
+                            <td className="whitespace-nowrap px-2 py-4 text-sm">
                                 <div className='flex items-center justify-center gap-4 text-xs'>
                                     <button className='w-7 h-7 flex justify-center items-center bg-slate-100 hover:bg-primary text-primary hover:text-white text-xl rounded-full'>
                                         <MdDownloadForOffline />
@@ -72,22 +72,22 @@ const PolicyDocuments = () => {
                         </tr>
                         <tr className="border-b text-xs bg-white">
                             <td
-                                className="whitespace-nowrap border-r px-2 py-1 font-medium">
-                                1
+                                className="whitespace-nowrap border-r px-2 py-4 text-sm font-medium">
+                                2
                             </td>
                             <td
-                                className="whitespace-nowrap border-r px-2 py-1 text-left">
+                                className="whitespace-nowrap border-r px-2 py-4 text-sm text-left">
                                 new_document_name.pdf
                             </td>
                             <td
-                                className="whitespace-nowrap border-r px-2 py-1">
+                                className="whitespace-nowrap border-r px-2 py-4 text-sm">
                                 41545
                             </td>
                             <td
-                                className="whitespace-nowrap border-r px-2 py-1">
+                                className="whitespace-nowrap border-r px-2 py-4 text-sm">
                                 Health
                             </td>
-                            <td className="whitespace-nowrap px-2 py-1">
+                            <td className="whitespace-nowrap px-2 py-4 text-sm">
                                 <div className='flex items-center justify-center gap-4 text-xs'>
                                     <button className='w-7 h-7 flex justify-center items-center bg-slate-100 hover:bg-primary text-primary hover:text-white text-xl rounded-full'>
                                         <MdDownloadForOffline />
@@ -100,22 +100,22 @@ const PolicyDocuments = () => {
                         </tr>
                         <tr className="border-b text-xs bg-white">
                             <td
-                                className="whitespace-nowrap border-r px-2 py-1 font-medium">
-                                1
+                                className="whitespace-nowrap border-r px-2 py-4 text-sm font-medium">
+                                3
                             </td>
                             <td
-                                className="whitespace-nowrap border-r px-2 py-1 text-left">
+                                className="whitespace-nowrap border-r px-2 py-4 text-sm text-left">
                                 new_document_name.pdf
                             </td>
                             <td
-                                className="whitespace-nowrap border-r px-2 py-1">
+                                className="whitespace-nowrap border-r px-2 py-4 text-sm">
                                 41545
                             </td>
                             <td
-                                className="whitespace-nowrap border-r px-2 py-1">
+                                className="whitespace-nowrap border-r px-2 py-4 text-sm">
                                 Health
                             </td>
-                            <td className="whitespace-nowrap px-2 py-1">
+                            <td className="whitespace-nowrap px-2 py-4 text-sm">
                                 <div className='flex items-center justify-center gap-4 text-xs'>
                                     <button className='w-7 h-7 flex justify-center items-center bg-slate-100 hover:bg-primary text-primary hover:text-white text-xl rounded-full'>
                                         <MdDownloadForOffline />
@@ -128,22 +128,22 @@ const PolicyDocuments = () => {
                         </tr>
                         <tr className="border-b text-xs bg-white">
                             <td
-                                className="whitespace-nowrap border-r px-2 py-1 font-medium">
-                                1
+                                className="whitespace-nowrap border-r px-2 py-4 text-sm font-medium">
+                                4
                             </td>
                             <td
-                                className="whitespace-nowrap border-r px-2 py-1 text-left">
+                                className="whitespace-nowrap border-r px-2 py-4 text-sm text-left">
                                 new_document_name.pdf
                             </td>
                             <td
-                                className="whitespace-nowrap border-r px-2 py-1">
+                                className="whitespace-nowrap border-r px-2 py-4 text-sm">
                                 41545
                             </td>
                             <td
-                                className="whitespace-nowrap border-r px-2 py-1">
+                                className="whitespace-nowrap border-r px-2 py-4 text-sm">
                                 Health
                             </td>
-                            <td className="whitespace-nowrap px-2 py-1">
+                            <td className="whitespace-nowrap px-2 py-4 text-sm">
                                 <div className='flex items-center justify-center gap-4 text-xs'>
                                     <button className='w-7 h-7 flex justify-center items-center bg-slate-100 hover:bg-primary text-primary hover:text-white text-xl rounded-full'>
                                         <MdDownloadForOffline />
@@ -156,22 +156,22 @@ const PolicyDocuments = () => {
                         </tr>
                         <tr className="border-b text-xs bg-white">
                             <td
-                                className="whitespace-nowrap border-r px-2 py-1 font-medium">
-                                1
+                                className="whitespace-nowrap border-r px-2 py-4 text-sm font-medium">
+                                5
                             </td>
                             <td
-                                className="whitespace-nowrap border-r px-2 py-1 text-left">
+                                className="whitespace-nowrap border-r px-2 py-4 text-sm text-left">
                                 new_document_name.pdf
                             </td>
                             <td
-                                className="whitespace-nowrap border-r px-2 py-1">
+                                className="whitespace-nowrap border-r px-2 py-4 text-sm">
                                 41545
                             </td>
                             <td
-                                className="whitespace-nowrap border-r px-2 py-1">
+                                className="whitespace-nowrap border-r px-2 py-4 text-sm">
                                 Health
                             </td>
-                            <td className="whitespace-nowrap px-2 py-1">
+                            <td className="whitespace-nowrap px-2 py-4 text-sm">
                                 <div className='flex items-center justify-center gap-4 text-xs'>
                                     <button className='w-7 h-7 flex justify-center items-center bg-slate-100 hover:bg-primary text-primary hover:text-white text-xl rounded-full'>
                                         <MdDownloadForOffline />

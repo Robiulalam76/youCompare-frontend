@@ -5,12 +5,18 @@ import { TbSmartHome } from "react-icons/tb"
 
 import love from '../../../accets/icons/love.png'
 import loveR from '../../../accets/icons/loveR.png'
+import { Drawer } from 'antd';
 
-const MyQuoteSidebar = ({ data }) => {
+const MyQuoteSidebar = ({ data, setSelectedQuote }) => {
     return (
-        <div>
-            <div className={`min-w-[170px] relative h-screen  z-40 right-0 top-0 p-2 duration-300 bg-white
-            ${data ? "right-0 shadow" : "-right-[1800px]"}`
+        <Drawer
+            placement='right'
+            visible={data ? true : false}
+            closable={false}
+            width='420px'
+            onClose={() => setSelectedQuote(null)}
+        >
+            <div className={`min-w-[170px] relative h-screen z-40 right-0 top-0 p-2 duration-300 bg-white`
             }>
                 <div className='relative w-full grid grid-cols-1 gap-2'>
                     <img className='rounded-xl h-28 object-cover' src={data?.img} alt="" />
@@ -39,7 +45,7 @@ const MyQuoteSidebar = ({ data }) => {
 
             </div>
 
-        </div>
+        </Drawer>
     );
 };
 

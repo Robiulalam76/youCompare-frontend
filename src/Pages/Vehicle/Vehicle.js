@@ -146,7 +146,7 @@ const Vehicle = () => {
                         <span className='cursor-pointer text-xl text-blue-900 font-bold' htmlFor="accept">My car is not in the list</span>
                     </div> */}
 
-                    <div className='h-fit w-full p-2 hover:bg-sky-50 flex flex-col justify-center items-start rounded-md cursor-pointer'>
+                    {/* <div className='h-fit w-full p-2 hover:bg-sky-50 flex flex-col justify-center items-start rounded-md cursor-pointer'>
                         <span className='text-sm text-sky-600 mb-1'>When was your car first registered?</span>
                         <div className='grid grid-cols-4 gap-2 md:gap-4'>
                             <select className='text-sm w-full h-8 rounded-none px-2 border border-gray-300 hover:border-sky-600 focus:outline-none' name="- Please Select -" id="- Please Select -">
@@ -204,7 +204,7 @@ const Vehicle = () => {
                                 <option className='' value="2024">2024</option>
                             </select>
                         </div>
-                    </div>
+                    </div> */}
 
                     {/* <div className='h-fit w-full p-2 hover:bg-sky-50 flex flex-col justify-center items-start rounded-md cursor-pointer'>
                         <span className='text-sm text-sky-600 mb-1'>In which city do you want to register this car?</span>

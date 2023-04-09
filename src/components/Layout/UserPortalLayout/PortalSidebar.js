@@ -10,13 +10,13 @@ import { FaUsers } from 'react-icons/fa';
 import { Link, useLocation } from 'react-router-dom';
 
 const items = [
-    { title: "Admin Panel", url: "admin-panel", icon: <MdAdminPanelSettings /> },
-    { title: "My Agents", url: "my-agents", icon: <BsFillPersonLinesFill /> },
+    // { title: "Admin Panel", url: "admin-panel", icon: <MdAdminPanelSettings /> },
     { title: "Cutomer-panel", url: "customer-panel", icon: <FaUsers /> },
+    { title: "My Agents", url: "my-agents", icon: <BsFillPersonLinesFill /> },
     { title: "My Quotes", url: "my-quotes", icon: <TbBlockquote /> },
     { title: "Brokers Panel", url: "brokers", icon: <SiIobroker /> },
-    { title: "Billing", url: "billing", icon: <RiBilliardsLine /> },
-    { title: "Rafferans", url: "rafferans", icon: <FaUsers /> },
+    // { title: "Billing", url: "billing", icon: <RiBilliardsLine /> },
+    // { title: "Rafferans", url: "rafferans", icon: <FaUsers /> },
 ]
 
 const PortalSidebar = () => {
@@ -24,7 +24,7 @@ const PortalSidebar = () => {
     const [showItems, setShowItems] = useState(1)
     const [open, setOpen] = useState(false)
 
-    console.log(open);
+    // console.log(open);
 
     let closeRef = useRef();
     useEffect(() => {
@@ -42,7 +42,7 @@ const PortalSidebar = () => {
     return (
         <section ref={closeRef} className='bg-white h-screen relative'>
 
-            <div className={`min-w-[170px] absolute md:static h-screen  z-40 left-0 top-0 duration-300 bg-white
+            <div className={`min-w-[170px] absolute md:static h-screen  z-30 left-0 top-0 duration-300 bg-white
             ${open ? "left-10 shadow" : "-left-[1800px] md:left-0 hidden md:block"}`
             }>
                 <div className='relative w-full'>
@@ -69,7 +69,7 @@ const PortalSidebar = () => {
 
             </div>
 
-            <div className={`relative w-10 pt-[8px] md:hidden z-50 ${open ? "" : ""}`}>
+            <div className={`relative w-10 pt-[8px] md:hidden z-40 ${open ? "" : ""}`}>
 
                 {
                     showItems === 1 && <div className='flex flex-col items-center justify-start w-full overflow-y-auto'>
