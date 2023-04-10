@@ -1,35 +1,41 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import MyQuoteCard from './MyQuoteCard';
 import MyQuoteSidebar from './MyQuoteSidebar';
 import { AiOutlineSearch } from "react-icons/ai"
 
 const tabs = ["All Quotes", "Recently Added", "Featured"]
-const img = 'https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png'
 
 const quotes = [
-    { _id: "1", title: "Title NO 1", img: img },
-    { _id: "2", title: "Title NO 2", img: img },
-    { _id: "3", title: "Title NO 3", img: img },
+    {
+        _id: "1",
+        title: "Title NO 1",
+        img: "https://www.banksathi.com/wp-content/uploads/2021/02/erwe.png"
+    },
+    {
+        _id: "2",
+        title: "Title NO 2",
+        img: "https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png"
+    },
+    {
+        _id: "3",
+        title: "Title NO 3",
+        img: "https://www.bajajallianz.com/blog/wp-content/uploads/2021/03/types-of-car-insurance.jpg"
+    },
+    {
+        _id: "4",
+        title: "Title NO 4",
+        img: "https://www.banksathi.com/wp-content/uploads/2021/02/bank-sathi-1.png"
+    },
+    {
+        _id: "5",
+        title: "Title NO 5",
+        img: "https://www.chill.ie/images/insurance-news/large/what-is-cv-insurance-l-compressor.jpg"
+    },
 ]
 
 const MyQuotes = () => {
     const [selectedTab, setSelectedTab] = useState("All Quotes")
     const [selectedQuote, setSelectedQuote] = useState(null)
-
-
-    let closeRef = useRef();
-    useEffect(() => {
-        let handler = (e) => {
-            if (!closeRef.current.contains(e.target)) {
-                setSelectedQuote(null);
-            }
-        };
-        document.addEventListener("mousedown", handler);
-        return () => {
-            document.removeEventListener("mousedown", handler);
-        }
-
-    });
 
     return (
         <section className=''>
@@ -63,7 +69,7 @@ const MyQuotes = () => {
 
 
 
-                    <div ref={closeRef} className='grid grid-cols-1 gap-4 mt-8'>
+                    <div className='grid grid-cols-1 gap-4 mt-8'>
 
                         {
                             quotes?.map((qoute, i) => (
