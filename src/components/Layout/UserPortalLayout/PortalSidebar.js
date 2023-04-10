@@ -11,7 +11,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 const items = [
     // { title: "Admin Panel", url: "admin-panel", icon: <MdAdminPanelSettings /> },
-    { title: "Cutomer-panel", url: "customer-panel", icon: <FaUsers /> },
+    { title: "Customer-panel", url: "customer-panel", icon: <FaUsers /> },
     { title: "My Agents", url: "my-agents", icon: <BsFillPersonLinesFill /> },
     { title: "My Quotes", url: "my-quotes", icon: <TbBlockquote /> },
     { title: "Brokers Panel", url: "brokers", icon: <SiIobroker /> },
