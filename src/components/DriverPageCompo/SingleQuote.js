@@ -5,7 +5,7 @@ import close from '../../accets/icons/close.png'
 import right from '../../accets/icons/right.png'
 import img1 from '../../accets/logo1/NoPath - Copy (2).png'
 import { Link } from 'react-router-dom';
-import ViewDetails from '../../Modals/ViewDetailsModals/ViewDetails';
+import ViewDetailsModal from '../../Modals/ViewDetailsModals/ViewDetailsModal';
 
 const SingleQuote = () => {
     const [openModal, setOpenModal] = useState(false)
@@ -70,10 +70,8 @@ const SingleQuote = () => {
                 <h1 className='text-white text-center'>AED 40.00 Discoount!</h1>
             </div>
 
-
-
             {
-                openModal && <ViewDetails closeModal={setOpenModal} />
+                openModal && <ViewDetailsModal closeModal={setOpenModal} />
             }
         </div >
     );

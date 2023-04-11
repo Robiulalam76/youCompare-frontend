@@ -13,7 +13,6 @@ import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "./themes/index";
 import "./App.css";
 import Driver from "./Pages/DriverPage/Driver";
-import Qoutes from "./Pages/QoutesPage/Qoutes";
 import BuyPage from "./Pages/Buypage/BuyPage";
 import Health from "./Pages/Health/Health";
 import Vehicle from "./Pages/Vehicle/Vehicle";
@@ -40,6 +39,7 @@ import BrokersPanel from "./Pages/UserPortalMain/BrokersPanel/BrokersPanel";
 import CustomerPanel from "./Pages/UserPortalMain/CustomerPanel/CustomerPanel";
 import PolicyDetails from "./Pages/UserPortalMain/PoliciesPage/PolicyDetails";
 import PolicyDocuments from "./Pages/UserPortalMain/PoliciesPage/PolicyDocuments";
+import Quotes from "./Pages/QoutesPage/Quotes";
 
 const LandingPage = React.lazy(() => import("./screens/LangingPage"));
 
@@ -313,7 +313,7 @@ export default function App() {
 
               <Route exact path="/quotes">
                 <Layout user={user}>
-                  <Qoutes />
+                  <Quotes />
                 </Layout>
               </Route>
 

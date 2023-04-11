@@ -26,7 +26,7 @@ const UserPortalLayout = ({ children }) => {
         <main className='min-h-screen mx-auto bg-slate-100'>
             <div className='h-16 flex justify-between items-center bg-white w-full border-b-2 border-slate-100 px-4'>
                 <div className='flex items-center justify-start'>
-                    <Link to="/home" className='text-primary font-bold cursor-pointer'>Hilltop Compare</Link>
+                    <Link to="/home" className='text-primary font-bold cursor-pointer'>Hilltopcompare</Link>
                 </div>
                 <div className='flex items-center gap-4'>
                     <button className='w-8 h-8 flex justify-center items-center bg-slate-100 text-primary hover:scale-110 duration-150 text-2xl rounded-full'>

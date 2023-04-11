@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 
-const ViewDetails = ({ closeModal }) => {
+const ViewDetailsModal = ({ closeModal }) => {
 
 
     let outSideRef = useRef();
@@ -129,4 +129,4 @@ const ViewDetails = ({ closeModal }) => {
     );
 };
 
-export default ViewDetails;
+export default ViewDetailsModal;

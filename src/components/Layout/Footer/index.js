@@ -23,7 +23,7 @@ export default function Footer() {
       { item: "Contact" },
     ],
     contact: [
-      { item: "Road 7, Sector 11, Uttara, Dhaka, Bangladesh" },
+      { item: "44 Abeokuta Street off Oba Akran Way, Anifowoshe Ikeja Lagos." },
       { item: "hilltopcompare@gmail.com" },
     ],
   };
