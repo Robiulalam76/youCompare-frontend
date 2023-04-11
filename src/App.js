@@ -341,27 +341,11 @@ export default function App() {
                 </Layout>
               </Route>
 
-
-              <Route exact path="/travel/single-trip">
-                <Layout user={user}>
-                  <SingleTrip />
-                </Layout>
-              </Route>
-
               <Route exact path="/travel">
                 <Layout user={user}>
                   <TravelPage />
                 </Layout>
               </Route>
-
-              <Route exact path="/travel/multi-trip">
-                <Layout user={user}>
-                  <MultiTrip />
-                </Layout>
-              </Route>
-              {/* <Route exact path="/travel">
-                  <TravelPage />
-                </Route> */}
 
 
               <Route exact path="/payment">

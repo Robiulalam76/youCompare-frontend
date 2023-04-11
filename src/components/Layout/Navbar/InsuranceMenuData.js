@@ -60,8 +60,8 @@ const InsuranceMenuData = () => {
                 >
                     <Stack spacing={1}>
                         <Link to='/vehicle' className="text-sm text-gray-900 hover:bg-gray-100  px-2 py-1">Auto Insurance</Link>
-                        <Link to='/home/travel' className="text-sm text-gray-900 hover:bg-gray-100 px-2 py-1">travel insurance</Link>
-                        <Link to='/health' className="text-sm text-gray-900 hover:bg-gray-100 px-2 py-1">health insurance</Link>
+                        <Link to='/travel' className="text-sm text-gray-900 hover:bg-gray-100 px-2 py-1">Travel Insurance</Link>
+                        <Link to='/health' className="text-sm text-gray-900 hover:bg-gray-100 px-2 py-1">Health Insurance</Link>
                         <Link to='/life' className="text-sm text-gray-900 hover:bg-gray-100 px-2 py-1">Life insurance</Link>
                     </Stack>
                 </Stack>

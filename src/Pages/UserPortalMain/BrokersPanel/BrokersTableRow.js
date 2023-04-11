@@ -24,7 +24,7 @@ const BrokersTableRow = ({ item }) => {
                 {item?.status}
             </td>
             <td class="mt-2 px-6 py-2 text-xs cursor-pointer border-l flex items-center justify-between ">
-                <span className='w-16 px-2 h-6 flex justify-center items-center bg-gray-100 hover:bg-primary hover:text-white rounded-3xl text-xs'>View</span>
+                <Link to="/portal/my-agents/agent-details" className='w-16 px-2 h-6 flex justify-center items-center bg-gray-100 hover:bg-primary hover:text-white rounded-3xl text-xs'>View</Link>
 
                 <BsThreeDotsVertical />
             </td>

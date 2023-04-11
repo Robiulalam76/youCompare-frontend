@@ -46,7 +46,7 @@ const insurances = [
   },
   {
     title: "Travel Insurance",
-    url: "home/travel",
+    url: "travel",
     color: "#FDEDC9",
     image: TravelPic,
     description:

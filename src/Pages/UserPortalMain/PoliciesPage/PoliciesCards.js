@@ -33,14 +33,14 @@ const PoliciesCards = () => {
                 </Link>
                 )
             }
-            <button
+            <Link to="/portal/my-quotes"
                 className='flex flex-col justify-center items-center gap-2 w-full h-44 border shadow-md shadow-blue-200 hover:shadow-sky-400 p-3 bg-slate-50 rounded-2xl'>
                 <span className='text-6xl text-gray-500'>
                     <FaStackExchange />
                 </span>
                 <h1 className='text-center text-primary font-bold text-xl'>Make a Change</h1>
                 <p className='text-gray-500 font-normal text-center text-sm'>To Drivers, Addresses, and Vehicles</p>
-            </button>
+            </Link>
 
 
             <button onClick={() => setOpenAddPolicyModal(true)}
@@ -61,14 +61,14 @@ const PoliciesCards = () => {
                 <h1 className='text-center text-primary font-bold text-xl'>Payments</h1>
                 <p className='text-gray-500 font-normal text-center text-sm'>View or Edits Payment Details</p>
             </button>
-            <button
+            <Link to="/portal/my-quotes"
                 className='flex flex-col justify-center items-center gap-2 w-full h-44 border shadow-md shadow-blue-200 hover:shadow-sky-400 p-3 bg-slate-50 rounded-2xl'>
                 <span className='text-6xl text-gray-500'>
                     <GoNote />
                 </span>
                 <h1 className='text-center text-primary font-bold text-xl'>Claim</h1>
                 <p className='text-gray-500 font-normal text-center text-sm'>Make a Claim or see Existing Claim</p>
-            </button>
+            </Link>
 
             {
                 openAddPolicyModal && <AddPolicyModal openAddPolicyModal={openAddPolicyModal} setOpenAddPolicyModal={setOpenAddPolicyModal} />

@@ -5,7 +5,7 @@ import HealthProForm from '../../components/HealthInsuranceComponents/HealthForm
 import HealthForm from '../../components/HealthInsuranceComponents/HealthForm';
 
 const items = [
-    { id: "1", title: "PRO" },
+    { id: "1", title: "PPO" },
     { id: "1", title: "HMO" },
     { id: "1", title: "Point of Service" },
     { id: "1", title: "Health Saving" },
@@ -53,7 +53,7 @@ const Health = () => {
             <hr className='mb-4' />
 
             {
-                selectedTab === "PRO" && <HealthForm />
+                selectedTab === "PPO" && <HealthForm />
             }
             {
                 selectedTab === "HMO" && <HealthForm />

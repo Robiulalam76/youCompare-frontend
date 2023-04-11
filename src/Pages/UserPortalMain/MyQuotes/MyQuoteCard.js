@@ -1,6 +1,6 @@
 import React from 'react';
 import { AiFillCar } from "react-icons/ai"
-import { MdApartment } from "react-icons/md"
+import { MdApartment, MdEditNote } from "react-icons/md"
 import { TbSmartHome } from "react-icons/tb"
 
 import love from '../../../accets/icons/love.png'
@@ -21,7 +21,13 @@ const MyQuoteCard = ({ selectedQuote, setSelectedQuote, data }) => {
             <div className='flex-grow flex flex-col justify-start items-start gap-x-4 gap-y-2 w-full'>
                 <div className='flex justify-between items-center w-full'>
                     <h1 className='text-left text-black font-bold'>{data?.title}</h1>
-                    <img className='w-8 shadow shadow-slate-300 rounded-full' src={love} alt="" />
+                    <div className='flex items-center justify-between gap-2'>
+                        <button className='flex justify-center items-center gap-2 w-fit px-2 h-8 bg-primary text-white hover:bg-darkPrimary duration-300 rounded-md'>
+                            <MdEditNote className='text-xl' />
+                            <span>Edit</span>
+                        </button>
+                        <img className='w-8 shadow shadow-slate-300 rounded-full' src={love} alt="" />
+                    </div>
                 </div>
                 <span className='text-gray-500 text-xs'>apartment | by rabid</span>
                 <div className='flex flex-col md:flex-row gap-2 md:justify-between md:items-center w-full'>
