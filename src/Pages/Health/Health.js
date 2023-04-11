@@ -13,7 +13,7 @@ const items = [
 
 const Health = () => {
     const [open, setOpen] = useState(false)
-    const [selectedTab, setSelectedTab] = useState('PRO')
+    const [selectedTab, setSelectedTab] = useState('PPO')
 
     const handleSelectTab = (data) => {
         setSelectedTab(data)
