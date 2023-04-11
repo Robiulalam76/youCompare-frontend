@@ -348,6 +348,12 @@ export default function App() {
                 </Layout>
               </Route>
 
+              <Route exact path="/travel">
+                <Layout user={user}>
+                  <TravelPage />
+                </Layout>
+              </Route>
+
               <Route exact path="/travel/multi-trip">
                 <Layout user={user}>
                   <MultiTrip />

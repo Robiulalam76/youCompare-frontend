@@ -1,22 +1,20 @@
 import React, { useState } from 'react';
+import SingleTrip from './SingleTrip';
+import MultiTrip from './MultiTrip';
+import arrowDown from '../../accets/icons/arrow-down.svg'
+import { Link } from 'react-router-dom';
+import TripDestination from '../../components/TravelPageComponents/TripDestination';
+import TripTransport from '../../components/TravelPageComponents/TripTransport';
+import TripDetailsForm from '../../components/TravelPageComponents/TripDetailsForm';
+import CoverOne from '../../components/TravelPageComponents/CoverOne';
 import CoverCouple from '../../components/TravelPageComponents/CoverCouple';
 import CoverFamily from '../../components/TravelPageComponents/CoverFamily';
 import CoverGroup from '../../components/TravelPageComponents/CoverGroup';
-import CoverOne from '../../components/TravelPageComponents/CoverOne';
-import MainContactDetails from '../../components/TravelPageComponents/MainContactDetails';
-import SelectCountries from '../../components/TravelPageComponents/SelectCountries';
-import TripDestination from '../../components/TravelPageComponents/TripDestination';
-import TripDetailsForm from '../../components/TravelPageComponents/TripDetailsForm';
-import TripTransport from '../../components/TravelPageComponents/TripTransport';
 
-
-// const items = [
-//     { id: '1', title: 'Schengen countries' },
-//     { id: '2', title: 'Hajj / Umrah' },
-//     { id: '3', title: 'Arab countries  gcc' },
-//     { id: '4', title: 'Worldwide' },
-//     { id: '5', title: 'Inbound Travel to UAE' },
-// ]
+const items = [
+    { id: "1", title: "Single Trip" },
+    { id: "2", title: "Multi Trip" }
+]
 
 const coverItems = [
     { id: '1', title: 'One' },
@@ -26,122 +24,110 @@ const coverItems = [
 ]
 
 const TravelPage = () => {
+    const [open, setOpen] = useState(false)
+    const [selectedTab, setSelectedTab] = useState("Single Trip")
     const [selectedCoverTab, setSelectedCoverTab] = useState('1')
     const [selectedTripTab, setSelectedTripTab] = useState('1')
+
+    const handleSelectTab = (data) => {
+        setSelectedTab(data)
+        setOpen(false)
+    }
     return (
-        <section className='relative bg-whtie px-4 min-h-screen'>
-            <div className='max-w-[1440px] mx-auto py-12'>
-                <div className='w-full md:w-[800px] mx-auto'>
-                    <h1 className='text-2xl font-bold text-rose-600 text-center mb-6'>Find the right travel insurance for your needs</h1>
+        <section className='max-w-[700px] mx-auto'>
+            <div className='my-6'>
+                <h1 className='text-center text-xl font-bold text-sky-600'>Travel Insurance</h1>
+                <p className='text-sm text-center text-gray-600'>Insurance that plans cover trip cancellation, travel medical & many more from your loss.</p>
+            </div>
+
+
+            <div className='relative mb-2 w-full bg-sky-50 p-2 border'>
+                <span className='text-sm text-sky-600 mb-1'>Type of Travel Insurance</span>
+                <div onClick={() => setOpen(!open)}
+                    className='w-full h-8 border cursor-pointer flex justify-between px-4 items-center'>
+                    <p className='text-gray-600 text-sm'>
+                        {selectedTab ? selectedTab : 'Select Option'}
+                    </p>
+                    <img className='w-6' src={arrowDown} alt="" />
                 </div>
-
-                <div className=' max-w-[700px] mx-auto mt-8'>
-
-                    <span className='text-left text-sky-600'>How many people are travelling?</span>
-                    <div className='flex items-center flex-wrap gap-2 md:gap-4 mt-2 w-full'>
+                {
+                    open && <div className='absolute z-50 top-16 border w-full max-h-44 overflow-y-auto'>
                         {
-                            coverItems?.map(item => (
-                                <button onClick={() => setSelectedCoverTab(item?.id)}
-                                    key={item.id}
-                                    className={`flex justify-center items-center h-8 rounded-3xl w-20 
-                                ${selectedCoverTab === item?.id ? 'bg-sky-600 text-white' : 'bg-white border border-sky-600 text-sky-600'}`}
-                                    value={item?.title}>
-                                    <span className='text-sm uppercase text-left md:text-center'>{item?.title}</span>
+                            items?.map(item => (
+                                <button onClick={() => handleSelectTab(item?.title)}
+                                    className='w-full h-8 flex justify-start items-center bg-white hover:bg-gray-100 px-4'>
+                                    <h1 className='text-sm'>{item?.title}</h1>
                                 </button>
                             ))
                         }
                     </div>
+                }
+            </div>
 
-                    <hr className='border-sky-300 my-6' />
+            <hr className='mb-4' />
+            <div className='w-full mx-auto mt-8'>
 
-                    <form action=""
-                        className='grid grid-cols-1 gap-2 max-w-[700px] mx-auto mt-8'>
-                        {selectedCoverTab === '1' && <CoverOne />}
-                        {selectedCoverTab === '2' && <CoverCouple />}
-                        {selectedCoverTab === '3' && <CoverFamily />}
-                        {selectedCoverTab === '4' && <CoverGroup />}
-                    </form>
-
-                </div>
-
-
-
-                <div className=' max-w-[700px] mx-auto mt-8'>
-                    <span className='text-xl text-left text-black font-bold block mb-6'>Trip Details</span>
-
-
-                    <div className='flex items-center gap-4 mb-6'>
-                        <button onClick={() => setSelectedTripTab('1')}
-                            className={`w-fit h-6  flex items-center
-                        ${selectedTripTab === '1' ? 'border-b-2 border-sky-600 text-sky-600' : 'border-b-2 border-white'}`}>
-                            <span>Destination</span>
-                        </button>
-                        <button onClick={() => setSelectedTripTab('2')}
-                            className={`w-fit h-6  flex items-center
-                        ${selectedTripTab === '2' ? 'border-b-2 border-sky-600 text-sky-600' : 'border-b-2 border-white'}`}>
-                            <span>Mode of Transport</span>
-                        </button>
-                    </div>
-
+                <span className='text-left text-sky-600'>How many people are travelling?</span>
+                <div className='flex items-center flex-wrap gap-2 md:gap-4 mt-2 w-full'>
                     {
-                        selectedTripTab === '1' && <TripDestination />
-                    }
-                    {
-                        selectedTripTab === '2' && <TripTransport />
-                    }
-
-                    <TripDetailsForm />
-
-                </div>
-
-
-
-
-
-
-
-
-
-
-
-                {/* <div className='flex items-center md:justify-center flex-wrap gap-4'>
-
-                    {
-                        items.map(item => (
-                            <button onClick={() => setSelectedTab(item.id)}
+                        coverItems?.map(item => (
+                            <button onClick={() => setSelectedCoverTab(item?.id)}
                                 key={item.id}
-                                className={`flex justify-start md:justify-center items-center h-12 w-full md:w-fit px-4 ${selectedTab === item.id ? 'bg-blue-900 text-white' : 'bg-white border border-blue-900 text-blue-900'}`}>
-                                <span className='uppercase text-left md:text-center'>{item?.title}</span>
+                                className={`flex justify-center items-center h-8 rounded-3xl w-20 
+                ${selectedCoverTab === item?.id ? 'bg-sky-600 text-white' : 'bg-white border border-sky-600 text-sky-600'}`}
+                                value={item?.title}>
+                                <span className='text-sm uppercase text-left md:text-center'>{item?.title}</span>
                             </button>
                         ))
                     }
                 </div>
 
-                {
-                    selectedTab === '1' &&
-                    <MainContactDetails />
-                }
-                {
-                    selectedTab === '2' &&
-                    <MainContactDetails />
-                }
-                {
-                    selectedTab === '3' &&
-                    <MainContactDetails />
-                }
-                {
-                    selectedTab === '4' &&
-                    <>
-                        <SelectCountries />
-                        <MainContactDetails />
-                    </>
-                }
-                {
-                    selectedTab === '5' &&
-                    <MainContactDetails />
-                } */}
+                <hr className='border-sky-300 my-6' />
+
+                <form action=""
+                    className='grid grid-cols-1 gap-2 max-w-[700px] mx-auto mt-8'>
+                    {selectedCoverTab === '1' && <CoverOne />}
+                    {selectedCoverTab === '2' && <CoverCouple />}
+                    {selectedCoverTab === '3' && <CoverFamily />}
+                    {selectedCoverTab === '4' && <CoverGroup />}
+                </form>
 
             </div>
+
+
+
+            <div className='mx-auto mt-8'>
+                <span className='text-xl text-left text-black font-bold block mb-6'>Trip Details</span>
+
+
+                <div className='flex items-center gap-4 mb-6'>
+                    <button onClick={() => setSelectedTripTab('1')}
+                        className={`w-fit h-6  flex items-center
+        ${selectedTripTab === '1' ? 'border-b-2 border-sky-600 text-sky-600' : 'border-b-2 border-white'}`}>
+                        <span>Destination</span>
+                    </button>
+                    <button onClick={() => setSelectedTripTab('2')}
+                        className={`w-fit h-6  flex items-center
+        ${selectedTripTab === '2' ? 'border-b-2 border-sky-600 text-sky-600' : 'border-b-2 border-white'}`}>
+                        <span>Mode of Transport</span>
+                    </button>
+                </div>
+
+                {
+                    selectedTripTab === '1' && <TripDestination />
+                }
+                {
+                    selectedTripTab === '2' && <TripTransport />
+                }
+
+                <TripDetailsForm />
+
+
+                <Link to='/quotes' className='w-full h-10 bg-rose-600 hover:bg-rose-700 duration-300 flex justify-center items-center border-b-4 border-rose-900 mt-6'>
+                    <span className='font-bold text-white'>Continue</span>
+                </Link>
+            </div>
+
         </section>
     );
 };
