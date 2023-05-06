@@ -1,4 +1,4 @@
-import { Drawer } from 'antd';
+import { Drawer } from '@mui/material';
 import React from 'react';
 import { BsGearFill } from "react-icons/bs"
 import { RiDeleteBin5Fill } from "react-icons/ri"
@@ -8,14 +8,11 @@ const PolicyDetailsDrawer = ({ policy, setSelectedPolicy, open }) => {
 
     return (
         <Drawer
-            placement='right'
-            visible={open}
-            closable={false}
-            width='480px'
+            anchor="right"
+            open={open}
             onClose={() => setSelectedPolicy(null)}
         >
-
-            <div className="pointer-events-auto w-full">
+            <div className="pointer-events-auto w-full p-4">
                 <div className='w-full h-10 bg-primary text-white flex justify-between items-center px-2'>
                     <span>Nationwide</span>
                 </div>

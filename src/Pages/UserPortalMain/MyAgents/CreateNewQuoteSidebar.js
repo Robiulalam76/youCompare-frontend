@@ -1,4 +1,4 @@
-import { Drawer } from 'antd';
+import { Drawer } from '@mui/material';
 import React, { useState } from 'react';
 import { AiFillCloseCircle } from "react-icons/ai"
 import { BsChevronDown } from "react-icons/bs"
@@ -14,14 +14,12 @@ const CreateNewQuoteSidebar = ({ openAddNewQoute, setOpenAddNewQoute }) => {
     // console.log(excess);
     return (
         <Drawer
-            placement='right'
-            visible={openAddNewQoute}
-            closable={false}
-            width='500px'
+            anchor="right"
+            open={openAddNewQoute}
             onClose={() => setOpenAddNewQoute(false)}
         >
 
-            <div className="pointer-events-auto w-full">
+            <div className="pointer-events-auto w-full py-4 pl-4 pr-10">
                 <div className='w-full h-10 bg-primary text-white flex justify-between items-center px-2'>
                     <span>Create New Quote</span>
                     <button onClick={() => setOpenAddNewQoute(false)}
