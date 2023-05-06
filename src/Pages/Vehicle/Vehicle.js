@@ -5,7 +5,7 @@ import { car } from '../../utils/jsonData/Car';
 import { truck } from '../../utils/jsonData/Track';
 import { Van } from '../../utils/jsonData/Van';
 import Select from '@mui/material/Select';
-import { Button, Drawer, MenuItem, TextField } from '@mui/material';
+import { MenuItem, TextField } from '@mui/material';
 
 const vehicleItems = [
     { id: '1', title: 'Private Vehicle' },
@@ -25,8 +25,7 @@ const Vehicle = () => {
     const [items, setItems] = useState([])
     const [selectVehicleItems, setSelectVehicleItems] = useState([])
 
-    const [openDrawer, setOpenDrawer] = useState(false)
-    console.log(selectVehicleItems);
+    // console.log(selectVehicleItems);
 
     const handleVehicleItem = (item) => {
         setSelectedVehicle(item)
@@ -63,22 +62,6 @@ const Vehicle = () => {
         <section className='relative bg-whtie px-4 min-h-screen'>
             <div className='max-w-[1440px] mx-auto pb-12'>
 
-                <button onClick={() => setOpenDrawer(true)}>
-                    open drawer
-                </button>
-                {
-                    openDrawer && <Drawer
-                        anchor="left"
-                        open={openDrawer}
-                        onClose={() => setOpenDrawer(false)}
-                    >
-                        <div className='w-full md:w-[800px] mx-auto'>
-                            <h1 className='text-xl font-bold text-primary text-center my-3'>Need Auto Insurance for family?
-                                Great! Let's get started
-                            </h1>
-                        </div>
-                    </Drawer>
-                }
                 <div className='w-full md:w-[800px] mx-auto'>
                     <h1 className='text-xl font-bold text-primary text-center my-3'>Need Auto Insurance for family?
                         Great! Let's get started
@@ -132,13 +115,13 @@ const Vehicle = () => {
 
                     <div className='h-fit w-full p-2 hover:bg-sky-50 flex flex-col justify-center items-start rounded-md cursor-pointer'>
                         <span className='text-sm text-sky-600 mb-1'>Vehicle Reg No</span>
-                        <input className='text-sm w-full h-8 rounded-none px-2 shadow border border-gray-100 hover:border-gray-800 focus:outline-none cursor-pointer'
+                        <input className='text-sm w-full h-8 rounded-none px-2 shadow-sm border border-gray-200 hover:border-gray-800 focus:outline-none cursor-pointer'
                             type='number' name="Vehicle Reg No" placeholder="Vehicle Reg No" />
                     </div>
 
                     <div className='h-fit w-full p-2 hover:bg-sky-50 flex flex-col justify-center items-start rounded-md cursor-pointer'>
                         <span className='text-sm text-sky-600 mb-1'>Engine Chasis No</span>
-                        <input className='text-sm w-full h-8 rounded-none px-2 shadow border border-gray-100 hover:border-gray-800 focus:outline-none cursor-pointer'
+                        <input className='text-sm w-full h-8 rounded-none px-2 shadow-sm border border-gray-200 hover:border-gray-800 focus:outline-none cursor-pointer'
                             type='number' name="engine_Chasis_No " placeholder="Engine Chasis No" />
                     </div>
 
