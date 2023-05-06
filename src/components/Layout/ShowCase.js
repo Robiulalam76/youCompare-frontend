@@ -172,7 +172,7 @@ export default function Showcase() {
         >
           <h5 className="appHeader">Get the</h5>
           <h5 style={{ marginBottom: "4%" }} className="appHeader">
-            hilltopcompare
+            HilltopCompare
           </h5>
           <p className="ThirdHeaderPera">
             Lorem ipsum dolor sit amet, a consectetur adipiscing elit. Maecenas

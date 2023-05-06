@@ -45,7 +45,7 @@ const QuoteSummary = () => {
 
 
                     <div className=''>
-                        <h1 className='text-[#046BFF] font-bold underline underline-offset-8'>See All Averages</h1>
+                        <h1 className='text-primary font-bold underline underline-offset-8'>See All Averages</h1>
                     </div>
 
                     <div>

@@ -35,7 +35,7 @@ const QuoteFilter = () => {
                                 policyHolders.map((value, i) => (
                                     <button onClick={() => setSelectedHolder(value)}
                                         className={`w-full h-10 font-bold flex justify-center items-center border-r
-                            ${selectedHolder === value ? "bg-[#046BFF] text-white" : "bg-white text-gray-600"}`}>
+                            ${selectedHolder === value ? "bg-primary text-white" : "bg-white text-gray-600"}`}>
                                         <span className=''>{value}</span>
                                     </button>
                                 ))
@@ -68,7 +68,7 @@ const QuoteFilter = () => {
                                 aboutPackages.map((value, i) => (
                                     <button onClick={() => setSelectedPackage(value)}
                                         className={`w-full h-10 font-bold flex justify-center items-center border-r
-                            ${selectedPackage === value ? "bg-[#046BFF] text-white" : "bg-white text-gray-600"}`}>
+                            ${selectedPackage === value ? "bg-primary text-white" : "bg-white text-gray-600"}`}>
                                         <span className=''>{value}</span>
                                     </button>
                                 ))

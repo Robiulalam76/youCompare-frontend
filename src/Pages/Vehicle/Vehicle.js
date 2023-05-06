@@ -63,7 +63,7 @@ const Vehicle = () => {
             <div className='max-w-[1440px] mx-auto pb-12'>
 
                 <div className='w-full md:w-[800px] mx-auto'>
-                    <h1 className='text-xl font-bold text-primary text-center my-3'>Need Vehicle insurance for family?
+                    <h1 className='text-xl font-bold text-primary text-center my-3'>Need Auto Insurance for family?
                         Great! Let's get started
                     </h1>
                 </div>

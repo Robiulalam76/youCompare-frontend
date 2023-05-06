@@ -13,7 +13,7 @@ const CopyrightText = () => {
       }}
     >
       Copyright <span style={{ fontSize: "14px" }}>&copy;</span> {new Date().getFullYear()}, All
-      rights reserved by hilltopcompare
+      rights reserved by HilltopCompare
     </Typography>
   );
 };

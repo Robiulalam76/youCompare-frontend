@@ -15,7 +15,7 @@ const ViewDetails = () => {
                         tabs?.map((tab, i) => (
                             <button key={i} onClick={() => setSelectedTab(tab)}
                                 className={`w-28 h-12 transition-all duration-300 ease-linear font-bold
-                            ${selectedTab === tab ? "border-b-4 border-[#046BFF] text-[#046BFF]" : "border-b-4 border-white"}`}
+                            ${selectedTab === tab ? "border-b-4 border-primary text-primary" : "border-b-4 border-white"}`}
                             >
                                 <span>{tab}</span>
                             </button>
@@ -23,7 +23,7 @@ const ViewDetails = () => {
                     }
                     <button onClick={() => setOpenModal(true)}
                         className={`w-28 h-12 transition-all duration-300 ease-linear font-bold
-                            ${selectedTab === "Details" ? "border-b-4 border-[#046BFF] text-[#046BFF]" : "border-b-4 border-white"}`}
+                            ${selectedTab === "Details" ? "border-b-4 border-primary text-primary" : "border-b-4 border-white"}`}
                     >
                         <span>Details</span>
                     </button>

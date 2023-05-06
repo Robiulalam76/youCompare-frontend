@@ -54,20 +54,20 @@ const QuoteCard = () => {
                     <div className='flex flex-col justify-center items-start lg:items-end w-full'>
                         <span className='text-gray-500 text-sm'>
                             Reguler Price
-                            <span className='font-bold line-through decoration-rose-500'> $2500</span>
+                            <span className='font-bold line-through decoration-rose-500'> ₦2500</span>
                         </span>
                         <span className='font-bold text-primary'>
                             INSA Offer:
-                            <span className='text-primary font-bold text-xl'> $2000</span>
+                            <span className='text-primary font-bold text-xl'> ₦2000</span>
                         </span>
                         <span className='text-gray-500 text-sm'>
                             You Save
-                            <span className='font-bold'> $500.6363</span>
+                            <span className='font-bold'> ₦500.6363</span>
                         </span>
                     </div>
 
                     <div className='flex justify-center items-center w-full'>
-                        <Link to="/buy" className='w-32 h-10 flex justify-center items-center text-white bg-[#046BFF] rounded hover:bg-primary duration-200'>
+                        <Link to="/buy" className='w-32 h-10 flex justify-center items-center text-white bg-primary rounded hover:bg-darkPrimary duration-200'>
                             <span>Purchase Now</span>
                         </Link>
                     </div>

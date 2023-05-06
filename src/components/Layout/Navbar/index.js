@@ -369,7 +369,7 @@ const BrandLogoSection = ({ setMenuOpen }) => {
         <BrandLogoBox>
           {/* <img src={logo} style={{ width: "100%", height: "100%" }} /> */}
           {/* <img src={logo} className="w-11 md:w-14" /> */}
-          <h1 className="text-primary text-xl font-bold" >Hilltopcompare</h1>
+          <h1 className="text-primary text-xl font-bold" >HilltopCompare</h1>
         </BrandLogoBox>
       </Link>
     </div>

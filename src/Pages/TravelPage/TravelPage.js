@@ -67,22 +67,27 @@ const TravelPage = () => {
             <hr className='mb-4' />
             <div className='w-full mx-auto mt-8'>
 
-                <span className='text-left text-sky-600'>How many people are travelling?</span>
-                <div className='flex items-center flex-wrap gap-2 md:gap-4 mt-2 w-full'>
-                    {
-                        coverItems?.map(item => (
-                            <button onClick={() => setSelectedCoverTab(item?.id)}
-                                key={item.id}
-                                className={`flex justify-center items-center h-8 rounded-3xl w-20 
+                {
+                    selectedTab === "Multi Trip" && <>
+                        <span className='text-left text-sky-600'>How many people are travelling?</span>
+                        <div className='flex items-center flex-wrap gap-2 md:gap-4 mt-2 w-full'>
+                            {
+                                coverItems?.map(item => (
+                                    <button onClick={() => setSelectedCoverTab(item?.id)}
+                                        key={item.id}
+                                        className={`flex justify-center items-center h-8 rounded-3xl w-20 
                 ${selectedCoverTab === item?.id ? 'bg-sky-600 text-white' : 'bg-white border border-sky-600 text-sky-600'}`}
-                                value={item?.title}>
-                                <span className='text-sm uppercase text-left md:text-center'>{item?.title}</span>
-                            </button>
-                        ))
-                    }
-                </div>
+                                        value={item?.title}>
+                                        <span className='text-sm uppercase text-left md:text-center'>{item?.title}</span>
+                                    </button>
+                                ))
+                            }
+                        </div>
+                        <hr className='border-sky-300 my-6' />
+                    </>
+                }
 
-                <hr className='border-sky-300 my-6' />
+
 
                 <form action=""
                     className='grid grid-cols-1 gap-2 max-w-[700px] mx-auto mt-8'>

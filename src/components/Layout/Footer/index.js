@@ -6,14 +6,14 @@ import { Link } from "react-router-dom";
 export default function Footer() {
   const items = {
     insurances: [
-      { item: "Auto Insurance", links: "/home/auto" },
-      { item: "Life Insurance", links: "/home/life" },
-      { item: "Travel Insurance", links: "/home/travel" },
-      { item: "Health Insurance", links: "/home/health" },
+      { item: "Auto Insurance", links: "/auto" },
+      { item: "Life Insurance", links: "/life" },
+      { item: "Travel Insurance", links: "/travel" },
+      { item: "Health Insurance", links: "/health" },
     ],
     support: [
       { item: "Claims", links: "/claim" },
-      { item: "Manage Policy" },
+      { item: "Manage Policy", links: "/portal" },
       { item: "Renew Policy" },
     ],
     about: [
@@ -86,7 +86,7 @@ export default function Footer() {
           }}
         >
           Copyright <span style={{ fontSize: "14px" }}>&copy;</span>{" "}
-          {new Date().getFullYear()}, All rights reserved by hilltopcompare
+          {new Date().getFullYear()}, All rights reserved by HilltopCompare
         </Typography>
       </Container>
     </Box>
