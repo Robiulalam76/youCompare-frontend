@@ -62,7 +62,7 @@ const ViewBuyDetails = ({ closeModal }) => {
                             <button onClick={() => setSelectCash(!selectCash)} className='text-[16px] text-gray-600' htmlFor="cash"><img src="" alt="" />Cash</button>
                         </div>
                         {
-                            selectCash ? <Link to='/payment' type='submit' className='w-full cursor-pointer h-10 bg-rose-600 text-white flex justify-center items-center font-bold border border-b-4 border-rose-800'>
+                            selectCash ? <Link to='/payment' type='submit' className='w-full cursor-pointer h-10 bg-primary text-white flex justify-center items-center font-bold border border-b-4 border-darkPrimary'>
                                 <p>Pay Now (788 AED)</p>
                             </Link>
                                 :
@@ -108,7 +108,7 @@ const ViewBuyDetails = ({ closeModal }) => {
                                 </div>
                                 <div className='flex justify-between items-center gap-2 mb-2'>
                                     <h1 className='text-black text-left'>Subtotal</h1>
-                                    <h1 className='text-right text-rose-600 font-bold'>AED 750</h1>
+                                    <h1 className='text-right text-primary font-bold'>AED 750</h1>
                                 </div>
                             </div>
 
@@ -123,7 +123,7 @@ const ViewBuyDetails = ({ closeModal }) => {
                                 </div>
                                 <div className='flex justify-between items-center gap-2 mb-2'>
                                     <h1 className='text-black text-left'>Subtotal</h1>
-                                    <h1 className='text-right text-rose-600 font-bold'>AED 0</h1>
+                                    <h1 className='text-right text-primary font-bold'>AED 0</h1>
                                 </div>
                             </div>
 
@@ -153,12 +153,12 @@ const ViewBuyDetails = ({ closeModal }) => {
                                 </div>
                                 <div className='flex justify-between items-center gap-2 mb-2'>
                                     <h1 className='text-black text-left'>Subtotal</h1>
-                                    <h1 className='text-right text-rose-600 font-bold'>AED 38</h1>
+                                    <h1 className='text-right text-primary font-bold'>AED 38</h1>
                                 </div>
                             </div>
 
                             <hr className='my-3' />
-                            <h1 className='text-right font-bold pb-2'>Total <span className='text-rose-600'>AED 38</span></h1>
+                            <h1 className='text-right font-bold pb-2'>Total <span className='text-primary'>AED 38</span></h1>
 
 
                             <div className='grid grid-cols-4 gap-3 mb-2'>

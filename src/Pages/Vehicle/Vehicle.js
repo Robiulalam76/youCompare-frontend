@@ -1,18 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import arrowDown from '../../accets/icons/arrow-down.svg'
-import BrandDropdown from '../../components/Dropdowns/VehicleDropdowns/BrandDropdown';
-import DropdownValues from '../../components/Dropdowns/VehicleDropdowns/DropdownValues';
-import ModelDropdown from '../../components/Dropdowns/VehicleDropdowns/ModelDropdown';
-import YearDropdown from '../../components/Dropdowns/VehicleDropdowns/YearDropdown';
 import { car } from '../../utils/jsonData/Car';
 import { truck } from '../../utils/jsonData/Track';
 import { Van } from '../../utils/jsonData/Van';
+import Select from '@mui/material/Select';
+import { MenuItem, TextField } from '@mui/material';
 
 const vehicleItems = [
     { id: '1', title: 'Private Vehicle' },
-    { id: '2', title: 'Commercial Vehicle ' },
-    { id: '3', title: 'Three wheeler ' },
+    { id: '2', title: 'Commercial Vehicle' },
+    { id: '3', title: 'Three wheeler' },
     { id: '4', title: 'Two wheeler' },
 ]
 
@@ -20,30 +18,40 @@ const Vehicle = () => {
     const carItems = car;
     const truckItems = truck;
     const vanItems = Van;
-    const [showItems, setShowItems] = useState(0)
-    const [selectedVehicle, setSelectedVehicle] = useState({ id: '1', title: 'Car' })
-    const [selectedYear, setSelectedYear] = useState('')
+
+    const [selectedVehicle, setSelectedVehicle] = useState('')
     const [seletedModel, setSeletedModel] = useState('')
     const [selectedBrand, setSelectedBrand] = useState('')
     const [items, setItems] = useState([])
+    const [selectVehicleItems, setSelectVehicleItems] = useState([])
 
-    const hanldeSelectWarranty = (data) => {
-        setSelectedVehicle(data)
-        setShowItems(0)
+    console.log(selectVehicleItems);
+
+    const handleVehicleItem = (item) => {
+        setSelectedVehicle(item)
+        if (item === "Private Vehicle") {
+            console.log("hoco");
+            setSelectVehicleItems(carItems)
+        }
+        else if (item === "Commercial Vehicle") {
+            setSelectVehicleItems(truckItems)
+        }
+        else if (item === "Three wheeler") {
+            setSelectVehicleItems(vanItems)
+        }
     }
 
     const handleBrand = (brand) => {
         setSelectedBrand(brand)
-        setShowItems(0)
-        if (selectedVehicle?.title === "Car") {
+        if (selectedVehicle === "Private Vehicle") {
             const getData = carItems?.filter(i => i?.Brand === brand)
             setItems(getData);
         }
-        else if (selectedVehicle?.title === "Track") {
+        else if (selectedVehicle === "Commercial Vehicle") {
             const getData = truckItems?.filter(i => i?.Brand === brand)
             setItems(getData);
         }
-        else if (selectedVehicle?.title === "Van") {
+        else if (selectedVehicle === "Three wheeler") {
             const getData = vanItems?.filter(i => i?.Brand === brand)
             setItems(getData);
         }
@@ -55,7 +63,7 @@ const Vehicle = () => {
             <div className='max-w-[1440px] mx-auto pb-12'>
 
                 <div className='w-full md:w-[800px] mx-auto'>
-                    <h1 className='text-xl font-bold text-rose-600 text-center my-3'>Need Vehicle insurance for family?
+                    <h1 className='text-xl font-bold text-primary text-center my-3'>Need Vehicle insurance for family?
                         Great! Let's get started
                     </h1>
                 </div>
@@ -64,39 +72,99 @@ const Vehicle = () => {
 
                     <div className='h-fit w-full p-2 hover:bg-sky-50 flex flex-col justify-center items-start rounded-md cursor-pointer'>
                         <span className='text-sm text-sky-600 mb-1'>Vehicles</span>
-                        <div className='relative w-full'>
-                            <div onClick={() => setShowItems(showItems === 1 ? 0 : 1)}
-                                className='w-full h-8 border border-gray-300 hover:border-sky-600 focus:outline-none flex justify-between px-2 items-center'>
-                                <p className='text-gray-600 text-sm'>{selectedVehicle?.title}</p>
-                                <img className='w-5' src={arrowDown} alt="" />
-                            </div>
+                        <Select
+                            value={selectedVehicle}
+                            className='h-8 w-full text-sm'
+                            placeholder='Vehicles'
+                            onChange={(e) => handleVehicleItem(e.target.value)}
+                        >
                             {
-                                showItems === 1 && <DropdownValues
-                                    values={vehicleItems} handleSelect={hanldeSelectWarranty} />
+                                vehicleItems.map((item) => <MenuItem value={item.title}>{item.title}</MenuItem>)
                             }
-                        </div>
+                        </Select>
+                    </div>
+
+                    <div className='h-fit w-full p-2 hover:bg-sky-50 flex flex-col justify-center items-start rounded-md cursor-pointer'>
+                        <span className='text-sm text-sky-600 mb-1'>Brand</span>
+                        <Select
+                            value={selectedBrand}
+                            className='h-8 w-full'
+                            onChange={(e) => handleBrand(e.target.value)}
+                        >
+                            {
+                                selectVehicleItems && selectVehicleItems?.map((item) => <MenuItem value={item.Brand}>{item.Brand}</MenuItem>)
+                            }
+                        </Select>
+                    </div>
+
+                    <div className='h-fit w-full p-2 hover:bg-sky-50 flex flex-col justify-center items-start rounded-md cursor-pointer'>
+                        <span className='text-sm text-sky-600 mb-1'>Model</span>
+                        <Select
+                            value={seletedModel}
+                            className='h-8 w-full'
+                            onChange={(e) => setSeletedModel(e.target.value)}
+                        >
+                            {
+                                items?.map((item) => <MenuItem value={item.Model}>{item.Model}</MenuItem>)
+                            }
+                        </Select>
                     </div>
 
 
-                    {/* <div className='h-fit w-full p-2 hover:bg-sky-50 flex flex-col justify-center items-start rounded-md cursor-pointer'>
-                        <span className='text-sm text-sky-600 mb-1'>Year</span>
-                        <div className='relative w-full'>
-                            <div onClick={() => setShowItems(showItems === 2 ? 0 : 2)}
-                                className='w-full h-8 border border-gray-300 hover:border-sky-600 focus:outline-none flex justify-between px-2 items-center'>
-                                <p className='text-gray-600 text-sm'>{selectedYear ? selectedYear : 'Year'}</p>
-                                <img className='w-5' src={arrowDown} alt="" />
-                            </div>
-                            {
-                                showItems === 2 && <YearDropdown
-                                    values={
-                                        selectedVehicle.title === "Car" && carItems || selectedVehicle.title === "Track" && truckItems || selectedVehicle.title === "Van" && vanItems
-                                    } handleYear={setSelectedYear} />
-                            }
-                        </div>
-                    </div> */}
 
 
                     <div className='h-fit w-full p-2 hover:bg-sky-50 flex flex-col justify-center items-start rounded-md cursor-pointer'>
+                        <span className='text-sm text-sky-600 mb-1'>Vehicle Reg No</span>
+                        <input className='text-sm w-full h-8 rounded-none px-2 border border-gray-300 hover:border-sky-600 focus:outline-none cursor-pointer'
+                            type='number' name="Vehicle Reg No" placeholder="Vehicle Reg No" />
+                    </div>
+
+                    <div className='h-fit w-full p-2 hover:bg-sky-50 flex flex-col justify-center items-start rounded-md cursor-pointer'>
+                        <span className='text-sm text-sky-600 mb-1'>Engine Chasis No</span>
+                        <input className='text-sm w-full h-8 rounded-none px-2 border border-gray-300 hover:border-sky-600 focus:outline-none cursor-pointer'
+                            type='number' name="engine_Chasis_No " placeholder="Engine Chasis No" />
+                    </div>
+
+                    <div className='grid md:grid-cols-2 gap-2 md:hover:bg-sky-50 md:p-2 md:rounded-md'>
+
+                        <div className='h-fit w-full p-2 md:p-0 hover:bg-sky-50 md:bg-transparent flex flex-col justify-center items-start rounded-md cursor-pointer'>
+                            <span className='text-sm text-sky-600 mb-1'>Insurance Type</span>
+                            <Select
+                                className='h-8 w-full'
+                            >
+                                <MenuItem value="Comprehensive">Comprehensive</MenuItem>
+                                <MenuItem value="Third Party Fire and Theft">Third Party Fire and Theft</MenuItem>
+                                <MenuItem value="Third Party">Third Party</MenuItem>
+                            </Select>
+                        </div>
+
+                        <div className='h-fit w-full p-2 md:p-0 hover:bg-sky-50 md:bg-transparent flex flex-col justify-center items-start rounded-md cursor-pointer'>
+                            <span className='text-sm text-sky-600 mb-1'>Type of Use</span>
+                            <Select
+                                className='h-8 w-full'
+                            >
+                                <MenuItem value="Commercial">Commercial</MenuItem>
+                                <MenuItem value="Private">Private</MenuItem>
+                            </Select>
+                        </div>
+
+                    </div>
+
+
+                    <Link to='/driver' className='w-full h-10 bg-primary hover:bg-darkPrimary duration-300 flex justify-center items-center border-b-4 border-darkPrimary mt-6'>
+                        <span className='font-bold text-white'>Continue</span>
+                    </Link>
+
+                </form>
+            </div>
+        </section>
+    );
+};
+
+export default Vehicle;
+
+
+{/* <div className='h-fit w-full p-2 hover:bg-sky-50 flex flex-col justify-center items-start rounded-md cursor-pointer'>
                         <span className='text-sm text-sky-600 mb-1'>Brand</span>
                         <div className='relative w-full'>
                             <div onClick={() => setShowItems(showItems === 3 ? 0 : 3)}
@@ -111,26 +179,11 @@ const Vehicle = () => {
                                     } handleSelect={handleBrand} />
                             }
                         </div>
-                    </div>
+                    </div> */}
 
 
 
-                    <div className='h-fit w-full p-2 hover:bg-sky-50 flex flex-col justify-center items-start rounded-md cursor-pointer'>
-                        <span className='text-sm text-sky-600 mb-1'>Model</span>
-                        <div className='relative w-full'>
-                            <div onClick={() => setShowItems(showItems === 4 ? 0 : 4)}
-                                className='w-full h-8 border border-gray-300 hover:border-sky-600 focus:outline-none flex justify-between px-2 items-center'>
-                                <p className='text-gray-600 text-sm'>{selectedBrand ? selectedBrand : 'Model'}</p>
-                                <img className='w-5' src={arrowDown} alt="" />
-                            </div>
-                            {
-                                showItems === 4 && <ModelDropdown
-                                    values={items} handleSelect={setSeletedModel} />
-                            }
-                        </div>
-                    </div>
-
-                    {/* <div className='h-fit w-full p-2 hover:bg-sky-50 flex flex-col justify-center items-start rounded-md cursor-pointer'>
+{/* <div className='h-fit w-full p-2 hover:bg-sky-50 flex flex-col justify-center items-start rounded-md cursor-pointer'>
                         <span className='text-sm text-sky-600 mb-1'>Model Details</span>
                         <select className='text-sm w-full h-8 rounded-none px-2 border border-gray-300 hover:border-sky-600 focus:outline-none' name="modelDetails" id="modelDetails" placeholder='Model Details' >
                             <option className='' value="218i Active Tourer Sedan - 4 Cylinder">218i Active Tourer Sedan - 4 Cylinder</option>
@@ -141,12 +194,12 @@ const Vehicle = () => {
                         </select>
                     </div> */}
 
-                    {/* <div className='flex items-center gap-4'>
+{/* <div className='flex items-center gap-4'>
                         <input className='cursor-pointer ' type="checkbox" name="accept" id="accept" />
                         <span className='cursor-pointer text-xl text-blue-900 font-bold' htmlFor="accept">My car is not in the list</span>
                     </div> */}
 
-                    {/* <div className='h-fit w-full p-2 hover:bg-sky-50 flex flex-col justify-center items-start rounded-md cursor-pointer'>
+{/* <div className='h-fit w-full p-2 hover:bg-sky-50 flex flex-col justify-center items-start rounded-md cursor-pointer'>
                         <span className='text-sm text-sky-600 mb-1'>When was your car first registered?</span>
                         <div className='grid grid-cols-4 gap-2 md:gap-4'>
                             <select className='text-sm w-full h-8 rounded-none px-2 border border-gray-300 hover:border-sky-600 focus:outline-none' name="- Please Select -" id="- Please Select -">
@@ -206,7 +259,7 @@ const Vehicle = () => {
                         </div>
                     </div> */}
 
-                    {/* <div className='h-fit w-full p-2 hover:bg-sky-50 flex flex-col justify-center items-start rounded-md cursor-pointer'>
+{/* <div className='h-fit w-full p-2 hover:bg-sky-50 flex flex-col justify-center items-start rounded-md cursor-pointer'>
                         <span className='text-sm text-sky-600 mb-1'>In which city do you want to register this car?</span>
                         <select className='text-sm w-full h-8 rounded-none px-2 border border-gray-300 hover:border-sky-600 focus:outline-none' name="carYear" id="carYear" placeholder='Car Year' >
                             <option className='' value="Dubai">Dubai</option>
@@ -220,19 +273,8 @@ const Vehicle = () => {
                         </select>
                     </div> */}
 
-                    <div className='h-fit w-full p-2 hover:bg-sky-50 flex flex-col justify-center items-start rounded-md cursor-pointer'>
-                        <span className='text-sm text-sky-600 mb-1'>Vehicle Reg No</span>
-                        <input className='text-sm w-full h-8 rounded-none px-2 border border-gray-300 hover:border-sky-600 focus:outline-none cursor-pointer'
-                            type='number' name="vehicle_Reg_No" placeholder="Vehicle Reg No" />
-                    </div>
 
-                    <div className='h-fit w-full p-2 hover:bg-sky-50 flex flex-col justify-center items-start rounded-md cursor-pointer'>
-                        <span className='text-sm text-sky-600 mb-1'>Engine Chasis No</span>
-                        <input className='text-sm w-full h-8 rounded-none px-2 border border-gray-300 hover:border-sky-600 focus:outline-none cursor-pointer'
-                            type='number' name="engine_Chasis_No " placeholder="Engine Chasis No" />
-                    </div>
-
-                    {/* <div className='h-fit w-full p-2 hover:bg-sky-50 flex flex-col justify-center items-start rounded-md cursor-pointer'>
+{/* <div className='h-fit w-full p-2 hover:bg-sky-50 flex flex-col justify-center items-start rounded-md cursor-pointer'>
                         <span className='text-sm text-sky-600 mb-1'>In which city do you want to register this car?</span>
                         <select className='text-sm w-full h-8 rounded-none px-2 border border-gray-300 hover:border-sky-600 focus:outline-none' name="carYear" id="carYear" placeholder='Car Year' >
                             <option className='' value="Dubai">Dubai</option>
@@ -246,28 +288,28 @@ const Vehicle = () => {
                         </select>
                     </div> */}
 
-                    <div className='grid md:grid-cols-2 gap-2 md:hover:bg-sky-50 md:p-2 md:rounded-md'>
 
-                        <div className='h-fit w-full p-2 md:p-0 hover:bg-sky-50 md:bg-transparent flex flex-col justify-center items-start rounded-md cursor-pointer'>
-                            <span className='text-sm text-sky-600 mb-1'>Insurance Type</span>
-                            <select className='text-sm w-full h-8 rounded-none px-2 border border-gray-300 hover:border-sky-600 focus:outline-none' name="carYear" id="carYear" placeholder='Car Year' >
-                                <option className='' value="Comprehensive">Comprehensive</option>
-                                <option className='' value="Third Party Fire and Theft ">Third Party Fire and Theft </option>
-                                <option className='' value="Third Party ">Third Party </option>
-                            </select>
+
+{/* <div className='h-fit w-full p-2 hover:bg-sky-50 flex flex-col justify-center items-start rounded-md cursor-pointer'>
+                        <span className='text-sm text-sky-600 mb-1'>Year</span>
+                        <div className='relative w-full'>
+                            <div onClick={() => setShowItems(showItems === 2 ? 0 : 2)}
+                                className='w-full h-8 border border-gray-300 hover:border-sky-600 focus:outline-none flex justify-between px-2 items-center'>
+                                <p className='text-gray-600 text-sm'>{selectedYear ? selectedYear : 'Year'}</p>
+                                <img className='w-5' src={arrowDown} alt="" />
+                            </div>
+                            {
+                                showItems === 2 && <YearDropdown
+                                    values={
+                                        selectedVehicle.title === "Car" && carItems || selectedVehicle.title === "Track" && truckItems || selectedVehicle.title === "Van" && vanItems
+                                    } handleYear={setSelectedYear} />
+                            }
                         </div>
+                    </div> */}
 
-                        <div className='h-fit w-full p-2 md:p-0 hover:bg-sky-50 md:bg-transparent flex flex-col justify-center items-start rounded-md cursor-pointer'>
-                            <span className='text-sm text-sky-600 mb-1'>Type of Use</span>
-                            <select className='text-sm w-full h-8 rounded-none px-2 border border-gray-300 hover:border-sky-600 focus:outline-none' name="carYear" id="carYear" placeholder='Car Year' >
-                                <option className='' value="Commercial">Commercial</option>
-                                <option className='' value="Private">Private</option>
-                            </select>
-                        </div>
 
-                    </div>
 
-                    {/* <div className='h-fit w-full p-2 hover:bg-sky-50 flex flex-col justify-center items-start rounded-md cursor-pointer'>
+{/* <div className='h-fit w-full p-2 hover:bg-sky-50 flex flex-col justify-center items-start rounded-md cursor-pointer'>
                         <span className='text-sm text-sky-600 mb-1'>Is this car GCC spec AND unmodified?</span>
                         <div className='flex items-center gap-5 mt-6'>
                             <button className='w-20 h-20 rounded-full bg-blue-900 flex justify-center items-center'>
@@ -316,15 +358,3 @@ const Vehicle = () => {
                             </button>
                         </div>
                     </div> */}
-
-                    <Link to='/driver' className='w-full h-10 bg-rose-600 hover:bg-rose-700 duration-300 flex justify-center items-center border-b-4 border-rose-900 mt-6'>
-                        <span className='font-bold text-white'>Continue</span>
-                    </Link>
-
-                </form>
-            </div>
-        </section>
-    );
-};
-
-export default Vehicle;

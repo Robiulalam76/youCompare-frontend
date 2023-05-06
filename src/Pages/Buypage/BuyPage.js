@@ -100,7 +100,7 @@ const BuyPage = () => {
                     </div>
 
                     <div className='py-4 bg-gray-50'>
-                        <h1 className='font-bold text-center text-rose-600'>GET FREE VOUCHERS WITH EVERY POLICY</h1>
+                        <h1 className='font-bold text-center text-primary'>GET FREE VOUCHERS WITH EVERY POLICY</h1>
                         <div className='grid grid-cols-2 md:grid-cols-5 gap-6 mt-4'>
                             <img className='h-12' src={img1} alt="" />
                             <img className='h-12' src={img1} alt="" />
@@ -115,7 +115,7 @@ const BuyPage = () => {
                             <img className='w-24 h-16' src={img2} alt="" />
                             <div>
                                 <h1 className='text-center md:text-left font-bold'>Shop with Confidence</h1>
-                                <h1 className='text-rose-600 font-bold text-center md:text-left'>LOWEST PRICE ONLINE GRANTEED</h1>
+                                <h1 className='text-primary font-bold text-center md:text-left'>LOWEST PRICE ONLINE GRANTEED</h1>
                                 <p className='text-center md:text-left toLine text-sm'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur cum eius sit doloribus. Error, ut, explicabo dicta sit reprehenderit vero quae aspernatur quod beatae exercitationem et! Minima itaque consectetur dicta.</p>
                             </div>
                         </div>
@@ -128,7 +128,7 @@ const BuyPage = () => {
                                 <p className='text-gray-600 mb-2'>3). Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
 
                             </div>
-                            <p className='text-gray-500 mt-2'>If Realy is that that this policy is for you. here are the next steps. <span className='text-rose-600 font-semibold'>65451465465</span></p>
+                            <p className='text-gray-500 mt-2'>If Realy is that that this policy is for you. here are the next steps. <span className='text-primary font-semibold'>65451465465</span></p>
                         </div>
                     </div>
                     <div className='mt-4'>
@@ -221,7 +221,7 @@ const BuyPage = () => {
                     <img className='w-24 md:w-48 md:h-10' src={img1} alt="" />
                 </div>
                 <hr className='my-3' />
-                <h1 className='text-sm font-bold text-rose-700 text-left uppercase'>valuation you have provided is subject to approval from your chosen Insurance Company if the insurance does not accept your valuation your premium may need to be at the state</h1>
+                <h1 className='text-sm font-bold text-primary text-left uppercase'>valuation you have provided is subject to approval from your chosen Insurance Company if the insurance does not accept your valuation your premium may need to be at the state</h1>
 
                 <div className='flex items-center gap-2 cursor-pointer mb-4 mt-4'>
                     <input onClick={() => setTermsCondition(!termsCondition)} type="checkbox" checked={termsCondition ? true : false} name="terms" id="terms" />
@@ -229,7 +229,7 @@ const BuyPage = () => {
                 </div>
                 {
                     termsCondition ? <button onClick={() => setOpenBuyModal(!openBuyModal)}
-                        className='w-56 h-10 bg-rose-600 text-white flex justify-center items-center font-bold border border-b-4 border-rose-800'>
+                        className='w-56 h-10 bg-primary hover:bg-darkPrimary duration-300 flex justify-center items-center border-b-4 border-darkPrimary text-white'>
                         <p>Proceed To Payment</p>
                     </button>
                         :

@@ -66,7 +66,7 @@ const Health = () => {
             }
 
 
-            <Link to='/quotes' className='w-full h-10 bg-rose-600 hover:bg-rose-700 duration-300 flex justify-center items-center border-b-4 border-rose-900 mt-6'>
+            <Link to='/quotes' className='w-full h-10 bg-primary hover:bg-darkPrimary duration-300 flex justify-center items-center border-b-4 border-darkPrimary mt-6'>
                 <span className='font-bold text-white'>Continue</span>
             </Link>
 
