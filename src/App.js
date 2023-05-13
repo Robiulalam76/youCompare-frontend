@@ -43,6 +43,7 @@ import Quotes from "./Pages/QoutesPage/Quotes";
 import Blog from "./Pages/Blog/Blog";
 import Contact from "./Pages/Contact/Contact";
 import About from "./Pages/About/About";
+import WhatWeDo from "./Pages/What-we-do/WhatWeDo";
 
 const LandingPage = React.lazy(() => import("./screens/LangingPage"));
 
@@ -370,6 +371,9 @@ export default function App() {
                 </Route>
                 <Route exact path="/about">
                   <About />
+                </Route>
+                <Route exact path="/what-we-do">
+                  <WhatWeDo />
                 </Route>
               </Layout>
 
