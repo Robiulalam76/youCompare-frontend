@@ -40,6 +40,9 @@ import CustomerPanel from "./Pages/UserPortalMain/CustomerPanel/CustomerPanel";
 import PolicyDetails from "./Pages/UserPortalMain/PoliciesPage/PolicyDetails";
 import PolicyDocuments from "./Pages/UserPortalMain/PoliciesPage/PolicyDocuments";
 import Quotes from "./Pages/QoutesPage/Quotes";
+import Blog from "./Pages/Blog/Blog";
+import Contact from "./Pages/Contact/Contact";
+import About from "./Pages/About/About";
 
 const LandingPage = React.lazy(() => import("./screens/LangingPage"));
 
@@ -356,6 +359,19 @@ export default function App() {
               </Route>
 
               {/* </Layout> */}
+
+
+              <Layout>
+                <Route exact path="/blog">
+                  <Blog />
+                </Route>
+                <Route exact path="/contact">
+                  <Contact />
+                </Route>
+                <Route exact path="/about">
+                  <About />
+                </Route>
+              </Layout>
 
 
 // --------------------robiul alam----------------------

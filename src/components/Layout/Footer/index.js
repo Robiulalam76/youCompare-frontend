@@ -17,10 +17,10 @@ export default function Footer() {
       { item: "Renew Policy" },
     ],
     about: [
-      { item: "About" },
-      { item: "What We Do" },
-      { item: "Blog" },
-      { item: "Contact" },
+      { item: "About", links: "/about" },
+      { item: "What We Do", links: "/what-we-do" },
+      { item: "Blog", links: "/blog" },
+      { item: "Contact", links: "/contact" },
     ],
     contact: [
       { item: "44 Abeokuta Street off Oba Akran Way, Anifowoshe Ikeja Lagos." },
