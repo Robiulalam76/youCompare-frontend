@@ -9,7 +9,7 @@ const Contact = () => {
     return (
         <section className='max-w-[1440px] mx-auto cursor-pointer'>
             <div>
-                <img className='w-full h-80 object-cover' src={img1} alt="aboutImage" />
+                <img className='w-full h-96 object-cover' src={img1} alt="aboutImage" />
             </div>
 
             <div className='grid md:grid-cols-3 gap-4 mt-10 px-4 max-w-[1200px] mx-auto'>
