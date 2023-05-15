@@ -56,7 +56,7 @@ const Driver = () => {
 
                 </form>
 
-                <Link to='/quotes' className='w-56 h-10 rounded hover:border-b-4 border-rose-900 bg-rose-600 hover:bg-rose-700 cursor-pointer duration-300 text-white font-bold flex justify-center items-center gap-3 mx-auto mt-16'>
+                <Link to='/quotes' className='w-56 h-10 rounded hover:border-b-4 border-darkPrimary bg-primary hover:bg-darkPrimary cursor-pointer duration-300 text-white font-bold flex justify-center items-center gap-3 mx-auto mt-16'>
                     <h1>See All Quotes</h1>
                     <img className='w-6' src={rightArrow} alt="" />
                 </Link>
