@@ -44,6 +44,7 @@ import Blog from "./Pages/Blog/Blog";
 import Contact from "./Pages/Contact/Contact";
 import About from "./Pages/About/About";
 import WhatWeDo from "./Pages/What-we-do/WhatWeDo";
+import AboutLayout from "./components/Layout/AboutLayout/AboutLayout";
 
 const LandingPage = React.lazy(() => import("./screens/LangingPage"));
 
@@ -362,7 +363,7 @@ export default function App() {
               {/* </Layout> */}
 
 
-              <Layout>
+              <AboutLayout>
                 <Route exact path="/blog">
                   <Blog />
                 </Route>
@@ -375,7 +376,8 @@ export default function App() {
                 <Route exact path="/what-we-do">
                   <WhatWeDo />
                 </Route>
-              </Layout>
+              </AboutLayout>
+
 
 
 // --------------------robiul alam----------------------

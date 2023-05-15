@@ -15,7 +15,7 @@ const About = () => {
     return (
         <div className='bg-white pt-12'>
             <h1 className='text-center font-bold text-5xl mb-6'>Core Features</h1>
-            <div className='max-w-[1240px] mx-auto cursor-pointer grid md:grid-cols-2 lg:grid-cols-4 gap-4 mt-16 px-4'>
+            <div className='cursor-pointer grid md:grid-cols-2 lg:grid-cols-4 gap-4 mt-16 px-4'>
                 {
                     items.map(item => <div
                         className='flex flex-col justify-center items-center gap-4 w-full h-60 border shadow-md shadow-blue-300 p-3'>
