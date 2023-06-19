@@ -146,7 +146,7 @@ const UserLogo = ({ user, size, setIsLoggedin }) => {
   );
 };
 
-export default function Navbar({ }) {
+export default function Navbar({}) {
   const [menuOpen, setMenuOpen] = React.useState(false);
   const [navbarElevation, setNavbarElevation] = React.useState(false);
   const [showTopBar, setShowTopBar] = React.useState(true);
@@ -223,9 +223,7 @@ export default function Navbar({ }) {
           <BrandLogoSection setMenuOpen={setMenuOpen} />
           <ul className={styles.navlist}>
             <Hidden mdDown>
-              <li className={styles.navlistItem}>
-                {/* <ProductsMenu /> */}
-              </li>
+              <li className={styles.navlistItem}>{/* <ProductsMenu /> */}</li>
               <li className={styles.navlistItem}>
                 <ClainMenu />
               </li>
@@ -277,7 +275,6 @@ export default function Navbar({ }) {
                 </li>
               </Link>
             )}
-
           </ul>
         </NavContainer>
         {/** Drawer, displayed on small screen */}
@@ -369,7 +366,7 @@ const BrandLogoSection = ({ setMenuOpen }) => {
         <BrandLogoBox>
           {/* <img src={logo} style={{ width: "100%", height: "100%" }} /> */}
           {/* <img src={logo} className="w-11 md:w-14" /> */}
-          <h1 className="text-primary text-xl font-bold" >HilltopCompare</h1>
+          <h1 className="text-primary text-xl font-bold">YouCompare</h1>
         </BrandLogoBox>
       </Link>
     </div>

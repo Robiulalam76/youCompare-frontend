@@ -34,7 +34,7 @@ const insurances = [
     color: "#FFDFD2",
     image: car,
     description:
-      "Auto insurance is designed to protect yourself and others agains many various risks",
+      "Secure Your Ride, Peace of Mind: Choose Auto Insurance That Covers You on Every Journey.",
   },
   {
     title: "Life Insurance",
@@ -42,7 +42,7 @@ const insurances = [
     color: "#D4E5FB",
     image: LifePic,
     description:
-      "Prepare for your family's future in the case of an unexpected tragedy. Insurance helps you.",
+      "Secure Your Wellbeing with Comprehensive Health Insurance Coverage. Stay Protected, Stay Healthy!",
   },
   {
     title: "Travel Insurance",
@@ -50,7 +50,7 @@ const insurances = [
     color: "#FDEDC9",
     image: TravelPic,
     description:
-      "Insurance plans that cover trip cancellation, travel medicines and many more from your loss.",
+      "Secure Your Loved Ones' Future with Life Insurance - Providing Financial Protection and Peace of Mind.",
   },
   {
     title: "Health Insurance",
@@ -58,14 +58,14 @@ const insurances = [
     color: "#FFDAED",
     image: HealthPic,
     description:
-      "Health is the most important thing that we should protect. Health insurance will take care.",
+      "Travel with Peace of Mind: Safeguard Your Adventures with Travel Insurance!",
   },
 ];
 
 export default function LandingPage({ user }) {
   const { path, url } = useRouteMatch();
 
-  console.log(path, "PATH");
+  // console.log(path, "PATH");
 
   const Card = () => (
     //landing page er main div
@@ -79,6 +79,14 @@ export default function LandingPage({ user }) {
           Compare insurance policies, rate, detail, & buy instantly in less than
           five minutes!
         </p>
+        {/* <h1 className="BannerHeader poppinFont ">
+          Smart way <br />
+          to buy insurance.
+        </h1>
+        <p className="BannerPera poppinFont">
+          Compare insurance policies, rate, detail, & buy instantly in less than
+          five minutes!
+        </p> */}
       </div>
       <Grid container>
         {insurances.map((insurance, i) => (

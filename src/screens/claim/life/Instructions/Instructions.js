@@ -55,12 +55,14 @@ export default function Instructions({ setShowForm }) {
           {/* Documents Checklist Section */}
           <DisplayCard>
             <h2 className={styles.title} style={{ marginBottom: "12px" }}>
-              Documents Checklist
+              Life Insurance Claim Documents Checklist
             </h2>
             <p className={styles.checklistText}>
-              Here's an exhaustive list of documents you may need to submit to
-              make a claim. You may need only a few or all of them based on your
-              situation.
+              Streamline your life insurance claim process with this
+              comprehensive checklist. Gather the necessary documents, such as
+              claim form, policy documents, proof of identity, and bills, to
+              ensure a successful claim settlement. Stay organized and increase
+              your chances of a smooth and efficient insurance claim experience.
             </p>
             <ul className={styles.checklist}>
               {docsChecklist.map((item) => (

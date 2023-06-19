@@ -1,28 +1,35 @@
-import { Stepper, Step, StepLabel, StepContent, Grid, Button, Collapse, ButtonBase } from '@mui/material';
-import React from 'react';
+import {
+  Stepper,
+  Step,
+  StepLabel,
+  StepContent,
+  Grid,
+  Button,
+  Collapse,
+  ButtonBase,
+} from "@mui/material";
+import React from "react";
 import styles from "./styles.module.css";
-import { claimSteps, docsChecklist, questions } from './data';
-import { BsFileEarmarkCheck, BsArrowDownCircle } from 'react-icons/bs';
-import { AiOutlineArrowLeft } from 'react-icons/ai';
-import { HiOutlineArrowLeft } from 'react-icons/hi';
+import { claimSteps, docsChecklist, questions } from "./data";
+import { BsFileEarmarkCheck, BsArrowDownCircle } from "react-icons/bs";
+import { AiOutlineArrowLeft } from "react-icons/ai";
+import { HiOutlineArrowLeft } from "react-icons/hi";
 // import { Rotate90DegreesCcw } from '@mui/icons-material';
 
 //components
-import DisplayCard from './DisplayCard'
-import Assistance from './Assistance'
-import { Link } from 'react-router-dom';
+import DisplayCard from "./DisplayCard";
+import Assistance from "./Assistance";
+import { Link } from "react-router-dom";
 
 export default function Instructions({ setShowForm }) {
-
   const onShowForm = () => {
-    setShowForm(true)
-  }
+    setShowForm(true);
+  };
 
   return (
     <Grid container>
       <Grid item xs={12} md={6}>
         <Grid container justifyContent="center">
-
           {/* Claim Process Section */}
           <DisplayCard>
             <Link to="/claim">
@@ -32,33 +39,40 @@ export default function Instructions({ setShowForm }) {
             </Link>
             <h2 className={styles.title}>Claim Process</h2>
             <p className={styles.subtitle}>Auto Insurance</p>
-            <Stepper orientation='vertical' sx={{ mt: 2 }}>
-              {
-                claimSteps.map(step => (
-                  <Step active={true} key={step.id}>
-                    <StepLabel><p className={styles.label}>{step.label}</p></StepLabel>
-                    <StepContent><p className={styles.text}>{step.text}</p></StepContent>
-                  </Step>
-                ))
-              }
+            <Stepper orientation="vertical" sx={{ mt: 2 }}>
+              {claimSteps.map((step) => (
+                <Step active={true} key={step.id}>
+                  <StepLabel>
+                    <p className={styles.label}>{step.label}</p>
+                  </StepLabel>
+                  <StepContent>
+                    <p className={styles.text}>{step.text}</p>
+                  </StepContent>
+                </Step>
+              ))}
             </Stepper>
           </DisplayCard>
           {/* Documents Checklist Section */}
           <DisplayCard>
-            <h2
-              className={styles.title}
-              style={{ marginBottom: "12px" }}>
-              Documents Checklist
+            <h2 className={styles.title} style={{ marginBottom: "12px" }}>
+              Comprehensive Documents Checklist for Making a Claim
             </h2>
             <p className={styles.checklistText}>
-              Here's an exhaustive list of documents you may need to submit to make a claim.
-              You may need only a few or all of them based on your situation.
+              To ensure a smooth claim process, here is an exhaustive list of
+              documents that you may be required to submit. The specific
+              documents needed may vary depending on your unique situation and
+              the nature of your claim. Please review the list below.
             </p>
             <ul className={styles.checklist}>
-              {docsChecklist.map(item => (
+              {docsChecklist.map((item) => (
                 <li key={item} className={styles.checklistItem}>
                   <BsFileEarmarkCheck
-                    style={{ marginRight: "8px", color: "green", fontSize: "16px" }} />
+                    style={{
+                      marginRight: "8px",
+                      color: "green",
+                      fontSize: "16px",
+                    }}
+                  />
                   <p className={styles.checklistText}>{item}</p>
                 </li>
               ))}
@@ -67,7 +81,9 @@ export default function Instructions({ setShowForm }) {
 
           <DisplayCard>
             <h2 className={styles.title}>Frequently asked questions</h2>
-            {questions.map(q => <FAQ key={q.id} question={q.question} answer={q.answer} />)}
+            {questions.map((q) => (
+              <FAQ key={q.id} question={q.question} answer={q.answer} />
+            ))}
           </DisplayCard>
         </Grid>
         <br />
@@ -76,17 +92,18 @@ export default function Instructions({ setShowForm }) {
         <Grid container justifyContent="center">
           <Assistance>
             <Button
-              variant='contained'
-              color='secondary'
+              variant="contained"
+              color="secondary"
               sx={{ marginTop: "2rem" }}
-              onClick={onShowForm}>
+              onClick={onShowForm}
+            >
               Submit Claim Form Now
             </Button>
           </Assistance>
         </Grid>
       </Grid>
     </Grid>
-  )
+  );
 }
 
 const FAQ = (props) => {
@@ -95,12 +112,13 @@ const FAQ = (props) => {
   return (
     <>
       <div className={styles.faq}>
-        <div className={styles.question}
-          onClick={() => setOpen(!open)}>
+        <div className={styles.question} onClick={() => setOpen(!open)}>
           <h4 className={styles.label}>{props.question}</h4>
           <div className={styles.iconParent}>
-            <BsArrowDownCircle className={styles.icon}
-              style={{ transform: `rotate(${open ? "180" : "0"}deg)` }} />
+            <BsArrowDownCircle
+              className={styles.icon}
+              style={{ transform: `rotate(${open ? "180" : "0"}deg)` }}
+            />
           </div>
         </div>
         <Collapse in={open}>
@@ -108,5 +126,5 @@ const FAQ = (props) => {
         </Collapse>
       </div>
     </>
-  )
-}
+  );
+};

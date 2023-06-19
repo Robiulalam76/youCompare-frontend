@@ -111,8 +111,11 @@ export default function Proposer(props) {
           }}
           gutterBottom
         >
-          Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem
-          Ipsum Lorem Ipsum
+          Get started with the insurance application process by providing the
+          necessary proposer details. Enter accurate information including the
+          full name, date of birth, gender, contact number, email address, and
+          residential address. Ensure the information is correct for a smooth
+          application process.
         </Typography>
 
         <Grid container spacing={2}>
@@ -217,8 +220,11 @@ export default function Proposer(props) {
           }}
           gutterBottom
         >
-          Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem
-          Ipsum Lorem Ipsum
+          Provide your contact details to proceed with the insurance
+          application. Enter your full name, phone number, email address, and
+          residential address. Double-check the information for accuracy to
+          ensure smooth communication and seamless processing of your
+          application.
         </Typography>
 
         <Grid container spacing={2}>

@@ -3,33 +3,33 @@ import React from "react";
 const subInsurances = [
   {
     name: "Auto",
-    title: "Commercial Vahical",
+    title: "Commercial Vehicle",
     description:
-      "loremem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has bee",
+      "Explore our comprehensive insurance coverage for commercial vehicles. We provide protection and peace of mind for your business fleet. Get the right coverage for your commercial vehicles today.",
     image:
       "https://images.unsplash.com/photo-1511350224460-4a95f1cf2e88?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
   },
   {
     name: "Auto",
-    title: "Private Vahical",
+    title: "Private Vehicle",
     description:
-      "loremem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has bee",
+      "Discover our comprehensive insurance options for private vehicles. Safeguard your personal car with our reliable coverage and enjoy peace of mind on the road. Choose the right insurance for your private vehicle today.",
     image:
       "https://images.unsplash.com/photo-1511350224460-4a95f1cf2e88?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
   },
   {
     name: "Auto",
-    title: "Two Wheeler Vahical",
+    title: "Two-Wheeler Vehicle",
     description:
-      "loremem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has bee",
+      "Experience our comprehensive insurance coverage specially designed for two-wheelers. Keep your motorcycle or scooter protected with our reliable insurance options. Choose the best insurance for your two-wheeler today.",
     image:
       "https://images.unsplash.com/photo-1511350224460-4a95f1cf2e88?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
   },
   {
     name: "Auto",
-    title: "Three Wheeler Vahical",
+    title: "Three-Wheeler Vehicle",
     description:
-      "loremem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has bee",
+      "Discover our comprehensive insurance coverage for three-wheelers. Protect your auto-rickshaws or other three-wheeler vehicles with our reliable insurance options. Get the right coverage for your three-wheeler today.",
     image:
       "https://images.unsplash.com/photo-1511350224460-4a95f1cf2e88?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
   },

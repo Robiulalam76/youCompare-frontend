@@ -55,12 +55,13 @@ export default function Instructions({ setShowForm }) {
           {/* Documents Checklist Section */}
           <DisplayCard>
             <h2 className={styles.title} style={{ marginBottom: "12px" }}>
-              Documents Checklist
+              Insurance Claim Checklist: Essential Requirements for Claims
             </h2>
             <p className={styles.checklistText}>
-              Here's an exhaustive list of documents you may need to submit to
-              make a claim. You may need only a few or all of them based on your
-              situation.
+              Ensure a smooth insurance claim process with our comprehensive
+              checklist of required documents. From passport copies to original
+              bills, be prepared with the essential requirements for successful
+              insurance claims.
             </p>
             <ul className={styles.checklist}>
               {docsChecklist.map((item) => (

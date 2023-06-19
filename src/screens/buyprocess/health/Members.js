@@ -107,8 +107,11 @@ export default function Members(props) {
         }}
         gutterBottom
       >
-        Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-        Lorem Ipsum
+        Find comprehensive details about the member to be insured. Provide
+        accurate information regarding the member's full name, date of birth,
+        gender, contact number, email address, and residential address. Ensure
+        the accuracy of the details for a smooth insurance application process.
+        Contact us for any further assistance or inquiries.
       </Typography>
       <form onSubmit={handleSubmit}>
         <Grid container spacing={2}>

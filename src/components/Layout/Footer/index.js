@@ -24,7 +24,7 @@ export default function Footer() {
     ],
     contact: [
       { item: "44 Abeokuta Street off Oba Akran Way, Anifowoshe Ikeja Lagos." },
-      { item: "hilltopcompare@gmail.com" },
+      { item: "youcompare@gmail.com" },
     ],
   };
 
@@ -86,7 +86,7 @@ export default function Footer() {
           }}
         >
           Copyright <span style={{ fontSize: "14px" }}>&copy;</span>{" "}
-          {new Date().getFullYear()}, All rights reserved by HilltopCompare
+          {new Date().getFullYear()}, All rights reserved by YouCompare
         </Typography>
       </Container>
     </Box>

@@ -102,8 +102,8 @@ export default function Showcase() {
       <div style={methodology}>
         <h1>How does it work?</h1>
         <p style={{ marginBottom: "2%" }} className="pera">
-          Complete 3 simple steps to find the best insurance plan for your or
-          your family!
+          Discover Your Perfect Insurance Plan in Just 3 Simple Steps: Tailored
+          Protection for You and Your Family!
         </p>
         <Grid container style={methodStyle}>
           {steps.map((step, i) => (
@@ -142,10 +142,14 @@ export default function Showcase() {
 
       {/* Community Section */}
       <div className="p5" style={community}>
-        <b className="SecondHeaderTitle">1000+ people believed in us.</b>
+        <b className="SecondHeaderTitle">Join Over 1000 Satisfied Customers</b>
         <p className="ThirdHeaderPera" style={{ padding: "2% 18%" }}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
-          finibus sapien lorem, molestie dictum urna accumsan sit amet.
+          With unwavering trust from over 1000 satisfied individuals, our
+          company has earned a solid reputation in providing exceptional service
+          and reliable solutions. We take pride in the fact that our valued
+          customers have placed their faith in us. Their confidence in our
+          expertise and commitment is a testament to our dedication to their
+          financial security and peace of mind.
         </p>
 
         <div>
@@ -172,11 +176,11 @@ export default function Showcase() {
         >
           <h5 className="appHeader">Get the</h5>
           <h5 style={{ marginBottom: "4%" }} className="appHeader">
-            HilltopCompare
+            YouCompare
           </h5>
           <p className="ThirdHeaderPera">
-            Lorem ipsum dolor sit amet, a consectetur adipiscing elit. Maecenas
-            finibus sapien lorem, molestie dictum urna accumsan sit amet.
+            Simplify Insurance on the Go! Access your policies, file claims, and
+            stay informed with our user-friendly insurance app.
           </p>
         </Grid>
         <Grid item lg={6} md={6} xl={6} sm={6} xs={12} style={{ width: "50%" }}>
