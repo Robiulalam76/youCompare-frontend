@@ -38,7 +38,7 @@ export default function Instructions({ setShowForm }) {
               </button>
             </Link>
             <h2 className={styles.title}>Claim Process</h2>
-            <p className={styles.subtitle}>Auto Insurance</p>
+            <p className={styles.subtitle}>Health Insurance</p>
             <Stepper orientation="vertical" sx={{ mt: 2 }}>
               {claimSteps.map((step) => (
                 <Step active={true} key={step.id}>
